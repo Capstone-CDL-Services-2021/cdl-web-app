@@ -1,5 +1,5 @@
 <template>
-  <div class="homepage">
+  <div>
     <h1>CDL Services</h1>
 
     <b-form inline style="padding-left: 730px">
