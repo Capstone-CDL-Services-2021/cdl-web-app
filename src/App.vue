@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/cdlservices.jpg">
-    <Homepage msg="Welcome to Your Vue.js App"/>
+    <Homepage/>
   </div>
 </template>
 
@@ -11,7 +11,8 @@ import Homepage from './components/Homepage.vue'
 export default {
   name: 'App',
   components: {
-    Homepage
+    Homepage,
+
   }
 }
 </script>
