@@ -12,14 +12,14 @@
           </b-input-group>
           <b-input-group size="xs">
             <b-form-input type="password" placeholder="Password"></b-form-input>
-            <b-button variant="primary" href="login.html">Login</b-button>
+            <b-button variant="primary">Login</b-button>
           </b-input-group>
 
         </div>
         <div class="col-sm">
           <!--ALEEEEEEEEE -->
           <p class="text-right" style="padding-right: 20px">Address <br> Phone number <br> M-F 10:00am - 9:00pm<br></p>
-<!--            <button class="testbutton" type="testbutton" id="testbutton">Book a Service</button>-->
+          <!--            <button class="testbutton" type="testbutton" id="testbutton">Book a Service</button>-->
           <div align="right">
             <a href="#" class="btn btn-white btn-animation-1">Request a Service</a>
           </div>
@@ -28,28 +28,29 @@
         </div>
       </div>
     </div>
+
+    <navbar/>
     <!--column end-->
 
-    <b-navbar class="navbar navbar-light" style="background-color: green;">
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+<!--    <b-navbar class="navbar navbar-light" style="background-color: green;">-->
+<!--      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>-->
 
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav>
+<!--      <b-collapse id="nav-collapse" is-nav>-->
+<!--        <b-navbar-nav>-->
 
-          <b-button-group size="lg">
+<!--          <b-button-group size="lg">-->
 
-            <b-button variant="outline-light" @click=redirect>Home</b-button>
-            <router-link to="/login">Go to Foo</router-link>
+<!--&lt;!&ndash;            <b-button variant="outline-light" @click=redirect>Home</b-button>&ndash;&gt;-->
+<!--            <b-button variant="outline-light" v-on:click="redirect('/test')" >Home</b-button>-->
+<!--            <b-button variant="outline-light">Services</b-button>-->
+<!--            <b-button variant="outline-light">Schedule</b-button>-->
+<!--            <b-button variant="outline-light">Testimonials</b-button>-->
 
-            <b-button variant="outline-light">Services</b-button>
-                      <b-button variant="outline-light">Schedule</b-button>
-                      <b-button variant="outline-light">Testimonials</b-button>
+<!--          </b-button-group>-->
+<!--        </b-navbar-nav>-->
 
-          </b-button-group>
-        </b-navbar-nav>
-
-      </b-collapse>
-    </b-navbar>
+<!--      </b-collapse>-->
+<!--    </b-navbar>-->
 
 
     <b-jumbotron bg-variant="dark" text-variant="white" border-variant="dark">
@@ -108,16 +109,21 @@
 </template>
 
 <script>
+import navbar from "@/components/navbar";
+
 export default {
   name: "Home",
+  components: {
+    navbar
+  },
   data(){
     return {
 
     }
   },
   methods: {
-    redirect() {
-      this.$router.replace({ path: '/login' }).catch(()=>{})
+    redirect(id) {
+      this.$router.replace({ path: id }).catch(()=>{})
     }
   }
 }
@@ -135,7 +141,7 @@ body{
   text-align:center;
   box-sizing:border-box;
   font-family:"Lato",Sans-serif;
-     /*position:relative;*/
+  /*position:relative;*/
 }
 
 .btn:link,
