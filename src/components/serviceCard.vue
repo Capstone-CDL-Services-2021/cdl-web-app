@@ -3,15 +3,14 @@
     <b-card no-body class="overflow-hidden" style="max-width: 570px">
       <b-row no-gutters>
         <b-col>
-          <b-card-img
-              src=""
-              alt="Image" class="rounded-0"></b-card-img>
+          <b-card-img :src="cardImage" alt="Image" class="rounded-0"></b-card-img>
         </b-col>
         <b-col>
-          <b-card-body title="CANNOT BE HARDCODED">
+          <b-card-body :title="cardTitleA">
             <b-card-text>
-              CANNOT BE HARDCODED<br/>
-              CANNOT BE HARDCODED
+              {{cardDesc}}
+              <br/>
+
             </b-card-text>
             <b-button variant="primary" v-on:click="redirect('/book')">Request</b-button>
           </b-card-body>
@@ -24,7 +23,28 @@
 <script>
 export default {
   name: "serviceCard",
-  data(){
+
+  props: {
+    cardImg: {
+      type: String,
+    },
+    cardTitle: {
+      type: String,
+    },
+    cardDesc: {
+      type: String,
+    }
+  },
+  computed: {
+    cardImage() {
+      return this.cardImg;
+    },
+    cardTitleA() {
+      return this.cardTitle;
+    }
+  },
+
+  data() {
     return {
 
     }
@@ -34,6 +54,7 @@ export default {
       this.$router.push(id)
     }
   }
+
 }
 </script>
 
