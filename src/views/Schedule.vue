@@ -4,7 +4,7 @@
 
     <cdl_header/>
     <navbar/>
-
+    <b-calendar block :readonly="readonly"></b-calendar>
 
   </div>
 </template>

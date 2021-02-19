@@ -10,7 +10,7 @@
         <!--            <b-button variant="outline-light" @click=redirect>Home</b-button>-->
         <b-button variant="light" v-on:click="redirect('/')">Home</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/services')">Services</b-button>
-        <b-button variant="outline-light" v-on:click="redirect('/test')">Schedule</b-button>
+        <b-button variant="outline-light" v-on:click="redirect('/schedule')">Schedule</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/register')">Testimonials</b-button>
 
 
