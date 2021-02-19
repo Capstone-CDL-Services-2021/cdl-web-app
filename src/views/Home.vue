@@ -1,57 +1,8 @@
 <template>
   <div>
-    <!--column start-->
-    <div class="column">
-      <div class="row">
-        <div class="col-sm">
-          <img alt="CDL Services" width="150px" src="../assets/cdlservices.jpg" align="left" style="padding-left:20px">
-        </div>
-        <div class="col-sm-20" style="padding-top:20px">
-          <b-input-group size="xs">
-            <b-form-input placeholder="Username"></b-form-input>
-          </b-input-group>
-          <b-input-group size="xs">
-            <b-form-input type="password" placeholder="Password"></b-form-input>
-            <b-button variant="primary">Login</b-button>
-          </b-input-group>
 
-        </div>
-        <div class="col-sm">
-          <!--ALEEEEEEEEE -->
-          <p class="text-right" style="padding-right: 20px">Address <br> Phone number <br> M-F 10:00am - 9:00pm<br></p>
-          <!--            <button class="testbutton" type="testbutton" id="testbutton">Book a Service</button>-->
-          <div align="right">
-            <a href="#" class="btn btn-white btn-animation-1">Request a Service</a>
-          </div>
-
-
-        </div>
-      </div>
-    </div>
-
+    <cdl_header/>
     <navbar/>
-    <!--column end-->
-
-<!--    <b-navbar class="navbar navbar-light" style="background-color: green;">-->
-<!--      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>-->
-
-<!--      <b-collapse id="nav-collapse" is-nav>-->
-<!--        <b-navbar-nav>-->
-
-<!--          <b-button-group size="lg">-->
-
-<!--&lt;!&ndash;            <b-button variant="outline-light" @click=redirect>Home</b-button>&ndash;&gt;-->
-<!--            <b-button variant="outline-light" v-on:click="redirect('/test')" >Home</b-button>-->
-<!--            <b-button variant="outline-light">Services</b-button>-->
-<!--            <b-button variant="outline-light">Schedule</b-button>-->
-<!--            <b-button variant="outline-light">Testimonials</b-button>-->
-
-<!--          </b-button-group>-->
-<!--        </b-navbar-nav>-->
-
-<!--      </b-collapse>-->
-<!--    </b-navbar>-->
-
 
     <b-jumbotron bg-variant="dark" text-variant="white" border-variant="dark">
       <div class="column">
@@ -110,10 +61,12 @@
 
 <script>
 import navbar from "@/components/navbar";
+import cdl_header from "@/components/cdl_header";
 
 export default {
   name: "Home",
   components: {
+    cdl_header,
     navbar
   },
   data(){
@@ -122,9 +75,7 @@ export default {
     }
   },
   methods: {
-    redirect(id) {
-      this.$router.replace({ path: id }).catch(()=>{})
-    }
+
   }
 }
 </script>

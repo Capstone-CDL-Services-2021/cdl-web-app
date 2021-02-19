@@ -8,8 +8,8 @@
         <b-button-group size="lg">
 
           <!--            <b-button variant="outline-light" @click=redirect>Home</b-button>-->
-          <b-button variant="outline-light" v-on:click="redirect('/test')" >Home</b-button>
-          <b-button variant="outline-light">Services</b-button>
+          <b-button variant="outline-light" v-on:click="redirect('/')" >Home</b-button>
+          <b-button variant="outline-light" v-on:click="redirect('/services')" >Services</b-button>
           <b-button variant="outline-light">Schedule</b-button>
           <b-button variant="outline-light">Testimonials</b-button>
 
@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     redirect(id) {
-      this.$router.replace({ path: id }).catch(()=>{})
+      this.$router.push(id)
     }
   }
 }
