@@ -6,7 +6,7 @@
     <navbar/>
 
     <div class="services" style="margin-left: 5rem">
-      <div class="row">
+      <div class="row" style="margin-top: 2rem">
         <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
 
           <serviceCard card-img="https://images.unsplash.com/photo-1483385573908-0a2108937c4a"
@@ -19,7 +19,7 @@
 
           <br/>
 
-<!--          <serviceCard/>-->
+<!--          <serviceCard card-title="woweeeeee"/>-->
 
         </div>
         <div class="col-sm-20" style="padding: 0px 10px 0px 10px">

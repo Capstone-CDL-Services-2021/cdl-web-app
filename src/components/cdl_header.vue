@@ -1,8 +1,8 @@
 <template>
   <div class="column">
     <div class="row">
-      <div class="col-sm">
-        <img alt="CDL Services" width="150px" src="../assets/cdlservices.jpg" align="left" style="padding-left:20px">
+      <div class="col-sm-200">
+        <img alt="CDL Services" width="150px" src="../assets/cdlservices.jpg" align="left" style="padding-left:20px" v-on:click="redirect('/')">
       </div>
       <div class="col-sm-20" style="padding-top:20px">
         <b-input-group size="xs">
@@ -12,13 +12,14 @@
           <b-form-input type="password" placeholder="Password"></b-form-input>
           <b-button variant="primary">Login</b-button>
         </b-input-group>
+        <a href="" v-on:click="redirect('/register')">Register</a>
 
       </div>
       <div class="col-sm">
         <!--ALEEEEEEEEE -->
         <p class="text-right" style="padding-right: 20px">Address <br> Phone number <br> M-F 10:00am - 9:00pm<br></p>
         <!--            <button class="testbutton" type="testbutton" id="testbutton">Book a Service</button>-->
-        <div align="right">
+        <div align="right" style="float: right">
           <a href="#" class="btn btn-white btn-animation-1" v-on:click="redirect('/book')">Request a Service</a>
         </div>
       </div>
@@ -29,10 +30,8 @@
 <script>
 export default {
   name: "cdl_header",
-  data(){
-    return {
-
-    }
+  data() {
+    return {}
   },
   methods: {
     redirect(id) {
