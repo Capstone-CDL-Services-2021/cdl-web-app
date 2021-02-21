@@ -9,7 +9,7 @@
         <b-button variant="outline-light" v-on:click="redirect('/test')">Schedule</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/register')">Testimonials</b-button>
 
-        <a href class="btn btn-white btn-animation-1" v-on:click="redirect('/book')">Request a Service</a>
+        <a href="/book" class="btn btn-white btn-animation-1" v-on:click="redirect('/book')">Request a Service</a>
       </b-navbar-nav>
 
     </b-collapse>

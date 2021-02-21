@@ -12,7 +12,7 @@
           <b-form-input type="password" placeholder="Password"></b-form-input>
           <b-button variant="primary">Login</b-button>
         </b-input-group>
-        <a href v-on:click="redirect('/register')">Register</a>
+        <a href="/register" v-on:click="redirect('/register')">Register</a>
 
       </div>
       <div class="col-sm">
