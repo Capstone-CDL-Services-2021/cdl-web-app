@@ -19,9 +19,6 @@
         <!--ALEEEEEEEEE -->
         <p class="text-right" style="padding-right: 20px">Address <br> Phone number <br> M-F 10:00am - 9:00pm<br></p>
         <!--            <button class="testbutton" type="testbutton" id="testbutton">Book a Service</button>-->
-        <div align="right" style="float: right">
-          <a href class="btn btn-white btn-animation-1" v-on:click="redirect('/book')">Request a Service</a>
-        </div>
       </div>
     </div>
   </div>
