@@ -9,12 +9,23 @@
         <div class="row">
           <div class="col">
             <h1>Manager Home Page</h1>
+            <b-calendar block locale="en-US"></b-calendar>
           </div>
           <div class="col">
+            <h1 style="text-decoration: underline">Upcoming Projects and Due Dates</h1>
+            Dates will be filled in here
           </div>
+          <b-icon icon="three-dots-vertical" font-scale="2"></b-icon>
         </div>
       </div>
+      <br/>
+      <br/>
+      <b-button variant="outline-primary">
+        <b-icon icon="tools"></b-icon> Settings
+      </b-button>
+      <b-button variant="primary">Edit</b-button>
     </b-jumbotron>
+
   </div>
 </template>
 
