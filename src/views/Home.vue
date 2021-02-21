@@ -51,13 +51,10 @@
           </div>
         </div>
       </div>
-
-
     </b-jumbotron>
-
-
   </div>
 </template>
+
 
 <script>
 import navbar from "@/components/navbar";
