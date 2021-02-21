@@ -4,20 +4,12 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-
-        <!--        <b-button-group size="lg">-->
-
-        <!--            <b-button variant="outline-light" @click=redirect>Home</b-button>-->
-        <b-button variant="light" v-on:click="redirect('/')">Home</b-button>
+        <b-button variant="outline-light" v-on:click="redirect('/')">Home</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/services')">Services</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/test')">Schedule</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/register')">Testimonials</b-button>
 
-
-        <a href="#" class="btn btn-white btn-animation-1" v-on:click="redirect('/book')">Request a Service</a>
-
-
-        <!--        </b-button-group>-->
+        <a href class="btn btn-white btn-animation-1" v-on:click="redirect('/book')">Request a Service</a>
       </b-navbar-nav>
 
     </b-collapse>
@@ -74,6 +66,7 @@ body {
 .btn-white {
   background: white;
   color: #000;
+
 
 }
 
