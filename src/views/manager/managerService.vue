@@ -12,10 +12,9 @@
       <div class="row" style="margin-top: 2rem">
         <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
 
-          <serviceCard card-img="https://images.unsplash.com/photo-1483385573908-0a2108937c4a"
+          <manager-service-card card-img="https://images.unsplash.com/photo-1483385573908-0a2108937c4a"
                        card-title="Snow Shoveling"
                        card-desc="I will shovel your sidewalk/driveway during the cold winter season!"/>
-
           <br/>
 
           <!--          <serviceCard/>-->
@@ -27,7 +26,7 @@
         </div>
         <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
 
-          <serviceCard card-img="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b" card-title="Taking out the Trash" card-desc="I will take out your trash for you!"/>
+          <manager-service-card  card-img="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b" card-title="Taking out the Trash" card-desc="I will take out your trash for you!"/>
 
           <br/>
 
@@ -41,7 +40,7 @@
         <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
 
 
-          <serviceCard card-img="https://images.unsplash.com/photo-1589398284280-0490d847ad48" card-title="Gutter Cleaning" card-desc="I will clean your gutters!"/>
+          <manager-service-card  card-img="https://images.unsplash.com/photo-1589398284280-0490d847ad48" card-title="Gutter Cleaning" card-desc="I will clean your gutters!"/>
 
           <br/>
 
@@ -60,16 +59,16 @@
 </template>
 
 <script>
-import serviceCard from "@/components/serviceCard";
 import managerNavbar from "@/components/managerNavbar";
 import managerHeader from "@/components/managerHeader";
+import managerServiceCard from "@/components/managerServiceCard";
 
 export default {
   name: "Service",
   components: {
     managerNavbar,
     managerHeader,
-    serviceCard
+    managerServiceCard
   }
 }
 </script>
