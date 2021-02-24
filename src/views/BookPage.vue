@@ -6,7 +6,7 @@
 
     <h2>Book Service Page</h2>
 
-    <b-container class="row1" style="margin-left: 20rem">
+    <b-container class="row1">
       <b-row>
         <b-col  style="padding-right: 20rem">
           <template>
