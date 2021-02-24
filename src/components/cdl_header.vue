@@ -13,12 +13,8 @@
           <b-form-input type="password" placeholder="Password" v-model="password"></b-form-input>
           <b-button type="submit" variant="primary">Login</b-button>
         </b-input-group>
-<<<<<<< Updated upstream
-=======
-
         </b-form>
         <a href="/register" v-on:click="redirect('/register')">Register</a>
->>>>>>> Stashed changes
 
       </div>
       <div class="col-sm">
@@ -37,16 +33,10 @@
 import axios from 'axios'
 export default {
   name: "cdl_header",
-<<<<<<< Updated upstream
-  data(){
-    return {
-
-=======
   data() {
     return {
       email:'',
       password:''
->>>>>>> Stashed changes
     }
   },
   methods: {
