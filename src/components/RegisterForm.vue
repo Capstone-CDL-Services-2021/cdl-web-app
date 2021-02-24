@@ -54,10 +54,23 @@ export default {
         email: this.email,
         password: this.password,
         password_confirm: this.password_confirm
+<<<<<<< Updated upstream
       });
 
       this.$router.push('/');
     }
+=======
+      };
+      axios.post('http://localhost:3306/register',data).then(
+          res=> {
+            console.log(res)
+          }
+      ).catch(
+          err => {
+            console.log(err)
+          }
+      )
+>>>>>>> Stashed changes
     }
 }
 </script>
