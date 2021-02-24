@@ -56,6 +56,7 @@ export default {
         password_confirm: this.password_confirm
 
       });
+      console.log(response);
       alert(response.data.message);
       this.$router.push('/');
     }

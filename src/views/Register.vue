@@ -35,13 +35,13 @@ export default {
       box-sizing: border-box;
   }
 
-  .auth-wrapper{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: left;
-    padding-top: 50px;
-  }
+.auth-wrapper{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+  padding-top: 50px;
+}
 
   .auth-inner{
     width: 450px;

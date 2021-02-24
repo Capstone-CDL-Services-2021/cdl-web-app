@@ -1,8 +1,8 @@
 <template>
   <div class="column">
     <div class="row">
-      <div class="col-sm">
-        <img alt="CDL Services" width="150px" src="../assets/cdlservices.jpg" align="left" style="padding-left:20px">
+      <div class="col-sm-200">
+        <img alt="CDL Services" width="150px" src="../assets/cdlservices.jpg" align="left" style="padding-left:20px" v-on:click="redirect('/')">
       </div>
       <div class="col-sm-20" style="padding-top:20px">
 
@@ -27,9 +27,6 @@
         <!--ALEEEEEEEEE -->
         <p class="text-right" style="padding-right: 20px">Address <br> Phone number <br> M-F 10:00am - 9:00pm<br></p>
         <!--            <button class="testbutton" type="testbutton" id="testbutton">Book a Service</button>-->
-        <div align="right">
-          <a href="#" class="btn btn-white btn-animation-1" v-on:click="redirect('/book')">Request a Service</a>
-        </div>
       </div>
     </div>
   </div>
