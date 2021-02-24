@@ -7,7 +7,7 @@
     <div class="services" style="margin-left: 5rem">
 
       <br/>
-      <b-button variant="primary">Edit</b-button>
+      <b-button variant="primary" v-on:click="redirect('/managerCardEdit')">Add</b-button>
 
       <div class="row" style="margin-top: 2rem">
         <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
@@ -69,6 +69,11 @@ export default {
     managerNavbar,
     managerHeader,
     managerServiceCard
+  },
+  methods: {
+    redirect(id) {
+      this.$router.push(id)
+    }
   }
 }
 </script>

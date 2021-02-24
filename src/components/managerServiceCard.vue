@@ -11,12 +11,10 @@
               {{cardDesc}}
               <br/>
             </b-card-text>
-            <b-button variant="primary" v-on:click="redirect('/book')">Request</b-button>
-
             <br/>
             <br/>
 
-            <b-button variant="primary">Edit</b-button>
+            <b-button variant="danger">Delete</b-button>
           </b-card-body>
         </b-col>
       </b-row>
@@ -27,7 +25,6 @@
 <script>
 export default {
   name: "serviceCard",
-
   props: {
     cardImg: {
       type: String,
@@ -47,7 +44,6 @@ export default {
       return this.cardTitle;
     }
   },
-
   data() {
     return {
 
