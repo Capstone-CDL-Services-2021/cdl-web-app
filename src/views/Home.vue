@@ -62,9 +62,17 @@
 <script>
 import navbar from "@/components/navbar";
 import cdl_header from "@/components/cdl_header";
-
+import axios from "axios";
 export default {
   name: "Home",
+  async created(){
+    const response = await axios.get('user',{
+      headers: {
+        Authorization: 'Bearer' + localStorage.getItem('token')
+      }
+    });
+    console.log(response);
+  },
   components: {
     cdl_header,
     navbar

@@ -8,9 +8,14 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
+<<<<<<< Updated upstream
+=======
+    "cors": "^2.8.5",
+>>>>>>> Stashed changes
     "vue": "^2.6.12"
   },
   "devDependencies": {

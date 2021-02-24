@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "RegisterForm",
   data() {
@@ -45,17 +46,19 @@ export default {
     }
   },
   methods: {
-    registerHandler(){
-      const data = {
+    async registerHandler(){
+
+      await axios.post('register',{
         first_name: this.first_name,
         last_name: this.last_name,
         email: this.email,
         password: this.password,
         password_confirm: this.password_confirm
-      };
-      console.log(data);
+      });
+
+      this.$router.push('/');
     }
-  }
+    }
 }
 </script>
 

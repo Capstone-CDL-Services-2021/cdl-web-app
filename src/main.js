@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { ImagePlugin } from 'bootstrap-vue'
 import router from './router'
-
+import './axios'
 
 Vue.use(ImagePlugin)
 Vue.use(BootstrapVue)

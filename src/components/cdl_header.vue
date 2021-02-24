@@ -5,13 +5,20 @@
         <img alt="CDL Services" width="150px" src="../assets/cdlservices.jpg" align="left" style="padding-left:20px">
       </div>
       <div class="col-sm-20" style="padding-top:20px">
+        <b-form @submit.prevent="submitHandler">
         <b-input-group size="xs">
-          <b-form-input placeholder="Username"></b-form-input>
+          <b-form-input placeholder="Email" v-model="email"></b-form-input>
         </b-input-group>
         <b-input-group size="xs">
-          <b-form-input type="password" placeholder="Password"></b-form-input>
-          <b-button variant="primary">Login</b-button>
+          <b-form-input type="password" placeholder="Password" v-model="password"></b-form-input>
+          <b-button type="submit" variant="primary">Login</b-button>
         </b-input-group>
+<<<<<<< Updated upstream
+=======
+
+        </b-form>
+        <a href="/register" v-on:click="redirect('/register')">Register</a>
+>>>>>>> Stashed changes
 
       </div>
       <div class="col-sm">
@@ -27,16 +34,32 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "cdl_header",
+<<<<<<< Updated upstream
   data(){
     return {
 
+=======
+  data() {
+    return {
+      email:'',
+      password:''
+>>>>>>> Stashed changes
     }
   },
   methods: {
     redirect(id) {
       this.$router.push(id)
+    },
+    async submitHandler(){
+      const response = await axios.post('login', {
+        email : this.email,
+        password : this.password
+      });
+       console.log(response);
+       localStorage.setItem('token',response.data.token)
     }
   }
 }
