@@ -13,7 +13,7 @@
       </b-navbar-nav>
       <b-navbar-nav class = "ml-auto">
 
-          <b-button variant="outline-light" right>Request a Service</b-button>
+          <b-button variant="outline-light" v-on:click="redirect('/book')" right>Request a Service</b-button>
 
       </b-navbar-nav>
 
