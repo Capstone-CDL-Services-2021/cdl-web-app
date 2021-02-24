@@ -1,6 +1,9 @@
 <template>
   <div>
 
+    <h3 v-if="user">Hello, {{user.first_name}} {{user.last_name}} </h3>
+    <h3 v-if="!user">Login pls </h3>
+
     <cdl_header/>
     <navbar/>
 
@@ -62,29 +65,20 @@
 <script>
 import navbar from "@/components/navbar";
 import cdl_header from "@/components/cdl_header";
-import axios from "axios";
+import {mapGetters} from 'vuex'
 export default {
   name: "Home",
-  async created(){
-    const response = await axios.get('user',{
-      headers: {
-        Authorization: 'Bearer' + localStorage.getItem('token')
-      }
-    });
-    console.log(response);
-  },
   components: {
     cdl_header,
     navbar
   },
-  data(){
-    return {
-
-    }
-  },
   methods: {
 
+  },
+  computed: {
+    ...mapGetters(['user'])
   }
+
 }
 </script>
 

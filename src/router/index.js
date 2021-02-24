@@ -2,10 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Register from "@/views/Register.vue";
+import Forgot from "@/views/Forgot";
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/forgot', name: 'Forgot', component: Forgot
+  },
   {
     path: '/',
     name: 'Home',

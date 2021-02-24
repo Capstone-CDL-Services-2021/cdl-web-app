@@ -5,7 +5,8 @@
         <img alt="CDL Services" width="150px" src="../assets/cdlservices.jpg" align="left" style="padding-left:20px">
       </div>
       <div class="col-sm-20" style="padding-top:20px">
-        <b-form @submit.prevent="submitHandler">
+
+        <b-form v-if="!user" @submit.prevent="submitHandler">
         <b-input-group size="xs">
           <b-form-input placeholder="Email" v-model="email"></b-form-input>
         </b-input-group>
@@ -13,9 +14,14 @@
           <b-form-input type="password" placeholder="Password" v-model="password"></b-form-input>
           <b-button type="submit" variant="primary">Login</b-button>
         </b-input-group>
+          <p class="forgot-password text-left">
+            <router-link to="forgot">Forgot password?</router-link>
+          </p>
         </b-form>
         <a href="/register" v-on:click="redirect('/register')">Register</a>
-
+        <div v-if="user">
+          <a href="javascript:void(0)" v-on:click="logoutHandler">Logout</a>
+        </div>
       </div>
       <div class="col-sm">
         <!--ALEEEEEEEEE -->
@@ -31,6 +37,7 @@
 
 <script>
 import axios from 'axios'
+import {mapGetters} from 'vuex'
 export default {
   name: "cdl_header",
   data() {
@@ -43,14 +50,24 @@ export default {
     redirect(id) {
       this.$router.push(id)
     },
+    logoutHandler(){
+      localStorage.removeItem('token');
+      this.$store.dispatch('user',null);
+      this.$router.push('/');
+    },
     async submitHandler(){
       const response = await axios.post('login', {
         email : this.email,
         password : this.password
       });
        console.log(response);
-       localStorage.setItem('token',response.data.token)
+       localStorage.setItem('token',response.data.token);
+       this.$store.dispatch('user',response.data.user);
+       this.$router.push('/');
     }
+  },
+  computed: {
+    ...mapGetters(['user'])
   }
 }
 </script>

@@ -48,7 +48,7 @@ export default {
   methods: {
     async registerHandler(){
 
-      await axios.post('register',{
+      const response = await axios.post('register',{
         first_name: this.first_name,
         last_name: this.last_name,
         email: this.email,
@@ -56,7 +56,7 @@ export default {
         password_confirm: this.password_confirm
 
       });
-
+      alert(response.data.message);
       this.$router.push('/');
     }
     }
