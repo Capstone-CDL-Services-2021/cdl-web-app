@@ -1,5 +1,7 @@
 <template>
   <form @submit.prevent="registerHandler">
+    <error v-if="error" :error="error"></error>
+
     <h1>Register</h1>
 
     <div class = "form-group">
@@ -32,36 +34,43 @@
 </template>
 
 <script>
+import Error from '@/components/Error.vue'
 import axios from 'axios'
 export default {
   name: "RegisterForm",
+  components:{
+    Error
+  },
   data() {
     return {
       first_name: '',
       last_name: '',
       email: '',
       password: '',
-      password_confirm: ''
+      password_confirm: '',
+      error:''
 
     }
   },
   methods: {
     async registerHandler(){
+      try {
+        const response = await axios.post('register', {
+          first_name: this.first_name,
+          last_name: this.last_name,
+          email: this.email,
+          password: this.password,
+          password_confirm: this.password_confirm
 
-      const response = await axios.post('register',{
-        first_name: this.first_name,
-        last_name: this.last_name,
-        email: this.email,
-        password: this.password,
-        password_confirm: this.password_confirm
-
-      });
-      console.log(response);
-      alert(response.data.message);
-      this.$router.push('/');
+        });
+        console.log(response);
+        alert(response.data.message);
+        this.$router.push('/');
+      }catch(e){
+      this.error ='Error occurred';
     }
     }
-}
+}}
 </script>
 
 <style scoped>

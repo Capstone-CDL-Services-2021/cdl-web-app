@@ -3,7 +3,9 @@
 
     <h3 v-if="user">Hello, {{user.first_name}} {{user.last_name}} </h3>
     <h3 v-if="!user">Login pls </h3>
-
+    <div v-if="error" class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
     <cdl_header/>
     <navbar/>
 

@@ -2,6 +2,11 @@
   <div class="auth-wrapper">
     <div class="auth-inner">
   <form @submit.prevent="forgotpassHandler">
+    <div v-if="message" class="alert alert-success" role="alert">
+      {{message}}
+    </div>
+    <error v-if="error" :error="error"></error>
+
     <h2>Forgot Password</h2>
     <div class="form-group">
       <label>Email</label>
@@ -15,21 +20,32 @@
 </template>
 
 <script>
+import Error from '@/components/Error'
 import axios from 'axios'
 export default {
   name: "Forgot",
+  components:{
+    Error
+  },
   data(){
     return{
-      email:''
+      email:'',
+      message:'',
+      error: ''
     }
   },
   methods: {
     async forgotpassHandler(){
+      try{
       const response = await axios.post('forgot',{
         email: this.email
       });
-
+      this.message= 'The email was sent!';
+      this.error='';
       console.log(response);
+    }catch(e){
+      this.error= 'Error occured';
+      this.message ='';}
     }
   }
 }

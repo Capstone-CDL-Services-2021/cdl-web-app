@@ -4,10 +4,12 @@
       <div class="col-sm-200">
         <img alt="CDL Services" width="150px" src="../assets/cdlservices.jpg" align="left" style="padding-left:20px" v-on:click="redirect('/')">
       </div>
+
       <div class="col-sm-20" style="padding-top:20px">
 
         <b-form v-if="!user" @submit.prevent="submitHandler">
-        <b-input-group size="xs">
+          <error v-if="error" :error="error"></error>
+          <b-input-group size="xs">
           <b-form-input placeholder="Email" v-model="email"></b-form-input>
         </b-input-group>
         <b-input-group size="xs">
@@ -33,14 +35,19 @@
 </template>
 
 <script>
+import Error from '@/components/Error.vue'
 import axios from 'axios'
 import {mapGetters} from 'vuex'
 export default {
   name: "cdl_header",
+  components:{
+    Error
+  },
   data() {
     return {
       email:'',
-      password:''
+      password:'',
+      error:''
     }
   },
   methods: {
@@ -52,16 +59,20 @@ export default {
       this.$store.dispatch('user',null);
       this.$router.push('/');
     },
+
     async submitHandler(){
+      try{
       const response = await axios.post('login', {
         email : this.email,
         password : this.password
       });
        console.log(response);
        localStorage.setItem('token',response.data.token);
-       this.$store.dispatch('user',response.data.user);
-       this.$router.push('/');
-    }
+       this.$store.dispatch('user', response.data.user);
+    }catch(e) {
+        this.error= "Invalid username/password";
+        alert("Invalid Username or password");
+    }}
   },
   computed: {
     ...mapGetters(['user'])

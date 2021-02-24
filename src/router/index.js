@@ -11,6 +11,12 @@ const routes = [
     component: Home
   },
   {
+    path: '/reset/:token',
+    name: 'Reset',
+    component: () => import(/* webpackChunkName: "service" */ '../views/Reset.vue')
+
+  },
+  {
     path: '/forgot',
     name: 'Forgot',
     component: () => import(/* webpackChunkName: "service" */ '../views/Forgot.vue')
