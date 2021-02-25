@@ -4,18 +4,15 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-button variant="outline-light" v-on:click="redirect('/')">Home</b-button>
-        <b-button variant="outline-light" v-on:click="redirect('/services')">Services</b-button>
-        <b-button variant="outline-light" v-on:click="redirect('/schedule')">Schedule</b-button>
-        <b-button variant="outline-light" v-on:click="redirect('/register')">Testimonials</b-button>
-        <!--<b-button variant="outline-light" v-on:click="redirect('/managerHome')">Manager</b-button> -->
-        </b-navbar-nav>
-      <b-navbar-nav class = "ml-auto">
-
-          <b-button variant="outline-light" v-on:click="redirect('/book')" right>Request a Service</b-button>
-
+        <b-button variant="outline-light" v-on:click="redirect('/managerHome')">Projects</b-button>
+        <b-button variant="outline-light" v-on:click="redirect('/managerService')">Services</b-button>
+        <b-button variant="outline-light" v-on:click="redirect('/managerHome')">Schedule</b-button>
+        <b-button variant="outline-light" v-on:click="redirect('/managerHome')">Testimonials</b-button>
+        <b-button variant="outline-light" v-on:click="redirect('/managerBookings')">Manager Bookings</b-button>
+        <b-button variant="outline-light" v-on:click="redirect('/managerHome/')">Reports</b-button>
+        <b-button variant="outline-light" v-on:click="redirect('/managerHome')">Edit About Us</b-button>
+        <b-button variant="outline-light" v-on:click="redirect('/managerHome')">Manager User Accounts</b-button>
       </b-navbar-nav>
-
     </b-collapse>
   </b-navbar>
 </template>

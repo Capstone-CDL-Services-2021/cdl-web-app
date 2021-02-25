@@ -1,38 +1,40 @@
 <template>
-  <b-navbar class="navbar navbar-light" style="background-color: green;" sticky>
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+  <div class="column">
+    <div class="row">
+      <div class="col-sm-200">
+        <img alt="CDL Services" width="150px" src="../assets/cdlservices.jpg" align="left" style="padding-left:20px" v-on:click="redirect('/')">
+      </div>
+      <div class="col-sm-20" style="padding-top:20px">
+        <a href="javascript:void(0)" v-on:click="logoutHandler">Logout</a>
 
-    <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav>
-        <b-button variant="outline-light" v-on:click="redirect('/')">Home</b-button>
-        <b-button variant="outline-light" v-on:click="redirect('/services')">Services</b-button>
-        <b-button variant="outline-light" v-on:click="redirect('/schedule')">Schedule</b-button>
-        <b-button variant="outline-light" v-on:click="redirect('/register')">Testimonials</b-button>
-        <!--<b-button variant="outline-light" v-on:click="redirect('/managerHome')">Manager</b-button> -->
-        </b-navbar-nav>
-      <b-navbar-nav class = "ml-auto">
-
-          <b-button variant="outline-light" v-on:click="redirect('/book')" right>Request a Service</b-button>
-
-      </b-navbar-nav>
-
-    </b-collapse>
-  </b-navbar>
+        <!-- <b-input-group size="xs">
+           <b-button variant="primary" v-on:click="redirect('/')">Logout</b-button>
+         </b-input-group> -->
+      </div>
+      <div class="col-sm">
+        <p class="text-right" style="padding-right: 20px">T5H 2K3 Edmonton, Alberta, Canada <br> 780-695-5395 <br> Mon- Sat 9:00am - 5:00pm<br></p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "navbar",
+  name: "cdl_header",
   data() {
     return {}
   },
   methods: {
     redirect(id) {
       this.$router.push(id)
+    },
+    logoutHandler(){
+      localStorage.removeItem('token');
+      this.$store.dispatch('user',null);
+      this.$router.push('/');
     }
   }
 }
-
 </script>
 
 <style scoped>
@@ -40,7 +42,6 @@ export default {
   color: white;
   padding: 20px;
   border: 3px solid white;
-
 }
 
 body {
@@ -58,20 +59,17 @@ body {
   position: relative;
   top: 0;
   left: 0;
-  color: green;
+  color: white;
   /*padding:20px 40px;*/
   border-radius: 100px;
   display: inline-block;
   transition: all .5s;
   font-family: "Corbel Light";
-  margin-left: 84rem;
 }
 
 .btn-white {
-  background: white;
+  background: green;
   color: #000;
-
-
 }
 
 .btn:active {
@@ -96,11 +94,10 @@ body {
   display: inline-block;
   z-index: -1;
   transition: all .5s;
-
 }
 
 .btn-white::after {
-  background: white;
+  background: green;
 }
 
 .btn-animation-1:hover::after {
