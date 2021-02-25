@@ -56,6 +56,7 @@
           <b-modal id="accept" size="sm" title="Service" ok-only>
             <p>Service has been Added</p>
           </b-modal>
+        </b-form>
 
           <div class="row" style="margin-top: 2rem">
             <div v-for="service in services"
@@ -72,10 +73,6 @@
             </div>
 
           </div>
-
-
-
-        </b-form>
       </b-jumbotron>
     </div>
   </div>
