@@ -4,10 +4,8 @@
     <manager-header/>
     <manager-navbar/>
 
-    <div class="services" style="margin-left: 5rem">
+    <div class="services">
 
-      <br/>
-      <!--      <b-button variant="primary" v-on:click="redirect('/managerCardEdit')">Add</b-button>-->
       <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark">
         <b-form style="width: 300px; margin: auto" @reset="onReset">
           <b-form-group
