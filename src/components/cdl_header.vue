@@ -20,7 +20,9 @@
             <router-link to="forgot">Forgot password?</router-link>
           </p>
         </b-form>
+        <div v-if="!user">
         <a href="/register" v-on:click="redirect('/register')">Register</a>
+        </div>
         <div v-if="user">
           <a href="javascript:void(0)" v-on:click="logoutHandler">Logout</a>
         </div>

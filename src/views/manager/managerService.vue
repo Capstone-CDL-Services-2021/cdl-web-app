@@ -60,35 +60,23 @@
           </b-modal>
 
           <div class="row" style="margin-top: 2rem">
-            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
+            <div v-for="service in services"
+                 :key="service.name">
+              <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
 
-              <manager-service-card card-img="https://images.unsplash.com/photo-1483385573908-0a2108937c4a"
-                                    card-title="Snow Shoveling"
-                                    card-desc="I will shovel your sidewalk/driveway during the cold winter season!"/>
-
+                <manager-service-card :card-img="service.image"
+                                      :card-title="service.name"
+                                      :card-desc="service.description"
+                                      :card-id="service.cardId"
+                >
+                </manager-service-card>
+              </div>
             </div>
-            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
-              <manager-service-card  card-img="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b"
-                                     card-title="Taking out the Trash"
-                                     card-desc="I will take out your trash for you!"/>
 
-
-            </div>
-            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
-
-
-              <manager-service-card  card-img="https://images.unsplash.com/photo-1589398284280-0490d847ad48"
-                                     card-title="Gutter Cleaning"
-                                     card-desc="I will clean your gutters!"/>
-
-            </div>
-            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
-
-              <manager-service-card  :card-img="service.img"
-                                     :card-title="service.name"
-                                     :card-desc="service.desc"/>
-            </div>
           </div>
+
+
+
         </b-form>
       </b-jumbotron>
     </div>
@@ -99,6 +87,9 @@
 import managerNavbar from "@/components/managerNavbar";
 import managerHeader from "@/components/managerHeader";
 import managerServiceCard from "@/components/managerServiceCard";
+import store from "@/store";
+import {mapGetters} from "vuex";
+
 
 export default {
   name: "Service",
@@ -109,12 +100,26 @@ export default {
   },
   data() {
     return {
-      service: {}
+      service: {},
+      services: store.state.services,
     }
+  },
+  computed: {
+    ...mapGetters({
+      services: "getServices"
+    })
   },
   methods: {
     redirect(id) {
       this.$router.push(id)
+    },
+    addService() {
+      let s = this.service;
+      this.$store.dispatch('addService', s);
+    },
+    removeService(cardId) {
+      let index = parseInt(cardId) -1;
+      this.$store.dispatch('removeService', index);
     },
     onReset(event) {
       event.preventDefault()

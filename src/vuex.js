@@ -4,7 +4,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 
 const state = {
-    user: null
+    user: null,
+    services: []
 };
 
 const store = new Vuex.Store({
@@ -12,16 +13,29 @@ const store = new Vuex.Store({
     getters:{
         user: (state) => {
             return state.user;
-        }
+        },
+        getServices:(state) => state.services
     },
     actions:{
         user(context,user){
             context.commit('user',user);
+        },
+        addService(state, payload) {
+            state.commit("addService", payload)
+        },
+        removeService(state, payload) {
+            state.commit("removeService", payload)
         }
     },
     mutations:{
         user(state,user){
             state.user = user;
+        },
+        addService(state, payload) {
+            state.services.push(payload);
+        },
+        removeService(state, payload) {
+            state.services.splice(payload, 1);
         }
     }
 });
