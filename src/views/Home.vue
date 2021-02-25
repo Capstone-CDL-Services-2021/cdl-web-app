@@ -1,6 +1,11 @@
 <template>
   <div>
 
+    <h3 v-if="user">Hello, {{user.first_name}} {{user.last_name}} </h3>
+    <h3 v-if="!user">Login pls </h3>
+    <div v-if="error" class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
     <cdl_header/>
     <navbar/>
 
@@ -62,21 +67,20 @@
 <script>
 import navbar from "@/components/navbar";
 import cdl_header from "@/components/cdl_header";
-
+import {mapGetters} from 'vuex'
 export default {
   name: "Home",
   components: {
     cdl_header,
     navbar
   },
-  data(){
-    return {
-
-    }
-  },
   methods: {
 
+  },
+  computed: {
+    ...mapGetters(['user'])
   }
+
 }
 </script>
 

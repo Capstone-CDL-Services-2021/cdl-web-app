@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import navbar from "@/components/navbar";
-import cdl_header from "@/components/cdl_header";
-import RegisterForm from "@/components/RegisterForm";
+  import navbar from "@/components/navbar";
+  import cdl_header from "@/components/cdl_header";
+  import RegisterForm from "@/components/RegisterForm";
 
 export default {
   name: "Register",
@@ -31,9 +31,9 @@ export default {
 </script>
 
 <style scoped>
-* {
-  box-sizing: border-box;
-}
+  * {
+      box-sizing: border-box;
+  }
 
 .auth-wrapper{
   display: flex;
@@ -43,12 +43,12 @@ export default {
   padding-top: 50px;
 }
 
-.auth-inner{
-  width: 450px;
-  margin: auto;
-  background: aqua;
-  padding: 40px 55px 40px 55px;
-  border-radius: 15px;
-  transition: all .3s;
-}
+  .auth-inner{
+    width: 450px;
+    margin: auto;
+    background: aqua;
+    padding: 40px 55px 40px 55px;
+    border-radius: 15px;
+    transition: all .3s;
+  }
 </style>

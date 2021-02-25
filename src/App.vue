@@ -4,6 +4,19 @@
   </div>
 </template>
 
+<script>
+import axios from "axios";
+
+export default {
+  name: 'App',
+  async created(){
+    const response = await axios.get('user');
+    console.log(response);
+    this.$store.dispatch('user',response.data);
+    },
+}
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
