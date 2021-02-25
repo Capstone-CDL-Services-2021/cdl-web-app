@@ -14,25 +14,10 @@
         <div class="row">
           <div class="col">
             <h1>Welcome to CDL Services</h1>
-            I am a handyman that does oddjobs for an affordable price!!!!<br>
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum."
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum."
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum."
+            I am a handyman that does any commercial and residential job for an affordable price!!!!<br>
+            Services include: Eavestrough cleaning & repair, window cleaning, roof & siding repair, gutter guard installation
+            House renovation, Car detail, furniture assembling, house cleaning and painting, lawn mowing, make firewood,
+            Top soil, fertilizing the soiling, and any other handyman work. <br>Go to services to see more info!
           </div>
           <div class="col">
 
@@ -45,12 +30,20 @@
                 img-height="480"
             >
               <b-carousel-slide
-                  caption="Johnny slide"
-                  img-src="https://img.mensxp.com/media/content/2020/Jul/image-1-credit-Johnny-Sins-_5f083d57f09b0.png"
+                  caption="Snow shovelling"
+                  img-src="https://images.unsplash.com/photo-1483385573908-0a2108937c4a"
               ></b-carousel-slide>
               <b-carousel-slide
-                  caption="Bob slide"
-                  img-src="https://scontent.fyyc3-1.fna.fbcdn.net/v/t1.0-9/33643_1624307928196_5104357_n.jpg?_nc_cat=109&ccb=3&_nc_sid=de6eea&_nc_ohc=edywfk2sdUYAX_biTMi&_nc_ht=scontent.fyyc3-1.fna&oh=e3ee530fbf2a792fa7f4f00817379763&oe=60538248"
+                  caption="Stone, Rock Garden, Bark Install"
+                  img-src="https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.0-9/21106325_1311368295656248_5714666004206838660_n.jpg?_nc_cat=110&ccb=3&_nc_sid=8bfeb9&_nc_ohc=qzV-kDur4rcAX9UDhZX&_nc_ht=scontent.fyyc2-1.fna&oh=85d3a4c4ae6aa32df76986f3d01f8e6b&oe=6059DC77"
+              ></b-carousel-slide>
+              <b-carousel-slide
+                  caption="Home Renovation"
+                  img-src="https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.0-9/10696191_597175513742200_6232360445896381313_n.jpg?_nc_cat=108&ccb=3&_nc_sid=8bfeb9&_nc_ohc=dl0NMKO2IDQAX91Y78h&_nc_ht=scontent.fyyc2-1.fna&oh=a14ee56aa163f4adae847dc6afb653eb&oe=605744BA"
+              ></b-carousel-slide>
+              <b-carousel-slide
+                  caption="Christmas Lights Install or Removal"
+                  img-src="https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.0-9/20881889_1299645000161911_4346000721402873656_n.jpg?_nc_cat=105&ccb=3&_nc_sid=8bfeb9&_nc_ohc=qVjmZleJRo8AX9eJppB&_nc_ht=scontent.fyyc2-1.fna&oh=6ff07e2ca19e2d3aca161a4a503ef71f&oe=605A4607"
               ></b-carousel-slide>
             </b-carousel>
           </div>
