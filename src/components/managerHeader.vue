@@ -4,28 +4,12 @@
       <div class="col-sm-200">
         <img alt="CDL Services" width="150px" src="../assets/cdlservices.jpg" align="left" style="padding-left:20px" v-on:click="redirect('/')">
       </div>
+      <div class="col-sm-20" style="padding-top:20px">
+        <a href="javascript:void(0)" v-on:click="logoutHandler">Logout</a>
 
-      <div class="col-sm-20" style="padding:20px">
-
-        <b-form v-if="!user" @submit.prevent="submitHandler">
-          <error v-if="error" :error="error"></error>
-          <b-input-group size="xs">
-          <b-form-input placeholder="Email" v-model="email"></b-form-input>
-        </b-input-group>
-        <b-input-group size="xs">
-          <b-form-input type="password" placeholder="Password" v-model="password"></b-form-input>
-          <b-button type="submit" variant="primary">Login</b-button>
-        </b-input-group>
-          <p class="forgot-password text-left">
-            <router-link to="forgot">Forgot password?</router-link>
-          </p>
-        </b-form>
-        <div v-if="!user">
-        <a href="/register" v-on:click="redirect('/register')">Register</a>
-        </div>
-        <div v-if="user">
-          <a href="javascript:void(0)" v-on:click="logoutHandler">Logout</a>
-        </div>
+        <!-- <b-input-group size="xs">
+           <b-button variant="primary" v-on:click="redirect('/')">Logout</b-button>
+         </b-input-group> -->
       </div>
       <div class="col-sm">
         <p class="text-right" style="padding-right: 20px">T5H 2K3 Edmonton, Alberta, Canada <br> 780-695-5395 <br> Mon- Sat 9:00am - 5:00pm<br></p>
@@ -35,20 +19,10 @@
 </template>
 
 <script>
-import Error from '@/components/Error.vue'
-import axios from 'axios'
-import {mapGetters} from 'vuex'
 export default {
   name: "cdl_header",
-  components:{
-    Error
-  },
   data() {
-    return {
-      email:'',
-      password:'',
-      error:''
-    }
+    return {}
   },
   methods: {
     redirect(id) {
@@ -58,24 +32,7 @@ export default {
       localStorage.removeItem('token');
       this.$store.dispatch('user',null);
       this.$router.push('/');
-    },
-
-    async submitHandler(){
-      try{
-      const response = await axios.post('login', {
-        email : this.email,
-        password : this.password
-      });
-       console.log(response);
-       localStorage.setItem('token',response.data.token);
-       this.$store.dispatch('user', response.data.user);
-    }catch(e) {
-        this.error= "Invalid username/password";
-        alert("Invalid Username or password");
-    }}
-  },
-  computed: {
-    ...mapGetters(['user'])
+    }
   }
 }
 </script>
