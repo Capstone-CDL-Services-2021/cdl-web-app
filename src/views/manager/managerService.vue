@@ -82,20 +82,14 @@
                                      card-desc="I will clean your gutters!"/>
 
             </div>
-<!--            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">-->
-
-<!--              <manager-service-card  :card-img="service.img"-->
-<!--                                     :card-title="service.name"-->
-<!--                                     :card-desc="service.desc"/>-->
-<!--            </div>-->
           </div>
         </b-form>
         <div class="col-sm-20" style="padding: 0px 10px 0px 10px; color: white">
-          <h4>yeet</h4>
+
           <h4 v-for="(serv,idx) in services" :key="idx">
-            <span>{{serv.img}}</span><br/>
-            <span>{{serv.name}}</span><br/>
-            <span>{{serv.desc}}</span>
+            <manager-service-card :card-img="serv.img"
+                                  :card-title="serv.name"
+                                  :card-desc="serv.desc"/>
           </h4>
 
         </div>
@@ -142,10 +136,8 @@ export default {
       })
     },
     addService() {
-      let serviceStuff = [];
       let s = this.service;
-      serviceStuff.push({img: s.img, name: s.name, desc: s.desc});
-      this.$store.dispatch('addService', serviceStuff);
+      this.$store.dispatch('addService', s);
     }
   }
 }
