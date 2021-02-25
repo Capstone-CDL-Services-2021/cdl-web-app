@@ -51,7 +51,7 @@
             ></b-form-input>
           </b-form-group>
 
-          <b-button class="spacing"  v-b-modal.accept variant="primary">Add</b-button>
+          <b-button class="spacing"  variant="primary" v-on:click="addService();">Add</b-button>
           <b-button class="spacing" type="reset" variant="danger">Reset</b-button>
           <b-button class="spacing" variant="secondary" v-on:click="redirect('managerHome')">Back</b-button>
 
@@ -82,14 +82,23 @@
                                      card-desc="I will clean your gutters!"/>
 
             </div>
-            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
+<!--            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">-->
 
-              <manager-service-card  :card-img="service.img"
-                                     :card-title="service.name"
-                                     :card-desc="service.desc"/>
-            </div>
+<!--              <manager-service-card  :card-img="service.img"-->
+<!--                                     :card-title="service.name"-->
+<!--                                     :card-desc="service.desc"/>-->
+<!--            </div>-->
           </div>
         </b-form>
+        <div class="col-sm-20" style="padding: 0px 10px 0px 10px; color: white">
+          <h4>yeet</h4>
+          <h4 v-for="(serv,idx) in services" :key="idx">
+            <span>{{serv.img}}</span><br/>
+            <span>{{serv.name}}</span><br/>
+            <span>{{serv.desc}}</span>
+          </h4>
+
+        </div>
       </b-jumbotron>
     </div>
   </div>
@@ -98,6 +107,7 @@
 <script>
 import managerNavbar from "@/components/managerNavbar";
 import managerHeader from "@/components/managerHeader";
+import {mapGetters} from "vuex";
 import managerServiceCard from "@/components/managerServiceCard";
 
 export default {
@@ -105,12 +115,17 @@ export default {
   components: {
     managerNavbar,
     managerHeader,
-    managerServiceCard,
+    managerServiceCard
   },
-  data() {
-    return {
+  data(){
+    return{
       service: {}
     }
+  },
+  computed: {
+    ...mapGetters({
+      services: "getServices"
+    })
   },
   methods: {
     redirect(id) {
@@ -125,6 +140,12 @@ export default {
       this.$nextTick(() => {
         this.show = true
       })
+    },
+    addService() {
+      let serviceStuff = [];
+      let s = this.service;
+      serviceStuff.push({img: s.img, name: s.name, desc: s.desc});
+      this.$store.dispatch('addService', serviceStuff);
     }
   }
 }
