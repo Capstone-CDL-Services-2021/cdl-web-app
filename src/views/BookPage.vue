@@ -112,7 +112,9 @@ export default {
         date: '',
         streetAddress: ''
       },
-      services: [{ text: 'Select One', value: null }, 'Service 1', 'Service 2', 'Service 3', 'Service 4'],
+      services: [{ text: 'Select One', value: null }, 'Snow Shoveling', 'Taking out the trash',
+        'Home Renovation', 'Window Cleaning', 'Roof & Siding repair', 'Car detailing', 'Gutter Guard Installation', 'Christmas lights install or Removal', 'Eavestough Cleaning & Repair', 'House Cleaning & Painting',
+      'Trimming', 'Furniture Assembly', 'Demolition', 'Pruning', 'Junk removal', 'Strong, rock garden, bark install', 'Topping', 'Mow Lawn, Top Soil & fertilizers'],
 
     }
   },
