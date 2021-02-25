@@ -7,53 +7,90 @@
     <div class="services" style="margin-left: 5rem">
 
       <br/>
-      <b-button variant="primary" v-on:click="redirect('/managerCardEdit')">Add</b-button>
+      <!--      <b-button variant="primary" v-on:click="redirect('/managerCardEdit')">Add</b-button>-->
+      <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark">
+        <b-form style="width: 300px; margin: auto" @reset="onReset">
+          <b-form-group
+              id="input-group-1"
+              label="Service Name:"
+              label-for="input-1"
+              style="color:white"
+          >
+            <b-form-input
+                id="input-1"
+                v-model="service.name"
+                type="text"
+                placeholder="Enter Service Name"
+                required
+            ></b-form-input>
+          </b-form-group>
 
-      <div class="row" style="margin-top: 2rem">
-        <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
+          <b-form-group
+              id="input-group-2"
+              label="Service Description:"
+              label-for="input-2"
+          >
+            <b-form-textarea
+                id="input-2"
+                v-model="service.desc"
+                type="text"
+                placeholder="Enter Service Description"
+                required
+            ></b-form-textarea>
+          </b-form-group>
 
-          <manager-service-card card-img="https://images.unsplash.com/photo-1483385573908-0a2108937c4a"
-                       card-title="Snow Shoveling"
-                       card-desc="I will shovel your sidewalk/driveway during the cold winter season!"/>
-          <br/>
+          <b-form-group
+              id="input-group-3"
+              label="Service Image:"
+              label-for="input-3"
+              placeholder="Enter image link"
+          >
+            <b-form-input
+                id="input-3"
+                v-model="service.img"
+            ></b-form-input>
+          </b-form-group>
 
-          <!--          <serviceCard/>-->
+          <b-button class="spacing"  v-b-modal.accept variant="primary">Add</b-button>
+          <b-button class="spacing" type="reset" variant="danger">Reset</b-button>
+          <b-button class="spacing" variant="secondary" v-on:click="redirect('managerHome')">Back</b-button>
 
-          <br/>
+          <b-modal id="accept" size="sm" title="Service" ok-only>
+            <p>Service has been Added</p>
+          </b-modal>
 
-          <!--          <serviceCard card-title="woweeeeee"/>-->
+          <div class="row" style="margin-top: 2rem">
+            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
 
-        </div>
-        <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
+              <manager-service-card card-img="https://images.unsplash.com/photo-1483385573908-0a2108937c4a"
+                                    card-title="Snow Shoveling"
+                                    card-desc="I will shovel your sidewalk/driveway during the cold winter season!"/>
 
-          <manager-service-card  card-img="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b" card-title="Taking out the Trash" card-desc="I will take out your trash for you!"/>
-
-          <br/>
-
-          <!--          <serviceCard/>-->
-
-          <br/>
-
-          <!--          <serviceCard/>-->
-
-        </div>
-        <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
-
-
-          <manager-service-card  card-img="https://images.unsplash.com/photo-1589398284280-0490d847ad48" card-title="Gutter Cleaning" card-desc="I will clean your gutters!"/>
-
-          <br/>
-
-          <!--          <serviceCard/>-->
-
-          <br/>
-
-          <!--          <serviceCard/>-->
-
-        </div>
+            </div>
+            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
+              <manager-service-card  card-img="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b"
+                                     card-title="Taking out the Trash"
+                                     card-desc="I will take out your trash for you!"/>
 
 
-      </div>
+            </div>
+            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
+
+
+              <manager-service-card  card-img="https://images.unsplash.com/photo-1589398284280-0490d847ad48"
+                                     card-title="Gutter Cleaning"
+                                     card-desc="I will clean your gutters!"/>
+
+            </div>
+            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
+
+              <manager-service-card  :card-img="service.img"
+                                     :card-title="service.name"
+                                     :card-desc="service.desc"/>
+            </div>
+          </div>
+        </b-form>
+      </b-jumbotron>
     </div>
   </div>
 </template>
@@ -68,11 +105,26 @@ export default {
   components: {
     managerNavbar,
     managerHeader,
-    managerServiceCard
+    managerServiceCard,
+  },
+  data() {
+    return {
+      service: {}
+    }
   },
   methods: {
     redirect(id) {
       this.$router.push(id)
+    },
+    onReset(event) {
+      event.preventDefault()
+      this.service.name = ''
+      this.service.desc = ''
+      this.service.img = ''
+      this.show = false
+      this.$nextTick(() => {
+        this.show = true
+      })
     }
   }
 }
