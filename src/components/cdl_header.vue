@@ -17,10 +17,10 @@
           <b-button type="submit" variant="primary">Login</b-button>
         </b-input-group>
           <p class="forgot-password text-left">
-            <router-link to="forgot">Forgot password?</router-link>
+            <router-link to="forgot">Forgot password?</router-link> <br/>
+            <a href="/register" v-on:click="redirect('/register')">Register</a>
           </p>
         </b-form>
-        <a href="/register" v-on:click="redirect('/register')">Register</a>
         <div v-if="user">
           <a href="javascript:void(0)" v-on:click="logoutHandler">Logout</a>
         </div>
