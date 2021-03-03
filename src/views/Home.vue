@@ -45,6 +45,10 @@
         </b-col>
         <b-col></b-col>
       </b-row>
+      <br/>
+      <div class="align-bottom">
+        <b-button pill variant="info" v-on:click="redirect('/contact')">Contact Us</b-button>
+      </div>
     </b-jumbotron>
   </div>
 </template>
@@ -60,7 +64,11 @@ export default {
     cdl_header,
     navbar
   },
-  methods: {},
+  methods: {
+    redirect(id) {
+      this.$router.push(id)
+    }
+  },
   computed: {
     ...mapGetters(['user'])
   }
@@ -83,5 +91,9 @@ body {
   /*position:relative;*/
 }
 
+.align-bottom {
+  text-align: right;
+  text-anchor: end;
+}
 
 </style>
