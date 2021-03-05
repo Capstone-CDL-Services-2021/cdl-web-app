@@ -8,18 +8,41 @@
       <div>
         <b-jumbotron>
           <h1 style="text-align: center">Registered Users</h1>
+<!--          // Version 2 with universal options at the top-->
+<!--          <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
+<!--          <b-button size="sm" variant="danger" @click="resetPassword">Reset</b-button>-->
+<!--          <b-button size="sm" variant="secondary" @click="blockUser">Block</b-button>-->
           <br>
+          <p>
+            Selected Row:<br>
+            {{ selectedRow }}
+          </p>
           <b-table bordered hover small
                    :items="items"
-                   :fields="fields">
+                   :fields="fields"
+                   select-mode="single"
+                   responsive="sm"
+                   selectable
+                   @row-selected="onRowSelected">
+            // Version 1: each row comes with button options
             <template #cell(view_order_history)>
-              <b-button variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>
+              <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>
             </template>
             <template #cell(reset_password?)>
-              <b-button variant="danger" @click="resetPassword">Reset</b-button>
+              <b-button size="sm" variant="danger" @click="resetPassword">Reset</b-button>
             </template>
             <template #cell(block_user?)>
-              <b-button variant="secondary" @click="blockUser">Block</b-button>
+              <b-button size="sm" variant="secondary" @click="blockUser">Block</b-button>
+            </template>
+            <template #cell(selected)="{ rowSelected }">
+              <template v-if="rowSelected">
+                <span aria-hidden="true">&check;</span>
+                <span class="sr-only">Selected</span>
+              </template>
+              <template v-else>
+                <span aria-hidden="true">&nbsp;</span>
+                <span class="sr-only">Not selected</span>
+              </template>
             </template>
           </b-table>
         </b-jumbotron>
@@ -40,8 +63,7 @@ export default {
   },
   data() {
     return {
-      reset: '',
-      block: '',
+      selectedRow: [],
       fields: [
         {
           key: 'first_name',
@@ -55,10 +77,14 @@ export default {
           key: 'view_order_history'
         },
         {
-          key: 'reset_password?'
+          key: 'reset_password?',
+
         },
         {
           key: 'block_user?'
+        },
+        {
+          key: 'selected'
         }
       ],
       items: [
@@ -70,6 +96,9 @@ export default {
     }
   },
   methods: {
+    onRowSelected(items) {
+      this.selectedRow = items
+    },
     redirect(id) {
       this.$router.push(id)
     },
