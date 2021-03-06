@@ -8,13 +8,13 @@
         <b-col>
           <b-card-body :title="cardTitleA">
             <b-card-text>
-              {{cardDesc}}
+              {{ cardDesc }}
+              {{ cardId }}
               <br/>
             </b-card-text>
             <br/>
             <br/>
-
-            <b-button variant="danger">Delete</b-button>
+            <b-button v-on:click="removeService(cardId);" variant="danger">Delete</b-button>
           </b-card-body>
         </b-col>
       </b-row>

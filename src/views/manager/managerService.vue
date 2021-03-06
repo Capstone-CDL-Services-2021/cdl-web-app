@@ -18,7 +18,7 @@
           >
             <b-form-input
                 id="input-1"
-                v-model="service.name"
+                v-model="service.title"
                 type="text"
                 placeholder="Enter Service Name"
                 required
@@ -51,46 +51,26 @@
             ></b-form-input>
           </b-form-group>
 
-          <b-button class="spacing"  variant="primary" v-on:click="addService();">Add</b-button>
+          <b-button class="spacing"  v-b-modal.accept variant="primary" v-on:click="addService();redirect('managerService');">Add</b-button>
           <b-button class="spacing" type="reset" variant="danger">Reset</b-button>
           <b-button class="spacing" variant="secondary" v-on:click="redirect('managerHome')">Back</b-button>
 
-          <b-modal id="accept" size="sm" title="Service" ok-only>
-            <p>Service has been Added</p>
-          </b-modal>
+          <!--          <b-modal id="accept" size="sm" title="Service" ok-only>-->
+          <!--            <p>Service has been Added</p>-->
+          <!--          </b-modal>-->
+        </b-form>
 
-          <div class="row" style="margin-top: 2rem">
+        <div class="row" style="margin-top: 2rem">
+          <div v-for="(serv, idx) in services"
+               :key="idx">
             <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
 
-              <manager-service-card card-img="https://images.unsplash.com/photo-1483385573908-0a2108937c4a"
-                                    card-title="Snow Shoveling"
-                                    card-desc="I will shovel your sidewalk/driveway during the cold winter season!"/>
-
-            </div>
-            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
-              <manager-service-card  card-img="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b"
-                                     card-title="Taking out the Trash"
-                                     card-desc="I will take out your trash for you!"/>
-
-
-            </div>
-            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
-
-
-              <manager-service-card  card-img="https://images.unsplash.com/photo-1589398284280-0490d847ad48"
-                                     card-title="Gutter Cleaning"
-                                     card-desc="I will clean your gutters!"/>
-
+              <manager-service-card :card-img="serv.img"
+                                    :card-title="serv.title"
+                                    :card-desc="serv.desc"
+                                    :card-id="idx"/>
             </div>
           </div>
-        </b-form>
-        <div class="col-sm-20" style="padding: 0px 10px 0px 10px; color: white">
-
-          <h4 v-for="(serv,idx) in services" :key="idx">
-            <manager-service-card :card-img="serv.img"
-                                  :card-title="serv.name"
-                                  :card-desc="serv.desc"/>
-          </h4>
 
         </div>
       </b-jumbotron>
@@ -127,7 +107,7 @@ export default {
     },
     onReset(event) {
       event.preventDefault()
-      this.service.name = ''
+      this.service.title = ''
       this.service.desc = ''
       this.service.img = ''
       this.show = false
@@ -136,8 +116,7 @@ export default {
       })
     },
     addService() {
-      let s = this.service;
-      this.$store.dispatch('addService', s);
+      this.$store.dispatch('addService', this.service);
     }
   }
 }

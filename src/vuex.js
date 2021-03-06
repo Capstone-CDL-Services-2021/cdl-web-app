@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 const state = {
     user: null,
-    services: [{img:"https://images.unsplash.com/photo-1483385573908-0a2108937c4a", name:"test", desc:"test desc"}]
+    services: []
 };
 
 const store = new Vuex.Store({
