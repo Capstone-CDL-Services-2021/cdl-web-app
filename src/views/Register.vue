@@ -51,4 +51,5 @@ export default {
     border-radius: 15px;
     transition: all .3s;
   }
+
 </style>

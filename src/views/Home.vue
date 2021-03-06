@@ -88,5 +88,9 @@ body {
   /*position:relative;*/
 }
 
+.align-bottom {
+  text-align: right;
+  text-anchor: end;
+}
 
 </style>

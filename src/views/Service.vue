@@ -110,9 +110,11 @@
 
 
         </div>
-
-
       </div>
+    </div>
+    <div class="align-bottom">
+      Have more Questions?
+      <b-button pill variant="info" v-on:click="redirect('/contact')">Contact Us</b-button>
     </div>
   </div>
 </template>
@@ -128,6 +130,11 @@ export default {
     navbar,
     cdl_header,
     serviceCard
+  },
+  methods: {
+    redirect(id) {
+      this.$router.push(id)
+    }
   }
 }
 </script>
@@ -211,5 +218,9 @@ body {
   }
 }
 
+.align-bottom {
+  text-align: right;
+  text-anchor: end;
+}
 
 </style>

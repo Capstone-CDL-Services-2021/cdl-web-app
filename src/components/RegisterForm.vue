@@ -67,10 +67,10 @@ export default {
         alert(response.data.message);
         this.$router.push('/');
       }catch(e){
-      this.error ='Error occurred';
+        this.error ='Error occurred';
+      }
     }
-    }
-}}
+  }}
 </script>
 
 <style scoped>
