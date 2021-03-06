@@ -48,21 +48,23 @@
         <b-col></b-col>
       </b-row>
       <br/>
-      <div class="align-bottom">
-        <b-button pill variant="info" v-on:click="redirect('/contact')">Contact Us</b-button>
-      </div>
+      <ContactUs/>
     </b-jumbotron>
   </div>
+
 </template>
 
 <script>
 import navbar from "@/components/navbar";
 import cdl_header from "@/components/cdl_header";
 import {mapGetters} from 'vuex'
+import ContactUs from "@/components/contactUs";
+
 
 export default {
   name: "Home",
   components: {
+    ContactUs,
     cdl_header,
     navbar
   },

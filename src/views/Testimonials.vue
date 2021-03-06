@@ -4,7 +4,6 @@
     <cdl_header/>
     <userCheck/>
 
-
     <div style="padding:30px">
       <h1 style="text-decoration: underline">Testimonials</h1>
       <div class="row" style="margin-top: 2rem">
@@ -36,19 +35,10 @@
           <br/>
         </div>
 
-
       </div>
-    </div>
 
-    <div v-if="user">
-      <div v-if="user.email != 'manager@cdlservices.com'">
-        <div class="align-bottom">
-          Have more Questions?
-          <b-button pill variant="info" v-on:click="redirect('/contact')">Contact Us</b-button>
-        </div>
-      </div>
     </div>
-
+    <ContactUs/>
   </div>
 </template>
 
@@ -57,11 +47,13 @@ import cdl_header from "@/components/cdl_header";
 import TestimonialCard from "@/components/testimonialCard";
 import {mapGetters} from "vuex";
 import UserCheck from "@/components/userCheck";
+import ContactUs from "@/components/contactUs";
 
 
 export default {
   name: "Testimonials",
   components: {
+    ContactUs,
     UserCheck,
     TestimonialCard,
     cdl_header,
@@ -92,9 +84,5 @@ body {
   /*position:relative;*/
 }
 
-.align-bottom {
-  text-align: right;
-  text-anchor: end;
-}
 
 </style>

@@ -89,10 +89,7 @@
       </b-row>
     </b-container>
     <br/>
-    <div class="align-bottom">
-      Have more Questions?
-      <b-button pill variant="info" v-on:click="redirect('/contact')">Contact Us</b-button>
-    </div>
+    <ContactUs/>
   </div>
 
 

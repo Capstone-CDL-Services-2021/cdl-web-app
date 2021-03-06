@@ -112,10 +112,7 @@
         </div>
       </div>
     </div>
-    <div class="align-bottom">
-      Have more Questions?
-      <b-button pill variant="info" v-on:click="redirect('/contact')">Contact Us</b-button>
-    </div>
+    <ContactUs/>
   </div>
 </template>
 
@@ -123,10 +120,12 @@
 import navbar from "@/components/navbar";
 import cdl_header from "@/components/cdl_header";
 import serviceCard from "@/components/serviceCard";
+import ContactUs from "@/components/contactUs";
 
 export default {
   name: "Service",
   components: {
+    ContactUs,
     navbar,
     cdl_header,
     serviceCard
@@ -218,9 +217,5 @@ body {
   }
 }
 
-.align-bottom {
-  text-align: right;
-  text-anchor: end;
-}
 
 </style>

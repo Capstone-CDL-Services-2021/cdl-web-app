@@ -50,11 +50,6 @@
       </div>
     </template>
 
-
-    <div class="align-bottom">
-      Have more Questions?
-      <b-button pill variant="info">Contact Us</b-button>
-    </div>
   </div>
 </template>
 
