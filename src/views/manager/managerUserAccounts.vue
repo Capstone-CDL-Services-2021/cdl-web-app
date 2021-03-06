@@ -8,7 +8,7 @@
       <div>
         <b-jumbotron>
           <h1 style="text-align: center">Registered Users</h1>
-<!--          // Version 2 with universal options at the top-->
+          // Version 2 with universal options at the top
 <!--          <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
 <!--          <b-button size="sm" variant="danger" @click="resetPassword">Reset</b-button>-->
 <!--          <b-button size="sm" variant="secondary" @click="blockUser">Block</b-button>-->
@@ -17,7 +17,8 @@
             Selected Row:<br>
             {{ selectedRow }}
           </p>
-          <b-table bordered hover small
+          <b-table
+                   bordered hover small
                    :items="items"
                    :fields="fields"
                    select-mode="single"
@@ -25,13 +26,13 @@
                    selectable
                    @row-selected="onRowSelected">
             // Version 1: each row comes with button options
-            <template #cell(view_order_history)>
-              <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>
-            </template>
-            <template #cell(reset_password?)>
+<!--            <template #cell(view_order_history)>-->
+<!--              <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
+<!--            </template>-->
+            <template #cell(reset_password)>
               <b-button size="sm" variant="danger" @click="resetPassword">Reset</b-button>
             </template>
-            <template #cell(block_user?)>
+            <template #cell(block_user)>
               <b-button size="sm" variant="secondary" @click="blockUser">Block</b-button>
             </template>
             <template #cell(selected)="{ rowSelected }">
@@ -73,15 +74,17 @@ export default {
           key: 'last_name',
           sortable: true
         },
+        // {
+        //   key: 'view_order_history'
+        // },
         {
-          key: 'view_order_history'
-        },
-        {
-          key: 'reset_password?',
+          key: 'reset_password',
+          label: 'Reset Password?'
 
         },
         {
-          key: 'block_user?'
+          key: 'block_user',
+          label: 'Block User?'
         },
         {
           key: 'selected'
