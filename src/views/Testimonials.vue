@@ -2,7 +2,8 @@
   <div>
 
     <cdl_header/>
-    <navbar/>
+    <userCheck/>
+
 
     <div style="padding:30px">
       <h1 style="text-decoration: underline">Testimonials</h1>
@@ -46,22 +47,26 @@
 </template>
 
 <script>
-import navbar from "@/components/navbar";
 import cdl_header from "@/components/cdl_header";
 import TestimonialCard from "@/components/testimonialCard";
+import {mapGetters} from "vuex";
+import UserCheck from "@/components/userCheck";
 
 
 export default {
   name: "Testimonials",
   components: {
+    UserCheck,
     TestimonialCard,
-    navbar,
-    cdl_header
+    cdl_header,
   },
   methods: {
     redirect(id) {
       this.$router.push(id)
     }
+  },
+  computed: {
+    ...mapGetters(['user'])
   }
 }
 </script>
