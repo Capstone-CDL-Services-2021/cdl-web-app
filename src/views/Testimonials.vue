@@ -27,11 +27,12 @@
         </div>
 
         <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
-          <testimonial-card card-img="https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.0-9/10696191_597175513742200_6232360445896381313_n.jpg?_nc_cat=108&ccb=3&_nc_sid=8bfeb9&_nc_ohc=dl0NMKO2IDQAX91Y78h&_nc_ht=scontent.fyyc2-1.fna&oh=a14ee56aa163f4adae847dc6afb653eb&oe=605744BA"
-                            card-title="Home Renovations"
-                            card-desc="Needed my kitchen cabinets redone. He arrived and gave me a quote. 2 Weeks later and they look stunningly beautiful"
-                            card-rating="4/5 (Stars)"
-                            client-name="John Smith"/>
+          <testimonial-card
+              card-img="https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.0-9/10696191_597175513742200_6232360445896381313_n.jpg?_nc_cat=108&ccb=3&_nc_sid=8bfeb9&_nc_ohc=dl0NMKO2IDQAX91Y78h&_nc_ht=scontent.fyyc2-1.fna&oh=a14ee56aa163f4adae847dc6afb653eb&oe=605744BA"
+              card-title="Home Renovations"
+              card-desc="Needed my kitchen cabinets redone. He arrived and gave me a quote. 2 Weeks later and they look stunningly beautiful"
+              card-rating="4/5 (Stars)"
+              client-name="John Smith"/>
           <br/>
         </div>
 
@@ -39,10 +40,15 @@
       </div>
     </div>
 
-    <div class="align-bottom">
-      Have more Questions?
-      <b-button pill variant="info" v-on:click="redirect('/contact')">Contact Us</b-button>
+    <div v-if="user">
+      <div v-if="user.email != 'manager@cdlservices.com'">
+        <div class="align-bottom">
+          Have more Questions?
+          <b-button pill variant="info" v-on:click="redirect('/contact')">Contact Us</b-button>
+        </div>
+      </div>
     </div>
+
   </div>
 </template>
 

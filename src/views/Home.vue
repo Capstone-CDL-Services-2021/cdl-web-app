@@ -1,13 +1,13 @@
 <template>
 
   <div>
+    <cdl_header/>
     <div v-if="user"><div v-if="user.email == 'manager@cdlservices.com'">{{ redirect('/managerHome')}}</div></div>
     <h3 v-if="user">
       Hello, {{ user.first_name }} {{ user.last_name }} </h3>
     <div v-if="error" class="alert alert-danger" role="alert">
       {{ error }}
     </div>
-    <cdl_header/>
     <navbar/>
 
     <b-jumbotron bg-variant="dark" text-variant="white" border-variant="dark" size="auto">
