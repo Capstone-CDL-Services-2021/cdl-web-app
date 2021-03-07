@@ -47,7 +47,7 @@
       </b-row>
       <br/>
       <div class="align-bottom">
-        <b-button pill variant="info" v-on:click="redirect('/contact')">Contact Us</b-button>
+        Have more Questions? <b-button pill variant="info" v-on:click="redirect('/contact')">Contact Us</b-button>
       </div>
     </b-jumbotron>
   </div>

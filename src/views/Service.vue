@@ -107,8 +107,6 @@
                        card-title="Mow Lawn, Top Soil & Fertilizers"
                        card-desc="Mow your lawn, Filling in low spots with top soil and spreading fertilizer"/>
 
-
-
         </div>
       </div>
     </div>
