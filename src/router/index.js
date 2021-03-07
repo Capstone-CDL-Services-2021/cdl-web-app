@@ -47,6 +47,30 @@ const routes = [
     component: () => import(/* webpackChunkName: "service" */ '../views/BookPage.vue')
   },
   {
+    path: '/account',
+    name: 'Account',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "account" */ '../views/Account.vue')
+  },
+  {
+    path: '/testimonials',
+    name: 'Testimonials',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "service" */ '../views/Testimonials.vue')
+  },
+  {
+    path: '/ContactPage',
+    name: 'ContactPage',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "service" */ '../views/ContactPage.vue')
+  },
+  {
     path: '/managerHome',
     name: 'ManagerHome',
     // route level code-splitting
@@ -79,12 +103,36 @@ const routes = [
     component: () => import(/* webpackChunkName: "service" */ '../views/manager/managerAddService.vue')
   },
   {
+    path: '/contactUs',
+    name: 'ContactUs',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "service" */ '../components/contactUs.vue')
+  },
+  {
     path: '/schedule',
     name: 'Schedule',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "service" */ '../views/Schedule')
+  },
+  {
+    path: '/managerUserAccounts',
+    name: 'ManagerUserAccounts',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "managerUserAccounts" */ '../views/manager/managerUserAccounts.vue')
+  },
+  {
+    path: '/managerUserAccountHistory',
+    name: 'ManagerUserAccountHistory',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "managerUserAccountHistory" */ '../views/manager/managerUserAccountHistory.vue')
   }
 ]
 

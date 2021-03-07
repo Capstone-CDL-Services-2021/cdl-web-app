@@ -4,7 +4,8 @@
     <cdl_header/>
     <div v-if="user"><div v-if="user.email == 'manager@cdlservices.com'">{{ redirect('/managerHome')}}</div></div>
     <h3 v-if="user">
-      Hello, {{ user.first_name }} {{ user.last_name }} </h3>
+      Hello, {{ user.first_name }} {{ user.last_name }}
+    </h3>
     <div v-if="error" class="alert alert-danger" role="alert">
       {{ error }}
     </div>
@@ -55,8 +56,8 @@
 </template>
 
 <script>
-import navbar from "@/components/navbar";
-import cdl_header from "@/components/cdl_header";
+import navbar from "@/components/navbar"
+import cdl_header from "@/components/cdl_header"
 import {mapGetters} from 'vuex'
 import ContactUs from "@/components/contactUs";
 

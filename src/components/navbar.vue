@@ -1,5 +1,5 @@
 <template>
-  <b-navbar class="navbar navbar-light" style="background-color: green;" sticky>
+  <b-navbar toggleable="lg" class="navbar navbar-light" style="background-color: green;" sticky>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
@@ -7,8 +7,9 @@
         <b-button variant="outline-light" v-on:click="redirect('/')">Home</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/services')">Services</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/schedule')">Schedule</b-button>
-        <b-button variant="outline-light" v-on:click="redirect('/register')">Testimonials</b-button>
+        <b-button variant="outline-light" v-on:click="redirect('/testimonials')">Testimonials</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/managerHome')">Manager</b-button>
+        <b-button v-if="user" variant="outline-light" v-on:click="redirect('/account')">Account</b-button>
         </b-navbar-nav>
       <b-navbar-nav class = "ml-auto">
 
@@ -21,6 +22,8 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
   name: "navbar",
   data() {
@@ -30,6 +33,9 @@ export default {
     redirect(id) {
       this.$router.push(id)
     }
+  },
+  computed: {
+    ...mapGetters(['user'])
   }
 }
 

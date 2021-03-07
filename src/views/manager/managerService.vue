@@ -32,6 +32,7 @@ import managerHeader from "@/components/managerHeader";
 import {mapGetters} from "vuex";
 import managerServiceCard from "@/components/managerServiceCard";
 
+
 export default {
   name: "Service",
   components: {
