@@ -4,74 +4,23 @@
     <manager-header/>
     <manager-navbar/>
 
-    <div class="services" style="margin-left: 5rem">
+    <div class="services">
+      <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark" fluid>
+        <b-button v-on:click="redirect('managerAddService')">Add a New Service Card</b-button>
 
-      <br/>
-      <!--      <b-button variant="primary" v-on:click="redirect('/managerCardEdit')">Add</b-button>-->
-      <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark">
-        <b-form style="width: 300px; margin: auto" @reset="onReset">
-          <b-form-group
-              id="input-group-1"
-              label="Service Name:"
-              label-for="input-1"
-              style="color:white"
-          >
-            <b-form-input
-                id="input-1"
-                v-model="service.title"
-                type="text"
-                placeholder="Enter Service Name"
-                required
-            ></b-form-input>
-          </b-form-group>
-
-          <b-form-group
-              id="input-group-2"
-              label="Service Description:"
-              label-for="input-2"
-          >
-            <b-form-textarea
-                id="input-2"
-                v-model="service.desc"
-                type="text"
-                placeholder="Enter Service Description"
-                required
-            ></b-form-textarea>
-          </b-form-group>
-
-          <b-form-group
-              id="input-group-3"
-              label="Service Image:"
-              label-for="input-3"
-              placeholder="Enter image link"
-          >
-            <b-form-input
-                id="input-3"
-                v-model="service.img"
-            ></b-form-input>
-          </b-form-group>
-
-          <b-button class="spacing"  v-b-modal.accept variant="primary" v-on:click="addService();redirect('managerService');">Add</b-button>
-          <b-button class="spacing" type="reset" variant="danger">Reset</b-button>
-          <b-button class="spacing" variant="secondary" v-on:click="redirect('managerHome')">Back</b-button>
-
-          <!--          <b-modal id="accept" size="sm" title="Service" ok-only>-->
-          <!--            <p>Service has been Added</p>-->
-          <!--          </b-modal>-->
-        </b-form>
-
-        <div class="row" style="margin-top: 2rem">
+        <div class="row" style="margin-top: 2rem;">
           <div v-for="(serv, idx) in services"
                :key="idx">
-            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
+            <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
 
               <manager-service-card :card-img="serv.img"
                                     :card-title="serv.title"
                                     :card-desc="serv.desc"
-                                    :card-id="idx"/>
+                                    :card-id="idx">
+              </manager-service-card>
+              <b-button v-on:click="removeService(idx)">Delete</b-button>
             </div>
           </div>
-
         </div>
       </b-jumbotron>
     </div>
@@ -91,11 +40,6 @@ export default {
     managerHeader,
     managerServiceCard
   },
-  data(){
-    return{
-      service: {}
-    }
-  },
   computed: {
     ...mapGetters({
       services: "getServices"
@@ -105,18 +49,9 @@ export default {
     redirect(id) {
       this.$router.push(id)
     },
-    onReset(event) {
-      event.preventDefault()
-      this.service.title = ''
-      this.service.desc = ''
-      this.service.img = ''
-      this.show = false
-      this.$nextTick(() => {
-        this.show = true
-      })
-    },
-    addService() {
-      this.$store.dispatch('addService', this.service);
+    removeService(idx) {
+      let index = parseInt(idx);
+      this.services.splice(index, 1)
     }
   }
 }
@@ -171,8 +106,6 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   position: absolute;
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
   border-radius: 100px;

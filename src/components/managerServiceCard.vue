@@ -14,7 +14,7 @@
             </b-card-text>
             <br/>
             <br/>
-            <b-button v-on:click="removeService(cardId);" variant="danger">Delete</b-button>
+<!--            <b-button v-on:click="removeService(cardId);" variant="danger">Delete</b-button>-->
           </b-card-body>
         </b-col>
       </b-row>
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
 export default {
   name: "serviceCard",
   props: {
@@ -34,6 +35,9 @@ export default {
     },
     cardDesc: {
       type: String,
+    },
+    cardId: {
+      type: String
     }
   },
   computed: {
@@ -42,7 +46,10 @@ export default {
     },
     cardTitleA() {
       return this.cardTitle;
-    }
+    },
+    ...mapGetters({
+      services: "getServices"
+    })
   },
   data() {
     return {
@@ -59,5 +66,13 @@ export default {
 </script>
 
 <style scoped>
+
+  img {
+    width: 500rem;
+    height: 500rem;
+    max-width: 25rem;
+    max-height: 25rem;
+    object-fit: cover;
+  }
 
 </style>
