@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
   name: "navbar",
   data() {
@@ -29,6 +31,9 @@ export default {
     redirect(id) {
       this.$router.push(id)
     }
+  },
+  computed: {
+    ...mapGetters(['user'])
   }
 }
 
