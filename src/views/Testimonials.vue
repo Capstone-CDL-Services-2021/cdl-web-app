@@ -38,7 +38,8 @@
       </div>
 
     </div>
-    <ContactUs/>
+    <div v-if="user"><div v-if="user.email !== 'manager@cdlservices.com'"><ContactUs/></div></div>
+    <div v-else><ContactUs/></div>
   </div>
 </template>
 

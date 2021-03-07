@@ -1,5 +1,7 @@
 <template>
-  <div v-if="user"><div v-if="user.email == 'manager@cdlservices.com'"><manager-navbar/></div></div>
+  <div v-if="user">
+    <div v-if="user.email == 'manager@cdlservices.com'"><manager-navbar/></div>
+    <div v-else> <navbar/></div></div>
   <div v-else> <navbar/>
   </div>
 </template>
