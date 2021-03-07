@@ -31,8 +31,6 @@ import managerNavbar from "@/components/managerNavbar";
 import managerHeader from "@/components/managerHeader";
 import {mapGetters} from "vuex";
 import managerServiceCard from "@/components/managerServiceCard";
-import store from "@/store";
-import {mapGetters} from "vuex";
 
 
 export default {
@@ -41,11 +39,6 @@ export default {
     managerNavbar,
     managerHeader,
     managerServiceCard
-  },
-  computed: {
-    ...mapGetters({
-      services: "getServices"
-    })
   },
   computed: {
     ...mapGetters({
