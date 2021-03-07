@@ -20,18 +20,6 @@
                        card-desc="Clean Windows"/>
 
           <br/>
-
-          <serviceCard card-img="https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.0-9/14358961_987236554736092_2714216923982120222_n.jpg?_nc_cat=110&ccb=3&_nc_sid=8bfeb9&_nc_ohc=O1-xtVZY0gIAX--gNCN&_nc_ht=scontent.fyyc2-1.fna&oh=605a3660003b18665359cf52287227cb&oe=60578205"
-                       card-title="Eavestrough Cleaning & Repair"
-                       card-desc="Clean or Repair Eavestrough"/>
-          <br/>
-          <serviceCard card-img="https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.0-9/30739615_1529817477144661_7953714038402187264_n.jpg?_nc_cat=107&ccb=3&_nc_sid=8bfeb9&_nc_ohc=fG4AovTnbnMAX8eLC1w&_nc_ht=scontent.fyyc2-1.fna&oh=9aaaa2de39be21b0b8afc1ff57808e80&oe=6058F7FC"
-                       card-title="Furniture Assembly"
-                       card-desc="Assembling Furniture Service"/>
-          <br/>
-          <serviceCard card-img="https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.0-9/10151814_595350103924741_5080574297474519119_n.jpg?_nc_cat=104&ccb=3&_nc_sid=8bfeb9&_nc_ohc=sDmDWxr7f-EAX_pwSYF&_nc_ht=scontent.fyyc2-1.fna&oh=81d774d92e3cb3715d02c689df97d48f&oe=605927E3"
-                       card-title="Junk Removal"
-                       card-desc="Remove junk from the property"/>
           <br/>
 
         </div>

@@ -1,53 +1,23 @@
 <template>
   <div>
 
-    <manager-header/>
-    <manager-navbar/>
 
-    <div class="services">
-      <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark" fluid>
-        <b-button v-on:click="redirect('managerAddService')">Add a New Service Card</b-button>
+    <cdl_header/>
+    <navbar/>
+    <b-calendar block :readonly="readonly"></b-calendar>
 
-        <div class="row" style="margin-top: 2rem;">
-          <div v-for="(serv, idx) in services"
-               :key="idx">
-            <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
-
-              <manager-service-card :card-img="serv.img"
-                                    :card-title="serv.title"
-                                    :card-desc="serv.desc"
-                                    :card-id="idx">
-              </manager-service-card>
-            </div>
-          </div>
-        </div>
-      </b-jumbotron>
-    </div>
   </div>
 </template>
 
 <script>
-import managerNavbar from "@/components/managerNavbar";
-import managerHeader from "@/components/managerHeader";
-import {mapGetters} from "vuex";
-import managerServiceCard from "@/components/managerServiceCard";
+import navbar from "@/components/navbar";
+import cdl_header from "@/components/cdl_header";
 
 export default {
-  name: "Service",
+  name: "Schedule",
   components: {
-    managerNavbar,
-    managerHeader,
-    managerServiceCard
-  },
-  computed: {
-    ...mapGetters({
-      services: "getServices"
-    })
-  },
-  methods: {
-    redirect(id) {
-      this.$router.push(id)
-    }
+    navbar,
+    cdl_header,
   }
 }
 </script>
@@ -101,6 +71,8 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   position: absolute;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   border-radius: 100px;
