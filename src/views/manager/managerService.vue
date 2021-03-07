@@ -18,7 +18,6 @@
                                     :card-desc="serv.desc"
                                     :card-id="idx">
               </manager-service-card>
-              <b-button v-on:click="removeService(idx)">Delete</b-button>
             </div>
           </div>
         </div>
@@ -48,10 +47,6 @@ export default {
   methods: {
     redirect(id) {
       this.$router.push(id)
-    },
-    removeService(idx) {
-      let index = parseInt(idx);
-      this.services.splice(index, 1)
     }
   }
 }

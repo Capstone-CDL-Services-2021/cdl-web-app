@@ -14,7 +14,7 @@
             </b-card-text>
             <br/>
             <br/>
-<!--            <b-button v-on:click="removeService(cardId);" variant="danger">Delete</b-button>-->
+            <b-button v-on:click="removeService(cardId);" variant="danger">Delete</b-button>
           </b-card-body>
         </b-col>
       </b-row>
@@ -59,6 +59,10 @@ export default {
   methods: {
     redirect(id) {
       this.$router.push(id)
+    },
+    removeService(idx) {
+      let index = parseInt(idx);
+      this.services.splice(index, 1)
     }
   }
 
