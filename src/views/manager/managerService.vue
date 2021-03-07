@@ -4,10 +4,8 @@
     <manager-header/>
     <manager-navbar/>
 
-    <div class="services" style="margin-left: 5rem">
+    <div class="services">
 
-      <br/>
-      <!--      <b-button variant="primary" v-on:click="redirect('/managerCardEdit')">Add</b-button>-->
       <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark">
         <b-form style="width: 300px; margin: auto" @reset="onReset">
           <b-form-group
@@ -58,6 +56,7 @@
           <b-modal id="accept" size="sm" title="Service" ok-only>
             <p>Service has been Added</p>
           </b-modal>
+        </b-form>
 
           <div class="row" style="margin-top: 2rem">
             <div v-for="service in services"
@@ -74,10 +73,6 @@
             </div>
 
           </div>
-
-
-
-        </b-form>
       </b-jumbotron>
     </div>
   </div>

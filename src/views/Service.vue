@@ -110,10 +110,9 @@
 
 
         </div>
-
-
       </div>
     </div>
+    <ContactUs/>
   </div>
 </template>
 
@@ -121,13 +120,20 @@
 import navbar from "@/components/navbar";
 import cdl_header from "@/components/cdl_header";
 import serviceCard from "@/components/serviceCard";
+import ContactUs from "@/components/contactUs";
 
 export default {
   name: "Service",
   components: {
+    ContactUs,
     navbar,
     cdl_header,
     serviceCard
+  },
+  methods: {
+    redirect(id) {
+      this.$router.push(id)
+    }
   }
 }
 </script>

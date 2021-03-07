@@ -46,7 +46,6 @@
                   ></b-form-input>
                 </b-form-group>
 
-
                 <b-form-group id="input-group-3" label="Type of Service: " label-for="input-3">
                   <b-form-select
                       id="input-3"
@@ -55,8 +54,6 @@
                       required
                   ></b-form-select>
                 </b-form-group>
-
-
 
                 <b-form-group
                     id="input-group-4"
@@ -86,12 +83,13 @@
                 </b-form-group>
                 <b-button type="submit" variant="primary">Submit</b-button>
               </b-form>
-
             </div>
           </template>
         </b-col>
       </b-row>
     </b-container>
+    <br/>
+    <ContactUs/>
   </div>
 
 
@@ -122,13 +120,16 @@ export default {
     onSubmit(event) {
       event.preventDefault()
       alert(JSON.stringify(this.form))
+    },
+    redirect(id) {
+      this.$router.push(id)
     }
   },
   computed: {
     readonly() {
       return this.state === 'readonly'
     }
-  }
+  },
 }
 
 
@@ -213,4 +214,8 @@ body{
   }
 }
 
+.align-bottom {
+  text-align: right;
+  text-anchor: end;
+}
 </style>
