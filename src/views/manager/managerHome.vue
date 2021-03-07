@@ -15,15 +15,14 @@
             <h1 style="text-decoration: underline">Upcoming Projects and Due Dates</h1>
             Dates will be filled in here
           </div>
-          <b-icon icon="three-dots-vertical" font-scale="2"></b-icon>
         </div>
       </div>
       <br/>
       <br/>
-      <b-button variant="outline-primary">
+      <b-button variant="outline-primary" class="button">
         <b-icon icon="tools"></b-icon> Settings
       </b-button>
-      <b-button variant="primary">Edit</b-button>
+      <b-button variant="primary" class="button">Edit</b-button>
     </b-jumbotron>
 
   </div>
@@ -64,6 +63,10 @@ body{
   box-sizing:border-box;
   font-family:"Lato",Sans-serif;
   /*position:relative;*/
+}
+
+.button {
+  margin: 10px
 }
 
 </style>
