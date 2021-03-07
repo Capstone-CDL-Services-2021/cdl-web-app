@@ -9,6 +9,7 @@
         <b-button variant="outline-light" v-on:click="redirect('/test')">Schedule</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/register')">Testimonials</b-button>
         <!--<b-button variant="outline-light" v-on:click="redirect('/managerHome')">Manager</b-button> -->
+        <b-button v-if="user" variant="outline-light" v-on:click="redirect('/account')">Account</b-button>
         </b-navbar-nav>
       <b-navbar-nav class = "ml-auto">
 
@@ -21,6 +22,8 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
   name: "navbar",
   data() {
@@ -30,6 +33,9 @@ export default {
     redirect(id) {
       this.$router.push(id)
     }
+  },
+  computed: {
+    ...mapGetters(['user'])
   }
 }
 
