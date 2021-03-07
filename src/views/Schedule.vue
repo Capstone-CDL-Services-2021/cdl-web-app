@@ -1,38 +1,25 @@
 <template>
-  <b-navbar toggleable="lg" class="navbar navbar-light" style="background-color: green;" sticky>
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+  <div>
 
-    <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav>
-        <b-button variant="outline-light" v-on:click="redirect('/')">Home</b-button>
-        <b-button variant="outline-light" v-on:click="redirect('/services')">Services</b-button>
-        <b-button variant="outline-light" v-on:click="redirect('/schedule')">Schedule</b-button>
-        <b-button variant="outline-light" v-on:click="redirect('/testimonials')">Testimonials</b-button>
-        <b-button variant="outline-light" v-on:click="redirect('/managerHome')">Manager</b-button>
-        </b-navbar-nav>
-      <b-navbar-nav class = "ml-auto">
 
-          <b-button variant="outline-light" v-on:click="redirect('/book')" right>Request a Service</b-button>
+    <cdl_header/>
+    <navbar/>
+    <b-calendar block :readonly="readonly"></b-calendar>
 
-      </b-navbar-nav>
-
-    </b-collapse>
-  </b-navbar>
+  </div>
 </template>
 
 <script>
+import navbar from "@/components/navbar";
+import cdl_header from "@/components/cdl_header";
+
 export default {
-  name: "navbar",
-  data() {
-    return {}
-  },
-  methods: {
-    redirect(id) {
-      this.$router.push(id)
-    }
+  name: "Schedule",
+  components: {
+    navbar,
+    cdl_header,
   }
 }
-
 </script>
 
 <style scoped>
@@ -40,7 +27,6 @@ export default {
   color: white;
   padding: 20px;
   border: 3px solid white;
-
 }
 
 body {
@@ -58,20 +44,17 @@ body {
   position: relative;
   top: 0;
   left: 0;
-  color: green;
+  color: white;
   /*padding:20px 40px;*/
   border-radius: 100px;
   display: inline-block;
   transition: all .5s;
   font-family: "Corbel Light";
-  margin-left: 84rem;
 }
 
 .btn-white {
-  background: white;
+  background: green;
   color: #000;
-
-
 }
 
 .btn:active {
@@ -96,11 +79,10 @@ body {
   display: inline-block;
   z-index: -1;
   transition: all .5s;
-
 }
 
 .btn-white::after {
-  background: white;
+  background: green;
 }
 
 .btn-animation-1:hover::after {
@@ -118,4 +100,6 @@ body {
     transform: translateY(0);
   }
 }
+
+
 </style>

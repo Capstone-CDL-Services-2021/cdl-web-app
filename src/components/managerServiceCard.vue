@@ -24,7 +24,6 @@
 
 <script>
 import {mapGetters} from "vuex";
-
 export default {
   name: "managerServiceCard",
   props: {
@@ -59,9 +58,9 @@ export default {
     redirect(id) {
       this.$router.push(id)
     },
-    removeService(cardId) {
-      let index = parseInt(cardId) -1;
-      this.$store.dispatch('removeService', index);
+    removeService(idx) {
+      let index = parseInt(idx);
+      this.services.splice(index, 1)
     }
 
 
@@ -71,5 +70,13 @@ export default {
 </script>
 
 <style scoped>
+
+  img {
+    width: 500rem;
+    height: 500rem;
+    max-width: 25rem;
+    max-height: 25rem;
+    object-fit: cover;
+  }
 
 </style>
