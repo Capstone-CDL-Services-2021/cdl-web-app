@@ -11,7 +11,6 @@
           <b-form-group
               id="current_email"
               label-cols-sm="4"
-              content-cols-sm="7"
               label="Current email:"
           >
             {{user.email}}
@@ -19,7 +18,6 @@
           <b-form-group
               id="new_email"
               label-cols-sm="4"
-              content-cols-sm="7"
               label="Enter new email:"
               label-for="new_email"
           >
@@ -32,7 +30,6 @@
           <b-form-group
               id="current_password"
               label-cols-sm="4"
-              content-cols-sm="7"
               label="Current password:"
               >
           {{user.password}}
@@ -40,7 +37,6 @@
           <b-form-group
               id="new_password"
               label-cols-sm="4"
-              content-cols-sm="7"
               label="Enter new password:"
               label-for="new_password"
           >
@@ -49,7 +45,6 @@
           <b-form-group
               id="confirm_password"
               label-cols-sm="4"
-              content-cols-sm="7"
               label="Confirm new password:"
               label-for="confirm_password"
           >
