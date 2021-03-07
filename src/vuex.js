@@ -36,9 +36,6 @@ const store = new Vuex.Store({
         },
         addService(state, payload){
             state.services.push(payload);
-        },
-        removeService(state,payload){
-            state.services.push(payload);
         }
     }
 });
