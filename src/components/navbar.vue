@@ -8,8 +8,6 @@
         <b-button variant="outline-light" v-on:click="redirect('/services')">Services</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/schedule')">Schedule</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/testimonials')">Testimonials</b-button>
-        <b-button variant="outline-light" v-on:click="redirect('/managerHome')">Manager</b-button>
-        <b-button v-if="user" variant="outline-light" v-on:click="redirect('/account')">Account</b-button>
         </b-navbar-nav>
       <b-navbar-nav class = "ml-auto">
 
