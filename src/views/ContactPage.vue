@@ -52,21 +52,19 @@
         </div>
       </div>
     </template>
-    <contact-us/>
   </div>
 </template>
 
 <script>
 import navbar from "@/components/navbar";
 import cdl_header from "@/components/cdl_header";
-import contactUs  from "@/components/contactUs";
+
 
 export default {
   name: "Service",
   components: {
     navbar,
-    cdl_header,
-    contactUs
+    cdl_header
   },
   data() {
     return {
