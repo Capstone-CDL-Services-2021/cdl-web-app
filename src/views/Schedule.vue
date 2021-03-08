@@ -4,20 +4,31 @@
 
     <cdl_header/>
     <navbar/>
+
+    <br/>
+
+    <h1 style="text-decoration: underline">Our Schedule</h1>
+
+    <br/>
+
     <b-calendar block :readonly="readonly"></b-calendar>
 
+    <br/>
+    <contact-us/>
   </div>
 </template>
 
 <script>
 import navbar from "@/components/navbar";
 import cdl_header from "@/components/cdl_header";
+import contactUs from "@/components/contactUs";
 
 export default {
   name: "Schedule",
   components: {
     navbar,
     cdl_header,
+    contactUs
   }
 }
 </script>
