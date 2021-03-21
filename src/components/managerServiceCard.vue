@@ -9,7 +9,6 @@
           <b-card-body :title="cardTitleA">
             <b-card-text>
               {{ cardDesc }}
-              {{ cardId }}
               <br/>
             </b-card-text>
             <br/>
@@ -23,7 +22,7 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import axios from "axios";
 export default {
   name: "serviceCard",
   props: {
@@ -46,10 +45,7 @@ export default {
     },
     cardTitleA() {
       return this.cardTitle;
-    },
-    ...mapGetters({
-      services: "getServices"
-    })
+    }
   },
   data() {
     return {
@@ -60,9 +56,15 @@ export default {
     redirect(id) {
       this.$router.push(id)
     },
-    removeService(idx) {
-      let index = parseInt(idx);
-      this.services.splice(index, 1)
+    async removeService(cardId) {
+      try {
+        const response = await axios.post('removeServiceCard', {
+          cardID: cardId
+        });
+        console.log(response);
+      }catch(e){
+        this.error ='Error occurred';
+      }
     }
   }
 

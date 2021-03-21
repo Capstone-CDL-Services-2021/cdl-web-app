@@ -5,19 +5,18 @@
     <manager-navbar/>
 
     <div class="services">
+      {{loadServiceCard()}}
       <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark" fluid>
         <b-button v-on:click="redirect('managerAddService')">Add a New Service Card</b-button>
 
         <div class="row" style="margin-top: 2rem;">
-          <div v-for="(serv, idx) in services"
-               :key="idx">
+          <div v-for="card in serviceCardInfo"
+               :key="card.id">
             <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
-
-              <manager-service-card :card-img="serv.img"
-                                    :card-title="serv.title"
-                                    :card-desc="serv.desc"
-                                    :card-id="idx">
-              </manager-service-card>
+              <manager-service-card :card-img="card.imageUrl"
+                                    :card-title="card.title"
+                                    :card-desc="card.description"
+                                    :card-id="card.id"/>
             </div>
           </div>
         </div>
@@ -29,8 +28,9 @@
 <script>
 import managerNavbar from "@/components/managerNavbar";
 import managerHeader from "@/components/managerHeader";
-import {mapGetters} from "vuex";
 import managerServiceCard from "@/components/managerServiceCard";
+import axios from "axios";
+
 
 export default {
   name: "Service",
@@ -39,12 +39,16 @@ export default {
     managerHeader,
     managerServiceCard
   },
-  computed: {
-    ...mapGetters({
-      services: "getServices"
-    })
+  data(){
+    return{
+      serviceCardInfo: []
+    }
   },
   methods: {
+    loadServiceCard(){
+      axios.get('getAllServiceCards')
+          .then(response => this.serviceCardInfo = response.data)
+    },
     redirect(id) {
       this.$router.push(id)
     }
