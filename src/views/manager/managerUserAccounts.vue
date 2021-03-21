@@ -5,6 +5,7 @@
     <manager-navbar/>
 
     <b-jumbotron bg-variant="dark" border-variant="dark">
+      {{getUsers()}}
       <div>
         <b-jumbotron>
           <h1 style="text-align: center">Registered Users</h1>
@@ -19,7 +20,7 @@
           </p>
           <b-table
                    bordered hover small
-                   :items="items"
+                   :items="userInfo"
                    :fields="fields"
                    select-mode="single"
                    responsive="sm"
@@ -92,6 +93,7 @@ export default {
           key: 'selected'
         }
       ],
+      userInfo: [],
       items: [
         { first_name: 'Dickerson', last_name: 'Macdonald' },
         { first_name: 'Larsen', last_name: 'Shaw' } ,
@@ -102,7 +104,7 @@ export default {
   },
   methods: {
     getUsers(){
-      axios.get('getUsers')
+      axios.get('getUsers').then(response =>this.userInfo = response.data)
     },
     onRowSelected(items) {
       this.selectedRow = items
