@@ -26,7 +26,7 @@
 import {mapGetters} from "vuex";
 import axios from "axios";
 export default {
-  name: "managerServiceCard",
+  name: "serviceCard",
   props: {
     cardImg: {
       type: String,
@@ -54,7 +54,9 @@ export default {
     })
   },
   data() {
-    return {}
+    return {
+
+    }
   },
   methods: {
     redirect(id) {
@@ -64,9 +66,7 @@ export default {
       let index = parseInt(idx);
       this.services.splice(index, 1)
     }
-
-
-}
+  }
 
 }
 </script>
