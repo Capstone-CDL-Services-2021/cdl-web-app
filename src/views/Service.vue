@@ -16,13 +16,11 @@
           <serviceCard card-img="https://images.unsplash.com/photo-1483385573908-0a2108937c4a"
                        card-title="Snow Shoveling"
                        card-desc="I will shovel your sidewalk/driveway during the cold winter season!"/>
-
           <br/>
 
           <serviceCard card-img="https://academy.getjobber.com/wp-content/uploads/2019/07/Window-Cleaning-Supplies-1.jpg"
                        card-title="Window Cleaning"
                        card-desc="Clean Windows"/>
-
           <br/>
           <br/>
 
@@ -30,25 +28,21 @@
         <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
 
           <serviceCard card-img="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b" card-title="Taking out the Trash" card-desc="I will take out your trash for you!"/>
-
           <br/>
 
           <serviceCard card-img="https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.0-9/20770455_1299626443497100_6311196978470980521_n.jpg?_nc_cat=110&ccb=3&_nc_sid=8bfeb9&_nc_ohc=UpHC1QXv9KoAX-6rv2-&_nc_ht=scontent.fyyc2-1.fna&oh=e4f7ff353c58015bb357e43ffeaa3404&oe=6058574F"
                        card-title="Roof & Siding Repair"
                        card-desc="Roof & Siding Service"/>
-
           <br/>
 
           <serviceCard card-img="https://lda.lowes.com/is/image/Lowes/ht_install-gutter-screen-hero?scl=1"
                        card-title="Gutter Guard Installation"
                        card-desc="Gutter Guard Installation Service"/>
-
           <br/>
 
           <serviceCard card-img="https://cleanmyspace.com/wp-content/uploads/2017/08/how-to-hire-a-cleaning-service.jpg"
                        card-title="House Cleaning & Painting"
                        card-desc="Clean up messy houses or paint interior walls"/>
-
           <br/>
 
           <serviceCard card-img="https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.0-9/10629755_595350333924718_4478612987345916411_n.jpg?_nc_cat=111&ccb=3&_nc_sid=8bfeb9&_nc_ohc=Y9R5iljvdlIAX9Q-5r5&_nc_ht=scontent.fyyc2-1.fna&oh=73c9e3f981517f42f7cf6992a908e802&oe=6059CCBD"
