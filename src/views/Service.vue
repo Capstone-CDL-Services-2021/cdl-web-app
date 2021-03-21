@@ -5,6 +5,10 @@
     <cdl_header/>
     <navbar/>
 
+    <br/>
+
+    <h1 style="text-decoration: underline">Services!</h1>
+
     <div class="services" style="padding:30px">
       <div class="row" style="margin-top: 2rem">
         <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
