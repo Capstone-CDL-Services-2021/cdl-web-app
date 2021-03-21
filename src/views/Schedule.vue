@@ -1,37 +1,34 @@
 <template>
-  <div class="column">
-    <div class="row">
-      <div class="col-sm-200">
-        <img alt="CDL Services" width="150px" src="../assets/cdlservices.jpg" align="left" style="padding-left:20px" v-on:click="redirect('/')">
-      </div>
-      <div class="col-sm-20" style="padding-top:20px">
-        <a href="javascript:void(0)" v-on:click="logoutHandler">Logout</a>
-        <!-- <b-input-group size="xs">
-           <b-button variant="primary" v-on:click="redirect('/')">Logout</b-button>
-         </b-input-group> -->
-      </div>
-      <div class="col-sm">
-        <p class="text-right" style="padding-right: 20px">T5H 2K3 Edmonton, Alberta, Canada <br> 780-695-5395 <br> Mon- Sat 9:00am - 5:00pm<br></p>
-      </div>
-    </div>
+  <div>
+
+
+    <cdl_header/>
+    <navbar/>
+
+    <br/>
+
+    <h1 style="text-decoration: underline">Our Schedule</h1>
+
+    <br/>
+
+    <b-calendar block :readonly="readonly"></b-calendar>
+
+    <br/>
+    <contact-us/>
   </div>
 </template>
 
 <script>
+import navbar from "@/components/navbar";
+import cdl_header from "@/components/cdl_header";
+import contactUs from "@/components/contactUs";
+
 export default {
-  name: "cdl_header",
-  data() {
-    return {}
-  },
-  methods: {
-    redirect(id) {
-      this.$router.push(id)
-    },
-    logoutHandler(){
-      localStorage.removeItem('token');
-      this.$store.dispatch('user',null);
-      this.$router.push('/');
-    }
+  name: "Schedule",
+  components: {
+    navbar,
+    cdl_header,
+    contactUs
   }
 }
 </script>
@@ -114,4 +111,6 @@ body {
     transform: translateY(0);
   }
 }
+
+
 </style>

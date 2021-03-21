@@ -4,15 +4,17 @@
     <cdl_header/>
     <navbar/>
 
+    <br/>
+
     <h1 style="text-decoration: underline">Contact Us!</h1>
 
     <template>
       <div>
-        <div class="col-sm-20" style="padding: 0px 100px 0px 100px">
+        <div class="col-sm-20">
           <b-form @submit="onSubmit">
             <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
               <b-form-input
-                  id="input-2"
+                  id="input-1"
                   v-model="form.name"
                   placeholder="Enter Full Name"
                   required></b-form-input>
@@ -25,7 +27,7 @@
                 description="We'll never share your email with anyone else.">
 
               <b-form-input
-                  id="input-1"
+                  id="input-2"
                   v-model="form.email"
                   type="email"
                   placeholder="Enter email"
@@ -40,11 +42,11 @@
             </b-form-group>
 
             <b-form-textarea
-                id="input-2"
+                id="input-3"
                 v-model="form.question"
                 placeholder="Enter Question Here!"
-                rows="3"
-                max-rows="6"
+                rows="4"
+                max-rows="8"
                 required></b-form-textarea>
             <br/>
             <b-button type="submit" variant="primary">Submit</b-button>
@@ -52,12 +54,6 @@
         </div>
       </div>
     </template>
-
-
-    <div class="align-bottom">
-      Have more Questions?
-      <b-button pill variant="info">Contact Us</b-button>
-    </div>
   </div>
 </template>
 
@@ -109,14 +105,19 @@ body {
   /*position:relative;*/
 }
 
-.align-bottom {
-  text-align: right;
-  text-anchor: end;
+#input-1 {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-.col-sm-20 {
-  text-align: center;
-  text-anchor: middle;
+#input-2 {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
 }
-
+#input-3 {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>

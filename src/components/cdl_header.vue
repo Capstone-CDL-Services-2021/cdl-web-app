@@ -6,7 +6,6 @@
       </div>
 
       <div class="col-sm-20" style="padding:20px">
-
         <b-form v-if="!user" @submit.prevent="submitHandler">
           <error v-if="error" :error="error"></error>
           <b-input-group size="xs">
@@ -17,10 +16,12 @@
           <b-button type="submit" variant="primary">Login</b-button>
         </b-input-group>
           <p class="forgot-password text-left">
-            <router-link to="forgot">Forgot password?</router-link> <br/>
-            <a href="/register" v-on:click="redirect('/register')">Register</a>
+            <router-link to="forgot">Forgot password?</router-link>
           </p>
         </b-form>
+        <div v-if="!user">
+        <a href="/register" v-on:click="redirect('/register')">Register</a>
+        </div>
         <div v-if="user">
           <a href="javascript:void(0)" v-on:click="logoutHandler">Logout</a>
         </div>

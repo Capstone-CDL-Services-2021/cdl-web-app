@@ -2,7 +2,7 @@
   <div>
 
     <cdl_header/>
-    <navbar/>
+    <userCheck/>
 
     <div style="padding:30px">
       <h1 style="text-decoration: underline">Testimonials</h1>
@@ -26,42 +26,46 @@
         </div>
 
         <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
-          <testimonial-card card-img="https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.0-9/10696191_597175513742200_6232360445896381313_n.jpg?_nc_cat=108&ccb=3&_nc_sid=8bfeb9&_nc_ohc=dl0NMKO2IDQAX91Y78h&_nc_ht=scontent.fyyc2-1.fna&oh=a14ee56aa163f4adae847dc6afb653eb&oe=605744BA"
-                            card-title="Home Renovations"
-                            card-desc="Needed my kitchen cabinets redone. He arrived and gave me a quote. 2 Weeks later and they look stunningly beautiful"
-                            card-rating="4/5 (Stars)"
-                            client-name="John Smith"/>
+          <testimonial-card
+              card-img="https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.0-9/10696191_597175513742200_6232360445896381313_n.jpg?_nc_cat=108&ccb=3&_nc_sid=8bfeb9&_nc_ohc=dl0NMKO2IDQAX91Y78h&_nc_ht=scontent.fyyc2-1.fna&oh=a14ee56aa163f4adae847dc6afb653eb&oe=605744BA"
+              card-title="Home Renovations"
+              card-desc="Needed my kitchen cabinets redone. He arrived and gave me a quote. 2 Weeks later and they look stunningly beautiful"
+              card-rating="4/5 (Stars)"
+              client-name="John Smith"/>
           <br/>
         </div>
 
-
       </div>
-    </div>
 
-    <div class="align-bottom">
-      Have more Questions?
-      <b-button pill variant="info" v-on:click="redirect('/contact')">Contact Us</b-button>
     </div>
+    <div v-if="user"><div v-if="user.email !== 'manager@cdlservices.com'"><ContactUs/></div></div>
+    <div v-else><ContactUs/></div>
   </div>
 </template>
 
 <script>
-import navbar from "@/components/navbar";
 import cdl_header from "@/components/cdl_header";
 import TestimonialCard from "@/components/testimonialCard";
+import {mapGetters} from "vuex";
+import UserCheck from "@/components/userCheck";
+import ContactUs from "@/components/contactUs";
 
 
 export default {
   name: "Testimonials",
   components: {
+    ContactUs,
+    UserCheck,
     TestimonialCard,
-    navbar,
-    cdl_header
+    cdl_header,
   },
   methods: {
     redirect(id) {
       this.$router.push(id)
     }
+  },
+  computed: {
+    ...mapGetters(['user'])
   }
 }
 </script>
@@ -81,9 +85,5 @@ body {
   /*position:relative;*/
 }
 
-.align-bottom {
-  text-align: right;
-  text-anchor: end;
-}
 
 </style>

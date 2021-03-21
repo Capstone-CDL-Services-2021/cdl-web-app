@@ -8,13 +8,13 @@
         <b-col>
           <b-card-body :title="cardTitleA">
             <b-card-text>
-              {{cardDesc}}
+              {{ cardDesc }}
+              {{ cardId }}
               <br/>
             </b-card-text>
             <br/>
             <br/>
-
-            <b-button variant="danger">Delete</b-button>
+            <b-button v-on:click="removeService(cardId);" variant="danger">Delete</b-button>
           </b-card-body>
         </b-col>
       </b-row>
@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+import axios from "axios";
 export default {
   name: "serviceCard",
   props: {
@@ -34,15 +36,22 @@ export default {
     },
     cardDesc: {
       type: String,
+    },
+    cardId: {
+      type: String
     }
   },
   computed: {
+
     cardImage() {
       return this.cardImg;
     },
     cardTitleA() {
       return this.cardTitle;
-    }
+    },
+    ...mapGetters({
+      services: "getServices"
+    })
   },
   data() {
     return {
@@ -52,12 +61,24 @@ export default {
   methods: {
     redirect(id) {
       this.$router.push(id)
+    },
+    removeService(idx) {
+      let index = parseInt(idx);
+      this.services.splice(index, 1)
     }
-  }
+}
 
 }
 </script>
 
 <style scoped>
+
+  img {
+    width: 500rem;
+    height: 500rem;
+    max-width: 25rem;
+    max-height: 25rem;
+    object-fit: cover;
+  }
 
 </style>

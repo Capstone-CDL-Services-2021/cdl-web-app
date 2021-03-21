@@ -4,92 +4,40 @@
     <manager-header/>
     <manager-navbar/>
 
-    <div class="services" style="margin-left: 5rem">
+    <div class="services">
+      {{loadServiceCard()}}
+      <table>
+        <thead>
+        <tr>
+          <th>title</th>
+          <th>description</th>
+          <th>url</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="card in serviceCardInfo" :key="card.id">
+          <td>{{ card.title }}</td>
+          <td> {{ card.description }}</td>
+          <td> <img v-bind:src=card.imageUrl alt="" height="10%"></td>
+        </tr>
+        </tbody>
+      </table>
+      <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark" fluid>
+        <b-button v-on:click="redirect('managerAddService')">Add a New Service Card</b-button>
 
-      <br/>
-      <!--      <b-button variant="primary" v-on:click="redirect('/managerCardEdit')">Add</b-button>-->
-      <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark">
-        <b-form style="width: 300px; margin: auto" @reset="onReset">
-          <b-form-group
-              id="input-group-1"
-              label="Service Name:"
-              label-for="input-1"
-              style="color:white"
-          >
-            <b-form-input
-                id="input-1"
-                v-model="service.name"
-                type="text"
-                placeholder="Enter Service Name"
-                required
-            ></b-form-input>
-          </b-form-group>
+        <div class="row" style="margin-top: 2rem;">
+          <div v-for="(serv, idx) in services"
+               :key="idx">
+            <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
 
-          <b-form-group
-              id="input-group-2"
-              label="Service Description:"
-              label-for="input-2"
-          >
-            <b-form-textarea
-                id="input-2"
-                v-model="service.desc"
-                type="text"
-                placeholder="Enter Service Description"
-                required
-            ></b-form-textarea>
-          </b-form-group>
-
-          <b-form-group
-              id="input-group-3"
-              label="Service Image:"
-              label-for="input-3"
-              placeholder="Enter image link"
-          >
-            <b-form-input
-                id="input-3"
-                v-model="service.img"
-            ></b-form-input>
-          </b-form-group>
-
-          <b-button class="spacing"  v-b-modal.accept variant="primary">Add</b-button>
-          <b-button class="spacing" type="reset" variant="danger">Reset</b-button>
-          <b-button class="spacing" variant="secondary" v-on:click="redirect('managerHome')">Back</b-button>
-
-          <b-modal id="accept" size="sm" title="Service" ok-only>
-            <p>Service has been Added</p>
-          </b-modal>
-
-          <div class="row" style="margin-top: 2rem">
-            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
-
-              <manager-service-card card-img="https://images.unsplash.com/photo-1483385573908-0a2108937c4a"
-                                    card-title="Snow Shoveling"
-                                    card-desc="I will shovel your sidewalk/driveway during the cold winter season!"/>
-
-            </div>
-            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
-              <manager-service-card  card-img="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b"
-                                     card-title="Taking out the Trash"
-                                     card-desc="I will take out your trash for you!"/>
-
-
-            </div>
-            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
-
-
-              <manager-service-card  card-img="https://images.unsplash.com/photo-1589398284280-0490d847ad48"
-                                     card-title="Gutter Cleaning"
-                                     card-desc="I will clean your gutters!"/>
-
-            </div>
-            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
-
-              <manager-service-card  :card-img="service.img"
-                                     :card-title="service.name"
-                                     :card-desc="service.desc"/>
+<!--              <manager-service-card :card-img="serv.img"-->
+<!--                                    :card-title="serv.title"-->
+<!--                                    :card-desc="serv.desc"-->
+<!--                                    :card-id="idx">-->
+<!--              </manager-service-card>-->
             </div>
           </div>
-        </b-form>
+        </div>
       </b-jumbotron>
     </div>
   </div>
@@ -98,33 +46,37 @@
 <script>
 import managerNavbar from "@/components/managerNavbar";
 import managerHeader from "@/components/managerHeader";
-import managerServiceCard from "@/components/managerServiceCard";
+import {mapGetters} from "vuex";
+//import managerServiceCard from "@/components/managerServiceCard";
+import axios from "axios";
+
 
 export default {
   name: "Service",
   components: {
     managerNavbar,
     managerHeader,
-    managerServiceCard,
+    // managerServiceCard
   },
-  data() {
-    return {
-      service: {}
+  data(){
+    return{
+      serviceCardInfo: []
     }
   },
+  computed: {
+    ...mapGetters({
+      services: "getServices"
+    })
+  },
   methods: {
+    loadServiceCard(){
+      axios.get('getAllServiceCards')
+          .then(response => this.serviceCardInfo = response.data)
+
+
+    },
     redirect(id) {
       this.$router.push(id)
-    },
-    onReset(event) {
-      event.preventDefault()
-      this.service.name = ''
-      this.service.desc = ''
-      this.service.img = ''
-      this.show = false
-      this.$nextTick(() => {
-        this.show = true
-      })
     }
   }
 }
@@ -179,8 +131,6 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   position: absolute;
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
   border-radius: 100px;

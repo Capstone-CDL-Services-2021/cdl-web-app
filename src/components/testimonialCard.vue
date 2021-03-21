@@ -14,7 +14,6 @@
               Rating: {{cardRating}}
             </b-card-text>
             <h5>Client Name: {{clientName}}</h5>
-            <b-button variant="primary" v-on:click="redirect('/book')">Request</b-button>
           </b-card-body>
         </b-col>
       </b-row>
