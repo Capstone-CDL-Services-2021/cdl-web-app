@@ -5,6 +5,23 @@
     <manager-navbar/>
 
     <div class="services">
+      {{loadServiceCard()}}
+      <table>
+        <thead>
+        <tr>
+          <th>title</th>
+          <th>description</th>
+          <th>url</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="card in serviceCardInfo" :key="card.id">
+          <td>{{ card.title }}</td>
+          <td> {{ card.description }}</td>
+          <td> <img v-bind:src=card.imageUrl alt="" height="10%"></td>
+        </tr>
+        </tbody>
+      </table>
       <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark" fluid>
         <b-button v-on:click="redirect('managerAddService')">Add a New Service Card</b-button>
 
@@ -13,11 +30,11 @@
                :key="idx">
             <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
 
-              <manager-service-card :card-img="serv.img"
-                                    :card-title="serv.title"
-                                    :card-desc="serv.desc"
-                                    :card-id="idx">
-              </manager-service-card>
+<!--              <manager-service-card :card-img="serv.img"-->
+<!--                                    :card-title="serv.title"-->
+<!--                                    :card-desc="serv.desc"-->
+<!--                                    :card-id="idx">-->
+<!--              </manager-service-card>-->
             </div>
           </div>
         </div>
@@ -30,7 +47,8 @@
 import managerNavbar from "@/components/managerNavbar";
 import managerHeader from "@/components/managerHeader";
 import {mapGetters} from "vuex";
-import managerServiceCard from "@/components/managerServiceCard";
+//import managerServiceCard from "@/components/managerServiceCard";
+import axios from "axios";
 
 
 export default {
@@ -38,7 +56,12 @@ export default {
   components: {
     managerNavbar,
     managerHeader,
-    managerServiceCard
+    // managerServiceCard
+  },
+  data(){
+    return{
+      serviceCardInfo: []
+    }
   },
   computed: {
     ...mapGetters({
@@ -46,6 +69,12 @@ export default {
     })
   },
   methods: {
+    loadServiceCard(){
+      axios.get('getAllServiceCards')
+          .then(response => this.serviceCardInfo = response.data)
+
+
+    },
     redirect(id) {
       this.$router.push(id)
     }

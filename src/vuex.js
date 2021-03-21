@@ -5,10 +5,7 @@ Vue.use(Vuex);
 
 const state = {
     user: null,
-    services: [{title: "Service 1", desc: "nothing to see here", img:"https://images.unsplash.com/photo-1483385573908-0a2108937c4a"},
-        {title: "Service 2", desc: "nothing to see here", img:"https://images.unsplash.com/photo-1483385573908-0a2108937c4a"},
-        {title: "Service 3", desc: "nothing to see here", img:"https://images.unsplash.com/photo-1483385573908-0a2108937c4a"},
-        {title: "Service 4", desc: "nothing to see here", img:"https://images.unsplash.com/photo-1483385573908-0a2108937c4a"}]
+    services: []
 };
 
 const store = new Vuex.Store({
