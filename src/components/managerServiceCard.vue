@@ -62,8 +62,6 @@ export default {
       let index = parseInt(idx);
       this.services.splice(index, 1)
     }
-
-
 }
 
 }
