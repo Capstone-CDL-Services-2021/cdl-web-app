@@ -55,6 +55,8 @@
 <script>
 import managerHeader from "@/components/managerHeader";
 import managerNavbar from "@/components/managerNavbar";
+// import {mapGetters} from "vuex";
+import axios from "axios";
 
 export default {
   name: "manageUserAccounts",
@@ -99,6 +101,9 @@ export default {
     }
   },
   methods: {
+    getUsers(){
+      axios.get('getUsers')
+    },
     onRowSelected(items) {
       this.selectedRow = items
     },
@@ -144,7 +149,7 @@ export default {
       // .catch(err => {
       //   // An error occurred
       // })
-    }
+    },
   }
 }
 </script>
