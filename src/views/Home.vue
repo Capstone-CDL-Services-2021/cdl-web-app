@@ -49,9 +49,7 @@
         <b-col></b-col>
       </b-row>
       <br/>
-      <div class="align-bottom">
-        Have more Questions? <b-button pill variant="info" v-on:click="redirect('/contact')">Contact Us</b-button>
-      </div>
+      <contact-us/>
     </b-jumbotron>
   </div>
 
