@@ -5,36 +5,18 @@
     <manager-navbar/>
 
     <div class="services">
-      {{loadServiceCard()}}
-      <table>
-        <thead>
-        <tr>
-          <th>title</th>
-          <th>description</th>
-          <th>url</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="card in serviceCardInfo" :key="card.id">
-          <td>{{ card.title }}</td>
-          <td> {{ card.description }}</td>
-          <td> <img v-bind:src=card.imageUrl alt="" height="10%"></td>
-        </tr>
-        </tbody>
-      </table>
+      {{ loadServiceCard() }}
       <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark" fluid>
         <b-button v-on:click="redirect('managerAddService')">Add a New Service Card</b-button>
 
         <div class="row" style="margin-top: 2rem;">
-          <div v-for="(serv, idx) in services"
-               :key="idx">
+          <div v-for="card in serviceCardInfo"
+               :key="card.id">
             <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
-
-<!--              <manager-service-card :card-img="serv.img"-->
-<!--                                    :card-title="serv.title"-->
-<!--                                    :card-desc="serv.desc"-->
-<!--                                    :card-id="idx">-->
-<!--              </manager-service-card>-->
+              <manager-service-card :card-img="card.imageUrl"
+                                    :card-title="card.title"
+                                    :card-desc="card.description"
+                                    :card-id="card.id"/>
             </div>
           </div>
         </div>
@@ -47,7 +29,7 @@
 import managerNavbar from "@/components/managerNavbar";
 import managerHeader from "@/components/managerHeader";
 import {mapGetters} from "vuex";
-//import managerServiceCard from "@/components/managerServiceCard";
+import managerServiceCard from "@/components/managerServiceCard";
 import axios from "axios";
 
 
@@ -56,10 +38,10 @@ export default {
   components: {
     managerNavbar,
     managerHeader,
-    // managerServiceCard
+    managerServiceCard
   },
-  data(){
-    return{
+  data() {
+    return {
       serviceCardInfo: []
     }
   },
@@ -69,11 +51,9 @@ export default {
     })
   },
   methods: {
-    loadServiceCard(){
+    loadServiceCard() {
       axios.get('getAllServiceCards')
           .then(response => this.serviceCardInfo = response.data)
-
-
     },
     redirect(id) {
       this.$router.push(id)

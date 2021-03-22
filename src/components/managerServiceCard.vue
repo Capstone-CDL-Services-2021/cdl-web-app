@@ -9,7 +9,6 @@
           <b-card-body :title="cardTitleA">
             <b-card-text>
               {{ cardDesc }}
-              {{ cardId }}
               <br/>
             </b-card-text>
             <br/>
@@ -24,7 +23,7 @@
 
 <script>
 import {mapGetters} from "vuex";
-import axios from "axios";
+
 export default {
   name: "serviceCard",
   props: {
