@@ -6,6 +6,10 @@
 
     <b-jumbotron bg-variant="dark" border-variant="dark">
       <h1 style="color: white">Account Settings</h1>
+      <div style="justify-content: center;display: flex">
+      <b-jumbotron text-variant="black" border-variant="dark">
+        Edit here Jimmy
+      </b-jumbotron>
       <b-jumbotron text-variant="black" border-variant="dark">
         <b-button variant="warning" v-b-modal.modal-prevent-closing>Change Password</b-button>
         <b-modal
@@ -49,6 +53,7 @@
         </b-modal>
         <p>{{message}}</p>
       </b-jumbotron>
+      </div>
       <!--      <b-card>-->
       <!--        <b-form>-->
       <!--          <b-form-group-->

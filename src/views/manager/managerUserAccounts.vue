@@ -56,7 +56,6 @@
 <script>
 import managerHeader from "@/components/managerHeader";
 import managerNavbar from "@/components/managerNavbar";
-// import {mapGetters} from "vuex";
 import axios from "axios";
 
 export default {
@@ -103,7 +102,6 @@ export default {
     }
   },
   computed: {
-
   },
   methods: {
     getUsers(){
