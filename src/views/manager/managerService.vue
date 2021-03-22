@@ -3,15 +3,13 @@
 
     <manager-header/>
     <manager-navbar/>
-
+    <div hidden>{{loadServiceCard}}</div>
     <div class="services">
-      {{loadServiceCard()}}
       <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark" fluid>
         <b-button v-on:click="redirect('managerAddService')">Add a New Service Card</b-button>
 
         <div class="row" style="margin-top: 2rem;">
-          <div v-for="card in serviceCardInfo"
-               :key="card.id">
+          <div v-for="card in serviceCardInfo" :key="card.id">
             <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
               <manager-service-card :card-img="card.imageUrl"
                                     :card-title="card.title"
@@ -44,11 +42,14 @@ export default {
       serviceCardInfo: []
     }
   },
-  methods: {
-    loadServiceCard(){
-      axios.get('getAllServiceCards')
+  computed: {
+    loadServiceCard() {
+      // eslint-disable-next-line vue/no-async-in-computed-properties
+      return axios.get('getAllServiceCards')
           .then(response => this.serviceCardInfo = response.data)
-    },
+    }
+  },
+  methods: {
     redirect(id) {
       this.$router.push(id)
     }

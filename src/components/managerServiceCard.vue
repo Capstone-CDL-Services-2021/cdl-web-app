@@ -13,11 +13,16 @@
             </b-card-text>
             <br/>
             <br/>
-            <b-button v-on:click="removeService(cardId);" variant="danger">Delete</b-button>
+            <b-button v-b-modal.accept v-on:click="removeService(cardId);" variant="danger">Delete</b-button>
+            <b-button v-b-model.editted v-on:click="redirect('managerEditServiceCard');" varient="danger">Edit</b-button>
           </b-card-body>
         </b-col>
       </b-row>
     </b-card>
+
+    <b-modal id="accept" size="sm" title="Service Response" hide-footer="true">
+      <p>Service has been Deleted</p>
+    </b-modal>
   </div>
 </template>
 
@@ -36,7 +41,7 @@ export default {
       type: String,
     },
     cardId: {
-      type: String
+      type: Number
     }
   },
   computed: {
@@ -56,12 +61,24 @@ export default {
     redirect(id) {
       this.$router.push(id)
     },
-    async removeService(cardId) {
+    async removeService(cardID) {
       try {
         const response = await axios.post('removeServiceCard', {
-          cardID: cardId
+          cardID: cardID
         });
         console.log(response);
+        setTimeout(location.reload.bind(location), 1000);
+      }catch(e){
+        this.error ='Error occurred';
+      }
+    },
+    async editService(cardID) {
+      try {
+        const response = await axios.post('editServiceCard', {
+          cardID: cardID
+        });
+        console.log(response);
+        setTimeout(location.reload.bind(location), 1000);
       }catch(e){
         this.error ='Error occurred';
       }

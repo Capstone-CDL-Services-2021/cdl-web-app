@@ -55,7 +55,6 @@
       </div>
     </b-jumbotron>
 
-
     <b-modal id="accept" size="sm" title="Service" ok-only @ok="redirect('managerService')">
       <p>Service has been Added</p>
     </b-modal>
@@ -65,7 +64,6 @@
 <script>
 import managerNavbar from "@/components/managerNavbar";
 import managerHeader from "@/components/managerHeader";
-import {mapGetters} from "vuex";
 import axios from "axios";
 
 export default {
@@ -105,11 +103,6 @@ export default {
     return{
       service: {}
     }
-  },
-  computed: {
-    ...mapGetters({
-      services: "getServices"
-    })
   }
 }
 </script>
