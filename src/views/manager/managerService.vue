@@ -37,8 +37,7 @@ export default {
   name: "Service",
   components: {
     managerNavbar,
-    managerHeader,
-    managerServiceCard
+    managerHeader
   },
   data() {
     return {
