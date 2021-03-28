@@ -9,21 +9,24 @@
           <b-card-body :title="cardTitleA">
             <b-card-text>
               {{ cardDesc }}
-              {{ cardId }}
               <br/>
             </b-card-text>
             <br/>
             <br/>
-            <b-button v-on:click="removeService(cardId);" variant="danger">Delete</b-button>
+            <b-button v-b-modal.accept v-on:click="removeService(cardId);" variant="danger">Delete</b-button>
+            <b-button v-b-model.editted v-on:click="redirect('managerEditServiceCard');" varient="danger">Edit</b-button>
           </b-card-body>
         </b-col>
       </b-row>
     </b-card>
+
+    <b-modal id="accept" size="sm" title="Service Response" hide-footer="true">
+      <p>Service has been Deleted</p>
+    </b-modal>
   </div>
 </template>
 
 <script>
-import {mapGetters} from "vuex";
 import axios from "axios";
 export default {
   name: "serviceCard",
@@ -38,7 +41,7 @@ export default {
       type: String,
     },
     cardId: {
-      type: String
+      type: Number
     }
   },
   computed: {
@@ -48,10 +51,7 @@ export default {
     },
     cardTitleA() {
       return this.cardTitle;
-    },
-    ...mapGetters({
-      services: "getServices"
-    })
+    }
   },
   data() {
     return {
@@ -62,9 +62,27 @@ export default {
     redirect(id) {
       this.$router.push(id)
     },
-    removeService(idx) {
-      let index = parseInt(idx);
-      this.services.splice(index, 1)
+    async removeService(cardID) {
+      try {
+        const response = await axios.post('removeServiceCard', {
+          cardID: cardID
+        });
+        console.log(response);
+        setTimeout(location.reload.bind(location), 1000);
+      }catch(e){
+        this.error ='Error occurred';
+      }
+    },
+    async editService(cardID) {
+      try {
+        const response = await axios.post('editServiceCard', {
+          cardID: cardID
+        });
+        console.log(response);
+        setTimeout(location.reload.bind(location), 1000);
+      }catch(e){
+        this.error ='Error occurred';
+      }
     }
 }
 

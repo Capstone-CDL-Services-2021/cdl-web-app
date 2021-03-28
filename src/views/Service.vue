@@ -92,9 +92,6 @@
           <serviceCard card-img="https://images.immediate.co.uk/production/volatile/sites/10/2018/02/875d867d-e22c-4041-92c0-fc6862263aee-956c556.jpg?quality=90&resize=768%2C574"
                        card-title="Mow Lawn, Top Soil & Fertilizers"
                        card-desc="Mow your lawn, Filling in low spots with top soil and spreading fertilizer"/>
-
-
-
         </div>
       </div>
     </div>
