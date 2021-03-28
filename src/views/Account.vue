@@ -19,7 +19,6 @@
         </b-jumbotron>
 
         <b-jumbotron text-variant="black" border-variant="dark">
-
           <!-- Delete Account UI -->
           <b-button variant="danger" @click="$bvModal.show('modal-delete')"> Delete Account</b-button>
           <b-modal id="modal-delete">
@@ -203,9 +202,6 @@ export default {
     checkFormValidity() {
       //const valid = this.$refs.form.checkValidity()
       if (this.new_password === this.confirm_password) {
-        return true
-      } else if (this.delete_message === "Confirm Delete Account") {
-        this.delMessage = "Account Delete Successful"
         return true
       } else {
         return false
