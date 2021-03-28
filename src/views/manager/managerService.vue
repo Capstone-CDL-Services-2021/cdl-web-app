@@ -37,8 +37,8 @@ export default {
     managerHeader,
     managerServiceCard
   },
-  data(){
-    return{
+  data() {
+    return {
       serviceCardInfo: []
     }
   },
@@ -54,6 +54,7 @@ export default {
       this.$router.push(id)
     }
   }
+}
 </script>
 
 <style scoped>
