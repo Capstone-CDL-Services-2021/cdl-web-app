@@ -55,7 +55,6 @@
       </div>
     </b-jumbotron>
 
-
     <b-modal id="accept" size="sm" title="Service" ok-only @ok="redirect('managerService')">
       <p>Service has been Added</p>
     </b-modal>
@@ -65,7 +64,6 @@
 <script>
 import managerNavbar from "@/components/managerNavbar";
 import managerHeader from "@/components/managerHeader";
-import {mapGetters} from "vuex";
 import axios from "axios";
 
 export default {
@@ -89,29 +87,22 @@ export default {
       })
     },
     async addService() {
-      try{
-        const response = await axios.post('addServiceCard',{
+      try {
+        const response = await axios.post('addServiceCard', {
           title: this.service.title,
           description: this.service.desc,
           imageUrl: this.service.img
         });
-        this.$store.dispatch('addService', this.service);
         console.log(response);
-      }catch (e){
-        this.error = 'error occured';
+      }catch(e){
+        this.error ='Error occurred';
       }
-
     }
   },
   data(){
     return{
       service: {}
     }
-  },
-  computed: {
-    ...mapGetters({
-      services: "getServices"
-    })
   }
 }
 </script>

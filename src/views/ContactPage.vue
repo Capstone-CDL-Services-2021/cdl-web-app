@@ -4,52 +4,56 @@
     <cdl_header/>
     <navbar/>
 
+    <br/>
+
     <h1 style="text-decoration: underline">Contact Us!</h1>
 
     <template>
       <div>
-        <b-form @submit="onSubmit">
-          <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
-            <b-form-input
-                id="input-2"
-                v-model="form.name"
-                placeholder="Enter Full Name"
-                required></b-form-input>
+        <div class="col-sm-20">
+          <b-form @submit="onSubmit">
+            <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
+              <b-form-input
+                  id="input-1"
+                  v-model="form.name"
+                  placeholder="Enter Full Name"
+                  required></b-form-input>
+            </b-form-group>
 
-          </b-form-group>
+            <b-form-group
+                id="input-group-1"
+                label="Email address:"
+                label-for="input-1"
+                description="We'll never share your email with anyone else.">
 
-          <b-form-group
-              id="input-group-1"
-              label="Email address:"
-              label-for="input-1"
-              description="We'll never share your email with anyone else.">
+              <b-form-input
+                  id="input-2"
+                  v-model="form.email"
+                  type="email"
+                  placeholder="Enter email"
+                  required></b-form-input>
+            </b-form-group>
 
-            <b-form-input
-                id="input-1"
-                v-model="form.email"
-                type="email"
-                placeholder="Enter email"
-                required></b-form-input>
+            <b-form-group
+                id="input-group-2"
+                label="Question"
+                label-for="input-2"
+                description="Please put your Question Below!">
+            </b-form-group>
 
-          </b-form-group>
-
-          <b-form-group
-            id="input-group-2"
-            label="Question"
-            label-for="input-2"
-            description="Please put your Question Below!">
-          </b-form-group>
-
-          <b-form-input
-            id="input-2"
-            v-model="form.question"
-            placeholder="Enter Question Here!"
-            required></b-form-input>
-          <b-button type="submit" variant="primary">Submit</b-button>
-        </b-form>
+            <b-form-textarea
+                id="input-3"
+                v-model="form.question"
+                placeholder="Enter Question Here!"
+                rows="4"
+                max-rows="8"
+                required></b-form-textarea>
+            <br/>
+            <b-button type="submit" variant="primary">Submit</b-button>
+          </b-form>
+        </div>
       </div>
     </template>
-
   </div>
 </template>
 
@@ -101,9 +105,19 @@ body {
   /*position:relative;*/
 }
 
-.align-bottom {
-  text-align: right;
-  text-anchor: end;
+#input-1 {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
 }
-
+#input-2 {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#input-3 {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>

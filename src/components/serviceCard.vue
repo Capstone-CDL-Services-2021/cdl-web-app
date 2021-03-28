@@ -10,7 +10,6 @@
             <b-card-text>
               {{cardDesc}}
               <br/>
-
             </b-card-text>
             <b-button variant="primary" v-on:click="redirect('/book')">Request</b-button>
           </b-card-body>

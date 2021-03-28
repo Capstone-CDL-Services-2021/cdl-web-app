@@ -6,7 +6,6 @@
       </div>
 
       <div class="col-sm-20" style="padding:20px">
-
         <b-form v-if="!user" @submit.prevent="submitHandler">
           <error v-if="error" :error="error"></error>
           <b-input-group size="xs">

@@ -6,7 +6,6 @@
       </div>
       <div class="col-sm-20" style="padding-top:20px">
         <a href="javascript:void(0)" v-on:click="logoutHandler">Logout</a>
-
         <!-- <b-input-group size="xs">
            <b-button variant="primary" v-on:click="redirect('/')">Logout</b-button>
          </b-input-group> -->
