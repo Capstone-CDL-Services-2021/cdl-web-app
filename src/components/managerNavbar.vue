@@ -12,6 +12,8 @@
         <b-button variant="outline-light" v-on:click="redirect('/managerHome/')">Reports</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/managerHome')">Edit About Us</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/managerUserAccounts')">Manager User Accounts</b-button>
+        <b-button variant="outline-light" v-on:click="redirect('/managerEquipment')">Equipment</b-button>
+
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
