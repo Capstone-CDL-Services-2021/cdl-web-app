@@ -16,6 +16,7 @@
           <thead>
           <tr>
             <th>Name</th>
+            <th>Owned</th>
             <th>Cost</th>
             <th>Date Rented</th>
             <th>Date Returned</th>
@@ -25,10 +26,11 @@
           <tbody>
           <tr v-for="equipment in EquipmentList" :key="equipment.id">
             <td>{{ equipment.name }}</td>
+            <td>{{ equipment.owned }}</td>
             <td> {{ equipment.cost }}</td>
-            <td> {{ equipment.dateRented }}</td>
-            <td> {{ equipment.dateReturned }}</td>
-            <td> {{ equipment.rentedFrom }}</td>
+            <td> {{ equipment.date_rented }}</td>
+            <td> {{ equipment.date_returned }}</td>
+            <td> {{ equipment.rented_from }}</td>
           </tr>
           </tbody>
         </table>
@@ -46,6 +48,7 @@ import managerHeader from "@/components/managerHeader";
 import managerNavbar from "@/components/managerNavbar";
 import EquipmentForm from "@/components/EquipmentForm"
 import axios from "axios";
+import {mapGetters} from "vuex";
 
 export default {
   name: "managerEquipment",
@@ -66,7 +69,7 @@ export default {
     }
   },
   computed: {
-
+      ...mapGetters(['user']),
     loadEquipment() {
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return (axios.post('getAllEquipment')).then(response => this.EquipmentList = response.data)
