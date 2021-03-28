@@ -21,17 +21,17 @@
 
     <div class = "form-group">
       <label>Date rented</label>
-      <input type="email" class="form-control" v-model="date_rented" placeholder="If rented, when was it rented?"/>
+      <input type="text" class="form-control" v-model="date_rented" placeholder="If rented, when was it rented?"/>
     </div>
 
     <div class = "form-group">
       <label>Date returned</label>
-      <input type="password" class="form-control" v-model="date_returned" placeholder="If rented, when was it returned?"/>
+      <input type="text" class="form-control" v-model="date_returned" placeholder="If rented, when was it returned?"/>
     </div>
 
     <div class = "form-group">
       <label>Rented from?</label>
-      <input type="password" class="form-control" v-model="rented_from" placeholder="Where was the equipment rented from?"/>
+      <input type="text" class="form-control" v-model="rented_from" placeholder="Where was the equipment rented from?"/>
     </div>
 
     <button class="btn-primary btn-block">confirm</button>
