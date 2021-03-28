@@ -5,23 +5,6 @@
     <manager-navbar/>
     <div hidden>{{loadServiceCard}}</div>
     <div class="services">
-      {{loadServiceCard()}}
-      <table>
-        <thead>
-        <tr>
-          <th>title</th>
-          <th>description</th>
-          <th>url</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="card in serviceCardInfo" :key="card.id">
-          <td>{{ card.title }}</td>
-          <td> {{ card.description }}</td>
-          <td> <img v-bind:src=card.imageUrl alt="" height="10%"></td>
-        </tr>
-        </tbody>
-      </table>
       <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark" fluid>
         <b-button v-on:click="redirect('managerAddService')">Add a New Service Card</b-button>
 
@@ -52,12 +35,7 @@ export default {
   components: {
     managerNavbar,
     managerHeader,
-    // managerServiceCard
-  },
-  data(){
-    return{
-      serviceCardInfo: []
-    }
+    managerServiceCard
   },
   data(){
     return{
@@ -72,12 +50,6 @@ export default {
     }
   },
   methods: {
-    loadServiceCard(){
-      axios.get('getAllServiceCards')
-          .then(response => this.serviceCardInfo = response.data)
-
-
-    },
     redirect(id) {
       this.$router.push(id)
     }
