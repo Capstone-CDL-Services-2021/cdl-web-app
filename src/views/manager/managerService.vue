@@ -28,8 +28,8 @@
 <script>
 import managerNavbar from "@/components/managerNavbar";
 import managerHeader from "@/components/managerHeader";
-import {mapGetters} from "vuex";
-import managerServiceCard from "@/components/managerServiceCard";
+//import {mapGetters} from "vuex";
+//import managerServiceCard from "@/components/managerServiceCard";
 import axios from "axios";
 
 
@@ -46,20 +46,18 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({
-      services: "getServices"
-    })
-  },
-  methods: {
     loadServiceCard() {
-      axios.get('getAllServiceCards')
+      // eslint-disable-next-line vue/no-async-in-computed-properties
+      return axios.get('getAllServiceCards')
           .then(response => this.serviceCardInfo = response.data)
-    },
-    redirect(id) {
-      this.$router.push(id)
+    }
+  },
+    methods: {
+      redirect(id) {
+        this.$router.push(id)
+      }
     }
   }
-}
 </script>
 
 <style scoped>
