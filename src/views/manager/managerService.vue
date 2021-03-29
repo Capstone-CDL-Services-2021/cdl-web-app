@@ -64,8 +64,8 @@ export default {
       serviceCardInfo: []
     }
   },
-  data(){
-    return{
+  data() {
+    return {
       serviceCardInfo: []
     }
   },

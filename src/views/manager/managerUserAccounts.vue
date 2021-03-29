@@ -5,11 +5,11 @@
     <manager-navbar/>
 
     <b-jumbotron bg-variant="dark" border-variant="dark">
-      {{getUsers()}}
+      {{getAllUsers()}}
       <div>
         <b-jumbotron>
           <h1 style="text-align: center">Registered Users</h1>
-          // Version 2 with universal options at the top
+          <!-- Version 2 with universal options at the top -->
           <!--          <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
           <!--          <b-button size="sm" variant="danger" @click="resetPassword">Reset</b-button>-->
           <!--          <b-button size="sm" variant="secondary" @click="blockUser">Block</b-button>-->
@@ -26,7 +26,7 @@
               responsive="sm"
               selectable
               @row-selected="onRowSelected">
-            // Version 1: each row comes with button options
+            <!-- Version 1: each row comes with button options -->
             <!--            <template #cell(view_order_history)>-->
             <!--              <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
             <!--            </template>-->
@@ -104,8 +104,8 @@ export default {
   computed: {
   },
   methods: {
-    getUsers(){
-      return axios.get('getUsers').then(response =>this.userInfo = response.data)
+    getAllUsers(){
+      return axios.get('getAllUsers').then(response =>this.userInfo = response.data)
     },
     onRowSelected(items) {
       this.selectedRow = items
@@ -130,43 +130,43 @@ export default {
           // })
           .await(this.forgotpassHandler())
     }
-    // .catch(err => {
-    //   // An error occurred
-    // })
-  },
-  async forgotpassHandler(){
-    try{
-      const response = await axios.post('forgot',{
-        email: this.onRowSelected('email')
-      });
-      this.message= 'The email was sent!';
-      this.error='';
-      console.log(response);
-    }catch(e){
-      this.error= 'Error occurred';
-      this.message ='';}
-  },
-  blockUser(){
-    this.block = ''
-    this.$bvModal.msgBoxConfirm('Please confirm that you want to block this user.', {
-      title: 'Please Confirm',
-      size: 'sm',
-      buttonSize: 'sm',
-      okVariant: 'danger',
-      okTitle: 'YES',
-      cancelTitle: 'NO',
-      footerClass: 'p-2',
-      hideHeaderClose: false,
-      centered: true
-    })
-        .then(value => {
-          this.block = value
-        })
-    // .catch(err => {
-    //   // An error occurred
-    // })
-  },
-}
+      // .catch(err => {
+      //   // An error occurred
+      // })
+    },
+    async forgotpassHandler(){
+      try{
+        const response = await axios.post('forgot',{
+          email: this.onRowSelected('email')
+        });
+        this.message= 'The email was sent!';
+        this.error='';
+        console.log(response);
+      }catch(e){
+        this.error= 'Error occurred';
+        this.message ='';}
+    },
+    blockUser(){
+      this.block = ''
+      this.$bvModal.msgBoxConfirm('Please confirm that you want to block this user.', {
+        title: 'Please Confirm',
+        size: 'sm',
+        buttonSize: 'sm',
+        okVariant: 'danger',
+        okTitle: 'YES',
+        cancelTitle: 'NO',
+        footerClass: 'p-2',
+        hideHeaderClose: false,
+        centered: true
+      })
+          .then(value => {
+            this.block = value
+          })
+      // .catch(err => {
+      //   // An error occurred
+      // })
+    },
+  }
 </script>
 
 <style scoped>
