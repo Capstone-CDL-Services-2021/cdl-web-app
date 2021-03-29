@@ -5,6 +5,7 @@
     <manager-navbar/>
     <div hidden>{{loadServiceCard}}</div>
     <div class="services">
+      {{loadServiceCard()}}
       <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark" fluid>
         <b-button v-on:click="redirect('managerAddService')">Add a New Service Card</b-button>
 
@@ -35,7 +36,12 @@ export default {
   components: {
     managerNavbar,
     managerHeader,
-    managerServiceCard
+     managerServiceCard
+  },
+  data(){
+    return{
+      serviceCardInfo: []
+    }
   },
   data(){
     return{
@@ -50,6 +56,10 @@ export default {
     }
   },
   methods: {
+    loadServiceCard(){
+      axios.get('getAllServiceCards')
+          .then(response => this.serviceCardInfo = response.data)
+    },
     redirect(id) {
       this.$router.push(id)
     }
