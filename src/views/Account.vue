@@ -9,14 +9,12 @@
 
       <div style="justify-content: center;display: flex">
 
-        <b-jumbotron style="text-align: left" text-variant="black" border-variant="dark" class="paraStyle">
+        <b-jumbotron style="text-align: left" title="User Information" text-variant="black" border-variant="dark" class="paraStyle">
           <h3>User Information:</h3>
           <div class="mid">
             <p>Full Name: {{ user.first_name }} {{ user.last_name }}</p>
             <p>Email: {{ user.email }}</p>
             <p>ID: {{user.id}}</p>
-
-
 
             <!--Update User Information -->
             <b-button variant="primary" v-b-modal.modal-update>Update User Info</b-button>
@@ -27,7 +25,6 @@
                 @show="updateModal"
                 @hidden="updateModal"
                 @ok="handleOkUpdate"
-
             >
               <b-form ref="form" @submit.stop.prevent="handleSubmitUpdate">
                 <b-form-group
@@ -73,10 +70,10 @@
                   ></b-form-input>
                 </b-form-group>
               </b-form>
-              {{message_update}}
             </b-modal>
           </div>
         </b-jumbotron>
+
 
         <b-jumbotron text-variant="black" border-variant="dark">
           <!-- Delete Account Form -->
@@ -85,11 +82,14 @@
               id="modal-delete"
               ref="modal"
               title="Deleting Account"
+              ok-variant="danger"
+              ok-title="YES"
+              cancel-title="NO"
               @show="deleteModal"
               @hidden="deleteModal"
               @ok="handleOkDelete"
           >
-            <p>If you would like to delete your account permanently please enter "Confirm Delete Account" in the text
+            <p>If you would like to delete your account permanently please enter <strong>"Confirm Delete Account"</strong> in the text
               box below</p>
             <b-form ref="form" @submit.stop.prevent="handleSubmitDelete">
               <b-form-group
@@ -108,7 +108,7 @@
               </b-form-group>
             </b-form>
           </b-modal>
-          <p>{{ message_delete }}</p>
+          <br><br>
 
 
           <!-- Change password stuff  -->
@@ -153,7 +153,7 @@
               </b-form-group>
             </b-form>
           </b-modal>
-          <p>{{ message_password }}</p>
+          <br><br>
 
           <!-- View Order History  -->
           <b-button variant="primary" @click="$bvModal.show('modal-order')">View Orders</b-button>
@@ -176,6 +176,9 @@
           <p></p>
         </b-jumbotron>
       </div>
+        <div style="justify-content: center;display: flex">
+            <h3 style="color: white">{{message}}</h3>
+        </div>
     </b-jumbotron>
   </div>
 </template>
@@ -195,7 +198,7 @@ export default {
   },
   data() {
     return {
-      userInfo: [],
+      message: '',
       //Update User Info form
       new_firstname: '',
       newFirstnameState: '',
@@ -203,17 +206,14 @@ export default {
       newLastnameState: '',
       new_email: '',
       newEmailState: '',
-      message_update: '',
       // Delete form
       confirm_delete: '',
-      message_delete: '',
       confirmDeleteState: null,
       // Reset Password form
       new_password: '',
       newPasswordState: null,
       confirm_password: '',
-      confirmPasswordState: null,
-      message_password: ''
+      confirmPasswordState: null
     }
   },
   methods: {
@@ -232,7 +232,6 @@ export default {
       this.new_firstname = ''
       this.new_lastname = ''
       this.new_email = ''
-      this.message_update = ''
       this.newFirstnameState = null
       this.newLastnameState = null
       this.newEmailState = null
@@ -243,14 +242,27 @@ export default {
       // Trigger submit handler
       this.handleSubmitUpdate()
     },
-    handleSubmitUpdate() {
+    async handleSubmitUpdate() {
       // Exit when the form isn't valid
       if (!this.checkFormValidityUpdate()) {
         return
-      }
-      else {
+      } else {
         // Print Account successfully updated
-        this.message_update = "User Info successfully updated"
+        this.message = "User Info successfully updated"
+
+        try {
+          // Manipulate database
+          const response = await axios.post('updateUserInfo', {
+            id: this.user.id,
+            first_name: this.new_firstname,
+            last_name: this.new_lastname,
+            email: this.new_email
+          });
+          console.log(response);
+          setTimeout(location.reload.bind(location), 1000);
+        } catch (e) {
+          this.error = 'Error occurred';
+        }
       }
       // Hide the modal manually
       this.$nextTick(() => {
@@ -284,12 +296,11 @@ export default {
       }
       // Check if password match
       else if (this.new_password !== this.confirm_password) {
-        this.message_password = "Error: Password did not match"
+        this.message = "Error: Password did not match"
       }
       else {
         // Print the new password
-        this.message_password = "Password successfully changed"
-        this.$route
+        this.message = "Password successfully changed"
       }
       // Hide the modal manually
       this.$nextTick(() => {
@@ -305,7 +316,6 @@ export default {
     },
     deleteModal() {
       this.confirm_delete = ''
-      this.message_delete = ''
       this.confirmDeleteState = null
     },
     handleOkDelete(bvModalEvt) {
@@ -321,10 +331,10 @@ export default {
       }
       // Check if Confirm Delete input matches
       else if (this.confirm_delete !== "Confirm Delete Account") {
-        this.message_delete = "Error: Account Deletion Message did not match"
+        this.message = "Error: Account Deletion Message did not match"
       } else {
         // Print Account successfully deleted
-        this.message_delete = "Account successfully deleted"
+        this.message = "Account successfully deleted"
         try {
           // Manipulate database
           const response = await axios.post('deleteUser', {
@@ -332,11 +342,11 @@ export default {
           });
           console.log(response);
           setTimeout(location.reload.bind(location), 1000);
+          // Go back Home
+          await this.$router.push(Home);
         } catch (e) {
           this.error = 'Error occurred';
         }
-        // Go back Home
-        await this.$router.push(Home);
       }
       // Hide the modal manually
       this.$nextTick(() => {
