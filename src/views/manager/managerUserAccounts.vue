@@ -10,9 +10,9 @@
         <b-jumbotron>
           <h1 style="text-align: center">Registered Users</h1>
           <!-- Version 2 with universal options at the top -->
-          <!--          <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
-          <!--          <b-button size="sm" variant="danger" @click="resetPassword">Reset</b-button>-->
-          <!--          <b-button size="sm" variant="secondary" @click="blockUser">Block</b-button>-->
+<!--                    <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
+                    <b-button size="sm" variant="danger" @click="resetPassword">Reset</b-button>
+                    <b-button size="sm" variant="secondary" @click="blockUser">Block</b-button>
           <br>
           <p>
             Selected Row:<br>
@@ -27,15 +27,15 @@
               selectable
               @row-selected="onRowSelected">
             <!-- Version 1: each row comes with button options -->
-            <!--            <template #cell(view_order_history)>-->
-            <!--              <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
-            <!--            </template>-->
-            <template #cell(reset_password)>
-              <b-button size="sm" variant="danger" @click="resetPassword">Reset</b-button>
-            </template>
-            <template #cell(block_user)>
-              <b-button size="sm" variant="secondary" @click="blockUser">Block</b-button>
-            </template>
+<!--            <template #cell(view_order_history)>-->
+<!--              <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
+<!--            </template>-->
+<!--            <template #cell(reset_password)>-->
+<!--              <b-button size="sm" variant="warning" v-on:click="resetPassword">Reset</b-button>-->
+<!--            </template>-->
+<!--            <template #cell(block_user)>-->
+<!--              <b-button size="sm" variant="danger" v-on:click="blockUser">Block</b-button>-->
+<!--            </template>-->
             <template #cell(selected)="{ rowSelected }">
               <template v-if="rowSelected">
                 <span aria-hidden="true">&check;</span>
@@ -47,6 +47,7 @@
               </template>
             </template>
           </b-table>
+          <h4>{{message}}</h4>
         </b-jumbotron>
       </div>
     </b-jumbotron>
@@ -66,6 +67,7 @@ export default {
   },
   data() {
     return {
+      message: '',
       selectedRow: [],
       fields: [
         {
@@ -79,15 +81,15 @@ export default {
         // {
         //   key: 'view_order_history'
         // },
-        {
-          key: 'reset_password',
-          label: 'Reset Password?'
-
-        },
-        {
-          key: 'block_user',
-          label: 'Block User?'
-        },
+        // {
+        //   key: 'reset_password',
+        //   label: 'Reset Password?'
+        //
+        // },
+        // {
+        //   key: 'block_user',
+        //   label: 'Block User?'
+        // },
         {
           key: 'selected'
         }
@@ -95,17 +97,15 @@ export default {
       userInfo: [
         {
           first_name: '',
-          last_name: '',
-          id: ''
+          last_name: ''
         }
       ]
     }
   },
-  computed: {
-  },
+  computed: {},
   methods: {
-    getAllUsers(){
-      return axios.get('getAllUsers').then(response =>this.userInfo = response.data)
+    getAllUsers() {
+      return axios.get('getAllUsers').then(response => this.userInfo = response.data)
     },
     onRowSelected(items) {
       this.selectedRow = items
@@ -113,7 +113,7 @@ export default {
     redirect(id) {
       this.$router.push(id)
     },
-    resetPassword(){
+    resetPassword() {
       this.$bvModal.msgBoxConfirm('Please confirm that you want to reset this user\'s password.', {
         title: 'Please Confirm',
         size: 'sm',
@@ -123,30 +123,32 @@ export default {
         cancelTitle: 'NO',
         footerClass: 'p-2',
         hideHeaderClose: false,
-        centered: true
+        centered: true,
+
       })
           // .then(value => {
           //   this.reset = value
           // })
-          .await(this.forgotpassHandler())
-    }
+      .resetPass()
+
       // .catch(err => {
       //   // An error occurred
       // })
     },
-    async forgotpassHandler(){
-      try{
-        const response = await axios.post('forgot',{
+    async resetPass() {
+      try {
+        const response = await axios.post('forgot', {
           email: this.onRowSelected('email')
         });
-        this.message= 'The email was sent!';
-        this.error='';
+        this.message = 'The email was sent!';
+        this.error = '';
         console.log(response);
-      }catch(e){
-        this.error= 'Error occurred';
-        this.message ='';}
+      } catch (e) {
+        this.error = 'Error occurred';
+        this.message = '';
+      }
     },
-    blockUser(){
+    blockUser() {
       this.block = ''
       this.$bvModal.msgBoxConfirm('Please confirm that you want to block this user.', {
         title: 'Please Confirm',
@@ -159,14 +161,29 @@ export default {
         hideHeaderClose: false,
         centered: true
       })
-          .then(value => {
-            this.block = value
-          })
+          // .then(value => {
+          //   this.block = value
+          // })
+          .updateBlocked()
       // .catch(err => {
       //   // An error occurred
       // })
     },
+    async updateBlocked() {
+      try {
+        // Manipulate database
+        const response = await axios.post('updateBlocked', {
+          id: this.onRowSelected('id')
+        });
+        console.log(response);
+        setTimeout(location.reload.bind(location), 1000);
+      } catch (e) {
+        this.error = 'Error occurred';
+      }
+      this.message = 'User is now blocked'
+    }
   }
+}
 </script>
 
 <style scoped>
