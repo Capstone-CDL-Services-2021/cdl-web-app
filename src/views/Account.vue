@@ -5,7 +5,6 @@
     <navbar/>
 
     <b-jumbotron bg-variant="dark" border-variant="dark">
-
       <h1 style="color: white">Account Settings</h1>
 
       <div style="justify-content: center;display: flex">
@@ -15,6 +14,8 @@
           <div class="mid">
             <p>Full Name: {{ user.first_name }} {{ user.last_name }}</p>
             <p>Email: {{ user.email }}</p>
+            <p>ID: {{user.id}}</p>
+
           </div>
 
           <!--Update User Information -->
@@ -182,6 +183,7 @@ import cdl_header from "@/components/cdl_header";
 import navbar from "@/components/navbar";
 import Home from "@/views/Home";
 import {mapGetters} from 'vuex';
+import axios from "axios";
 
 export default {
   name: "Account",
@@ -191,6 +193,7 @@ export default {
   },
   data() {
     return {
+      userInfo: [],
       //Update User Info form
       new_firstname: '',
       newFirstnameState: '',
@@ -280,7 +283,7 @@ export default {
       }
       else {
         // Print the new password
-        this.message_password = "Password successfully changed to \"" + this.new_password + "\""
+        this.message_password = "Password successfully changed"
       }
       // Hide the modal manually
       this.$nextTick(() => {
@@ -305,30 +308,40 @@ export default {
       // Trigger submit handler
       this.handleSubmitDelete()
     },
-    handleSubmitDelete() {
+    async handleSubmitDelete() {
       // Exit when the form isn't valid
       if (!this.checkFormValidityDelete()) {
         return
       }
       // Check if Confirm Delete input matches
-      else if (this.confirm_delete !== "Confirm Delete Account"){
+      else if (this.confirm_delete !== "Confirm Delete Account") {
         this.message_delete = "Error: Account Deletion Message did not match"
-      }
-      else {
+      } else {
         // Print Account successfully deleted
         this.message_delete = "Account successfully deleted"
+        try {
+          // Manipulate database
+          const response = await axios.post('deleteUser', {
+            id: this.user.id
+          });
+          console.log(response);
+          setTimeout(location.reload.bind(location), 1000);
+        } catch (e) {
+          this.error = 'Error occurred';
+        }
+        // Go back Home
+        await this.$router.push(Home);
       }
       // Hide the modal manually
       this.$nextTick(() => {
         this.$bvModal.hide('modal-delete')
       })
-      // Go back Home
-      this.$router.push(Home);
     }
   },
   computed: {
     ...mapGetters(['user'])
-  }
+  },
+
 }
 </script>
 

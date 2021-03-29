@@ -5,7 +5,7 @@
     <manager-navbar/>
 
     <b-jumbotron bg-variant="dark" border-variant="dark">
-      {{getUsers()}}
+      {{getAllUsers()}}
       <div>
         <b-jumbotron>
           <h1 style="text-align: center">Registered Users</h1>
@@ -104,8 +104,8 @@ export default {
   computed: {
   },
   methods: {
-    getUsers(){
-      return axios.get('getUsers').then(response =>this.userInfo = response.data)
+    getAllUsers(){
+      return axios.get('getAllUsers').then(response =>this.userInfo = response.data)
     },
     onRowSelected(items) {
       this.selectedRow = items
