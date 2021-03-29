@@ -29,11 +29,7 @@
 
     <div class = "form-group">
       <label>Rented from?</label>
-<<<<<<< HEAD
-      <input type="text" class="form-control" v-model="rented_from" placeholder="Where was the ment rented from?"/>
-=======
       <input type="text" class="form-control" v-model="rented_from" placeholder="Where was the equipment rented from?"/>
->>>>>>> 6159c49ee6ecaabfbfbdbe8de8ca99c570707a9a
     </div>
 
     <button class="btn-primary btn-block">confirm</button>
