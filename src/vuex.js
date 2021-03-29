@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 const state = {
     user: null,
-    services: []
+    services: [],
+    orders: null
 };
 
 const store = new Vuex.Store({
@@ -13,6 +14,9 @@ const store = new Vuex.Store({
     getters:{
         user: (state) => {
             return state.user;
+        },
+        orders: (state) => {
+            return state.orders;
         },
         getServices:(state) => state.services
     },
@@ -25,6 +29,9 @@ const store = new Vuex.Store({
         },
         removeService(state,payload){
             state.commit("removeService", payload)
+        },
+        orders(context,order){
+            context.commit('orders',order);
         }
     },
     mutations:{
@@ -36,6 +43,9 @@ const store = new Vuex.Store({
         },
         removeService(state,payload){
             state.services.push(payload);
+        },
+        orders(state,order){
+            state.order = order;
         }
     }
 });

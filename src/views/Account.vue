@@ -10,10 +10,13 @@
 
       <div style="justify-content: center;display: flex">
 
-        <b-jumbotron style="text-align: left" text-variant="black" border-variant="dark" class="paraStyle">
-          <h3>User Information:</h3>
+        <b-jumbotron style="text-align:center" text-variant="black" border-variant="dark" class="paraStyle">
+          <h3><b-avatar variant="primary"> JL </b-avatar> User Information:</h3>
           <div class="mid">
-            <p>Full Name: {{ user.first_name }} {{ user.last_name }}</p>
+            <p>Full Name: {{ user.first_name }} {{ user.last_name }}
+
+              {{ user.first}}
+            </p>
             <p>Email: {{ user.email }}</p>
           </div>
         </b-jumbotron>
@@ -165,11 +168,13 @@
             </template>
           </b-modal>
 
-
         </b-jumbotron>
 
       </div>
 
+      <div class="text">
+        <contact-us/>
+      </div>
     </b-jumbotron>
 
   </div>
@@ -180,10 +185,12 @@
 import cdl_header from "@/components/cdl_header";
 import navbar from "@/components/navbar";
 import {mapGetters} from 'vuex';
+import ContactUs from "@/components/contactUs";
 
 export default {
   name: "Account",
   components: {
+    ContactUs,
     cdl_header,
     navbar
   },
@@ -251,5 +258,9 @@ export default {
 
 .mid {
   text-align: center;
+}
+
+.text {
+  color: white;
 }
 </style>
