@@ -1,7 +1,6 @@
 <template>
   <div>
-
-    <b-card no-body class="overflow-hidden" style="max-width: 570px">
+    <b-card no-body class="overflow-hidden" style="max-width: 30rem; min-width: 30rem">
       <b-row no-gutters>
         <b-col>
           <b-card-img :src="cardImage" alt="Image" class="rounded-0"></b-card-img>
@@ -46,7 +45,6 @@ export default {
     }
   },
   computed: {
-
     cardImage() {
       return this.cardImg;
     },
