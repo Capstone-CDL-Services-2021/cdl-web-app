@@ -9,7 +9,7 @@
       <div>
         <b-jumbotron>
           <h1 style="text-align: center">Registered Users</h1>
-          // Version 2 with universal options at the top
+          <!-- Version 2 with universal options at the top -->
           <!--          <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
           <!--          <b-button size="sm" variant="danger" @click="resetPassword">Reset</b-button>-->
           <!--          <b-button size="sm" variant="secondary" @click="blockUser">Block</b-button>-->
@@ -26,7 +26,7 @@
               responsive="sm"
               selectable
               @row-selected="onRowSelected">
-            // Version 1: each row comes with button options
+            <!-- Version 1: each row comes with button options -->
             <!--            <template #cell(view_order_history)>-->
             <!--              <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
             <!--            </template>-->

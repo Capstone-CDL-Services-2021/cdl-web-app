@@ -16,69 +16,70 @@
             <p>Email: {{ user.email }}</p>
             <p>ID: {{user.id}}</p>
 
-          </div>
 
-          <!--Update User Information -->
-          <b-button variant="primary" v-b-modal.modal-update>Update User Info</b-button>
-          <b-modal
-              id="modal-update"
-              ref="modal"
-              title="Update User Info"
-              @show="updateModal"
-              @hidden="updateModal"
-              @ok="handleOkUpdate"
 
-          >
-            <b-form ref="form" @submit.stop.prevent="handleSubmitUpdate">
-              <b-form-group
-                  label="Change First Name:"
-                  label-for="change_firstname"
-                  invalid-feedback="First Name is required"
-                  label-cols-sm="4"
-                  :state="newFirstnameState"
-              >
-                <b-form-input
-                    id="change_firstname"
-                    v-model="new_firstname"
+            <!--Update User Information -->
+            <b-button variant="primary" v-b-modal.modal-update>Update User Info</b-button>
+            <b-modal
+                id="modal-update"
+                ref="modal"
+                title="Update User Info"
+                @show="updateModal"
+                @hidden="updateModal"
+                @ok="handleOkUpdate"
+
+            >
+              <b-form ref="form" @submit.stop.prevent="handleSubmitUpdate">
+                <b-form-group
+                    label="Change First Name:"
+                    label-for="change_firstname"
+                    invalid-feedback="First Name is required"
+                    label-cols-sm="4"
                     :state="newFirstnameState"
-                    required
-                ></b-form-input>
-              </b-form-group>
-              <b-form-group
-                  label="Change Last Name:"
-                  label-for="change_lastname"
-                  invalid-feedback="Last Name is required"
-                  label-cols-sm="4"
-                  :state="newLastnameState"
-              >
-                <b-form-input
-                    id="change_lastname"
-                    v-model="new_lastname"
+                >
+                  <b-form-input
+                      id="change_firstname"
+                      v-model="new_firstname"
+                      :state="newFirstnameState"
+                      required
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group
+                    label="Change Last Name:"
+                    label-for="change_lastname"
+                    invalid-feedback="Last Name is required"
+                    label-cols-sm="4"
                     :state="newLastnameState"
-                    required
-                ></b-form-input>
-              </b-form-group>
-              <b-form-group
-                  label="Change Email:"
-                  label-for="change_email"
-                  invalid-feedback="Email is required"
-                  label-cols-sm="4"
-                  :state="newEmailState"
-              >
-                <b-form-input
-                    id="change_email"
-                    v-model="new_email"
+                >
+                  <b-form-input
+                      id="change_lastname"
+                      v-model="new_lastname"
+                      :state="newLastnameState"
+                      required
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group
+                    label="Change Email:"
+                    label-for="change_email"
+                    invalid-feedback="Email is required"
+                    label-cols-sm="4"
                     :state="newEmailState"
-                    required
-                ></b-form-input>
-              </b-form-group>
-            </b-form>
-            {{message_update}}
-          </b-modal>
+                >
+                  <b-form-input
+                      id="change_email"
+                      v-model="new_email"
+                      :state="newEmailState"
+                      required
+                  ></b-form-input>
+                </b-form-group>
+              </b-form>
+              {{message_update}}
+            </b-modal>
+          </div>
         </b-jumbotron>
 
         <b-jumbotron text-variant="black" border-variant="dark">
-          <!-- Delete Account UI -->
+          <!-- Delete Account Form -->
           <b-button variant="danger" v-b-modal.modal-delete>Delete Account</b-button>
           <b-modal
               id="modal-delete"
@@ -111,6 +112,7 @@
 
 
           <!-- Change password stuff  -->
+          <b-button variant="warning" v-on:click="redirect('Reset');">Change Password (Alee's page)</b-button><br><br>
           <b-button variant="warning" v-b-modal.modal-password>Change Password</b-button>
           <b-modal
               id="modal-password"
@@ -215,6 +217,9 @@ export default {
     }
   },
   methods: {
+    redirect(id) {
+      this.$router.push(id)
+    },
     // Update Form functionality
     checkFormValidityUpdate() {
       const valid = this.$refs.form.checkValidity()
@@ -284,6 +289,7 @@ export default {
       else {
         // Print the new password
         this.message_password = "Password successfully changed"
+        this.$route
       }
       // Hide the modal manually
       this.$nextTick(() => {
