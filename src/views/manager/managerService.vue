@@ -1,24 +1,46 @@
 <template>
   <div>
-
     <manager-header/>
     <manager-navbar/>
     <div hidden>{{loadServiceCard}}</div>
     <div class="services">
-      <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark" fluid>
+      <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark" fluid style="margin-bottom: -2rem; margin-top: -2rem">
         <b-button v-on:click="redirect('managerAddService')">Add a New Service Card</b-button>
-
-        <div class="row" style="margin-top: 2rem;">
+      </b-jumbotron>
+        <div class="row" style="padding-left: 11.5rem; margin-top: 2rem; background-color: #343a40">
           <div v-for="card in serviceCardInfo" :key="card.id">
-            <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
-              <manager-service-card :card-img="card.imageUrl"
-                                    :card-title="card.title"
-                                    :card-desc="card.description"
-                                    :card-id="card.id"/>
+            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
+              <div v-if="card.id % 3 === 0">
+                <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
+                  <manager-service-card :card-img="card.imageUrl"
+                                :card-title="card.title"
+                                :card-desc="card.description"
+                                :card-id="card.id"/>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
+              <div v-if="card.id % 3 === 1">
+                <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
+                  <manager-service-card :card-img="card.imageUrl"
+                                :card-title="card.title"
+                                :card-desc="card.description"
+                                :card-id="card.id"/>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
+              <div v-if="card.id % 3 === 2">
+                <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
+                  <manager-service-card :card-img="card.imageUrl"
+                                :card-title="card.title"
+                                :card-desc="card.description"
+                                :card-id="card.id"/>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </b-jumbotron>
     </div>
   </div>
 </template>

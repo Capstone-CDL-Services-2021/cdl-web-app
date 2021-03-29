@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-card no-body class="overflow-hidden" style="max-width: 570px">
+    <b-card no-body class="overflow-hidden" style="max-width: 35rem; min-width:35rem">
       <b-row no-gutters>
         <b-col>
           <b-card-img :src="cardImage" alt="Image" class="rounded-0"></b-card-img>
@@ -32,6 +32,9 @@ export default {
     },
     cardDesc: {
       type: String,
+    },
+    cardId: {
+      type: Number
     }
   },
   computed: {
@@ -58,5 +61,12 @@ export default {
 </script>
 
 <style scoped>
+img {
+  width: 500rem;
+  height: 500rem;
+  max-width: 20rem;
+  max-height: 25rem;
+  object-fit: cover;
+}
 
 </style>
