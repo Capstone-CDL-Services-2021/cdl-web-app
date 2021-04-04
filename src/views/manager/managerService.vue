@@ -64,11 +64,6 @@ export default {
       serviceCardInfo: []
     }
   },
-  data() {
-    return {
-      serviceCardInfo: []
-    }
-  },
   computed: {
     loadServiceCard() {
       // eslint-disable-next-line vue/no-async-in-computed-properties
@@ -77,10 +72,6 @@ export default {
     }
   },
   methods: {
-    loadServiceCard(){
-      axios.get('getAllServiceCards')
-          .then(response => this.serviceCardInfo = response.data)
-    },
     redirect(id) {
       this.$router.push(id)
     }
