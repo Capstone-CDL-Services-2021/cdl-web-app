@@ -6,80 +6,65 @@
 
     <div style="padding:30px">
       <h1 style="text-decoration: underline">Testimonials</h1>
-      <b-button v-on:click='hidden=!hidden'>Submit a Testimonial</b-button>
-      <TestimonialForm v-if="!hidden"></TestimonialForm>
       <div class="row" style="margin-top: 2rem">
-        <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
-
-        </div>
         <div hidden> {{ loadTestimonials }} </div>
-
-        <table>
-          <thead>
-          <tr>
-            <th>Service provided</th>
-            <th>Testimonial</th>
-            <th>Rating</th>
-            <th>Name</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr v-for="testimonial in testimonialsList" :key="testimonial.id">
-            <td>{{ testimonial.title }}</td>
-            <td> {{ testimonial.testimonial}}</td>
-            <td> {{testimonial.rating}}</td>
-            <td> {{testimonial.name}}</td>
-          </tr>
-          </tbody>
-        </table>
+<!--        <table>-->
+<!--          <thead>-->
+<!--          <tr>-->
+<!--            <th>Service provided</th>-->
+<!--            <th>Testimonial</th>-->
+<!--            <th>Rating</th>-->
+<!--            <th>Name</th>-->
+<!--          </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--          <tr v-for="testimonial in testimonialsList" :key="testimonial.id">-->
+<!--            <td>{{ testimonial.title }}</td>-->
+<!--            <td> {{ testimonial.testimonial}}</td>-->
+<!--            <td> {{testimonial.rating}}</td>-->
+<!--            <td> {{testimonial.name}}</td>-->
+<!--          </tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
 
         <div v-for="card in testimonialsList" :key="card.id">
           <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
             <div v-if="card.id % 3 === 0">
               <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
-                <testimonial-card :card-title="card.title"
+                <manager-testimonial-card :card-title="card.title"
                                   :card-testimonial="card.testimonial"
                                   :card-rating="card.rating"
-                                  :card-name="card.name"
+                                  :card-clientname="card.name"
                                   :card-id="card.id"
-                                  :card-toggle="card.toggle"/>
+                                  :toggle="card.toggle"/>
               </div>
             </div>
           </div>
           <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
             <div v-if="card.id % 3 === 1">
               <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
-                <testimonial-card :card-title="card.title"
+                <manager-testimonial-card :card-title="card.title"
                                   :card-testimonial="card.testimonial"
                                   :card-rating="card.rating"
-                                  :card-name="card.name"
+                                  :client-name="card.name"
                                   :card-id="card.id"
-                                  :card-toggle="card.toggle"/>
+                                  :toggle="card.toggle"/>
               </div>
             </div>
           </div>
           <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
             <div v-if="card.id % 3 === 2">
               <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
-                <testimonial-card :card-title="card.title"
+                <manager-testimonial-card :card-title="card.title"
                                   :card-testimonial="card.testimonial"
                                   :card-rating="card.rating"
-                                  :card-name="card.name"
+                                  :card-clientname="card.name"
                                   :card-id="card.id"
-                                  :card-toggle="card.toggle"/>
+                                  :toggle="card.toggle"/>
               </div>
             </div>
           </div>
         </div>
-
-      </div>
-      <div v-if="user">
-        <div v-if="user.email !== 'manager@cdlservices.com'">
-          <ContactUs/>
-        </div>
-      </div>
-      <div v-else>
-        <ContactUs/>
       </div>
     </div>
   </div>
@@ -89,20 +74,16 @@
 import cdl_header from "@/components/cdl_header";
 import {mapGetters} from "vuex";
 import UserCheck from "@/components/userCheck";
-import ContactUs from "@/components/contactUs";
-import TestimonialForm from "@/components/TestimonialForm";
 import axios from "axios";
-import testimonialCard from "@/components/testimonialCard";
+import managerTestimonialCard from "@/components/managerTestimonialCard";
 
 
 export default {
   name: "Testimonials",
   components: {
-    ContactUs,
     UserCheck,
     cdl_header,
-    TestimonialForm,
-    testimonialCard
+    managerTestimonialCard
   },
   methods: {
     redirect(id) {
@@ -120,7 +101,7 @@ export default {
 
     loadTestimonials(){
       // eslint-disable-next-line vue/no-async-in-computed-properties
-      return (axios.post('getAllTestimonials')).then(response => this.testimonialsList = response.data)
+      return (axios.post('getAllTestimonials')).then(response => this.testimonialsList = response.data).then(response => console.log(response))
     }
   }
 }

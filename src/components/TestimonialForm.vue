@@ -14,7 +14,7 @@
 
     <div class = "form-group">
       <label>Rating</label>
-      <input type="number" class="form-control" v-model="rating" placeholder="rating out of 5"/>
+      <input type="number" class="form-control" v-model="rating" placeholder="rating out of 5" min="0" max="5"/>
     </div>
 
     <div class = "form-group">
