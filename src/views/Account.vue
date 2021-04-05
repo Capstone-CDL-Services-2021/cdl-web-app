@@ -11,7 +11,7 @@
       <div style="justify-content: center;display: flex">
 
         <b-jumbotron style="text-align:center" text-variant="black" border-variant="dark" class="paraStyle">
-          <h3><b-avatar variant="primary"> JL </b-avatar> User Information:</h3>
+          <h3><b-avatar variant="primary"></b-avatar> User Information:</h3>
           <div class="mid">
             <p>Full Name: {{ user.first_name }} {{ user.last_name }}
 

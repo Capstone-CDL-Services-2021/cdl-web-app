@@ -102,7 +102,9 @@
 
             <b-modal id="modal-complete" size="lg">
               <template #modal-header="{}">
-                <h5>Order #:</h5>
+                <h5>
+                  Order #:
+                </h5>
               </template>
 
               <b-table
@@ -113,6 +115,8 @@
                   responsive="sm"
                   selectable>
               </b-table>
+
+
               <div class="textalign">
                 Write your review by
                 <b-button variant="primary" size="sm" v-on:click="redirect('/testimonials')">Clicking Here!</b-button>
@@ -196,7 +200,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['orders'])
+    ...mapGetters(['orders']),
+    ...mapGetters(['user'])
   }
 }
 </script>
