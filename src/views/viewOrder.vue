@@ -24,44 +24,27 @@
               eg: <br/>
 
               Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-test')">Details</b-button>
+              <b-button variant="info" size="sm" @click="$bvModal.show('modal-complete')">Details</b-button>
               <br/>
               Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-view')">Details</b-button>
+              <b-button variant="info" size="sm" @click="$bvModal.show('modal-complete')">Details</b-button>
               <br/>
               Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-view')">Details</b-button>
+              <b-button variant="info" size="sm" @click="$bvModal.show('modal-complete')">Details</b-button>
               <br/>
               Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-view')">Details</b-button>
+              <b-button variant="info" size="sm" @click="$bvModal.show('modal-complete')">Details</b-button>
               <br/>
               Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-view')">Details</b-button>
+              <b-button variant="info" size="sm" @click="$bvModal.show('modal-complete')">Details</b-button>
               <br/>
               Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-view')">Details</b-button>
+              <b-button variant="info" size="sm" @click="$bvModal.show('modal-complete')">Details</b-button>
               <br/>
               Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-view')">Details</b-button>
+              <b-button variant="info" size="sm" @click="$bvModal.show('modal-complete')">Details</b-button>
               <br/>
             </p>
-
-            <b-modal id="modal-view">
-              <template #modal-header="{}">
-                <h5>Order #:</h5>
-              </template>
-
-              Start Date: 01-01-0001 <br/>
-
-              Service Type: Taking out the Trash <br/>
-
-              Total Cost: $10.00 <br/>
-
-              Date of Completion: 01-14-0001 <br/>
-
-              Write your review by
-              <b-button variant="primary" size="sm" v-on:click="redirect('/testimonials')">Clicking Here!</b-button>
-            </b-modal>
 
             <br/>
 
@@ -92,32 +75,7 @@
               <br/>
             </p>
 
-            <b-modal id="modal-ongoing">
-              <template #modal-header="{}">
-                <h5>Order #:</h5>
-              </template>
-
-              Start Date: 01-01-0001 <br/>
-
-              Service Type: Taking out the Trash <br/>
-
-              Total Cost: TBA <br/>
-
-              Date of Completion: TBA <br/>
-
-
-            </b-modal>
-
-            <br/>
-
-            <p>
-              if customer does not have any prior orders eg: <br/>
-
-              You have not yet had a service done my CDL yet! Why not request a service by
-              <b-button variant="primary" size="sm" v-on:click="redirect('/services')">Clicking Here!</b-button>
-            </p>
-
-            <b-modal id="modal-test" size="lg">
+            <b-modal id="modal-ongoing" size="lg">
               <template #modal-header="{}">
                 <h5>Order #:</h5>
               </template>
@@ -130,6 +88,35 @@
                   responsive="sm"
                   selectable>
               </b-table>
+
+            </b-modal>
+
+            <br/>
+
+            <p>
+              if customer does not have any prior orders eg: <br/>
+
+              You have not yet had a service done my CDL yet! Why not request a service by
+              <b-button variant="primary" size="sm" v-on:click="redirect('/services')">Clicking Here!</b-button>
+            </p>
+
+            <b-modal id="modal-complete" size="lg">
+              <template #modal-header="{}">
+                <h5>Order #:</h5>
+              </template>
+
+              <b-table
+                  bordered hover small
+                  :items="orderInfo"
+                  :fields="fields"
+                  select-mode="single"
+                  responsive="sm"
+                  selectable>
+              </b-table>
+              <div class="textalign">
+                Write your review by
+                <b-button variant="primary" size="sm" v-on:click="redirect('/testimonials')">Clicking Here!</b-button>
+              </div>
             </b-modal>
 
           </div>
@@ -218,6 +205,11 @@ export default {
 .sizing {
   width: 50%;
   padding: 20px 0px 20px 0px;
+}
+
+.textalign {
+  text-align: center;
+  text-anchor: middle;
 }
 
 .test {
