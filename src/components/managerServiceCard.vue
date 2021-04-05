@@ -14,13 +14,13 @@
             <br/>
             <br/>
             <b-button v-b-modal.accept v-on:click="removeService(cardId);" variant="danger">Delete</b-button>
-            <b-button v-b-model.editted v-on:click="redirect('managerEditServiceCard');" varient="danger">Edit</b-button>
+            <b-button v-b-modal.edited v-on:click="redirect('managerEditServiceCard');" variant="primary">Edit</b-button>
           </b-card-body>
         </b-col>
       </b-row>
     </b-card>
 
-    <b-modal id="accept" size="sm" title="Service Response" hide-footer="true">
+    <b-modal id="accept" size="sm" title="Service Response" hide-footer>
       <p>Service has been Deleted</p>
     </b-modal>
   </div>
