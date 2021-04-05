@@ -8,7 +8,6 @@
         <b-button variant="outline-light" v-on:click="redirect('/managerService')">Services</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/managerHome')">Schedule</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/testimonials')">Testimonials</b-button>
-        <b-button variant="outline-light" v-on:click="redirect('/managerBookings')">Manager Bookings</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/managerHome/')">Reports</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/managerHome')">Edit About Us</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/managerUserAccounts')">Manager User Accounts</b-button>
