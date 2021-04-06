@@ -5,7 +5,9 @@
     <manager-navbar/>
 
     <b-jumbotron bg-variant="dark" border-variant="dark">
-      {{getAllUsers()}}
+      <div hidden>
+        {{getAllUsers}}
+      </div>
       <div>
         <b-jumbotron>
           <h1 style="text-align: center">Registered Users</h1>
@@ -26,6 +28,7 @@
               responsive="sm"
               selectable
               @row-selected="onRowSelected">
+
             <!-- Version 1: each row comes with button options -->
             <!--            <template #cell(view_order_history)>-->
             <!--              <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
@@ -69,6 +72,7 @@ export default {
     return {
       message: '',
       selectedRow: [],
+      id: null,
       fields: [
         {
           key: 'first_name',
@@ -102,11 +106,12 @@ export default {
       ]
     }
   },
-  computed: {},
-  methods: {
+  computed: {
     getAllUsers() {
+      // eslint-disable-next-line vue/no-async-in-computed-properties
       return axios.get('getAllUsers').then(response => this.userInfo = response.data)
-    },
+    }},
+  methods: {
     onRowSelected(items) {
       this.selectedRow = items
     },
@@ -143,7 +148,7 @@ export default {
     async resetPass() {
       try {
         const response = await axios.post('forgot', {
-          email: this.onRowSelected('email')
+          email: this.selectedRow[0].email,
         });
         this.message = 'The email was sent!';
         this.error = '';
@@ -182,7 +187,7 @@ export default {
       try {
         // Manipulate database
         const response = await axios.post('updateBlocked', {
-          //id: this.onRowSelected('id')
+          id: this.selectedRow[0].id, // This is hardcoded because why the hell not :)
         });
         console.log(response);
         this.message = 'User is now blocked'
