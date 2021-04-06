@@ -127,6 +127,15 @@ const routes = [
     component: () => import(/* webpackChunkName: "managerUserAccounts" */ '../views/manager/managerUserAccounts.vue')
   },
   {
+    path: '/managerEquipment',
+    name: 'ManagerEquipment',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "managerUserAccounts" */ '../views/manager/managerEquipment.vue')
+
+  },
+  {
     path: '/managerUserAccountHistory',
     name: 'ManagerUserAccountHistory',
     // route level code-splitting
@@ -141,7 +150,16 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "service" */ '../views/manager/managerEditServiceCard.vue')
-  }
+  },
+  {
+    path: '/managerProjects',
+    name: 'managerProjects',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "service" */ '../views/manager/managerProjects.vue')
+  },
+
 ]
 
 const router = new VueRouter({

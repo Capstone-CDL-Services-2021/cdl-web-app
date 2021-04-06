@@ -1,12 +1,12 @@
 <template>
   <div>
-    <b-card no-body class="overflow-hidden" style="max-width: 570px">
+    <b-card no-body class="overflow-hidden" style="max-width: 30rem; min-width: 30rem">
       <b-row no-gutters>
         <b-col>
           <b-card-img :src="cardImage" alt="Image" class="rounded-0"></b-card-img>
         </b-col>
         <b-col>
-          <b-card-body :title="cardTitleA">
+          <b-card-body>
             <b-card-text>
               {{ cardDesc }}
               <br/>
@@ -14,13 +14,13 @@
             <br/>
             <br/>
             <b-button v-b-modal.accept v-on:click="removeService(cardId);" variant="danger">Delete</b-button>
-            <b-button v-b-model.editted v-on:click="redirect('managerEditServiceCard');" varient="danger">Edit</b-button>
+            <b-button v-b-modal.edited v-on:click="redirect('managerEditServiceCard');" variant="primary">Edit</b-button>
           </b-card-body>
         </b-col>
       </b-row>
     </b-card>
 
-    <b-modal id="accept" size="sm" title="Service Response" hide-footer="true">
+    <b-modal id="accept" size="sm" title="Service Response" hide-footer>
       <p>Service has been Deleted</p>
     </b-modal>
   </div>
@@ -45,7 +45,6 @@ export default {
     }
   },
   computed: {
-
     cardImage() {
       return this.cardImg;
     },
