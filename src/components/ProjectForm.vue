@@ -14,7 +14,7 @@
 
     <div class = "form-group">
       <label>Customer email</label>
-      <input type="text" class="form-control" v-model="Customer_Email" placeholder="customer email"/>
+      <input type="email" class="form-control" v-model="Customer_Email" placeholder="customer email"/>
     </div>
 
     <div class = "form-group">
@@ -29,7 +29,7 @@
 
     <div class = "form-group">
       <label>Completed</label>
-      <input type="int" class="form-control" v-model="Completed" placeholder="Is project complete? (1=yes, 0=no)"/>
+      <input type="checkbox" class="form-control" v-model="Completed" placeholder="Is project complete?"/>
     </div>
 
     <button class="btn-primary btn-block">confirm</button>
@@ -66,7 +66,7 @@ export default {
 
         });
         console.log(response);
-        alert(response.data.message);
+        alert("Project successfully added");
         setTimeout(location.reload.bind(location), 0);
       }catch(e){
         this.error ='Error occurred';

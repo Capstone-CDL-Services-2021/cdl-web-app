@@ -10,7 +10,7 @@
 
           <b-button v-on:click='hidden=!hidden'>add a project</b-button>
           <ProjectForm v-if="!hidden"></ProjectForm>
-          <div hidden> {{ loadAllProjects }} </div>
+          <div hidden> {{ loadAllProjects }}</div>
           <br><br>
           <table class="minimalistBlack">
             <thead>
@@ -21,6 +21,8 @@
               <th>Customer Address</th>
               <th>Date Requested</th>
               <th>Completed</th>
+              <th>Mark complete</th>
+              <th>Delete project</th>
             </tr>
             </thead>
             <tbody>
@@ -30,7 +32,14 @@
               <td> {{ project.Customer_Email }}</td>
               <td> {{ project.Customer_Address }}</td>
               <td> {{ project.Date_Requested }}</td>
-              <td> {{ project.Completed }}</td>
+              <td><div v-if="project.Completed == 0"> no</div>
+                  <div v-if="project.Completed == 1"> yes</div></td>
+              <td>
+                <div v-if="project.Completed == 0">
+                <b-button v-on:click="alterComplete(project.id)">mark complete</b-button>
+                </div>
+              </td>
+              <td><b-button v-on:click="deleteProject(project.id)">delete</b-button></td>
             </tr>
             </tbody>
           </table>
@@ -50,6 +59,7 @@ import axios from "axios";
 import {mapGetters} from "vuex";
 import ProjectForm from "@/components/ProjectForm";
 
+
 export default {
   name: "managerProjects",
   components: {
@@ -58,24 +68,51 @@ export default {
     ProjectForm
   },
   methods: {
-    redirect(id) {
-      this.$router.push(id)
+    async alterComplete(id) {
+      try {
+        const response = await axios.post('alterComplete', {
+              id: id
+            }
+        );
+        console.log(response);
+        alert(response.data.message)
+        ;
+        setTimeout(location.reload.bind(location), 0);
+      } catch
+          (e) {
+        this.error = 'Error occurred';
+      }
+    },
+    async deleteProject(id) {
+      try {
+        const response = await axios.post('deleteProject', {
+              id: id
+            }
+        );
+        console.log(response);
+        alert("Project deleted");
+        setTimeout(location.reload.bind(location), 0);
+      } catch
+          (e) {
+        this.error = 'Error occurred';
+      }
     }
-  },
-  data() {
-    return {
-      ProjectList: [],
-      hidden: true
-    }
-  },
-  computed: {
-    ...mapGetters(['user']),
-    loadAllProjects() {
-      // eslint-disable-next-line vue/no-async-in-computed-properties
-      return (axios.post('getAllProjects')).then(response => this.ProjectList = response.data)
+    },
+    data() {
+      return {
+        ProjectList: [],
+        hidden: true
+      }
+    },
+    computed: {
+      ...
+          mapGetters(['user']),
+      loadAllProjects() {
+        // eslint-disable-next-line vue/no-async-in-computed-properties
+        return (axios.post('getAllProjects')).then(response => this.ProjectList = response.data)
+      }
     }
   }
-}
 
 </script>
 
@@ -86,13 +123,16 @@ table.minimalistBlack {
   text-align: center;
   border-collapse: collapse;
 }
+
 table.minimalistBlack td, table.minimalistBlack th {
   border: 1px solid #000000;
   padding: 4px 10px;
 }
+
 table.minimalistBlack tbody td {
   font-size: 13px;
 }
+
 table.minimalistBlack thead {
   background: #CFCFCF;
   background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
@@ -100,18 +140,21 @@ table.minimalistBlack thead {
   background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
   border-bottom: 3px solid #000000;
 }
+
 table.minimalistBlack thead th {
   font-size: 15px;
   font-weight: bold;
   color: #000000;
   text-align: left;
 }
+
 table.minimalistBlack tfoot {
   font-size: 14px;
   font-weight: bold;
   color: #000000;
   border-top: 3px solid #000000;
 }
+
 table.minimalistBlack tfoot td {
   font-size: 14px;
 }
