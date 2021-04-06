@@ -10,9 +10,9 @@
         <b-jumbotron>
           <h1 style="text-align: center">Registered Users</h1>
           <!-- Version 2 with universal options at the top -->
-<!--                    <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
-                    <b-button size="sm" variant="danger" @click="resetPassword">Reset</b-button>
-                    <b-button size="sm" variant="secondary" @click="blockUser">Block</b-button>
+          <!--                    <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
+          <b-button size="sm" variant="danger" @click="resetPassword">Reset</b-button>
+          <b-button size="sm" variant="secondary" @click="blockUser">Block</b-button>
           <br>
           <p>
             Selected Row:<br>
@@ -27,15 +27,15 @@
               selectable
               @row-selected="onRowSelected">
             <!-- Version 1: each row comes with button options -->
-<!--            <template #cell(view_order_history)>-->
-<!--              <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
-<!--            </template>-->
-<!--            <template #cell(reset_password)>-->
-<!--              <b-button size="sm" variant="warning" v-on:click="resetPassword">Reset</b-button>-->
-<!--            </template>-->
-<!--            <template #cell(block_user)>-->
-<!--              <b-button size="sm" variant="danger" v-on:click="blockUser">Block</b-button>-->
-<!--            </template>-->
+            <!--            <template #cell(view_order_history)>-->
+            <!--              <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
+            <!--            </template>-->
+            <!--            <template #cell(reset_password)>-->
+            <!--              <b-button size="sm" variant="warning" v-on:click="resetPassword">Reset</b-button>-->
+            <!--            </template>-->
+            <!--            <template #cell(block_user)>-->
+            <!--              <b-button size="sm" variant="danger" v-on:click="blockUser">Block</b-button>-->
+            <!--            </template>-->
             <template #cell(selected)="{ rowSelected }">
               <template v-if="rowSelected">
                 <span aria-hidden="true">&check;</span>
@@ -129,7 +129,12 @@ export default {
           // .then(value => {
           //   this.reset = value
           // })
-      .resetPass()
+          .then(value => {
+            if (value === true) {
+              this.resetPass();
+            }
+          })
+          //.resetPass()
 
       // .catch(err => {
       //   // An error occurred
@@ -164,7 +169,11 @@ export default {
           // .then(value => {
           //   this.block = value
           // })
-          .updateBlocked()
+          .then(value => {
+            if (value === true) {
+              this.updateBlocked();
+            }
+          })
       // .catch(err => {
       //   // An error occurred
       // })
@@ -173,14 +182,13 @@ export default {
       try {
         // Manipulate database
         const response = await axios.post('updateBlocked', {
-          id: this.onRowSelected('id')
+          //id: this.onRowSelected('id')
         });
         console.log(response);
-        setTimeout(location.reload.bind(location), 1000);
+        this.message = 'User is now blocked'
       } catch (e) {
         this.error = 'Error occurred';
       }
-      this.message = 'User is now blocked'
     }
   }
 }
