@@ -75,22 +75,6 @@
               <br/>
             </p>
 
-            <b-modal id="modal-ongoing" size="lg">
-              <template #modal-header="{}">
-                <h5>Order #:</h5>
-              </template>
-
-              <b-table
-                  bordered hover small
-                  :items="orderInfo"
-                  :fields="fields"
-                  select-mode="single"
-                  responsive="sm"
-                  selectable>
-              </b-table>
-
-            </b-modal>
-
             <br/>
 
             <p>
@@ -100,6 +84,7 @@
               <b-button variant="primary" size="sm" v-on:click="redirect('/services')">Clicking Here!</b-button>
             </p>
 
+            <!--Modal declares-->
             <b-modal id="modal-complete" size="lg">
               <template #modal-header="{}">
                 <h5>
@@ -116,12 +101,31 @@
                   selectable>
               </b-table>
 
-
               <div class="textalign">
                 Write your review by
                 <b-button variant="primary" size="sm" v-on:click="redirect('/testimonials')">Clicking Here!</b-button>
               </div>
             </b-modal>
+            <b-modal id="modal-ongoing" size="lg">
+              <template #modal-header="{}">
+                <h5>Order #:</h5>
+              </template>
+
+              <b-table
+                  bordered hover small
+                  :items="orderInfo"
+                  :fields="fields"
+                  select-mode="single"
+                  responsive="sm"
+                  selectable>
+              </b-table>
+            </b-modal>
+
+            <div>
+              testing shit rn
+            </div>
+
+
 
           </div>
         </b-jumbotron>
