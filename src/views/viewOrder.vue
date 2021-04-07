@@ -1,5 +1,4 @@
 <template>
-
   <div>
     <cdl_header/>
     <div v-if="user">
@@ -14,214 +13,135 @@
     <navbar/>
 
     <b-jumbotron bg-variant="dark" border-variant="dark">
-      {{ getOrder() }}
-      <div style="justify-content: center;display: flex">
-        <b-jumbotron style="text-align:center" text-variant="black" border-variant="dark" class="sizing">
-          <h2 style="text-decoration: underline">Order History</h2>
-          <div class="column">
-            <p>
-              things to be auto filled by the database for their orders if they have any previous completed orders
-              eg: <br/>
-
-              Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-complete')">Details</b-button>
-              <br/>
-              Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-complete')">Details</b-button>
-              <br/>
-              Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-complete')">Details</b-button>
-              <br/>
-              Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-complete')">Details</b-button>
-              <br/>
-              Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-complete')">Details</b-button>
-              <br/>
-              Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-complete')">Details</b-button>
-              <br/>
-              Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-complete')">Details</b-button>
-              <br/>
-            </p>
-
-            <br/>
-
-            <p>
-              things to be auto filled by the database if client has ongoing orders
-              eg: <br/>
-
-              Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-ongoing')">Details</b-button>
-              <br/>
-              Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-ongoing')">Details</b-button>
-              <br/>
-              Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-ongoing')">Details</b-button>
-              <br/>
-              Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-ongoing')">Details</b-button>
-              <br/>
-              Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-ongoing')">Details</b-button>
-              <br/>
-              Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-ongoing')">Details</b-button>
-              <br/>
-              Order #:
-              <b-button variant="info" size="sm" @click="$bvModal.show('modal-ongoing')">Details</b-button>
-              <br/>
-            </p>
-
-            <br/>
-
-            <p>
-              if customer does not have any prior orders eg: <br/>
-
-              You have not yet had a service done my CDL yet! Why not request a service by
-              <b-button variant="primary" size="sm" v-on:click="redirect('/services')">Clicking Here!</b-button>
-            </p>
-
-            <!--Modal declares-->
-            <b-modal id="modal-complete" size="lg">
-              <template #modal-header="{}">
-                <h5>
-                  Order #:
-                </h5>
-              </template>
-
-              <b-table
-                  bordered hover small
-                  :items="orderInfo"
-                  :fields="fields"
-                  select-mode="single"
-                  responsive="sm"
-                  selectable>
-              </b-table>
-
-              <div class="textalign">
-                Write your review by
-                <b-button variant="primary" size="sm" v-on:click="redirect('/testimonials')">Clicking Here!</b-button>
-              </div>
-            </b-modal>
-            <b-modal id="modal-ongoing" size="lg">
-              <template #modal-header="{}">
-                <h5>Order #:</h5>
-              </template>
-
-              <b-table
-                  bordered hover small
-                  :items="orderInfo"
-                  :fields="fields"
-                  select-mode="single"
-                  responsive="sm"
-                  selectable>
-              </b-table>
-            </b-modal>
-
-            <div>
-              testing shit rn
-            </div>
-
-
-
+      <div>
+        <b-jumbotron>
+          <h1 style="text-align: center">Order History</h1>
+<!--          <div hidden> {{ loadAllProjects }} </div>-->
+          <br><br>
+          <div>
+            {{ user.email }}
+            testing 123
           </div>
+
+          <div>
+            {{ printProjects }}
+          </div>
+          <table class="minimalistBlack">
+            <thead>
+            <tr>
+              <th>Order #</th>
+              <th>Service</th>
+              <th>Customer Email</th>
+              <th>Customer Address</th>
+              <th>Start Date</th>
+              <th>Date Completed</th>
+              <th>Completed</th>
+              <th>Total Cost</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="project in ProjectList" :key="project.id">
+              <td> {{ project.id }}</td>
+              <td> {{ project.Type_Of_Service }}</td>
+              <td> {{ project.Customer_Email }}</td>
+              <td> {{ project.Customer_Address }}</td>
+              <td> {{ project.Date_Requested }}</td>
+              <td> {{ project.date_completed}}</td>
+              <td>
+                <div v-if="project.Completed == 0"> no</div>
+                <div v-if="project.Completed == 1"> yes</div>
+              </td>
+              <td> {{ project.total_cost }}</td>
+            </tr>
+            </tbody>
+          </table>
         </b-jumbotron>
       </div>
-      <div class="test">
-        <contact-us/>
-      </div>
     </b-jumbotron>
+
+
   </div>
-
-
 </template>
 
 <script>
-import navbar from "@/components/navbar"
-import cdl_header from "@/components/cdl_header"
-import {mapGetters} from 'vuex'
-import ContactUs from "@/components/contactUs";
+
+import cdl_header from "@/components/cdl_header";
+import navbar from "@/components/navbar";
 import axios from "axios";
+import {mapGetters} from "vuex";
+
 
 
 export default {
-  name: "viewOrder",
+  name: "managerProjects",
   components: {
-    ContactUs,
     cdl_header,
     navbar
   },
+  methods: {
+  },
   data() {
     return {
-      fields: [
-        {
-          key: 'order_num',
-          sortable: true
-        },
-        {
-          key: 'client_name',
-          sortable: true
-        },
-        {
-          key: 'service_type',
-          sortable: true
-        },
-        {
-          key: 'start_date',
-          sortable: true
-        },
-        {
-          key: 'end_date',
-          sortable: true
-        },
-        {
-          key: 'completion',
-          sortable: true
-        },
-      ],
-      orderInfo: [
-        {
-          order_num: '',
-          client_name: '',
-          service_type: '',
-          start_date: '',
-          end_date: '',
-          total_cost: '',
-          completion: ''
-        }
-      ]
-    }
-  },
-  methods: {
-    redirect(id) {
-      this.$router.push(id)
-    },
-    getOrder() {
-      return axios.get('getOrder').then(response => this.orderInfo = response.data)
+      ProjectList: [],
+      hidden: true
     }
   },
   computed: {
-    ...mapGetters(['orders']),
-    ...mapGetters(['user'])
+    ...
+        mapGetters(['user']),
+    loadAllProjects() {
+      // eslint-disable-next-line vue/no-async-in-computed-properties
+      return (axios.post('getAllProjects')).then(response => this.ProjectList = response.data)
+    },
+    printProjects() {
+      // eslint-disable-next-line vue/no-async-in-computed-properties
+      return (axios.post('printProjects')).then(response => this.ProjectList = response.data)
+    }
   }
 }
+
 </script>
 
 <style scoped>
-.sizing {
-  width: 50%;
-  padding: 20px 0px 20px 0px;
-}
-
-.textalign {
+table.minimalistBlack {
+  border: 0px solid #000000;
+  width: 100%;
   text-align: center;
-  text-anchor: middle;
+  border-collapse: collapse;
 }
 
-.test {
-  color: white;
+table.minimalistBlack td, table.minimalistBlack th {
+  border: 1px solid #000000;
+  padding: 4px 10px;
+}
+
+table.minimalistBlack tbody td {
+  font-size: 13px;
+}
+
+table.minimalistBlack thead {
+  background: #CFCFCF;
+  background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+  background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+  background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+  border-bottom: 3px solid #000000;
+}
+
+table.minimalistBlack thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #000000;
+  text-align: left;
+}
+
+table.minimalistBlack tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+  border-top: 3px solid #000000;
+}
+
+table.minimalistBlack tfoot td {
+  font-size: 14px;
 }
 </style>
