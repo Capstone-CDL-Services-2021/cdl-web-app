@@ -117,7 +117,6 @@ export default {
   },
   computed: {
     ...mapGetters(['user']),
-
     loadTestimonials(){
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return (axios.post('getAllTestimonials')).then(response => this.testimonialsList = response.data)
