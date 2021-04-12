@@ -49,7 +49,7 @@
         <b-col></b-col>
       </b-row>
       <br/>
-      <ContactUs/>
+      <contact-us/>
     </b-jumbotron>
   </div>
 

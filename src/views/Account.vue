@@ -12,7 +12,10 @@
         <b-jumbotron style="text-align: left" title="User Information" text-variant="black" border-variant="dark" class="paraStyle">
           <h3>User Information:</h3>
           <div class="mid">
-            <p>Full Name: {{ user.first_name }} {{ user.last_name }}</p>
+            <p>Full Name: {{ user.first_name }} {{ user.last_name }}
+
+              {{ user.first}}
+            </p>
             <p>Email: {{ user.email }}</p>
             <p>ID: {{user.id}}</p>
 
@@ -156,23 +159,24 @@
           <br><br>
 
           <!-- View Order History  -->
-          <b-button variant="primary" @click="$bvModal.show('modal-order')">View Orders</b-button>
-          <b-modal id="modal-order">
-            <template #modal-header="{}">
-              <h5>Customer Details</h5>
-            </template>
-            <p>
-              Order 1: <br/>
-              Order 2: <br/>
-              Order 3: <br/>
-              Order 4: <br/>
-              Order 5: <br/>
-            </p>
-            <template #modal-footer="{ ok, cancel }">
-              <b-button size="sm" variant="success" @click="ok()">Ok</b-button>
-              <b-button size="sm" variant="danger" @click="cancel()">Close</b-button>
-            </template>
-          </b-modal>
+          <b-button variant="primary" v-on:click="redirect('/viewOrder')">orders</b-button>
+<!--          <b-button variant="primary" @click="$bvModal.show('modal-order')">View Orders</b-button>-->
+<!--          <b-modal id="modal-order">-->
+<!--            <template #modal-header="{}">-->
+<!--              <h5>Customer Details</h5>-->
+<!--            </template>-->
+<!--            <p>-->
+<!--              Order 1: <br/>-->
+<!--              Order 2: <br/>-->
+<!--              Order 3: <br/>-->
+<!--              Order 4: <br/>-->
+<!--              Order 5: <br/>-->
+<!--            </p>-->
+<!--            <template #modal-footer="{ ok, cancel }">-->
+<!--              <b-button size="sm" variant="success" @click="ok()">Ok</b-button>-->
+<!--              <b-button size="sm" variant="danger" @click="cancel()">Close</b-button>-->
+<!--            </template>-->
+<!--          </b-modal>-->
           <p></p>
         </b-jumbotron>
       </div>
@@ -193,6 +197,7 @@ import axios from "axios";
 export default {
   name: "Account",
   components: {
+    ContactUs,
     cdl_header,
     navbar
   },
@@ -276,6 +281,9 @@ export default {
       this.newPasswordState = valid
       this.confirmPasswordState = valid
       return valid;
+    },
+    redirect(id) {
+      this.$router.push(id)
     },
     resetModal() {
       this.new_password = ''
@@ -369,5 +377,9 @@ export default {
 
 .mid {
   text-align: center;
+}
+
+.text {
+  color: white;
 }
 </style>

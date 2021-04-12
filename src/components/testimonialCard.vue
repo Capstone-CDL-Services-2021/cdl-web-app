@@ -10,7 +10,7 @@
               <br/>
               Rating: {{cardRating}}
             </b-card-text>
-            <h5>Client Name: {{clientName}}</h5>
+            <h5>Client Name: {{clientName}} </h5>
           </b-card-body>
         </b-col>
       </b-row>
