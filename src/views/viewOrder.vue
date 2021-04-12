@@ -16,7 +16,7 @@
       <div>
         <b-jumbotron>
           <h1 style="text-align: center">Order History</h1>
-<!--          <div hidden> {{ loadAllProjects }} </div>-->
+          <div hidden> {{ loadAllProjects }} </div>
           <br><br>
           <div>
             {{ user.email }}
@@ -25,7 +25,9 @@
 
           <div>
             {{ printProjects }}
+            print?
           </div>
+
           <table class="minimalistBlack">
             <thead>
             <tr>
@@ -41,7 +43,7 @@
             </thead>
             <tbody>
             <tr v-for="project in ProjectList" :key="project.id">
-              <td> {{ project.id }}</td>
+              <td> {{ project.id }} </td>
               <td> {{ project.Type_Of_Service }}</td>
               <td> {{ project.Customer_Email }}</td>
               <td> {{ project.Customer_Address }}</td>
