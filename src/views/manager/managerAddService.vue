@@ -55,7 +55,7 @@
       </div>
     </b-jumbotron>
 
-    <b-modal id="accept" size="sm" title="Service" ok-only @ok="redirect('managerService')">
+    <b-modal id="accept" size="sm" title="Service" ok-only @ok="redirect('/managerService')">
       <p>Service has been Added</p>
     </b-modal>
   </div>

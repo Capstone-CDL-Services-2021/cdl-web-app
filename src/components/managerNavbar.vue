@@ -7,7 +7,7 @@
         <b-button variant="outline-light" v-on:click="redirect('/managerProjects')">Projects</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/managerService')">Services</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/managerHome')">Schedule</b-button>
-        <b-button variant="outline-light" v-on:click="redirect('/testimonials')">Testimonials</b-button>
+        <b-button variant="outline-light" v-on:click="redirect('/managerTestimonials')">Testimonials</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/managerHome/')">Reports</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/managerUserAccounts')">Manage User Accounts</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/managerEquipment')">Equipment</b-button>
