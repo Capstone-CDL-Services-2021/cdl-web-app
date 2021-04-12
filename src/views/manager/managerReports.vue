@@ -1,58 +1,46 @@
 <template>
   <div>
-    <cdl_header/>
-    <div v-if="user">
-      <div v-if="user.email == 'manager@cdlservices.com'">{{ redirect('/managerHome') }}</div>
-    </div>
-    <h3 v-if="user">
-      Hello, {{ user.first_name }} {{ user.last_name }}
-    </h3>
-    <div v-if="error" class="alert alert-danger" role="alert">
-      {{ error }}
-    </div>
-    <navbar/>
+    <manager-header/>
+    <manager-navbar/>
 
     <b-jumbotron bg-variant="dark" border-variant="dark">
       <div>
         <b-jumbotron>
-          <h1 style="text-align: center">Order History</h1>
+          <h1 style="text-align: center">Reports</h1>
           <div hidden> {{ loadAllProjects }} </div>
           <br><br>
-          <div>
-            {{ user.email }}
-            testing 123
-          </div>
-
-          <div>
-            print?
-          </div>
 
           <table class="minimalistBlack">
             <thead>
             <tr>
               <th>Order #</th>
-              <th>Service</th>
+              <th>Service Offered</th>
+              <th>Customer Name</th>
               <th>Customer Email</th>
               <th>Customer Address</th>
               <th>Start Date</th>
               <th>Date Completed</th>
               <th>Completed</th>
-              <th>Total Cost</th>
+              <th>Payment Status</th>
             </tr>
             </thead>
             <tbody>
             <tr v-for="project in ProjectList" :key="project.id">
               <td> {{ project.id }} </td>
               <td> {{ project.Type_Of_Service }}</td>
+              <td> {{ project.Customer_Name }}</td>
               <td> {{ project.Customer_Email }}</td>
               <td> {{ project.Customer_Address }}</td>
               <td> {{ project.Date_Requested }}</td>
               <td> {{ project.date_completed}}</td>
               <td>
-                <div v-if="project.Completed == 0"> no</div>
-                <div v-if="project.Completed == 1"> yes</div>
+                <div v-if="project.Completed == 0"> No</div>
+                <div v-if="project.Completed == 1"> Yes</div>
               </td>
-              <td> {{ project.total_cost }}</td>
+              <td>
+                <div v-if="project.invoice_paid == 0"> Pending Payment</div>
+                <div v-if="project.invoice_paid == 1"> Payment Received</div>
+              </td>
             </tr>
             </tbody>
           </table>
@@ -65,19 +53,16 @@
 </template>
 
 <script>
-
-import cdl_header from "@/components/cdl_header";
-import navbar from "@/components/navbar";
+import managerNavbar from "@/components/managerNavbar";
+import managerHeader from "@/components/managerHeader";
 import axios from "axios";
-import {mapGetters} from "vuex";
-
 
 
 export default {
   name: "managerProjects",
   components: {
-    cdl_header,
-    navbar
+    managerHeader,
+    managerNavbar
   },
   methods: {
   },
@@ -88,8 +73,6 @@ export default {
     }
   },
   computed: {
-    ...
-        mapGetters(['user']),
     loadAllProjects() {
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return (axios.post('getAllProjects')).then(response => this.ProjectList = response.data)
