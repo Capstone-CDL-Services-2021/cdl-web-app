@@ -9,10 +9,13 @@
 
       <div style="justify-content: center;display: flex">
 
-        <b-jumbotron style="text-align: left" title="User Information" text-variant="black" border-variant="dark" class="paraStyle">
-          <h3>User Information:</h3>
+        <b-jumbotron style="text-align:center" text-variant="black" border-variant="dark" class="paraStyle">
+          <h3><b-avatar variant="primary"></b-avatar> User Information:</h3>
           <div class="mid">
-            <p>Full Name: {{ user.first_name }} {{ user.last_name }}</p>
+            <p>Full Name: {{ user.first_name }} {{ user.last_name }}
+
+              {{ user.first}}
+            </p>
             <p>Email: {{ user.email }}</p>
             <p>ID: {{user.id}}</p>
 
@@ -156,29 +159,83 @@
           <br><br>
 
           <!-- View Order History  -->
-          <b-button variant="primary" @click="$bvModal.show('modal-order')">View Orders</b-button>
-          <b-modal id="modal-order">
+          <b-button variant="primary" v-on:click="redirect('/viewOrder')">orders</b-button>
+<!--          <b-button variant="primary" @click="$bvModal.show('modal-order')">View Orders</b-button>-->
+<!--          <b-modal id="modal-order">-->
+<!--            <template #modal-header="{}">-->
+<!--              <h5>Customer Details</h5>-->
+<!--            </template>-->
+<!--            <p>-->
+<!--              Order 1: <br/>-->
+<!--              Order 2: <br/>-->
+<!--              Order 3: <br/>-->
+<!--              Order 4: <br/>-->
+<!--              Order 5: <br/>-->
+<!--            </p>-->
+<!--            <template #modal-footer="{ ok, cancel }">-->
+<!--              <b-button size="sm" variant="success" @click="ok()">Ok</b-button>-->
+<!--              <b-button size="sm" variant="danger" @click="cancel()">Close</b-button>-->
+<!--            </template>-->
+<!--          </b-modal>-->
+          <p></p>
+
+          <!-- Change Account Info  -->
+          <b-button variant="primary" @click="$bvModal.show('modal-update')">Update Account Info</b-button>
+          <b-modal id="modal-update">
             <template #modal-header="{}">
-              <h5>Customer Details</h5>
+              <h5>Account Information</h5>
             </template>
-            <p>
-              Order 1: <br/>
-              Order 2: <br/>
-              Order 3: <br/>
-              Order 4: <br/>
-              Order 5: <br/>
-            </p>
+
+            <p>Full Name: {{ user.first_name }} {{ user.last_name }}</p>
+            <p>Email: {{ user.email }}</p>
+
+            <b-button size="sm" variant="primary" v-b-modal.update>Update</b-button>
+
+            <!-- added button for changes -->
+            <b-modal id="update" size="md" title="Update User Information">
+              <b-form ref="form">
+                <b-form-group
+                    label="Change Name:"
+                    label-for="name_change"
+                    label-cols-sm="4"
+                >
+                  <b-form-input
+                      id="new_full_name"
+                      v-model="new_name"
+                  ></b-form-input>
+
+                </b-form-group>
+
+                <b-form-group
+                    label="Change Email:"
+                    label-for="email_new"
+                    label-cols-sm="4"
+                >
+                  <b-form-input
+                      id="email_change"
+                      v-model="email_new"
+                  ></b-form-input>
+
+                </b-form-group>
+                <p>{{ updateMessage }}</p>
+              </b-form>
+            </b-modal>
+
             <template #modal-footer="{ ok, cancel }">
               <b-button size="sm" variant="success" @click="ok()">Ok</b-button>
               <b-button size="sm" variant="danger" @click="cancel()">Close</b-button>
             </template>
           </b-modal>
-          <p></p>
+
         </b-jumbotron>
       </div>
         <div style="justify-content: center;display: flex">
             <h3 style="color: white">{{message}}</h3>
         </div>
+
+      <div class="text">
+        <contact-us/>
+      </div>
     </b-jumbotron>
   </div>
 </template>
@@ -189,10 +246,12 @@ import navbar from "@/components/navbar";
 import Home from "@/views/Home";
 import {mapGetters} from 'vuex';
 import axios from "axios";
+import ContactUs from "@/components/contactUs";
 
 export default {
   name: "Account",
   components: {
+    ContactUs,
     cdl_header,
     navbar
   },
@@ -276,6 +335,9 @@ export default {
       this.newPasswordState = valid
       this.confirmPasswordState = valid
       return valid;
+    },
+    redirect(id) {
+      this.$router.push(id)
     },
     resetModal() {
       this.new_password = ''
@@ -369,5 +431,9 @@ export default {
 
 .mid {
   text-align: center;
+}
+
+.text {
+  color: white;
 }
 </style>
