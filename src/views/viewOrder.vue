@@ -16,15 +16,11 @@
       <div>
         <b-jumbotron>
           <h1 style="text-align: center">Order History</h1>
-          <div hidden> {{ loadAllProjects }} </div>
+<!--          <div hidden> {{ loadAllProjects }} </div>-->
+          <div hidden> {{ printProjects }}</div>
           <br><br>
           <div>
-            {{ user.email }}
-            testing 123
-          </div>
-
-          <div>
-            print?
+            user email : {{ user.email }}
           </div>
 
           <table class="minimalistBlack">
