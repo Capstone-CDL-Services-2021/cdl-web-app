@@ -44,8 +44,8 @@
               </td>
               <td>
                 <div v-if="project.Completed == 1 && project.invoice_paid == 0">
-                  <b-button variant="primary" v-b-modal.modal-test> Send Invoice</b-button>
 
+                  <b-button variant="primary" v-b-modal.modal-test> Send Invoice</b-button>
                   <b-modal
                       id="modal-test"
                       ref="modal"
