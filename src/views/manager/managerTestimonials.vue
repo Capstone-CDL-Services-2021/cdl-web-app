@@ -82,7 +82,7 @@ export default {
 
     loadTestimonials(){
       // eslint-disable-next-line vue/no-async-in-computed-properties
-      return (axios.post('getAllTestimonials')).then(response => this.testimonialsList = response.data).then(response => console.log(response))
+      return (axios.post('getAllTestimonials')).then(response => this.testimonialsList = response.data)
     }
   }
 }

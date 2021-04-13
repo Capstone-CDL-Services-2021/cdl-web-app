@@ -161,63 +161,6 @@
           <!-- View Order History  -->
           <b-button variant="primary" v-on:click="redirect('/viewOrder')">orders</b-button>
           <p></p>
-
-          <!-- Change Account Info  -->
-          <b-button variant="primary" @click="$bvModal.show('modal-update')">Update Account Info</b-button>
-          <b-modal id="modal-update">
-            <template #modal-header="{}">
-              <h5>Account Information</h5>
-            </template>
-
-            <p>Full Name: {{ user.first_name }} {{ user.last_name }}</p>
-            <p>Email: {{ user.email }}</p>
-
-            <b-button size="sm" variant="primary" v-b-modal.update>Update</b-button>
-
-            <!-- added button for changes -->
-            <b-modal id="update" size="md" title="Update User Information">
-              <b-form ref="form">
-                <b-form-group
-                    label="Change Name:"
-                    label-for="name_change"
-                    label-cols-sm="4"
-                >
-                  <b-form-input
-                      id="new_full_name"
-                      v-model="new_name"
-                  ></b-form-input>
-
-                </b-form-group>
-
-                <b-form-group
-                    label="Change Email:"
-                    label-for="email_new"
-                    label-cols-sm="4"
-                >
-                  <b-form-input
-                      id="email_change"
-                      v-model="email_new"
-                  ></b-form-input>
-
-                </b-form-group>
-                <p>{{ updateMessage }}</p>
-              </b-form>
-            </b-modal>
-
-            <template #modal-footer="{ ok, cancel }">
-              <b-button size="sm" variant="success" @click="ok()">Ok</b-button>
-              <b-button size="sm" variant="danger" @click="cancel()">Close</b-button>
-            </template>
-          </b-modal>
-
-        </b-jumbotron>
-      </div>
-        <div style="justify-content: center;display: flex">
-            <h3 style="color: white">{{message}}</h3>
-        </div>
-
-      <div class="text">
-        <contact-us/>
         </b-jumbotron>
       </div>
       <div style="justify-content: center;display: flex">
@@ -232,7 +175,6 @@ import cdl_header from "@/components/cdl_header";
 import Home from "@/views/Home";
 import {mapGetters} from 'vuex';
 import axios from "axios";
-import ContactUs from "@/components/contactUs";
 import navbar from "@/components/navbar";
 
 
