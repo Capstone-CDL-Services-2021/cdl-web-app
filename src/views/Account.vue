@@ -160,23 +160,6 @@
 
           <!-- View Order History  -->
           <b-button variant="primary" v-on:click="redirect('/viewOrder')">orders</b-button>
-<!--          <b-button variant="primary" @click="$bvModal.show('modal-order')">View Orders</b-button>-->
-<!--          <b-modal id="modal-order">-->
-<!--            <template #modal-header="{}">-->
-<!--              <h5>Customer Details</h5>-->
-<!--            </template>-->
-<!--            <p>-->
-<!--              Order 1: <br/>-->
-<!--              Order 2: <br/>-->
-<!--              Order 3: <br/>-->
-<!--              Order 4: <br/>-->
-<!--              Order 5: <br/>-->
-<!--            </p>-->
-<!--            <template #modal-footer="{ ok, cancel }">-->
-<!--              <b-button size="sm" variant="success" @click="ok()">Ok</b-button>-->
-<!--              <b-button size="sm" variant="danger" @click="cancel()">Close</b-button>-->
-<!--            </template>-->
-<!--          </b-modal>-->
           <p></p>
         </b-jumbotron>
       </div>
@@ -197,7 +180,6 @@ import axios from "axios";
 export default {
   name: "Account",
   components: {
-    ContactUs,
     cdl_header,
     navbar
   },
@@ -281,9 +263,6 @@ export default {
       this.newPasswordState = valid
       this.confirmPasswordState = valid
       return valid;
-    },
-    redirect(id) {
-      this.$router.push(id)
     },
     resetModal() {
       this.new_password = ''
