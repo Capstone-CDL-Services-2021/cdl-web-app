@@ -77,13 +77,12 @@ import ContactUs from "@/components/contactUs";
 import TestimonialForm from "@/components/TestimonialForm";
 import axios from "axios";
 import testimonialCard from "@/components/testimonialCard";
-import Navbar from "@/components/navbar";
+
 
 
 export default {
   name: "Testimonials",
   components: {
-    Navbar,
     ContactUs,
     cdl_header,
     TestimonialForm,
