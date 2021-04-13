@@ -12,37 +12,42 @@
           <ProjectForm v-if="!hidden"></ProjectForm>
           <div hidden> {{ loadAllProjects }}</div>
           <br><br>
-          <table class="minimalistBlack">
-            <thead>
-            <tr>
-              <th>Service</th>
-              <th>Customer Name</th>
-              <th>Customer Email</th>
-              <th>Customer Address</th>
-              <th>Date Requested</th>
-              <th>Completed</th>
-              <th>Mark complete</th>
-              <th>Delete project</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="project in ProjectList" :key="project.id">
-              <td>{{ project.Type_Of_Service }}</td>
-              <td>{{ project.Customer_Name }}</td>
-              <td> {{ project.Customer_Email }}</td>
-              <td> {{ project.Customer_Address }}</td>
-              <td> {{ project.Date_Requested }}</td>
-              <td><div v-if="project.Completed == 0"> no</div>
+
+          <div class="table-responsive-md">
+            <table class="minimalistBlack">
+              <thead>
+              <tr>
+                <th>Service</th>
+                <th>Customer Name</th>
+                <th>Customer Email</th>
+                <th>Customer Address</th>
+                <th>Date Requested</th>
+                <th>Completed</th>
+                <th>Mark complete</th>
+                <th>Delete project</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="project in ProjectList" :key="project.id">
+                <td>{{ project.Type_Of_Service }}</td>
+                <td>{{ project.Customer_Name }}</td>
+                <td> {{ project.Customer_Email }}</td>
+                <td> {{ project.Customer_Address }}</td>
+                <td> {{ project.Date_Requested }}</td>
+                <td><div v-if="project.Completed == 0"> no</div>
                   <div v-if="project.Completed == 1"> yes</div></td>
-              <td>
-                <div v-if="project.Completed == 0">
-                <b-button v-on:click="alterComplete(project.id)">mark complete</b-button>
-                </div>
-              </td>
-              <td><b-button v-on:click="deleteProject(project.id)">delete</b-button></td>
-            </tr>
-            </tbody>
-          </table>
+                <td>
+                  <div v-if="project.Completed == 0">
+                    <b-button v-on:click="alterComplete(project.id)">mark complete</b-button>
+                  </div>
+                </td>
+                <td><b-button v-on:click="deleteProject(project.id)">delete</b-button></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+
         </b-jumbotron>
       </div>
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -119,6 +124,7 @@ export default {
 </script>
 
 <style scoped>
+
 table.minimalistBlack {
   border: 0px solid #000000;
   width: 100%;

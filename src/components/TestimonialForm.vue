@@ -83,6 +83,9 @@ export default {
 </script>
 
 <style scoped>
+.container-sm {
+  max-width: 400px;
+}
 .txt-center {
   text-align: center;
 }

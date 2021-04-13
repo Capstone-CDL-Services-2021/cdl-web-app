@@ -14,51 +14,54 @@
           <div hidden> {{ loadAllProjects }}</div>
           <br><br>
 
-          <table class="minimalistBlack">
-            <thead>
-            <tr>
-              <th>Order #</th>
-              <th>Service Offered</th>
-              <th>Customer Name</th>
-              <th>Customer Email</th>
-              <th>Customer Address</th>
-              <th>Start Date</th>
-              <th>Date Completed</th>
-              <th>Cost</th>
-              <th>Completed</th>
-              <th>Payment Status</th>
-              <th>Send Invoice</th>
+          <div class="table-responsive-md">
+            <table class="minimalistBlack">
+              <thead>
+              <tr>
+                <th>Order #</th>
+                <th>Service Offered</th>
+                <th>Customer Name</th>
+                <th>Customer Email</th>
+                <th>Customer Address</th>
+                <th>Start Date</th>
+                <th>Date Completed</th>
+                <th>Cost</th>
+                <th>Completed</th>
+                <th>Payment Status</th>
+                <th>Send Invoice</th>
 
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="project in ProjectList" :key="project.id">
-              <td> {{ project.id }}</td>
-              <td> {{ project.Type_Of_Service }}</td>
-              <td> {{ project.Customer_Name }}</td>
-              <td> {{ project.Customer_Email }}</td>
-              <td> {{ project.Customer_Address }}</td>
-              <td> {{ project.Date_Requested }}</td>
-              <td> {{ project.date_completed }}</td>
-              <td> ${{project.total_cost}}</td>
-              <td>
-                <div v-if="project.Completed == 0"> No</div>
-                <div v-if="project.Completed == 1"> Yes</div>
-              </td>
-              <td>
-                <div v-if="project.invoice_paid == 0"> Pending Payment</div>
-                <div v-if="project.invoice_paid == 1"> Payment Received</div>
-              </td>
-              <td>
-                <div v-if="project.Completed == 1 && project.invoice_paid == 0">
-                  <b-button variant="primary" @click="sendInvoice(project.id,project.Customer_Email,project.Customer_Name,project.Type_Of_Service,project.date_completed,project.total_cost)"
-                  > Send Invoice</b-button>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="project in ProjectList" :key="project.id">
+                <td> {{ project.id }}</td>
+                <td> {{ project.Type_Of_Service }}</td>
+                <td> {{ project.Customer_Name }}</td>
+                <td> {{ project.Customer_Email }}</td>
+                <td> {{ project.Customer_Address }}</td>
+                <td> {{ project.Date_Requested }}</td>
+                <td> {{ project.date_completed }}</td>
+                <td> ${{project.total_cost}}</td>
+                <td>
+                  <div v-if="project.Completed == 0"> No</div>
+                  <div v-if="project.Completed == 1"> Yes</div>
+                </td>
+                <td>
+                  <div v-if="project.invoice_paid == 0"> Pending Payment</div>
+                  <div v-if="project.invoice_paid == 1"> Payment Received</div>
+                </td>
+                <td>
+                  <div v-if="project.Completed == 1 && project.invoice_paid == 0">
+                    <b-button variant="primary" @click="sendInvoice(project.id,project.Customer_Email,project.Customer_Name,project.Type_Of_Service,project.date_completed,project.total_cost)"
+                    > Send Invoice</b-button>
 
-                </div>
-              </td>
-            </tr>
-            </tbody>
-          </table>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
         </b-jumbotron>
       </div>
 
@@ -143,6 +146,9 @@ export default {
 </script>
 
 <style scoped>
+.container-sm {
+  max-width: 400px;
+}
 table.minimalistBlack {
   border: 0px solid #000000;
   width: 100%;
