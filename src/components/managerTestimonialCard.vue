@@ -47,7 +47,7 @@ export default {
       type: String,
     },
     cardRating: {
-      type: String,
+      type: Number,
     },
     cardName: {
       type: String,
@@ -70,9 +70,6 @@ export default {
     }
   },
   methods: {
-    redirect(id) {
-      this.$router.push(id)
-    },
     async toggleVisibility(cardID, toggle) {
       try {
           const response = await axios.post('toggleVisibility', {
