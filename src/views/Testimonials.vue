@@ -4,7 +4,7 @@
     <navbar/>
 
     <b-jumbotron bg-variant="dark" text-variant="white" border-variant="dark">
-      <div style="padding:30px">
+      <div>
         <h1 style="text-decoration: underline">Testimonials</h1>
         <b-button v-on:click='hidden=!hidden'>Submit a Testimonial</b-button>
         <TestimonialForm v-if="!hidden"></TestimonialForm>
