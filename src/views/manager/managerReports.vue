@@ -44,22 +44,21 @@
               </td>
               <td>
                 <div v-if="project.Completed == 1 && project.invoice_paid == 0">
-
-                  <b-button variant="primary" v-b-modal.modal-test> Send Invoice</b-button>
+                  <b-button variant="primary" v-b-modal.modal-test v-on:click="sendInvoice(project)"> Send Invoice</b-button>
                   <b-modal
                       id="modal-test"
                       ref="modal"
                       title="Invoice"
+                      hide-footer
                   >
                     <p> <strong>CDL Services</strong> </p>
-                    <b-form @submit.prevent="sendInvoice">
+                    <b-form @submit.prevent="sendInvoice(project)">
                       <b-form-group
                           label="Invoice Number:"
                           label-for="invoice_no"
                           label-cols-sm="4"
-                          v-model="invoice_number"
+                          v-model="project.id"
                       >
-                        <h5>{{ project.id }}</h5>
                       </b-form-group>
 
                       <b-form-group
@@ -72,7 +71,7 @@
                             id="bill_to"
                             placeholder="Enter Customer Full Name"
                             required
-                            v-model="bill_to"
+                            v-model="form.bill_to"
                         />
                       </b-form-group>
 
@@ -87,7 +86,7 @@
                             id="service_offered"
                             placeholder="Enter Service Offered"
                             required
-                            v-model="service_offered"/>
+                            v-model="project.Type_Of_Service"/>
                       </b-form-group>
 
                       <b-form-group
@@ -98,9 +97,9 @@
                       >
                         <b-form-input
                             id="issue_date"
-                            type="date"
+                            type="date-local"
                             required
-                            v-model="issue_date"
+                            v-model="project.date_completed"
                         />
                       </b-form-group>
 
@@ -114,7 +113,8 @@
                             id="due_date"
                             type="date"
                             required
-                            v-model="due_date"/>
+                            v-model="form.due_date"
+                        />
                       </b-form-group>
 
                       <b-form-group
@@ -128,9 +128,10 @@
                             type="number"
                             min="0"
                             required
-                            v-model="service_cost"/>
+                            v-model="form.service_cost"
+                        />
                       </b-form-group>
-
+                      <b-button type="submit" variant="primary">Submit</b-button>
 
                     </b-form>
                   </b-modal>
@@ -164,26 +165,33 @@ export default {
     redirect(id) {
       this.$router.push(id)
     },
-    async sendInvoice(){
-      try{
-        await axios.post('sendInvoice',{
-          invoice_number: this.form.invoice_number,
-          email: this.form.email,
-          bill_to: this.form.bill_to,
-          service_offered: this.form.service_offered,
-          due_date: this.form.due_date,
-          service_cost:this.form.service_cost,
-          issue_date:this.form.issue_date
-        });
-      }catch (e) {
-        console.log(e)
-      }
+    // async sendInvoice(){
+    //   try{
+    //     await axios.post('sendInvoice',{
+    //       invoice_number: this.form.invoice_number,
+    //       email: this.form.email,
+    //       bill_to: this.form.bill_to,
+    //       service_offered: this.form.service_offered,
+    //       due_date: this.form.due_date,
+    //       service_cost:this.form.service_cost,
+    //       issue_date:this.form.issue_date
+    //     });
+    //   }catch (e) {
+    //     console.log(e)
+    //   },
+    sendInvoice(projectstuff){
+      this.form.bill_to = projectstuff.Customer_Name;
+      this.form.service_cost = projectstuff.total_cost;
+      this.form.invoice_number = projectstuff.id;
+      this.form.service_offered = projectstuff.Type_Of_Service;
+      this.form.issue_date = projectstuff.date_completed;
     }
   },
   data() {
     return {
       ProjectList: [],
       hidden: true,
+      // currentDate: new Date().toLocaleDateString().format(),
       form:{
         invoice_number:'',
         service_cost:'',
