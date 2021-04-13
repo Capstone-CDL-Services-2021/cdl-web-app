@@ -204,6 +204,9 @@ export default {
     }
   },
   methods: {
+    redirect(id) {
+      this.$router.push(id)
+    },
     // Update Form functionality
     checkFormValidityUpdate() {
       const valid = this.$refs.form.checkValidity()

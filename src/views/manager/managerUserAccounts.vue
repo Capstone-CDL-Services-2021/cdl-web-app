@@ -15,11 +15,7 @@
           <!--                    <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
           <b-button size="sm" variant="danger" @click="resetPassword">Reset</b-button>
           <b-button size="sm" variant="secondary" @click="blockUnblock">Block/Unblock</b-button>
-          <br>
-          <p>
-            Selected Row:<br>
-            {{ selectedRow }}
-          </p>
+          <br><br>
           <b-table
               bordered hover small
               :items="userInfo"
@@ -29,16 +25,6 @@
               selectable
               @row-selected="onRowSelected">
 
-            <!-- Version 1: each row comes with button options -->
-            <!--            <template #cell(view_order_history)>-->
-            <!--              <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
-            <!--            </template>-->
-            <!--            <template #cell(reset_password)>-->
-            <!--              <b-button size="sm" variant="warning" v-on:click="resetPassword">Reset</b-button>-->
-            <!--            </template>-->
-            <!--            <template #cell(block_user)>-->
-            <!--              <b-button size="sm" variant="danger" v-on:click="blockUser">Block</b-button>-->
-            <!--            </template>-->
             <template #cell(selected)="{ rowSelected }">
               <template v-if="rowSelected">
                 <span aria-hidden="true">&check;</span>
@@ -82,18 +68,10 @@ export default {
           key: 'last_name',
           sortable: true
         },
-        // {
-        //   key: 'view_order_history'
-        // },
-        // {
-        //   key: 'reset_password',
-        //   label: 'Reset Password?'
-        //
-        // },
-        // {
-        //   key: 'block_user',
-        //   label: 'Block User?'
-        // },
+        {
+          key: 'blocked',
+          label: 'Blocked=1 & Good=0'
+        },
         {
           key: 'selected'
         }
@@ -101,7 +79,8 @@ export default {
       userInfo: [
         {
           first_name: '',
-          last_name: ''
+          last_name: '',
+          blocked:''
         }
       ]
     }
@@ -110,7 +89,8 @@ export default {
     getAllUsers() {
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return axios.get('getAllUsers').then(response => this.userInfo = response.data)
-    }},
+    }
+  },
   methods: {
     onRowSelected(items) {
       this.selectedRow = items
@@ -129,21 +109,12 @@ export default {
         footerClass: 'p-2',
         hideHeaderClose: false,
         centered: true,
-
       })
-          // .then(value => {
-          //   this.reset = value
-          // })
           .then(value => {
             if (value === true) {
               this.resetPass();
             }
           })
-          //.resetPass()
-
-      // .catch(err => {
-      //   // An error occurred
-      // })
     },
     async resetPass() {
       try {
@@ -171,30 +142,12 @@ export default {
         hideHeaderClose: false,
         centered: true
       })
-          // .then(value => {
-          //   this.block = value
-          // })
           .then(value => {
             if (value === true) {
               this.toggleBlocked();
             }
           })
-      // .catch(err => {
-      //   // An error occurred
-      // })
     },
-    // async updateBlocked() {
-    //   try {
-    //     // Manipulate database
-    //     const response = await axios.post('updateBlocked', {
-    //       id: this.selectedRow[0].id, // This is hardcoded because why the hell not :)
-    //     });
-    //     console.log(response);
-    //     this.message = 'User is now blocked'
-    //   } catch (e) {
-    //     this.error = 'Error occurred';
-    //   }
-    // },
     async toggleBlocked() {
       try {
         const response = await axios.post('toggleBlocked', {
