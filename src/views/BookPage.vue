@@ -21,7 +21,11 @@
         <b-col>
           <template>
             <div>
-              <b-form @submit="onSubmit">
+              <b-form @submit.prevent="serviceRequestHandler">
+                <div v-if="message" class="alert alert-success" role="alert">
+                  {{message}}
+                </div>
+                <error v-if="error" :error="error"></error>
                 <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
                   <b-form-input
                       id="input-2"
@@ -98,11 +102,14 @@
 <script>
 import cdl_header from "@/components/cdl_header";
 import navbar from "@/components/navbar";
+import axios from "axios";
 export default {
   name: "BookPage",
-  components: {navbar, cdl_header},
+  components: {navbar, cdl_header,Error},
   data() {
     return {
+      message:'',
+      error:'',
       form: {
         name: '',
         email: '',
@@ -117,10 +124,21 @@ export default {
     }
   },
   methods: {
-    onSubmit(event) {
-      event.preventDefault()
-      alert(JSON.stringify(this.form))
-    },
+    async serviceRequestHandler() {
+      try{
+        await axios.post('bookService',{
+          name : this.form.name,
+          email: this.form.email,
+          service: this.form.service,
+          date: this.form.date,
+          streetAddress: this.form.streetAddress
+        });
+        this.message= 'Your request has been sent!'
+        this.error='';
+      }catch(e){
+        this.error= 'Error occurred';
+        this.message ='';}
+      },
     redirect(id) {
       this.$router.push(id)
     }

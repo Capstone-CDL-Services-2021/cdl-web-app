@@ -115,7 +115,7 @@
 
 
           <!-- Change password stuff  -->
-          <b-button variant="warning" v-on:click="redirect('Reset');">Change Password (Alee's page)</b-button><br><br>
+          <b-button variant="warning" v-on:click="redirect('Forgot');">Change Password (Alee's page)</b-button><br><br>
           <b-button variant="warning" v-b-modal.modal-password>Change Password</b-button>
           <b-modal
               id="modal-password"
@@ -163,9 +163,9 @@
           <p></p>
         </b-jumbotron>
       </div>
-        <div style="justify-content: center;display: flex">
-            <h3 style="color: white">{{message}}</h3>
-        </div>
+      <div style="justify-content: center;display: flex">
+        <h3 style="color: white">{{message}}</h3>
+      </div>
     </b-jumbotron>
   </div>
 </template>
@@ -204,9 +204,6 @@ export default {
     }
   },
   methods: {
-    redirect(id) {
-      this.$router.push(id)
-    },
     // Update Form functionality
     checkFormValidityUpdate() {
       const valid = this.$refs.form.checkValidity()
@@ -276,7 +273,7 @@ export default {
       // Trigger submit handler
       this.handleSubmitPassword()
     },
-    handleSubmitPassword() {
+    async handleSubmitPassword() {
       // Exit when the form isn't valid
       if (!this.checkFormValidityPassword()) {
         return
@@ -284,10 +281,19 @@ export default {
       // Check if password match
       else if (this.new_password !== this.confirm_password) {
         this.message = "Error: Password did not match"
-      }
-      else {
-        // Print the new password
+      } else {
+        // Print message
         this.message = "Password successfully changed"
+        // const response = await axios.post('reset', {
+        //   password: this.new_password,
+        //   password_confirm: this.confirm_password,
+        //   token: this.$route.params.token
+        // });
+
+        // const response = await axios.post('forgot',{
+        //   email: this.user.email
+        // });
+        // console.log(response);
       }
       // Hide the modal manually
       this.$nextTick(() => {

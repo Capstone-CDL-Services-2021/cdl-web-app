@@ -2,10 +2,10 @@
   <div>
     <div hidden>{{ loadServiceCard }}</div>
     <cdl_header/>
-    <navbar/>
+    <user-check/>
     <h1 style="text-decoration: underline; background-color: #343a40; color: white; padding: 2rem">Services!</h1>
-    <div class="services" style="background-color: #343a40">
-      <div class="row" style="padding-left: 4rem; margin-top: -1rem">
+    <div class="services container-fluid text-center" style="background-color: #343a40">
+      <div class="row" style="padding-left: 0rem; margin-top: -1rem">
         <div v-for="card in serviceCardInfo" :key="card.id">
           <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
             <div v-if="card.id % 3 === 0">
@@ -45,17 +45,17 @@
 </template>
 
 <script>
-import navbar from "@/components/navbar";
 import cdl_header from "@/components/cdl_header";
 import serviceCard from "@/components/serviceCard";
 import ContactUs from "@/components/contactUs";
 import axios from "axios";
+import UserCheck from "@/components/userCheck";
 
 export default {
   name: "Service",
   components: {
+    UserCheck,
     ContactUs,
-    navbar,
     cdl_header,
     serviceCard
   },

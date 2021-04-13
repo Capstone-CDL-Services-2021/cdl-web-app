@@ -19,6 +19,9 @@
             <router-link to="forgot">Forgot password?</router-link>
           </p>
         </b-form>
+        <b-form v-else>
+
+        </b-form>
         <div v-if="!user">
         <a href="/register" v-on:click="redirect('/register')">Register</a>
         </div>

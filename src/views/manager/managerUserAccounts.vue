@@ -5,14 +5,16 @@
     <manager-navbar/>
 
     <b-jumbotron bg-variant="dark" border-variant="dark">
-      {{getAllUsers()}}
+      <div hidden>
+        {{getAllUsers}}
+      </div>
       <div>
         <b-jumbotron>
           <h1 style="text-align: center">Registered Users</h1>
           <!-- Version 2 with universal options at the top -->
-<!--                    <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
-                    <b-button size="sm" variant="danger" @click="resetPassword">Reset</b-button>
-                    <b-button size="sm" variant="secondary" @click="blockUser">Block</b-button>
+          <!--                    <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
+          <b-button size="sm" variant="danger" @click="resetPassword">Reset</b-button>
+          <b-button size="sm" variant="secondary" @click="blockUnblock">Block/Unblock</b-button>
           <br>
           <p>
             Selected Row:<br>
@@ -26,16 +28,17 @@
               responsive="sm"
               selectable
               @row-selected="onRowSelected">
+
             <!-- Version 1: each row comes with button options -->
-<!--            <template #cell(view_order_history)>-->
-<!--              <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
-<!--            </template>-->
-<!--            <template #cell(reset_password)>-->
-<!--              <b-button size="sm" variant="warning" v-on:click="resetPassword">Reset</b-button>-->
-<!--            </template>-->
-<!--            <template #cell(block_user)>-->
-<!--              <b-button size="sm" variant="danger" v-on:click="blockUser">Block</b-button>-->
-<!--            </template>-->
+            <!--            <template #cell(view_order_history)>-->
+            <!--              <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
+            <!--            </template>-->
+            <!--            <template #cell(reset_password)>-->
+            <!--              <b-button size="sm" variant="warning" v-on:click="resetPassword">Reset</b-button>-->
+            <!--            </template>-->
+            <!--            <template #cell(block_user)>-->
+            <!--              <b-button size="sm" variant="danger" v-on:click="blockUser">Block</b-button>-->
+            <!--            </template>-->
             <template #cell(selected)="{ rowSelected }">
               <template v-if="rowSelected">
                 <span aria-hidden="true">&check;</span>
@@ -69,6 +72,7 @@ export default {
     return {
       message: '',
       selectedRow: [],
+      id: null,
       fields: [
         {
           key: 'first_name',
@@ -102,11 +106,12 @@ export default {
       ]
     }
   },
-  computed: {},
-  methods: {
+  computed: {
     getAllUsers() {
+      // eslint-disable-next-line vue/no-async-in-computed-properties
       return axios.get('getAllUsers').then(response => this.userInfo = response.data)
-    },
+    }},
+  methods: {
     onRowSelected(items) {
       this.selectedRow = items
     },
@@ -129,7 +134,12 @@ export default {
           // .then(value => {
           //   this.reset = value
           // })
-      .resetPass()
+          .then(value => {
+            if (value === true) {
+              this.resetPass();
+            }
+          })
+          //.resetPass()
 
       // .catch(err => {
       //   // An error occurred
@@ -138,7 +148,7 @@ export default {
     async resetPass() {
       try {
         const response = await axios.post('forgot', {
-          email: this.onRowSelected('email')
+          email: this.selectedRow[0].email,
         });
         this.message = 'The email was sent!';
         this.error = '';
@@ -148,7 +158,7 @@ export default {
         this.message = '';
       }
     },
-    blockUser() {
+    blockUnblock() {
       this.block = ''
       this.$bvModal.msgBoxConfirm('Please confirm that you want to block this user.', {
         title: 'Please Confirm',
@@ -164,23 +174,38 @@ export default {
           // .then(value => {
           //   this.block = value
           // })
-          .updateBlocked()
+          .then(value => {
+            if (value === true) {
+              this.toggleBlocked();
+            }
+          })
       // .catch(err => {
       //   // An error occurred
       // })
     },
-    async updateBlocked() {
+    // async updateBlocked() {
+    //   try {
+    //     // Manipulate database
+    //     const response = await axios.post('updateBlocked', {
+    //       id: this.selectedRow[0].id, // This is hardcoded because why the hell not :)
+    //     });
+    //     console.log(response);
+    //     this.message = 'User is now blocked'
+    //   } catch (e) {
+    //     this.error = 'Error occurred';
+    //   }
+    // },
+    async toggleBlocked() {
       try {
-        // Manipulate database
-        const response = await axios.post('updateBlocked', {
-          id: this.onRowSelected('id')
+        const response = await axios.post('toggleBlocked', {
+          id: this.selectedRow[0].id,
+          blocked: this.selectedRow[0].blocked
         });
         console.log(response);
-        setTimeout(location.reload.bind(location), 1000);
-      } catch (e) {
-        this.error = 'Error occurred';
+        setTimeout(location.reload.bind(location), 500);
+      }catch(e){
+        this.error ='Error occurred';
       }
-      this.message = 'User is now blocked'
     }
   }
 }
