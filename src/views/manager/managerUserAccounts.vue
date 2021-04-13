@@ -35,14 +35,6 @@
                 <span class="sr-only">Not selected</span>
               </template>
             </template>
-            <template v-slot:cell(blocked)="block">
-              <template v-if="block.value === 1">
-                Blocked
-              </template>
-              <template v-else-if="block.value === 0">
-                Not Blocked
-              </template>
-            </template>
           </b-table>
           <h4>{{message}}</h4>
         </b-jumbotron>
@@ -78,7 +70,7 @@ export default {
         },
         {
           key: 'blocked',
-          label: 'Status?'
+          label: 'Blocked=1 & Good=0'
         },
         {
           key: 'selected'

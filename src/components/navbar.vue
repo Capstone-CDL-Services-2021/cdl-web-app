@@ -74,6 +74,8 @@ body {
 .btn-white {
   background: white;
   color: #000;
+
+
 }
 
 .btn:active {
@@ -91,12 +93,14 @@ body {
   text-transform: uppercase;
   position: absolute;
   width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   border-radius: 100px;
   display: inline-block;
   z-index: -1;
   transition: all .5s;
+
 }
 
 .btn-white::after {
