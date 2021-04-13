@@ -21,7 +21,7 @@
           <a href="/register" v-on:click="redirect('/register')">Register</a>
         </b-form>
         <div v-if="user">
-
+          <div v-if="user.email == 'manager@cdlservices.com'">{{ redirect('/managerHome')}}<manager-navbar/></div>
           <a href="javascript:void(0)" v-on:click="logoutHandler">Logout</a>
         </div>
       </div>
