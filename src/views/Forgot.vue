@@ -7,7 +7,7 @@
     </div>
     <error v-if="error" :error="error"></error>
 
-    <h2>Forgot Password</h2>
+    <h2>Change Password</h2>
     <div class="form-group">
       <label>Email</label>
       <input type="email" v-model="email" class="form-control" placeholder="enter your email">
