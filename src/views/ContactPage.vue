@@ -11,7 +11,11 @@
     <template>
       <div>
         <div class="col-sm-20">
-          <b-form @submit="onSubmit">
+          <b-form @submit.prevent="onSubmit">
+            <div v-if="message" class="alert alert-success" role="alert">
+              {{message}}
+            </div>
+            <error v-if="error" :error="error"></error>
             <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
               <b-form-input
                   id="input-1"
@@ -60,15 +64,19 @@
 <script>
 import navbar from "@/components/navbar";
 import cdl_header from "@/components/cdl_header";
+import axios from "axios";
 
 export default {
   name: "Service",
   components: {
     navbar,
-    cdl_header
+    cdl_header,
+    Error
   },
   data() {
     return {
+      message:'',
+      error:'',
       form: {
         name: '',
         email: '',
@@ -77,9 +85,19 @@ export default {
     }
   },
   methods: {
-    onSubmit(event) {
-      event.preventDefault()
-      alert(JSON.stringify(this.form))
+    async onSubmit() {
+      try{
+        await axios.post('contactUs',{
+          name: this.form.name,
+          email: this.form.email,
+          question: this.form.question
+        });
+        this.message= 'Your question has been sent'
+        this.error=''
+      }catch(e){
+        this.error= 'Error occurred'
+        this.message='';
+      }
     },
     redirect(id) {
       this.$router.push(id)
