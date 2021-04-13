@@ -7,13 +7,6 @@
     <b-jumbotron bg-variant="dark" text-variant="white" border-variant="dark">
 
 
-
-      <h1>Manager Home Page</h1>
-      <br><br>
-      <div class="col">
-        <b-calendar block locale="en-US" width="500px"></b-calendar>
-      </div>
-      <br><br>
       <div class="row">
         <h1 style="text-decoration: underline">Upcoming Projects and Due Dates</h1>
         <div hidden> {{ loadUpcomingProjects}} </div>
@@ -38,11 +31,7 @@
 
 
       <br/>
-      <br/>
-      <b-button variant="outline-primary" class="button">
-        <b-icon icon="tools"></b-icon> Settings
-      </b-button>
-      <b-button variant="primary" class="button">Edit</b-button>
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </b-jumbotron>
 
   </div>
@@ -107,6 +96,8 @@ table.minimalistBlack td, table.minimalistBlack th {
 }
 table.minimalistBlack tbody td {
   font-size: 13px;
+  background: #CFCFCF;
+  color: #000000;
 }
 table.minimalistBlack thead {
   background: #CFCFCF;
