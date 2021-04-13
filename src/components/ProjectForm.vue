@@ -82,6 +82,8 @@ export default {
           Date_Requested: this.Date_Requested,
           date_completed: this.date_completed,
           total_cost: this.total_cost,
+          invoice_paid: this.invoice_paid,
+          Completed: this.Completed
 
         });
         console.log(response);
