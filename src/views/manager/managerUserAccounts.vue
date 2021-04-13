@@ -14,7 +14,7 @@
           <!-- Version 2 with universal options at the top -->
           <!--                    <b-button size="sm" variant="primary" v-on:click="redirect('/managerUserAccountHistory')">View</b-button>-->
           <b-button size="sm" variant="danger" @click="resetPassword">Reset</b-button>
-          <b-button size="sm" variant="secondary" @click="blockUser">Block</b-button>
+          <b-button size="sm" variant="secondary" @click="blockUnblock">Block/Unblock</b-button>
           <br>
           <p>
             Selected Row:<br>
@@ -158,7 +158,7 @@ export default {
         this.message = '';
       }
     },
-    blockUser() {
+    blockUnblock() {
       this.block = ''
       this.$bvModal.msgBoxConfirm('Please confirm that you want to block this user.', {
         title: 'Please Confirm',
@@ -176,23 +176,35 @@ export default {
           // })
           .then(value => {
             if (value === true) {
-              this.updateBlocked();
+              this.toggleBlocked();
             }
           })
       // .catch(err => {
       //   // An error occurred
       // })
     },
-    async updateBlocked() {
+    // async updateBlocked() {
+    //   try {
+    //     // Manipulate database
+    //     const response = await axios.post('updateBlocked', {
+    //       id: this.selectedRow[0].id, // This is hardcoded because why the hell not :)
+    //     });
+    //     console.log(response);
+    //     this.message = 'User is now blocked'
+    //   } catch (e) {
+    //     this.error = 'Error occurred';
+    //   }
+    // },
+    async toggleBlocked() {
       try {
-        // Manipulate database
-        const response = await axios.post('updateBlocked', {
-          id: this.selectedRow[0].id, // This is hardcoded because why the hell not :)
+        const response = await axios.post('toggleBlocked', {
+          id: this.selectedRow[0].id,
+          blocked: this.selectedRow[0].blocked
         });
         console.log(response);
-        this.message = 'User is now blocked'
-      } catch (e) {
-        this.error = 'Error occurred';
+        setTimeout(location.reload.bind(location), 500);
+      }catch(e){
+        this.error ='Error occurred';
       }
     }
   }
