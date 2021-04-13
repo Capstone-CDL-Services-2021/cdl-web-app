@@ -147,6 +147,8 @@ const routes = [
     path: '/managerEditServiceCard/:id',
     name: 'managerEditServiceCard',
     component: () => import(/* webpackChunkName: "service" */ '../views/manager/managerEditServiceCard.vue')
+  },
+  {
     path: '/viewOrder',
     name: 'viewOrder',
     // route level code-splitting

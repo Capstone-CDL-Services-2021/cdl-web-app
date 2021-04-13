@@ -92,7 +92,7 @@ export default {
     },
     printProjects() {
       // eslint-disable-next-line vue/no-async-in-computed-properties
-      return (axios.post('printProjects')).then(response => this.ProjectList = response.data)
+      return (axios.post('printProjects', {email: this.user.email})).then(response => this.ProjectList = response.data)
     }
   }
 }

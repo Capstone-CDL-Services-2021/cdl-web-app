@@ -336,9 +336,6 @@ export default {
       this.confirmPasswordState = valid
       return valid;
     },
-    redirect(id) {
-      this.$router.push(id)
-    },
     resetModal() {
       this.new_password = ''
       this.confirm_password = ''
