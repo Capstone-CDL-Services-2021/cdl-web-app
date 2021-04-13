@@ -2,7 +2,7 @@
   <div>
 
     <cdl_header/>
-    <userCheck/>
+
 
     <div style="padding:30px">
       <h1 style="text-decoration: underline">Testimonials</h1>
@@ -88,7 +88,6 @@
 <script>
 import cdl_header from "@/components/cdl_header";
 import {mapGetters} from "vuex";
-import UserCheck from "@/components/userCheck";
 import ContactUs from "@/components/contactUs";
 import TestimonialForm from "@/components/TestimonialForm";
 import axios from "axios";
@@ -99,7 +98,6 @@ export default {
   name: "Testimonials",
   components: {
     ContactUs,
-    UserCheck,
     cdl_header,
     TestimonialForm,
     testimonialCard

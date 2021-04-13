@@ -2,7 +2,6 @@
   <div>
 
     <cdl_header/>
-    <navbar/>
 
     <b-jumbotron bg-variant="dark" border-variant="dark">
       <h1 style="color: white">Account Settings</h1>
@@ -172,7 +171,6 @@
 
 <script>
 import cdl_header from "@/components/cdl_header";
-import navbar from "@/components/navbar";
 import Home from "@/views/Home";
 import {mapGetters} from 'vuex';
 import axios from "axios";
@@ -180,8 +178,7 @@ import axios from "axios";
 export default {
   name: "Account",
   components: {
-    cdl_header,
-    navbar
+    cdl_header
   },
   data() {
     return {
