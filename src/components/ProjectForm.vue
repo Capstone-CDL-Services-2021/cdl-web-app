@@ -29,7 +29,7 @@
 
     <div class = "form-group">
       <label>Date Completed</label>
-      <input type="date" class="form-control" v-model="date_completed" placeholder="Date service was completed"/>
+      <input type="date" class="form-control"  v-model="date_completed" placeholder="Date service was completed"/>
     </div>
 
     <div class = "form-group">
@@ -80,7 +80,10 @@ export default {
           Customer_Email: this.Customer_Email,
           Customer_Address: this.Customer_Address,
           Date_Requested: this.Date_Requested,
-          Completed: this.Completed
+          Completed: this.Completed,
+          total_cost: this.total_cost,
+          date_completed: this.date_completed,
+          invoice_paid: this.invoice_status
 
         });
         console.log(response);

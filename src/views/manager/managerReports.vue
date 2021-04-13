@@ -52,11 +52,12 @@
                       title="Invoice"
                   >
                     <p> <strong>CDL Services</strong> </p>
-                    <b-form ref="form">
+                    <b-form @submit.prevent="sendInvoice">
                       <b-form-group
                           label="Invoice Number:"
                           label-for="invoice_no"
                           label-cols-sm="4"
+                          v-model="invoice_number"
                       >
                         <h5>{{ project.id }}</h5>
                       </b-form-group>
@@ -70,7 +71,9 @@
                         <b-form-input
                             id="bill_to"
                             placeholder="Enter Customer Full Name"
-                            required/>
+                            required
+                            v-model="bill_to"
+                        />
                       </b-form-group>
 
                       <b-form-group
@@ -78,11 +81,13 @@
                           label-for="service_offered"
                           invalid-feedback="Service Required"
                           label-cols-sm="4"
+
                       >
                         <b-form-input
                             id="service_offered"
                             placeholder="Enter Service Offered"
-                            required/>
+                            required
+                            v-model="service_offered"/>
                       </b-form-group>
 
                       <b-form-group
@@ -94,7 +99,9 @@
                         <b-form-input
                             id="issue_date"
                             type="date"
-                            required/>
+                            required
+                            v-model="issue_date"
+                        />
                       </b-form-group>
 
                       <b-form-group
@@ -106,7 +113,8 @@
                         <b-form-input
                             id="due_date"
                             type="date"
-                            required/>
+                            required
+                            v-model="due_date"/>
                       </b-form-group>
 
                       <b-form-group
@@ -119,7 +127,8 @@
                             id="service_cost"
                             type="number"
                             min="0"
-                            required/>
+                            required
+                            v-model="service_cost"/>
                       </b-form-group>
 
 
@@ -154,12 +163,35 @@ export default {
   methods: {
     redirect(id) {
       this.$router.push(id)
+    },
+    async sendInvoice(){
+      try{
+        await axios.post('sendInvoice',{
+          invoice_number: this.form.invoice_number,
+          email: this.form.email,
+          bill_to: this.form.bill_to,
+          service_offered: this.form.service_offered,
+          due_date: this.form.due_date,
+          service_cost:this.form.service_cost,
+          issue_date:this.form.issue_date
+        });
+      }catch (e) {
+        console.log(e)
+      }
     }
   },
   data() {
     return {
       ProjectList: [],
-      hidden: true
+      hidden: true,
+      form:{
+        invoice_number:'',
+        service_cost:'',
+        due_date:'',
+        issue_date:'',
+        service_offered:'',
+        bill_to:''
+      }
     }
   },
   computed: {
