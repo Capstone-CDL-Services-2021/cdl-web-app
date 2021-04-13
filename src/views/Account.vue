@@ -112,7 +112,7 @@
             </b-form>
           </b-modal>
           <br><br>
-          
+
           <!-- Change password stuff  -->
           <b-button variant="warning" v-on:click="redirect('Forgot');">Change Password</b-button><br><br>
 
