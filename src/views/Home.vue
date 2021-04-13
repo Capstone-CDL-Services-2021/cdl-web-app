@@ -1,10 +1,14 @@
 <template>
-
   <div>
     <cdl_header/>
-    <div v-if="user"><div v-if="user.email == 'manager@cdlservices.com'">{{ redirect('/managerHome')}}</div></div>
-    <h3 v-if="user">
+    <div v-if="user">
+      <div v-if="user.email === 'manager@cdlservices.com'">{{ redirect('/managerHome')}}</div>
+    </div>
+    <h3 v-if="user && user.blocked === 0">
       Hello, {{ user.first_name }} {{ user.last_name }}
+    </h3>
+    <h3 v-if="user && user.blocked === 1">
+      {{block()}}
     </h3>
     <div v-if="error" class="alert alert-danger" role="alert">
       {{ error }}
@@ -49,7 +53,7 @@
         <b-col></b-col>
       </b-row>
       <br/>
-      <ContactUs/>
+      <contact-us/>
     </b-jumbotron>
   </div>
 
@@ -69,12 +73,27 @@ export default {
     cdl_header,
     navbar
   },
+  data () {
+    return {
+      message: ''
+    }
+  },
   methods: {
     redirect(id) {
       this.$router.push(id)
-    }},
+    },
+    block(){
+      localStorage.removeItem('token');
+      this.$store.dispatch('user',null);
+      //this.$router.push('/');
+      this.$forceUpdate();
+      alert("Your account has been suspended. Please contact Administrator.");
+    }
+  },
   computed: {
-    ...mapGetters(['user'])
+    ...mapGetters(['user']),
+    // eslint-disable-next-line vue/return-in-computed-property
+
   }
 }
 </script>

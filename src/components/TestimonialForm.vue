@@ -52,7 +52,7 @@ export default {
         });
         console.log(response);
         alert(response.data.message);
-        this.$router.push('/');
+        setTimeout(location.reload.bind(location), 0);
       }catch(e){
         this.error ='Error occurred';
       }

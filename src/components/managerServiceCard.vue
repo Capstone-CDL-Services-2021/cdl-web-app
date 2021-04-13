@@ -14,7 +14,7 @@
             <br/>
             <br/>
             <b-button v-b-modal.accept v-on:click="removeService(cardId);" variant="success">Delete</b-button>
-            <b-button v-b-modal.edited v-on:click="editRedirect(cardId);" variant="primary">Edit</b-button>
+            <b-button v-on:click="editRedirect(cardId);" variant="primary">Edit</b-button>
           </b-card-body>
         </b-col>
       </b-row>
