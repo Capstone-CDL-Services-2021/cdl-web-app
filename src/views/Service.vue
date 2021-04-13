@@ -2,6 +2,7 @@
   <div>
     <div hidden>{{ loadServiceCard }}</div>
     <cdl_header/>
+    <navbar/>
 
     <h1 style="text-decoration: underline; background-color: #343a40; color: white; padding: 2rem">Services!</h1>
     <div class="services container-fluid text-center" style="background-color: #343a40">
@@ -52,11 +53,13 @@ import cdl_header from "@/components/cdl_header";
 import serviceCard from "@/components/serviceCard";
 import ContactUs from "@/components/contactUs";
 import axios from "axios";
+import Navbar from "@/components/navbar";
 
 
 export default {
   name: "Service",
   components: {
+    Navbar,
     ContactUs,
     cdl_header,
     serviceCard

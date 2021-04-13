@@ -1,6 +1,7 @@
 <template>
   <div>
     <cdl_header/>
+    <userCheck/>
     <div v-if="user">
       <div v-if="user.email === 'manager@cdlservices.com'">{{ redirect('/managerHome')}}</div>
     </div>

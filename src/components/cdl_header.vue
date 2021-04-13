@@ -21,7 +21,7 @@
           <a href="/register" v-on:click="redirect('/register')">Register</a>
         </b-form>
         <div v-if="user">
-          <userCheck/>
+
           <a href="javascript:void(0)" v-on:click="logoutHandler">Logout</a>
         </div>
       </div>
@@ -36,13 +36,11 @@
 import Error from '@/components/Error.vue'
 import axios from 'axios'
 import {mapGetters} from 'vuex'
-import UserCheck from "@/components/userCheck";
 
 export default {
   name: "cdl_header",
   components:{
-    Error,
-    UserCheck
+    Error
   },
   data() {
     return {

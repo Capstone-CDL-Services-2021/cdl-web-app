@@ -39,7 +39,7 @@
 
     <div class = "form-group">
       <label>Invoice Paid</label>
-      <input type="checkbox" class="form-control" v-model="invoice_status" placeholder="Invoice paid for"/>
+      <input type="checkbox" class="form-control" v-model="invoice_paid" placeholder="Invoice paid for"/>
     </div>
 
     <div class = "form-group">
@@ -66,7 +66,7 @@ export default {
       Date_Requested: '',
       date_completed: '',
       total_cost: '',
-      invoice_status: '',
+      invoice_paid: '',
       Completed:''
 
     }
@@ -80,10 +80,8 @@ export default {
           Customer_Email: this.Customer_Email,
           Customer_Address: this.Customer_Address,
           Date_Requested: this.Date_Requested,
-          Completed: this.Completed,
-          total_cost: this.total_cost,
           date_completed: this.date_completed,
-          invoice_paid: this.invoice_status
+          total_cost: this.total_cost,
 
         });
         console.log(response);
