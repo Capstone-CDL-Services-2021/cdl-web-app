@@ -127,5 +127,12 @@ body {
   /*position:relative;*/
 }
 
+h1 {
+  color: white;
+}
+
+.col-sm-20 {
+  color: black;
+}
 
 </style>

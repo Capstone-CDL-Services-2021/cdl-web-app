@@ -56,8 +56,10 @@
       <b-modal id="edited" size="sm" title="Service Response" ok-only @ok="redirect('/managerService')" hide-header-close>
         <p>Service Card has been Updated</p>
       </b-modal>
-    </b-jumbotron>
 
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+    </b-jumbotron>
   </div>
 </template>
 
