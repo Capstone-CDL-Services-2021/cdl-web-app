@@ -82,7 +82,7 @@ export default {
             }
         );
         console.log(response);
-        alert(response.data.message)
+        alert("This project is now complete")
         ;
         setTimeout(location.reload.bind(location), 0);
       } catch
