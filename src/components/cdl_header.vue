@@ -70,7 +70,6 @@ export default {
        this.$store.dispatch('user', response.data.user);
     }catch(e) {
         this.error= "Invalid username/password";
-        alert("Invalid Username or password");
     }}
   },
   computed: {

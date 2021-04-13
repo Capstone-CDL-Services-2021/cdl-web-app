@@ -1,8 +1,9 @@
 <template>
+
   <form @submit.prevent="registerHandler">
     <error v-if="error" :error="error"></error>
 
-    <h1>Register</h1>
+    <h1>Create New Account</h1>
 
     <div class = "form-group">
       <label>First Name</label>
@@ -29,7 +30,7 @@
       <input type="password" class="form-control" v-model="password_confirm" placeholder="Password"/>
     </div>
 
-    <button class="btn-primary btn-block">Sign Up</button>
+    <button class="btn btn-dark btn-block">Create New Account</button>
   </form>
 </template>
 
@@ -67,7 +68,7 @@ export default {
         alert(response.data.message);
         this.$router.push('/');
       }catch(e){
-        this.error ='Error occurred';
+        this.error ='Error, invalid or missing fields';
       }
     }
   }}

@@ -3,12 +3,16 @@
     <cdl_header/>
     <navbar/>
 
-
-    <div class="auth-wrapper">
-      <div class="auth-inner">
-        <RegisterForm/>
+    <b-jumbotron bg-variant="dark" border-variant="dark">
+      <div class="auth-wrapper">
+        <div class="auth-inner">
+          <RegisterForm/>
+        </div>
       </div>
-    </div>
+
+    </b-jumbotron>
+
+
   </div>
 
 </template>
@@ -30,10 +34,9 @@ export default {
 </script>
 
 <style scoped>
-  * {
-      box-sizing: border-box;
-  }
-
+* {
+  box-sizing: border-box;
+}
 .auth-wrapper{
   display: flex;
   justify-content: center;
@@ -42,13 +45,13 @@ export default {
   padding-top: 50px;
 }
 
-  .auth-inner{
-    width: 450px;
-    margin: auto;
-    background: aqua;
-    padding: 40px 55px 40px 55px;
-    border-radius: 15px;
-    transition: all .3s;
-  }
-
+.auth-inner{
+  width: 450px;
+  margin: auto;
+  background: green;
+  padding: 40px 55px 40px 55px;
+  border-radius: 15px;
+  transition: all .3s;
+  color: white;
+}
 </style>

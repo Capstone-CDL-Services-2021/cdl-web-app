@@ -13,36 +13,37 @@
           <div>
             user email: {{ user.email }}
           </div>
-
-          <table class="minimalistBlack">
-            <thead>
-            <tr>
-              <th>Order #</th>
-              <th>Service</th>
-              <th>Customer Email</th>
-              <th>Customer Address</th>
-              <th>Start Date</th>
-              <th>Date Completed</th>
-              <th>Completed</th>
-              <th>Total Cost</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="project in ProjectList" :key="project.id">
-              <td> {{ project.id }} </td>
-              <td> {{ project.Type_Of_Service }}</td>
-              <td> {{ project.Customer_Email }}</td>
-              <td> {{ project.Customer_Address }}</td>
-              <td> {{ project.Date_Requested }}</td>
-              <td> {{ project.date_completed}}</td>
-              <td>
-                <div v-if="project.Completed == 0"> No</div>
-                <div v-if="project.Completed == 1"> Yes</div>
-              </td>
-              <td> {{ project.total_cost }}</td>
-            </tr>
-            </tbody>
-          </table>
+          <div class="table-responsive-md">
+            <table class="minimalistBlack">
+              <thead>
+              <tr>
+                <th>Order #</th>
+                <th>Service</th>
+                <th>Customer Email</th>
+                <th>Customer Address</th>
+                <th>Start Date</th>
+                <th>Date Completed</th>
+                <th>Completed</th>
+                <th>Total Cost</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="project in ProjectList" :key="project.id">
+                <td> {{ project.id }} </td>
+                <td> {{ project.Type_Of_Service }}</td>
+                <td> {{ project.Customer_Email }}</td>
+                <td> {{ project.Customer_Address }}</td>
+                <td> {{ project.Date_Requested }}</td>
+                <td> {{ project.date_completed}}</td>
+                <td>
+                  <div v-if="project.Completed == 0"> No</div>
+                  <div v-if="project.Completed == 1"> Yes</div>
+                </td>
+                <td> {{ project.total_cost }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
         </b-jumbotron>
       </div>
 
