@@ -113,49 +113,9 @@
           </b-modal>
           <br><br>
 
-
           <!-- Change password stuff  -->
-          <b-button variant="warning" v-on:click="redirect('Forgot');">Change Password (Alee's page)</b-button><br><br>
-          <b-button variant="warning" v-b-modal.modal-password>Change Password</b-button>
-          <b-modal
-              id="modal-password"
-              ref="modal"
-              title="Changing Password"
-              @show="resetModal"
-              @hidden="resetModal"
-              @ok="handleOkPassword"
-          >
-            <b-form ref="form" @submit.stop.prevent="handleSubmitPassword">
-              <b-form-group
-                  label="New Password:"
-                  label-for="new_password_input"
-                  invalid-feedback="New password is required"
-                  label-cols-sm="4"
-                  :state="newPasswordState"
-              >
-                <b-form-input
-                    id="new_password_input"
-                    v-model="new_password"
-                    :state="newPasswordState"
-                    required
-                ></b-form-input>
-              </b-form-group>
-              <b-form-group
-                  label="Confirm new password:"
-                  label-for="confirm_password"
-                  invalid-feedback="Confirm password is required"
-                  label-cols-sm="4"
-                  :state="confirmPasswordState"
-              >
-                <b-form-input
-                    id="confirm_password"
-                    v-model="confirm_password"
-                    :state="confirmPasswordState"
-                    required
-                ></b-form-input>
-              </b-form-group>
-            </b-form>
-          </b-modal>
+          <b-button variant="warning" v-on:click="redirect('Forgot');">Change Password</b-button>
+
           <br><br>
 
           <!-- View Order History  -->
