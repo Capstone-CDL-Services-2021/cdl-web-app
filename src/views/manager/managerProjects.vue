@@ -34,14 +34,18 @@
                 <td> {{ project.Customer_Email }}</td>
                 <td> {{ project.Customer_Address }}</td>
                 <td> {{ project.Date_Requested }}</td>
-                <td><div v-if="project.Completed == 0"> no</div>
-                  <div v-if="project.Completed == 1"> yes</div></td>
+                <td>
+                  <div v-if="project.Completed == 0"> No</div>
+                  <div v-if="project.Completed == 1"> Yes</div>
+                </td>
                 <td>
                   <div v-if="project.Completed == 0">
-                    <b-button v-on:click="alterComplete(project.id)">mark complete</b-button>
+                    <b-button v-on:click="alterComplete(project.id)" @click="showAlert">Mark Complete</b-button>
                   </div>
                 </td>
-                <td><b-button v-on:click="deleteProject(project.id)">delete</b-button></td>
+                <td>
+                  <b-button v-on:click="deleteProject(project.id)">Delete</b-button>
+                </td>
               </tr>
               </tbody>
             </table>
@@ -50,6 +54,7 @@
 
         </b-jumbotron>
       </div>
+
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
     </b-jumbotron>
@@ -82,7 +87,7 @@ export default {
             }
         );
         console.log(response);
-        alert(response.data.message)
+        alert("This project is now complete")
         ;
         setTimeout(location.reload.bind(location), 0);
       } catch
@@ -104,22 +109,22 @@ export default {
         this.error = 'Error occurred';
       }
     }
-    },
-    data() {
-      return {
-        ProjectList: [],
-        hidden: true
-      }
-    },
-    computed: {
-      ...
-          mapGetters(['user']),
-      loadAllProjects() {
-        // eslint-disable-next-line vue/no-async-in-computed-properties
-        return (axios.post('getAllProjects')).then(response => this.ProjectList = response.data)
-      }
+  },
+  data() {
+    return {
+      ProjectList: [],
+      hidden: true
+    }
+  },
+  computed: {
+    ...
+        mapGetters(['user']),
+    loadAllProjects() {
+      // eslint-disable-next-line vue/no-async-in-computed-properties
+      return (axios.post('getAllProjects')).then(response => this.ProjectList = response.data)
     }
   }
+}
 
 </script>
 
