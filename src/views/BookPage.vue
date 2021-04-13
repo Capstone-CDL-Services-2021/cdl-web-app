@@ -50,7 +50,7 @@
 
                   <b-form-group
                       id="input-group-4"
-                      label="Date:"
+                      label="Start date of service:"
                       label-for="input-1"
                   >
                     <b-form-input
