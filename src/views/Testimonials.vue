@@ -73,7 +73,6 @@
 <script>
 import cdl_header from "@/components/cdl_header";
 import {mapGetters} from "vuex";
-import UserCheck from "@/components/userCheck";
 import ContactUs from "@/components/contactUs";
 import TestimonialForm from "@/components/TestimonialForm";
 import axios from "axios";
@@ -84,7 +83,6 @@ export default {
   name: "Testimonials",
   components: {
     ContactUs,
-    UserCheck,
     cdl_header,
     TestimonialForm,
     testimonialCard

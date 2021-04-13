@@ -18,14 +18,10 @@
           <p class="forgot-password text-left">
             <router-link to="forgot">Forgot password?</router-link>
           </p>
+          <a href="/register" v-on:click="redirect('/register')">Register</a>
         </b-form>
-        <b-form v-else>
-
-        </b-form>
-        <div v-if="!user">
-        <a href="/register" v-on:click="redirect('/register')">Register</a>
-        </div>
         <div v-if="user">
+          <userCheck/>
           <a href="javascript:void(0)" v-on:click="logoutHandler">Logout</a>
         </div>
       </div>
@@ -40,10 +36,13 @@
 import Error from '@/components/Error.vue'
 import axios from 'axios'
 import {mapGetters} from 'vuex'
+import UserCheck from "@/components/userCheck";
+
 export default {
   name: "cdl_header",
   components:{
-    Error
+    Error,
+    UserCheck
   },
   data() {
     return {

@@ -30,7 +30,7 @@ export default {
       type: String,
     },
     cardRating: {
-      type: String,
+      type: Number,
     },
     cardName: {
       type: String,
