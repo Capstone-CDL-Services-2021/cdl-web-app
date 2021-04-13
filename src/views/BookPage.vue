@@ -8,15 +8,6 @@
 
     <b-container class="row1">
       <b-row>
-        <b-col  style="padding-right: 20rem">
-          <template>
-            <b-row>
-              <b-col>
-                <b-calendar block :readonly="readonly"></b-calendar>
-              </b-col>
-            </b-row>
-          </template>
-        </b-col>
 
         <b-col>
           <template>
