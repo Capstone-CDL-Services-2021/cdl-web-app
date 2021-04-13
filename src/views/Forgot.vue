@@ -44,7 +44,7 @@ export default {
       this.error='';
       console.log(response);
     }catch(e){
-      this.error= 'Error occured';
+      this.error= 'Error occurred';
       this.message ='';}
     }
   }
