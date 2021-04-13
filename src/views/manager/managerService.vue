@@ -62,8 +62,8 @@ export default {
     managerHeader,
      managerServiceCard
   },
-  data() {
-    return {
+  data(){
+    return{
       serviceCardInfo: []
     }
   },
