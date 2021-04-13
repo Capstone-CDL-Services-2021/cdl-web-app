@@ -21,6 +21,7 @@
               <th>Date Rented</th>
               <th>Date Returned</th>
               <th>Rented From</th>
+              <th>Delete equipment</th>
             </tr>
             </thead>
             <tbody>
@@ -31,6 +32,7 @@
               <td> {{ equipment.date_rented }}</td>
               <td> {{ equipment.date_returned }}</td>
               <td> {{ equipment.rented_from }}</td>
+              <td><b-button v-on:click="deleteEquipment(equipment.id)">delete</b-button></td>
             </tr>
             </tbody>
           </table>
@@ -60,6 +62,20 @@ export default {
   methods: {
     redirect(id) {
       this.$router.push(id)
+    },
+    async deleteEquipment(id) {
+      try {
+        const response = await axios.post('deleteEquipment', {
+              id: id
+            }
+        );
+        console.log(response);
+        alert("equipment deleted");
+        setTimeout(location.reload.bind(location), 0);
+      } catch
+          (e) {
+        this.error = 'Error occurred';
+      }
     }
   },
   data() {
