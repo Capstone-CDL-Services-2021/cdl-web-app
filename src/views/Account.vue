@@ -197,7 +197,6 @@ import axios from "axios";
 export default {
   name: "Account",
   components: {
-    ContactUs,
     cdl_header,
     navbar
   },
@@ -222,9 +221,6 @@ export default {
     }
   },
   methods: {
-    redirect(id) {
-      this.$router.push(id)
-    },
     // Update Form functionality
     checkFormValidityUpdate() {
       const valid = this.$refs.form.checkValidity()
