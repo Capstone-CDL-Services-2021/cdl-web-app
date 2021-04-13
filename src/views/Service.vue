@@ -3,7 +3,6 @@
     <div hidden>{{ loadServiceCard }}</div>
     <cdl_header/>
     <navbar/>
-
     <h1 style="text-decoration: underline; background-color: #343a40; color: white; padding: 2rem">Services!</h1>
     <div class="services container-fluid text-center" style="background-color: #343a40">
       <div class="row" style="padding-left: 0rem; margin-top: -1rem">
