@@ -7,7 +7,7 @@
       <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark" fluid style="margin-bottom: -2rem; margin-top: -2rem">
         <b-button v-on:click="redirect('managerAddService')">Add a New Service Card</b-button>
       </b-jumbotron>
-        <div class="row" style="padding-left: 11.5rem; margin-top: 2rem; background-color: #343a40">
+        <div class="row" style=" margin-top: 2rem; background-color: #343a40">
           <div v-for="card in serviceCardInfo" :key="card.id">
             <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
               <div v-if="card.id % 3 === 0">

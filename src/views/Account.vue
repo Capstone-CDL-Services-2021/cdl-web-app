@@ -9,8 +9,8 @@
 
       <div style="justify-content: center;display: flex">
 
-        <b-jumbotron style="text-align:center" text-variant="black" border-variant="dark" class="paraStyle">
-          <h3><b-avatar variant="primary"></b-avatar> User Information:</h3>
+        <b-jumbotron style="text-align: left" title="User Information" text-variant="black" border-variant="dark" class="paraStyle">
+          <h3>User Information:</h3>
           <div class="mid">
             <p>Full Name: {{ user.first_name }} {{ user.last_name }}
 
@@ -115,7 +115,7 @@
 
 
           <!-- Change password stuff  -->
-          <b-button variant="warning" v-on:click="redirect('Reset');">Change Password (Alee's page)</b-button><br><br>
+          <b-button variant="warning" v-on:click="redirect('Forgot');">Change Password (Alee's page)</b-button><br><br>
           <b-button variant="warning" v-b-modal.modal-password>Change Password</b-button>
           <b-modal
               id="modal-password"
@@ -160,23 +160,6 @@
 
           <!-- View Order History  -->
           <b-button variant="primary" v-on:click="redirect('/viewOrder')">orders</b-button>
-<!--          <b-button variant="primary" @click="$bvModal.show('modal-order')">View Orders</b-button>-->
-<!--          <b-modal id="modal-order">-->
-<!--            <template #modal-header="{}">-->
-<!--              <h5>Customer Details</h5>-->
-<!--            </template>-->
-<!--            <p>-->
-<!--              Order 1: <br/>-->
-<!--              Order 2: <br/>-->
-<!--              Order 3: <br/>-->
-<!--              Order 4: <br/>-->
-<!--              Order 5: <br/>-->
-<!--            </p>-->
-<!--            <template #modal-footer="{ ok, cancel }">-->
-<!--              <b-button size="sm" variant="success" @click="ok()">Ok</b-button>-->
-<!--              <b-button size="sm" variant="danger" @click="cancel()">Close</b-button>-->
-<!--            </template>-->
-<!--          </b-modal>-->
           <p></p>
 
           <!-- Change Account Info  -->
@@ -235,6 +218,10 @@
 
       <div class="text">
         <contact-us/>
+        </b-jumbotron>
+      </div>
+      <div style="justify-content: center;display: flex">
+        <h3 style="color: white">{{message}}</h3>
       </div>
     </b-jumbotron>
   </div>
@@ -242,16 +229,17 @@
 
 <script>
 import cdl_header from "@/components/cdl_header";
-import navbar from "@/components/navbar";
 import Home from "@/views/Home";
 import {mapGetters} from 'vuex';
 import axios from "axios";
 import ContactUs from "@/components/contactUs";
+import navbar from "@/components/navbar";
+
+
 
 export default {
   name: "Account",
   components: {
-    ContactUs,
     cdl_header,
     navbar
   },
@@ -275,6 +263,7 @@ export default {
       confirmPasswordState: null
     }
   },
+
   methods: {
     redirect(id) {
       this.$router.push(id)
@@ -348,7 +337,7 @@ export default {
       // Trigger submit handler
       this.handleSubmitPassword()
     },
-    handleSubmitPassword() {
+    async handleSubmitPassword() {
       // Exit when the form isn't valid
       if (!this.checkFormValidityPassword()) {
         return
@@ -356,10 +345,19 @@ export default {
       // Check if password match
       else if (this.new_password !== this.confirm_password) {
         this.message = "Error: Password did not match"
-      }
-      else {
-        // Print the new password
+      } else {
+        // Print message
         this.message = "Password successfully changed"
+        // const response = await axios.post('reset', {
+        //   password: this.new_password,
+        //   password_confirm: this.confirm_password,
+        //   token: this.$route.params.token
+        // });
+
+        // const response = await axios.post('forgot',{
+        //   email: this.user.email
+        // });
+        // console.log(response);
       }
       // Hide the modal manually
       this.$nextTick(() => {
@@ -413,6 +411,7 @@ export default {
       })
     }
   },
+
   computed: {
     ...mapGetters(['user'])
   },

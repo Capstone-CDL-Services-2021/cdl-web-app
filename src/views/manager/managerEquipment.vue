@@ -1,45 +1,47 @@
 <template>
-<div>
-  <manager-header/>
-  <manager-navbar/>
+  <div>
+    <manager-header/>
+    <manager-navbar/>
 
-  <b-jumbotron bg-variant="dark" border-variant="dark">
-    <div>
-      <b-jumbotron>
-        <h1 style="text-align: center">Equipment</h1>
-        <b-button v-on:click='hidden=!hidden'>Add Equipment</b-button><br><br><br>
-        <EquipmentForm v-if="!hidden"></EquipmentForm>
+    <b-jumbotron bg-variant="dark" border-variant="dark">
+      <div>
+        <b-jumbotron>
+          <h1 style="text-align: center">Equipment</h1>
+          <b-button v-on:click='hidden=!hidden'>Add Equipment</b-button><br><br><br>
+          <EquipmentForm v-if="!hidden"></EquipmentForm>
 
-        <div hidden> {{ loadEquipment }} </div>
+          <div hidden> {{ loadEquipment }} </div>
 
-        <table class="minimalistBlack">
-          <thead>
-          <tr>
-            <th>Name</th>
-            <th>Owned</th>
-            <th>Cost</th>
-            <th>Date Rented</th>
-            <th>Date Returned</th>
-            <th>Rented From</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr v-for="equipment in EquipmentList" :key="equipment.id">
-            <td>{{ equipment.name }}</td>
-            <td>{{ equipment.owned }}</td>
-            <td> {{ equipment.cost }}</td>
-            <td> {{ equipment.date_rented }}</td>
-            <td> {{ equipment.date_returned }}</td>
-            <td> {{ equipment.rented_from }}</td>
-          </tr>
-          </tbody>
-        </table>
-      </b-jumbotron>
-    </div>
-  </b-jumbotron>
+          <table class="minimalistBlack">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Owned</th>
+              <th>Cost</th>
+              <th>Date Rented</th>
+              <th>Date Returned</th>
+              <th>Rented From</th>
+              <th>Delete equipment</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="equipment in EquipmentList" :key="equipment.id">
+              <td>{{ equipment.name }}</td>
+              <td>{{ equipment.owned }}</td>
+              <td> {{ equipment.cost }}</td>
+              <td> {{ equipment.date_rented }}</td>
+              <td> {{ equipment.date_returned }}</td>
+              <td> {{ equipment.rented_from }}</td>
+              <td><b-button v-on:click="deleteEquipment(equipment.id)">delete</b-button></td>
+            </tr>
+            </tbody>
+          </table>
+        </b-jumbotron>
+      </div>
+    </b-jumbotron>
 
 
-</div>
+  </div>
 </template>
 
 <script>
@@ -60,6 +62,20 @@ export default {
   methods: {
     redirect(id) {
       this.$router.push(id)
+    },
+    async deleteEquipment(id) {
+      try {
+        const response = await axios.post('deleteEquipment', {
+              id: id
+            }
+        );
+        console.log(response);
+        alert("equipment deleted");
+        setTimeout(location.reload.bind(location), 0);
+      } catch
+          (e) {
+        this.error = 'Error occurred';
+      }
     }
   },
   data() {
@@ -69,7 +85,7 @@ export default {
     }
   },
   computed: {
-      ...mapGetters(['user']),
+    ...mapGetters(['user']),
     loadEquipment() {
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return (axios.post('getAllEquipment')).then(response => this.EquipmentList = response.data)

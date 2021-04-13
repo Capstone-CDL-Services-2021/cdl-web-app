@@ -1,20 +1,21 @@
 <template>
   <div>
-
-
     <cdl_header/>
     <navbar/>
+    <b-jumbotron bg-variant="dark" text-variant="white" border-variant="dark">
 
-    <br/>
+      <br/>
 
-    <h1 style="text-decoration: underline">Our Schedule</h1>
+      <h1 style="text-decoration: underline">Our Schedule</h1>
 
-    <br/>
+      <br/>
 
-    <b-calendar block :readonly="readonly"></b-calendar>
+      <b-calendar block :readonly="readonly"></b-calendar>
 
-    <br/>
-    <contact-us/>
+      <br/>
+      <contact-us/>
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    </b-jumbotron>
   </div>
 </template>
 

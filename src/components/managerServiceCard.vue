@@ -1,20 +1,20 @@
 <template>
   <div>
-    <b-card no-body class="overflow-hidden" style="max-width: 30rem; min-width: 30rem">
+    <b-card no-body class="overflow-hidden">
       <b-row no-gutters>
         <b-col>
           <b-card-img :src="cardImage" alt="Image" class="rounded-0"></b-card-img>
         </b-col>
         <b-col>
-          <b-card-body>
-            <b-card-text>
+          <b-card-body :title="cardTitleA">
+            <b-card-text style="max-width: 200px; align-self: center">
               {{ cardDesc }}
               <br/>
             </b-card-text>
             <br/>
             <br/>
             <b-button v-b-modal.accept v-on:click="removeService(cardId);" variant="success">Delete</b-button>
-            <b-button v-b-modal.edited v-on:click="editRedirect(cardId);" variant="primary">Edit</b-button>
+            <b-button v-on:click="editRedirect(cardId);" variant="primary">Edit</b-button>
           </b-card-body>
         </b-col>
       </b-row>
@@ -83,10 +83,9 @@ export default {
 <style scoped>
 
   img {
-    width: 500rem;
-    height: 500rem;
-    max-width: 25rem;
-    max-height: 25rem;
+    height: 400px;
+    max-width: 400px;
+    max-height: 400px;
     object-fit: cover;
   }
 

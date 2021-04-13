@@ -20,7 +20,7 @@
           <div hidden> {{ printProjects }}</div>
           <br><br>
           <div>
-            user email : {{ user.email }}
+            user email: {{ user.email }}
           </div>
 
           <table class="minimalistBlack">
@@ -45,8 +45,8 @@
               <td> {{ project.Date_Requested }}</td>
               <td> {{ project.date_completed}}</td>
               <td>
-                <div v-if="project.Completed == 0"> no</div>
-                <div v-if="project.Completed == 1"> yes</div>
+                <div v-if="project.Completed == 0"> No</div>
+                <div v-if="project.Completed == 1"> Yes</div>
               </td>
               <td> {{ project.total_cost }}</td>
             </tr>
