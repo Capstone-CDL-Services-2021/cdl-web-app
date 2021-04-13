@@ -88,13 +88,17 @@ export default {
       this.$router.push(id)
     },
     async sendInvoice(index,email,billto,serviceoffered,datecompleted,cost){
+      let date1 = new Date(datecompleted);
+      date1.setDate(date1.getDate() + 5);
       try{
+
         const response = await axios.post('sendInvoice',{
 
           invoice_number: index,
           email: email,
           bill_to: billto,
           service_offered: serviceoffered,
+          due_date: date1.toISOString().slice(0,10),
           service_cost: cost,
           issue_date: datecompleted
         });
