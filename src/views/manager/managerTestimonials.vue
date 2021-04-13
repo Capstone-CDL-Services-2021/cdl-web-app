@@ -15,7 +15,7 @@
                 <manager-testimonial-card :card-title="card.title"
                                   :card-testimonial="card.testimonial"
                                   :card-rating="card.rating"
-                                  :card-clientname="card.name"
+                                  :card-name="card.name"
                                   :card-id="card.id"
                                   :toggle="card.toggle"/>
               </div>
@@ -27,7 +27,7 @@
                 <manager-testimonial-card :card-title="card.title"
                                   :card-testimonial="card.testimonial"
                                   :card-rating="card.rating"
-                                  :client-name="card.name"
+                                  :card-name="card.name"
                                   :card-id="card.id"
                                   :toggle="card.toggle"/>
               </div>
@@ -39,7 +39,7 @@
                 <manager-testimonial-card :card-title="card.title"
                                   :card-testimonial="card.testimonial"
                                   :card-rating="card.rating"
-                                  :card-clientname="card.name"
+                                  :card-name="card.name"
                                   :card-id="card.id"
                                   :toggle="card.toggle"/>
               </div>

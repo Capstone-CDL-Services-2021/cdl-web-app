@@ -14,28 +14,28 @@
         </div>
         <div hidden> {{ loadTestimonials }} </div>
 
-        <table>
-          <thead>
-          <tr>
-            <th>Service provided</th>
-            <th>Testimonial</th>
-            <th>Rating</th>
-            <th>Name</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr v-for="testimonial in testimonialsList" :key="testimonial.id">
-            <td>{{ testimonial.title }}</td>
-            <td> {{ testimonial.testimonial}}</td>
-            <td> {{testimonial.rating}}</td>
-            <td> {{testimonial.name}}</td>
-          </tr>
-          </tbody>
-        </table>
+<!--        <table>-->
+<!--          <thead>-->
+<!--          <tr>-->
+<!--            <th>Service provided</th>-->
+<!--            <th>Testimonial</th>-->
+<!--            <th>Rating</th>-->
+<!--            <th>Name</th>-->
+<!--          </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--          <tr v-for="testimonial in testimonialsList" :key="testimonial.id">-->
+<!--            <td>{{ testimonial.title }}</td>-->
+<!--            <td> {{ testimonial.testimonial}}</td>-->
+<!--            <td> {{testimonial.rating}}</td>-->
+<!--            <td> {{testimonial.name}}</td>-->
+<!--          </tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
 
         <div v-for="card in testimonialsList" :key="card.id">
           <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
-            <div v-if="card.id % 3 === 0">
+            <div v-if="card.id % 3 === 0 && card.toggle === 1">
               <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
                 <testimonial-card :card-title="card.title"
                                   :card-testimonial="card.testimonial"
@@ -47,7 +47,7 @@
             </div>
           </div>
           <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
-            <div v-if="card.id % 3 === 1">
+            <div v-if="card.id % 3 === 1 && card.toggle === 1">
               <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
                 <testimonial-card :card-title="card.title"
                                   :card-testimonial="card.testimonial"
@@ -59,7 +59,7 @@
             </div>
           </div>
           <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
-            <div v-if="card.id % 3 === 2">
+            <div v-if="card.id % 3 === 2 && card.toggle === 1">
               <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
                 <testimonial-card :card-title="card.title"
                                   :card-testimonial="card.testimonial"
