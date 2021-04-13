@@ -6,6 +6,9 @@
     <div class="services">
       <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark" fluid style="margin-bottom: -2rem; margin-top: -2rem">
         <b-button v-on:click="redirect('managerAddService')">Add a New Service Card</b-button>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
       </b-jumbotron>
         <div class="row" style=" margin-top: 2rem; background-color: #343a40">
           <div v-for="card in serviceCardInfo" :key="card.id">

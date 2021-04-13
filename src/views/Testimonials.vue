@@ -1,8 +1,8 @@
 <template>
   <div>
-
     <cdl_header/>
-    <userCheck/>
+    <navbar/>
+
     <b-jumbotron bg-variant="dark" text-variant="white" border-variant="dark">
       <div style="padding:30px">
         <h1 style="text-decoration: underline">Testimonials</h1>
@@ -72,6 +72,7 @@
 
 <script>
 import cdl_header from "@/components/cdl_header";
+import navbar from "@/components/navbar";
 import {mapGetters} from "vuex";
 import ContactUs from "@/components/contactUs";
 import TestimonialForm from "@/components/TestimonialForm";
@@ -86,7 +87,8 @@ export default {
     ContactUs,
     cdl_header,
     TestimonialForm,
-    testimonialCard
+    testimonialCard,
+    navbar
   },
   methods: {
     redirect(id) {

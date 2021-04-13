@@ -54,9 +54,10 @@
           </table>
         </b-jumbotron>
       </div>
+
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
     </b-jumbotron>
-
-
   </div>
 </template>
 

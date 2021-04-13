@@ -166,6 +166,9 @@
       <div style="justify-content: center;display: flex">
         <h3 style="color: white">{{message}}</h3>
       </div>
+
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
     </b-jumbotron>
   </div>
 </template>
