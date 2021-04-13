@@ -114,7 +114,9 @@
           <br><br>
 
           <!-- Change password stuff  -->
-          <b-button variant="warning" v-on:click="redirect('Forgot');">Change Password</b-button><br><br>
+          <b-button variant="warning" v-on:click="redirect('Forgot');">Change Password</b-button>
+
+          <br><br>
 
           <!-- View Order History  -->
           <b-button variant="primary" v-on:click="redirect('/viewOrder')">orders</b-button>
