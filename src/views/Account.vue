@@ -119,7 +119,7 @@
           <br><br>
 
           <!-- View Order History  -->
-          <b-button variant="primary" v-on:click="redirect('/viewOrder')">orders</b-button>
+          <b-button variant="primary" v-on:click="redirect('/viewOrder')">Order History</b-button>
           <p></p>
         </b-jumbotron>
       </div>
