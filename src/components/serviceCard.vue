@@ -1,13 +1,13 @@
 <template>
   <div>
-    <b-card no-body class="overflow-hidden card" style="">
+    <b-card no-body class="overflow-hidden card">
       <b-row no-gutters>
         <b-col>
-          <b-card-img :src="cardImage" alt="Image" class="rounded-0" style="max-width: 300px"></b-card-img>
+          <b-card-img :src="cardImage" alt="Image" class="rounded-0"></b-card-img>
         </b-col>
         <b-col>
           <b-card-body :title="cardTitleA">
-            <b-card-text style="max-width: 200px">
+            <b-card-text style="max-width: 200px; align-self: center">
               {{cardDesc}}
               <br/>
             </b-card-text>
