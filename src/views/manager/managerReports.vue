@@ -29,6 +29,7 @@
                 <th>Completed</th>
                 <th>Payment Status</th>
                 <th>Send Invoice</th>
+                <th>Toggle Payment Status</th>
 
               </tr>
               </thead>
@@ -54,7 +55,13 @@
                   <div v-if="project.Completed == 1 && project.invoice_paid == 0">
                     <b-button variant="primary" @click="sendInvoice(project.id,project.Customer_Email,project.Customer_Name,project.Type_Of_Service,project.date_completed,project.total_cost)"
                     > Send Invoice</b-button>
-
+                  </div>
+                </td>
+                <td>
+                  <div v-if="project.Completed == 1 && project.invoice_paid == 0">
+                    <b-button variant="primary" v-on:click="alterInvoiceStatus(project.id)">
+                      Change Payment status
+                    </b-button>
                   </div>
                 </td>
               </tr>
@@ -112,7 +119,22 @@ export default {
         this.error= 'Error occurred'
         this.message='';
       }
+    },
+    async alterInvoiceStatus(id) {
+    try {
+      const response = await axios.post('alterInvoiceStatus', {
+            id: id
+          }
+      );
+      console.log(response);
+      alert("Payment recevied")
+      ;
+      setTimeout(location.reload.bind(location), 0);
+    } catch
+        (e) {
+      this.error = 'Error occurred';
     }
+  }
   },
   data() {
     return {
