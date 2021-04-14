@@ -8,7 +8,7 @@
               {{cardTestimonial}}
               <br/>
               <br/>
-              Rating: {{cardRating}}
+              Rating: {{cardRating}} / 5
             </b-card-text>
             <h5>Client Name: {{cardName}}</h5>
           </b-card-body>
