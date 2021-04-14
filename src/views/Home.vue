@@ -111,7 +111,6 @@ export default {
     block() {
       localStorage.removeItem('token');
       this.$store.dispatch('user', null);
-      //this.$router.push('/');
       this.$forceUpdate();
       alert("Your account has been suspended. Please contact Administrator.");
     }
