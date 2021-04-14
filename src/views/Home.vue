@@ -51,15 +51,15 @@
             ></b-carousel-slide>
 
             <b-carousel-slide
-                img-src="https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.0-9/21106325_1311368295656248_5714666004206838660_n.jpg?_nc_cat=110&ccb=3&_nc_sid=8bfeb9&_nc_ohc=qzV-kDur4rcAX9UDhZX&_nc_ht=scontent.fyyc2-1.fna&oh=85d3a4c4ae6aa32df76986f3d01f8e6b&oe=6059DC77"
+                img-src="https://s3.amazonaws.com/greenpal-production/posts/header_images/000/000/139/original/Image_1.jpg?1570548614"
             ></b-carousel-slide>
 
             <b-carousel-slide
-                img-src="https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.0-9/10696191_597175513742200_6232360445896381313_n.jpg?_nc_cat=108&ccb=3&_nc_sid=8bfeb9&_nc_ohc=dl0NMKO2IDQAX91Y78h&_nc_ht=scontent.fyyc2-1.fna&oh=a14ee56aa163f4adae847dc6afb653eb&oe=605744BA"
+                img-src="http://diggerodell.com/wp-content/uploads/2017/08/AdobeStock_102051247-1080x675.jpeg"
             ></b-carousel-slide>
 
             <b-carousel-slide
-                img-src="https://scontent.fyyc2-1.fna.fbcdn.net/v/t1.0-9/20881889_1299645000161911_4346000721402873656_n.jpg?_nc_cat=105&ccb=3&_nc_sid=8bfeb9&_nc_ohc=qVjmZleJRo8AX9eJppB&_nc_ht=scontent.fyyc2-1.fna&oh=6ff07e2ca19e2d3aca161a4a503ef71f&oe=605A4607"
+                img-src="https://images.immediate.co.uk/production/volatile/sites/10/2018/02/875d867d-e22c-4041-92c0-fc6862263aee-956c556.jpg?quality=90&resize=768%2C574"
             ></b-carousel-slide>
           </b-carousel>
         </b-col>
@@ -82,6 +82,7 @@ import navbar from "@/components/navbar"
 import cdl_header from "@/components/cdl_header"
 import {mapGetters} from 'vuex'
 import ContactUs from "@/components/contactUs";
+import userCheck from "@/components/userCheck";
 
 
 export default {
@@ -89,6 +90,7 @@ export default {
 
   //Components needed to be called later
   components: {
+    userCheck,
     ContactUs,
     cdl_header,
     navbar
@@ -137,8 +139,4 @@ body {
   font-family: "Lato", Sans-serif;
 }
 
-.align-bottom {
-  text-align: right;
-  text-anchor: end;
-}
 </style>
