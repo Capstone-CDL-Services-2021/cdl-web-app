@@ -1,20 +1,27 @@
 <template>
   <div>
+    <!-- Displays the header and the Navigation bar-->
     <cdl_header/>
     <navbar/>
 
+    <!-- Background encases everything inside it  -->
     <b-jumbotron bg-variant="dark" text-variant="white" border-variant="dark">
       <div>
         <h1 style="text-decoration: underline">Testimonials</h1>
+
+        <!-- Button that if clicked will display the form to submit a new testimonial -->
         <b-button v-on:click='hidden=!hidden'>Submit a Testimonial</b-button>
         <TestimonialForm v-if="!hidden"></TestimonialForm>
-        <div class="row" style="margin-top: 2rem">
-          <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
-          </div>
 
+        <div class="row" style="margin-top: 2rem">
+
+          <!-- Method that will load all testimonials by calling it from the backend  -->
           <div hidden> {{ loadTestimonials }}</div>
 
+          <!-- Will do a loop for each card in the testimonial list and display accordingly -->
           <div v-for="card in testimonialsList" :key="card.id">
+
+            <!-- Columns used for the testimonial card to fill -->
             <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
               <div v-if="card.id % 3 === 0 && card.toggle === 1">
                 <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
@@ -27,6 +34,7 @@
                 </div>
               </div>
             </div>
+
             <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
               <div v-if="card.id % 3 === 1 && card.toggle === 1">
                 <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
@@ -39,6 +47,7 @@
                 </div>
               </div>
             </div>
+
             <div class="col-sm-20" style="padding: 0px 10px 0px 10px">
               <div v-if="card.id % 3 === 2 && card.toggle === 1">
                 <div class="col-sm-20" style="padding: 0 10px 20px 10px;">
@@ -54,23 +63,27 @@
           </div>
 
         </div>
+
+        <!-- Checks to see if current user logged in is manager or not displays the ContactUs button using the ContactUs component-->
         <div v-if="user">
           <div v-if="user.email !== 'manager@cdlservices.com'">
             <ContactUs/>
           </div>
         </div>
+
         <div v-else>
           <ContactUs/>
         </div>
       </div>
 
+      <!-- Used this to push the jumbotron to fill the page so there wouldn't be white space -->
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-
     </b-jumbotron>
   </div>
 </template>
 
 <script>
+//All Imports needed for page to work
 import cdl_header from "@/components/cdl_header";
 import navbar from "@/components/navbar";
 import {mapGetters} from "vuex";
@@ -80,9 +93,10 @@ import axios from "axios";
 import testimonialCard from "@/components/testimonialCard";
 
 
-
 export default {
   name: "Testimonials",
+
+  //components called to be used
   components: {
     ContactUs,
     cdl_header,
@@ -90,17 +104,23 @@ export default {
     testimonialCard,
     navbar
   },
+
+  //Any methods needed
   methods: {
     redirect(id) {
       this.$router.push(id)
     }
   },
+
+  //Data that needs to be used
   data() {
     return {
       testimonialsList: [],
       hidden: true
     }
   },
+
+  //Any Functions needed to be used
   computed: {
     ...mapGetters(['user']),
     loadTestimonials() {
@@ -109,9 +129,9 @@ export default {
     }
   }
 }
-
 </script>
 
+<!-- CSS Style Script -->
 <style scoped>
 .nav-item.nav-item.nav-item a {
   color: white;

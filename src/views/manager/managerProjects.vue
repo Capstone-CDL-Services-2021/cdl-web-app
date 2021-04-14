@@ -8,7 +8,7 @@
         <b-jumbotron>
           <h1 style="text-align: center">Projects</h1>
 
-          <b-button v-on:click='hidden=!hidden'>add a project</b-button>
+          <b-button v-on:click='hidden=!hidden'>Add a New Project</b-button>
           <ProjectForm v-if="!hidden"></ProjectForm>
           <div hidden> {{ loadAllProjects }}</div>
           <br><br>

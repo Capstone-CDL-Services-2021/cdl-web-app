@@ -15,7 +15,7 @@
 
       <div class = "form-group">
         <label>Cost</label>
-        <input type="number" class="form-control" v-model="cost" placeholder="Cost of rented equipment"/>
+        <input type="number" step=".01" class="form-control" v-model="cost" placeholder="Cost of rented equipment"/>
       </div>
 
       <div class = "form-group">

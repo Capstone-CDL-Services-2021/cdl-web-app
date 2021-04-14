@@ -33,7 +33,7 @@
                 <td> {{ equipment.date_rented }}</td>
                 <td> {{ equipment.date_returned }}</td>
                 <td> {{ equipment.rented_from }}</td>
-                <td><b-button v-on:click="deleteEquipment(equipment.id)">delete</b-button></td>
+                <td><b-button v-on:click="deleteEquipment(equipment.id)">Delete</b-button></td>
               </tr>
               </tbody>
             </table>

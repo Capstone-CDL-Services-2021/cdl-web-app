@@ -1,21 +1,27 @@
 <template>
   <div>
-
+    <!-- Displays the header and the Navigation bar-->
     <cdl_header/>
     <navbar/>
 
+    <!-- Background that encases everything inside it  -->
     <b-jumbotron bg-variant="dark" text-variant="white" border-variant="dark">
 
+      <!-- Header that has a underline -->
       <h1 style="text-decoration: underline">Contact Us!</h1>
 
       <template>
         <div>
           <div class="col-sm-20">
+
             <b-form @submit.prevent="onSubmit">
+              <!--Displays alert if message was successful or not-->
               <div v-if="message" class="alert alert-success" role="alert">
                 {{ message }}
               </div>
               <error v-if="error" :error="error"></error>
+
+              <!-- Form Groups and form inputs that create the form needed for customers to fill out-->
               <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
                 <b-form-input
                     id="input-1"
@@ -24,12 +30,14 @@
                     required></b-form-input>
               </b-form-group>
 
+              <!-- Form Groups and form inputs that create the form needed for customers to fill out-->
               <b-form-group
                   id="input-group-1"
                   label="Email address:"
                   label-for="input-1"
                   description="We'll never share your email with anyone else.">
 
+                <!-- Form Groups and form inputs that create the form needed for customers to fill out-->
                 <b-form-input
                     id="input-2"
                     v-model="form.email"
@@ -38,6 +46,8 @@
                     required></b-form-input>
               </b-form-group>
 
+
+              <!-- Form Groups and form inputs that create the form needed for customers to fill out-->
               <b-form-group
                   id="input-group-2"
                   label="Question"
@@ -45,6 +55,7 @@
                   description="Please put your Question Below!">
               </b-form-group>
 
+              <!-- Text area that allows customers to fill out their inquiry -->
               <b-form-textarea
                   id="input-3"
                   v-model="form.question"
@@ -53,30 +64,38 @@
                   max-rows="8"
                   required></b-form-textarea>
               <br/>
+
+              <!--Submit button that sends the email-->
               <b-button type="submit" variant="primary">Submit</b-button>
             </b-form>
           </div>
         </div>
       </template>
 
+      <!-- Used this to push the jumbotron to fill the page so there wouldn't be white space -->
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-
     </b-jumbotron>
   </div>
 </template>
 
+
 <script>
+//All Imports needed for page to work
 import navbar from "@/components/navbar";
 import cdl_header from "@/components/cdl_header";
 import axios from "axios";
 
 export default {
   name: "Service",
+
+  //components called to be used
   components: {
     navbar,
     cdl_header,
     Error
   },
+
+  //Data that needs to be used
   data() {
     return {
       message: '',
@@ -88,6 +107,8 @@ export default {
       },
     }
   },
+
+  //Methods needed
   methods: {
     async onSubmit() {
       try {
@@ -108,10 +129,9 @@ export default {
     }
   },
 }
-
-
 </script>
 
+<!--CSS Style Script-->
 <style scoped>
 .nav-item.nav-item.nav-item a {
   color: white;
@@ -124,7 +144,6 @@ body {
   text-align: center;
   box-sizing: border-box;
   font-family: "Lato", Sans-serif;
-  /*position:relative;*/
 }
 
 #input-1 {

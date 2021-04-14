@@ -1,16 +1,25 @@
 <template>
   <div>
+    <!-- Displays the header and the Navigation bar-->
     <cdl_header/>
     <navbar/>
 
+    <!-- Used to encase everything and give background color -->
     <b-jumbotron bg-variant="dark" border-variant="dark">
       <div>
+
+        <!-- Used to encase the table and have a white background -->
         <b-jumbotron>
           <h1 style="text-align: center">Order History</h1>
-<!--          <div hidden> {{ loadAllProjects }} </div>-->
+
+          <!-- Calls the printProjects function which comes from the backend-->
           <div hidden> {{ printProjects }}</div>
+
           <br><br>
+
           <div class="table-responsive-md">
+
+            <!-- Creation of tables and all of its rows, headers and data -->
             <table class="minimalistBlack">
               <thead>
               <tr>
@@ -24,15 +33,18 @@
                 <th>Total Cost</th>
               </tr>
               </thead>
+
               <tbody>
+              <!-- For loop that checks the projectList array and is used to print values from the database -->
               <tr v-for="project in ProjectList" :key="project.id">
-                <td> {{ project.id }} </td>
+                <td> {{ project.id }}</td>
                 <td> {{ project.Type_Of_Service }}</td>
                 <td> {{ project.Customer_Email }}</td>
                 <td> {{ project.Customer_Address }}</td>
                 <td> {{ project.Date_Requested }}</td>
-                <td> {{ project.date_completed}}</td>
+                <td> {{ project.date_completed }}</td>
                 <td>
+                  <!-- Checks for 0's and 1's to change them accordingly -->
                   <div v-if="project.Completed == 0"> No</div>
                   <div v-if="project.Completed == 1"> Yes</div>
                 </td>
@@ -44,35 +56,38 @@
         </b-jumbotron>
       </div>
 
+      <!-- Used to get rid of whitespace at the bottom of the page -->
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-
     </b-jumbotron>
   </div>
 </template>
 
 <script>
-
+//All imports needed for webpage to work
 import cdl_header from "@/components/cdl_header";
 import navbar from "@/components/navbar";
 import axios from "axios";
 import {mapGetters} from "vuex";
 
 
-
 export default {
   name: "managerProjects",
+
+  //components called to be used
   components: {
     cdl_header,
     navbar
   },
-  methods: {
-  },
+
+  //Any data that is needed
   data() {
     return {
       ProjectList: [],
       hidden: true
     }
   },
+
+  //Functions that are needed
   computed: {
     ...
         mapGetters(['user']),
@@ -86,9 +101,9 @@ export default {
     }
   }
 }
-
 </script>
 
+<!-- CSS style Script -->
 <style scoped>
 table.minimalistBlack {
   border: 0px solid #000000;

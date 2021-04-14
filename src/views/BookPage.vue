@@ -1,20 +1,33 @@
 <template>
   <div>
+    <!-- Header and Navigation bar display-->
     <cdl_header/>
     <navbar/>
 
+    <!-- Used to encase everything and give background-->
     <b-jumbotron bg-variant="dark" border-variant="dark" class="colorChange">
       <h2>Book Service Page</h2>
+
+      <!-- Container to center everything inside-->
       <b-container class="row1">
+
         <b-row>
+
           <b-col>
+
             <template>
+
               <div>
+
                 <b-form @submit.prevent="serviceRequestHandler">
+
+                  <!-- Checks to see if form being sent was successful alert will show accordingly-->
                   <div v-if="message" class="alert alert-success" role="alert">
                     {{ message }}
                   </div>
                   <error v-if="error" :error="error"></error>
+
+                  <!-- Form Groups and form inputs that create the form needed for customers to fill out-->
                   <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
                     <b-form-input
                         id="input-2"
@@ -24,6 +37,7 @@
                     ></b-form-input>
                   </b-form-group>
 
+                  <!-- Form Groups and form inputs that create the form needed for customers to fill out-->
                   <b-form-group
                       id="input-group-1"
                       label="Email address:"
@@ -39,6 +53,7 @@
                     ></b-form-input>
                   </b-form-group>
 
+                  <!-- Form Groups and form inputs that create the form needed for customers to fill out-->
                   <b-form-group id="input-group-3" label="Type of Service: " label-for="input-3">
                     <b-form-select
                         id="input-3"
@@ -48,6 +63,7 @@
                     ></b-form-select>
                   </b-form-group>
 
+                  <!-- Form Groups and form inputs that create the form needed for customers to fill out-->
                   <b-form-group
                       id="input-group-4"
                       label="Start date of service:"
@@ -61,6 +77,7 @@
                     ></b-form-input>
                   </b-form-group>
 
+                  <!-- Form Groups and form inputs that create the form needed for customers to fill out-->
                   <b-form-group
                       id="input-group-5"
                       label="Street Address:"
@@ -74,6 +91,7 @@
                         required
                     ></b-form-input>
                   </b-form-group>
+                  <!-- Submit Button -->
                   <b-button type="submit" variant="primary">Submit</b-button>
                 </b-form>
               </div>
@@ -82,13 +100,18 @@
         </b-row>
       </b-container>
       <br/>
+
+      <!-- Calls Contact us Component-->
       <contact-us/>
+
+      <!-- Used to fill empty white spaces-->
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </b-jumbotron>
   </div>
 </template>
 
 <script>
+//All imports needed to run webpage
 import cdl_header from "@/components/cdl_header";
 import contactUs from "@/components/contactUs";
 import navbar from "@/components/navbar";
@@ -96,12 +119,16 @@ import axios from "axios";
 
 export default {
   name: "BookPage",
+
+  //components called to be used
   components: {
     navbar,
     cdl_header,
     Error,
     contactUs
   },
+
+  //Data that needs to be used
   data() {
     return {
       message: '',
@@ -119,6 +146,8 @@ export default {
 
     }
   },
+
+  //Any methods that are needed
   methods: {
     async serviceRequestHandler() {
       try {
@@ -140,16 +169,17 @@ export default {
       this.$router.push(id)
     }
   },
+
+  //Computes function
   computed: {
     readonly() {
       return this.state === 'readonly'
     }
   },
 }
-
-
 </script>
 
+<!-- CSS style script -->
 <style scoped>
 .nav-item.nav-item.nav-item a {
   color: white;
@@ -162,7 +192,6 @@ body {
   text-align: center;
   box-sizing: border-box;
   font-family: "Lato", Sans-serif;
-  /*position:relative;*/
 }
 
 .btn:link,
@@ -173,7 +202,6 @@ body {
   top: 0;
   left: 0;
   color: white;
-  /*padding:20px 40px;*/
   border-radius: 100px;
   display: inline-block;
   transition: all .5s;

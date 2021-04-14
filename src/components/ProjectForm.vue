@@ -1,7 +1,8 @@
 <template>
   <div class="container-sm">
     <form @submit.prevent="ProjectHandler">
-      <h1>Add a Project</h1>
+
+      <br/>
 
       <div class = "form-group">
         <label>Type of Service</label>
@@ -35,7 +36,7 @@
 
       <div class = "form-group">
         <label>Total Cost</label>
-        <input type="number" min="0" class="form-control" v-model="total_cost" placeholder="Total Cost of Project"/>
+        <input type="number" step=".01" min="0" class="form-control" v-model="total_cost" placeholder="Total Cost of Project"/>
       </div>
 
       <div class = "form-group">
@@ -48,7 +49,7 @@
         <input type="checkbox" class="form-control" v-model="Completed" />
       </div>
 
-      <button class="btn-primary btn-block">confirm</button>
+      <button class="btn-primary btn-block">Confirm</button>
     </form>
   </div>
 </template>
