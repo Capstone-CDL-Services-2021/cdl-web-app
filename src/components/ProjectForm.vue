@@ -9,22 +9,22 @@
       </div>
 
       <div class = "form-group">
-        <label>Customer name</label>
+        <label>Customer Name</label>
         <input type="text" class="form-control" v-model="Customer_Name" placeholder="Customer full name"/>
       </div>
 
       <div class = "form-group">
-        <label>Customer email</label>
+        <label>Customer Email</label>
         <input type="email" class="form-control" v-model="Customer_Email" placeholder="customer email"/>
       </div>
 
       <div class = "form-group">
-        <label>customer address</label>
+        <label>Customer Address</label>
         <input type="text" class="form-control" v-model="Customer_Address" placeholder="customer address"/>
       </div>
 
       <div class = "form-group">
-        <label>Date requested</label>
+        <label>Date Requested</label>
         <input type="date" class="form-control" v-model="Date_Requested" placeholder="Date service requested for"/>
       </div>
 
