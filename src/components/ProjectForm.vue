@@ -45,7 +45,7 @@
 
       <div class = "form-group">
         <label>Completed</label>
-        <input type="checkbox" class="form-control" v-model="Completed" placeholder="Is project complete?"/>
+        <input type="checkbox" class="form-control" v-model="Completed" />
       </div>
 
       <button class="btn-primary btn-block">confirm</button>
@@ -68,8 +68,8 @@ export default {
       Date_Requested: '',
       date_completed: '',
       total_cost: '',
-      invoice_paid: '',
-      Completed:''
+      invoice_paid: 0,
+      Completed:0
 
     }
   },
