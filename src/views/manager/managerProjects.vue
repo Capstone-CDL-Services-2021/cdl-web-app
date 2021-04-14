@@ -40,7 +40,7 @@
                 </td>
                 <td>
                   <div v-if="project.Completed == 0">
-                    <b-button v-on:click="alterComplete(project.id)" @click="showAlert">Mark Complete</b-button>
+                    <b-button v-on:click="alterComplete(project.id)">Mark Complete</b-button>
                   </div>
                 </td>
                 <td>
