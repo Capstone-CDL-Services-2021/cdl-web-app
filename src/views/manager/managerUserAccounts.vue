@@ -142,7 +142,7 @@ export default {
     },
     blockUnblock() {
       this.block = ''
-      this.$bvModal.msgBoxConfirm('Please confirm that you want to block this user.', {
+      this.$bvModal.msgBoxConfirm('Block/Unblock user?.', {
         title: 'Please Confirm',
         size: 'sm',
         buttonSize: 'sm',
