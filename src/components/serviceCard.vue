@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-card no-body class="overflow-hidden" style="">
+    <b-card no-body class="overflow-hidden card" style="">
       <b-row no-gutters>
         <b-col>
           <b-card-img :src="cardImage" alt="Image" class="rounded-0" style="max-width: 300px"></b-card-img>
@@ -61,9 +61,12 @@ export default {
 </script>
 
 <style scoped>
+.card {
+  max-width: 400px;
+  margin-bottom: 25px;
+}
 img {
   height: 400px;
-  min-width: 100px;
   max-width: 400px;
   max-height: 400px;
   object-fit: cover;

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <b-card no-body class="overflow-hidden">
-      <b-row no-gutters>
+    <b-card no-body class="overflow-hidden card">
+<!--      <b-row no-gutters>-->
         <b-col>
           <b-card-img :src="cardImage" alt="Image" class="rounded-0"></b-card-img>
         </b-col>
@@ -17,7 +17,7 @@
             <b-button v-on:click="editRedirect(cardId);" variant="primary">Edit</b-button>
           </b-card-body>
         </b-col>
-      </b-row>
+<!--      </b-row>-->
     </b-card>
 
     <b-modal id="accept" size="sm" title="Service Response" hide-footer>
@@ -81,6 +81,11 @@ export default {
 </script>
 
 <style scoped>
+
+  .card {
+    max-width: 400px;
+    margin-bottom: 25px;
+  }
 
   img {
     height: 400px;
