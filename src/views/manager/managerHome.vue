@@ -1,15 +1,19 @@
 <template>
   <div>
-
+    <!-- Displays the Manager header and navigation bar -->
     <manager-header/>
     <manager-navbar/>
 
+    <!-- Used to encase everything and give the dark background color-->
     <b-jumbotron bg-variant="dark" text-variant="white" border-variant="dark">
-
 
       <div class="row">
         <h1 style="text-decoration: underline">Upcoming Projects and Due Dates</h1>
+
+        <!-- Calls the loadUpcomingProjects function that calls from the backend -->
         <div hidden> {{ loadUpcomingProjects}} </div>
+
+        <!-- Creation of tables and all of its rows, headers and data -->
         <table class="minimalistBlack">
           <thead>
           <tr>
@@ -19,44 +23,47 @@
           </tr>
           </thead>
           <tbody>
+
+          <!-- For loop that checks the projectList array and is used to print values from the database -->
           <tr v-for="project in projectList" :key="project.id">
             <td>{{ project.Type_Of_Service }}</td>
             <td>{{ project.Date_Requested }}</td>
             <td> {{ project.Customer_Address }}</td>
-
           </tr>
           </tbody>
         </table>
       </div>
 
-
-      <br/>
+      <!-- Used to get rid of whitespace at the bottom of the page -->
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </b-jumbotron>
-
   </div>
 </template>
 
 
 <script>
+//All imports needed for webpage to function
 import managerNavbar from "@/components/managerNavbar";
 import managerHeader from "@/components/managerHeader";
 import axios from "axios";
 
 export default {
   name: "Home",
+
+  //components called to be used
   components: {
     managerHeader,
     managerNavbar
   },
+
+  //Any data that may be needed
   data(){
     return {
       projectList: []
     }
   },
-  methods: {
 
-  },
+  //functions to be used
   computed: {
     loadUpcomingProjects() {
       // eslint-disable-next-line vue/no-async-in-computed-properties
@@ -66,6 +73,7 @@ export default {
 }
 </script>
 
+<!-- CSS style script -->
 <style scoped>
 .nav-item.nav-item.nav-item a {
   color: white;

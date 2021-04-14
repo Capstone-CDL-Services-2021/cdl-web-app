@@ -53,6 +53,9 @@
           </div>
         </div>
       </div>
+
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
     </b-jumbotron>
 
     <b-modal id="accept" size="sm" title="Service" ok-only @ok="redirect('/managerService')">

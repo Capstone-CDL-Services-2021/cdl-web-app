@@ -47,6 +47,9 @@
           <h4>{{message}}</h4>
         </b-jumbotron>
       </div>
+
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
     </b-jumbotron>
   </div>
 </template>
@@ -139,7 +142,7 @@ export default {
     },
     blockUnblock() {
       this.block = ''
-      this.$bvModal.msgBoxConfirm('Please confirm that you want to block this user.', {
+      this.$bvModal.msgBoxConfirm('Block/Unblock user?.', {
         title: 'Please Confirm',
         size: 'sm',
         buttonSize: 'sm',

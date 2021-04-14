@@ -12,35 +12,39 @@
 
           <div hidden> {{ loadEquipment }} </div>
 
-          <table class="minimalistBlack">
-            <thead>
-            <tr>
-              <th>Name</th>
-              <th>Owned</th>
-              <th>Cost</th>
-              <th>Date Rented</th>
-              <th>Date Returned</th>
-              <th>Rented From</th>
-              <th>Delete equipment</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="equipment in EquipmentList" :key="equipment.id">
-              <td>{{ equipment.name }}</td>
-              <td>{{ equipment.owned }}</td>
-              <td> {{ equipment.cost }}</td>
-              <td> {{ equipment.date_rented }}</td>
-              <td> {{ equipment.date_returned }}</td>
-              <td> {{ equipment.rented_from }}</td>
-              <td><b-button v-on:click="deleteEquipment(equipment.id)">delete</b-button></td>
-            </tr>
-            </tbody>
-          </table>
+          <div class="table-responsive-md">
+            <table class="minimalistBlack">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Owned</th>
+                <th>Cost</th>
+                <th>Date Rented</th>
+                <th>Date Returned</th>
+                <th>Rented From</th>
+                <th>Delete equipment</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="equipment in EquipmentList" :key="equipment.id">
+                <td>{{ equipment.name }}</td>
+                <td>{{ equipment.owned }}</td>
+                <td> {{ equipment.cost }}</td>
+                <td> {{ equipment.date_rented }}</td>
+                <td> {{ equipment.date_returned }}</td>
+                <td> {{ equipment.rented_from }}</td>
+                <td><b-button v-on:click="deleteEquipment(equipment.id)">Delete</b-button></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
         </b-jumbotron>
       </div>
+
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
     </b-jumbotron>
-
-
   </div>
 </template>
 
@@ -96,6 +100,7 @@ export default {
 </script>
 
 <style scoped>
+
 table.minimalistBlack {
   border: 0px solid #000000;
   width: 100%;

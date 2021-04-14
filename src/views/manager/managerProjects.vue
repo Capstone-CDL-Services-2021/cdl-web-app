@@ -8,43 +8,53 @@
         <b-jumbotron>
           <h1 style="text-align: center">Projects</h1>
 
-          <b-button v-on:click='hidden=!hidden'>add a project</b-button>
+          <b-button v-on:click='hidden=!hidden'>Add a New Project</b-button>
           <ProjectForm v-if="!hidden"></ProjectForm>
           <div hidden> {{ loadAllProjects }}</div>
           <br><br>
-          <table class="minimalistBlack">
-            <thead>
-            <tr>
-              <th>Service</th>
-              <th>Customer Name</th>
-              <th>Customer Email</th>
-              <th>Customer Address</th>
-              <th>Date Requested</th>
-              <th>Completed</th>
-              <th>Mark complete</th>
-              <th>Delete project</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="project in ProjectList" :key="project.id">
-              <td>{{ project.Type_Of_Service }}</td>
-              <td>{{ project.Customer_Name }}</td>
-              <td> {{ project.Customer_Email }}</td>
-              <td> {{ project.Customer_Address }}</td>
-              <td> {{ project.Date_Requested }}</td>
-              <td><div v-if="project.Completed == 0"> no</div>
-                  <div v-if="project.Completed == 1"> yes</div></td>
-              <td>
-                <div v-if="project.Completed == 0">
-                <b-button v-on:click="alterComplete(project.id)">mark complete</b-button>
-                </div>
-              </td>
-              <td><b-button v-on:click="deleteProject(project.id)">delete</b-button></td>
-            </tr>
-            </tbody>
-          </table>
+
+          <div class="table-responsive-md">
+            <table class="minimalistBlack">
+              <thead>
+              <tr>
+                <th>Service</th>
+                <th>Customer Name</th>
+                <th>Customer Email</th>
+                <th>Customer Address</th>
+                <th>Date Requested</th>
+                <th>Completed</th>
+                <th>Mark complete</th>
+                <th>Delete project</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="project in ProjectList" :key="project.id">
+                <td>{{ project.Type_Of_Service }}</td>
+                <td>{{ project.Customer_Name }}</td>
+                <td> {{ project.Customer_Email }}</td>
+                <td> {{ project.Customer_Address }}</td>
+                <td> {{ project.Date_Requested }}</td>
+                <td>
+                  <div v-if="project.Completed == 0"> No</div>
+                  <div v-if="project.Completed == 1"> Yes</div>
+                </td>
+                <td>
+                  <div v-if="project.Completed == 0">
+                    <b-button v-on:click="alterComplete(project.id)">Mark Complete</b-button>
+                  </div>
+                </td>
+                <td>
+                  <b-button v-on:click="deleteProject(project.id)">Delete</b-button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+
         </b-jumbotron>
       </div>
+
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
     </b-jumbotron>
@@ -77,7 +87,7 @@ export default {
             }
         );
         console.log(response);
-        alert(response.data.message)
+        alert("This project is now complete")
         ;
         setTimeout(location.reload.bind(location), 0);
       } catch
@@ -99,26 +109,27 @@ export default {
         this.error = 'Error occurred';
       }
     }
-    },
-    data() {
-      return {
-        ProjectList: [],
-        hidden: true
-      }
-    },
-    computed: {
-      ...
-          mapGetters(['user']),
-      loadAllProjects() {
-        // eslint-disable-next-line vue/no-async-in-computed-properties
-        return (axios.post('getAllProjects')).then(response => this.ProjectList = response.data)
-      }
+  },
+  data() {
+    return {
+      ProjectList: [],
+      hidden: true
+    }
+  },
+  computed: {
+    ...
+        mapGetters(['user']),
+    loadAllProjects() {
+      // eslint-disable-next-line vue/no-async-in-computed-properties
+      return (axios.post('getAllProjects')).then(response => this.ProjectList = response.data)
     }
   }
+}
 
 </script>
 
 <style scoped>
+
 table.minimalistBlack {
   border: 0px solid #000000;
   width: 100%;

@@ -20,7 +20,6 @@ export default {
 </script>
 
 <style scoped>
-
 .align-bottom {
   text-align: right;
   text-anchor: end;

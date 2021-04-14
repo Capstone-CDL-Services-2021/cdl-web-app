@@ -113,59 +113,22 @@
           </b-modal>
           <br><br>
 
-
           <!-- Change password stuff  -->
-          <b-button variant="warning" v-on:click="redirect('Forgot');">Change Password (Alee's page)</b-button><br><br>
-          <b-button variant="warning" v-b-modal.modal-password>Change Password</b-button>
-          <b-modal
-              id="modal-password"
-              ref="modal"
-              title="Changing Password"
-              @show="resetModal"
-              @hidden="resetModal"
-              @ok="handleOkPassword"
-          >
-            <b-form ref="form" @submit.stop.prevent="handleSubmitPassword">
-              <b-form-group
-                  label="New Password:"
-                  label-for="new_password_input"
-                  invalid-feedback="New password is required"
-                  label-cols-sm="4"
-                  :state="newPasswordState"
-              >
-                <b-form-input
-                    id="new_password_input"
-                    v-model="new_password"
-                    :state="newPasswordState"
-                    required
-                ></b-form-input>
-              </b-form-group>
-              <b-form-group
-                  label="Confirm new password:"
-                  label-for="confirm_password"
-                  invalid-feedback="Confirm password is required"
-                  label-cols-sm="4"
-                  :state="confirmPasswordState"
-              >
-                <b-form-input
-                    id="confirm_password"
-                    v-model="confirm_password"
-                    :state="confirmPasswordState"
-                    required
-                ></b-form-input>
-              </b-form-group>
-            </b-form>
-          </b-modal>
+          <b-button variant="warning" v-on:click="redirect('Forgot');">Change Password</b-button>
+
           <br><br>
 
           <!-- View Order History  -->
-          <b-button variant="primary" v-on:click="redirect('/viewOrder')">orders</b-button>
+          <b-button variant="primary" v-on:click="redirect('/viewOrder')">Order History</b-button>
           <p></p>
         </b-jumbotron>
       </div>
       <div style="justify-content: center;display: flex">
         <h3 style="color: white">{{message}}</h3>
       </div>
+
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
     </b-jumbotron>
   </div>
 </template>
@@ -257,53 +220,6 @@ export default {
       // Hide the modal manually
       this.$nextTick(() => {
         this.$bvModal.hide('modal-update')
-      })
-    },
-
-    // Password form functionality
-    checkFormValidityPassword() {
-      const valid = this.$refs.form.checkValidity()
-      this.newPasswordState = valid
-      this.confirmPasswordState = valid
-      return valid;
-    },
-    resetModal() {
-      this.new_password = ''
-      this.confirm_password = ''
-      this.newPasswordState = null
-      this.confirmPasswordState = null
-    },
-    handleOkPassword(bvModalEvt) {
-      // Prevent modal from closing
-      bvModalEvt.preventDefault()
-      // Trigger submit handler
-      this.handleSubmitPassword()
-    },
-    async handleSubmitPassword() {
-      // Exit when the form isn't valid
-      if (!this.checkFormValidityPassword()) {
-        return
-      }
-      // Check if password match
-      else if (this.new_password !== this.confirm_password) {
-        this.message = "Error: Password did not match"
-      } else {
-        // Print message
-        this.message = "Password successfully changed"
-        // const response = await axios.post('reset', {
-        //   password: this.new_password,
-        //   password_confirm: this.confirm_password,
-        //   token: this.$route.params.token
-        // });
-
-        // const response = await axios.post('forgot',{
-        //   email: this.user.email
-        // });
-        // console.log(response);
-      }
-      // Hide the modal manually
-      this.$nextTick(() => {
-        this.$bvModal.hide('modal-password')
       })
     },
 

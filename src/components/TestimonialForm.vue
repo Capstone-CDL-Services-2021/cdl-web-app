@@ -1,8 +1,7 @@
 <template>
   <div class="container-sm">
     <form @submit.prevent="testimonialHandler">
-      <h1>Testimonial</h1>
-
+      <br/><br/><br/>
       <div class="form-group">
         <label>Service provided:</label>
         <input type="text" class="form-control" v-model="title" placeholder="Snow shovelling"/>
@@ -83,6 +82,9 @@ export default {
 </script>
 
 <style scoped>
+.container-sm {
+  max-width: 400px;
+}
 .txt-center {
   text-align: center;
 }
@@ -129,5 +131,9 @@ export default {
   position: absolute;
   left: 0;
   color: #FFD700;
+}
+
+.rating {
+  background-color:white;
 }
 </style>

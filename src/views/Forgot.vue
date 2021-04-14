@@ -1,22 +1,29 @@
 <template>
-  <div class="auth-wrapper">
-    <div class="auth-inner">
-  <form @submit.prevent="forgotpassHandler">
-    <div v-if="message" class="alert alert-success" role="alert">
-      {{message}}
-    </div>
-    <error v-if="error" :error="error"></error>
+  <b-jumbotron bg-variant="dark" border-variant="dark">
+    <div class="container-sm">
+      <div class="auth-wrapper">
+        <div class="auth-inner">
+          <form @submit.prevent="forgotpassHandler">
+            <div v-if="message" class="alert alert-success" role="alert">
+              {{message}}
+            </div>
+            <error v-if="error" :error="error"></error>
 
-    <h2>Forgot Password</h2>
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" v-model="email" class="form-control" placeholder="enter your email">
+            <h2>Change Password</h2>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" v-model="email" class="form-control" placeholder="enter your email">
+            </div>
+
+            <button class="btn btn-dark btn-block">Submit</button>
+          </form>
+        </div>
+      </div>
     </div>
 
-    <button class="btn btn-primary btn-block">Submit</button>
-  </form>
-    </div>
-  </div>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br><br>
+  </b-jumbotron>
+
 </template>
 
 <script>
@@ -65,11 +72,11 @@ export default {
 }
 
 .auth-inner{
-  width: 450px;
   margin: auto;
-  background: aqua;
+  background: green;
   padding: 40px 55px 40px 55px;
   border-radius: 15px;
   transition: all .3s;
+  color: white;
 }
 </style>
