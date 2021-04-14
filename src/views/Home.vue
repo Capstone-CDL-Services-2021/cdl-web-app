@@ -4,7 +4,6 @@
     <!-- Calls CDL_header component -->
     <cdl_header/>
     <!-- calls the user check component, that checks if the user currently logged in is the manager or not -->
-    <userCheck/>
 
     <!-- This checks to see if current user is logged in, and if the user is NOT blocked from logging in-->
     <h3 v-if="user && user.blocked === 0">
@@ -39,26 +38,31 @@
         <b-col>
           <!-- Making of the carousel -->
           <b-carousel
+
               id="carousel-fade"
-              fade
+              no-animation
               indicators
-              img-width="1024"
-              img-height="480"
+              img-width=1024
+              img-height=480
           >
             <!-- creates the carousel slides and assigns the image -->
             <b-carousel-slide
-                img-src="https://images.unsplash.com/photo-1483385573908-0a2108937c4a"
-            ></b-carousel-slide>
-
-            <b-carousel-slide
-                img-src="https://s3.amazonaws.com/greenpal-production/posts/header_images/000/000/139/original/Image_1.jpg?1570548614"
-            ></b-carousel-slide>
-
-            <b-carousel-slide
+                class="img-size"
                 img-src="http://diggerodell.com/wp-content/uploads/2017/08/AdobeStock_102051247-1080x675.jpeg"
             ></b-carousel-slide>
 
             <b-carousel-slide
+                class="img-size"
+                img-src="https://inoutcarwash.com/wp-content/uploads/2018/07/car-detailing-1080x675.jpg"
+            ></b-carousel-slide>
+
+            <b-carousel-slide
+                class="img-size"
+                img-src="https://landscapingcalgary.org/wp-content/uploads/2018/10/IMG_0722.jpg"
+            ></b-carousel-slide>
+
+            <b-carousel-slide
+                class="img-size"
                 img-src="https://images.immediate.co.uk/production/volatile/sites/10/2018/02/875d867d-e22c-4041-92c0-fc6862263aee-956c556.jpg?quality=90&resize=768%2C574"
             ></b-carousel-slide>
           </b-carousel>
@@ -82,7 +86,7 @@ import navbar from "@/components/navbar"
 import cdl_header from "@/components/cdl_header"
 import {mapGetters} from 'vuex'
 import ContactUs from "@/components/contactUs";
-import userCheck from "@/components/userCheck";
+
 
 
 export default {
@@ -90,7 +94,6 @@ export default {
 
   //Components needed to be called later
   components: {
-    userCheck,
     ContactUs,
     cdl_header,
     navbar
@@ -138,4 +141,9 @@ body {
   font-family: "Lato", Sans-serif;
 }
 
+.img-size{
+  width: 100%;
+  height: 400px;
+  max-height: 400px;
+}
 </style>
