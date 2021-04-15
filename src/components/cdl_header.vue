@@ -102,7 +102,7 @@ export default {
 
   computed: {
     /**
-     * Gets the method from vuex
+     * maps if user is found
      */
     ...mapGetters(['user'])
   }

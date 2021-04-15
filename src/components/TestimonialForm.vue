@@ -1,19 +1,22 @@
 <template>
+  <!--  container-->
   <div class="container-sm">
+    <!--    testimonial form-->
     <form @submit.prevent="testimonialHandler">
       <br/><br/><br/>
+      <!--      Service provided-->
       <div class="form-group">
-        <label>Service provided:</label>
-        <input type="text" class="form-control" v-model="title" placeholder="Snow shovelling"/>
+        <label>Service Provided:</label>
+        <input type="text" class="form-control" v-model="title" placeholder="Ex. Snow Shovelling"/>
       </div>
-
+      <!--      testimonial review-->
       <div class="form-group">
-        <label>testimonial</label>
-        <input type="text" class="form-control" v-model="testimonial" placeholder="testimonial"/>
+        <label>Testimonial</label>
+        <input type="text" class="form-control" v-model="testimonial" placeholder="Enter your review here!"/>
       </div>
+      <!--      star rating-->
       <div class="form-group container-sm">
         <label>Rating</label>
-        <!--      <input type="number" class="form-control" v-model="rating" placeholder="rating out of 5" min="0" max="5"/>-->
         <div class="txt-center">
           <form>
             <div class="rating">
@@ -32,26 +35,30 @@
           </form>
         </div>
       </div>
-
+      <!--      client name-->
       <div class="form-group">
         <label>Name</label>
-        <input type="text" class="form-control" v-model="name" placeholder="John Smith"/>
+        <input type="text" class="form-control" v-model="name" placeholder="Ex. John Smith"/>
       </div>
-
       <button class="btn-primary btn-block">Submit</button>
     </form>
   </div>
-
-
-
 </template>
 
 <script>
+/**
+ * import components, views, and dependencies
+ */
 import axios from 'axios'
 
+/**
+ * export components, views, and methods from the imports
+ */
 export default {
   name: "TestimonialForm",
-  components: {},
+  /**
+   * return data to declared and instantiated variables
+   */
   data() {
     return {
       title: '',
@@ -61,6 +68,11 @@ export default {
     }
   },
   methods: {
+    /**
+     * testimonialHandler() - handles the testimonial form and adds the entry to the testimonial database
+     * @returns {Promise<void>}
+     * returns nothing, returns to page and cancels whole modal event
+     */
     async testimonialHandler() {
       try {
         const response = await axios.post('addTestimonial', {
@@ -85,6 +97,7 @@ export default {
 .container-sm {
   max-width: 400px;
 }
+
 .txt-center {
   text-align: center;
 }
@@ -134,6 +147,6 @@ export default {
 }
 
 .rating {
-  background-color:white;
+  background-color: white;
 }
 </style>

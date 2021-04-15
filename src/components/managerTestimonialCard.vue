@@ -1,4 +1,5 @@
 <template>
+<!--  This component is called whenever a manager wants to view all testimonial cards. The manager can then choose whether testimonial cards can be visible to users or not-->
   <div>
     <b-card no-body class="overflow-hidden" style="max-width: 570px">
       <b-row no-gutters>

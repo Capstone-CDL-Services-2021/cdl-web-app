@@ -23,16 +23,23 @@
 
 <script>
 /**
- * 
+ * grabs mapGetters from vuex
  */
 import {mapGetters} from 'vuex'
 
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "navbar",
   data() {
     return {}
   },
   methods: {
+    /**
+     * this method is to redirect based on the id parameter input
+     * @param id a String value that is a path
+     */
     redirect(id) {
       this.$router.push(id)
     }
