@@ -1,21 +1,43 @@
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
 <template>
   <div>
+
+    <!-- calls the manager header and navbar components to be displayed -->
     <manager-header/>
     <manager-navbar/>
 
+    <!-- Used to encase everything and give background color -->
     <b-jumbotron bg-variant="dark" border-variant="dark">
       <div>
         <b-jumbotron>
           <h1 style="text-align: center">Equipment</h1>
-          <!--          Add Equipment Button-->
+
+          <!-- Add Equipment Button -->
           <b-button v-on:click='hidden=!hidden'>Add Equipment</b-button>
           <br><br><br>
-          <!--          Check to see if the hidden value is true-->
+
+          <!-- Check to see if the hidden value is true -->
           <EquipmentForm v-if="!hidden"></EquipmentForm>
-          <!--           Hidden load equipment method call-->
+
+          <!-- Hidden load equipment method call -->
           <div hidden> {{ loadEquipment }}</div>
 
-          <!--          Equipment Table-->
+          <!-- Equipment Table -->
           <div class="table-responsive-md">
             <table class="minimalistBlack">
               <thead>
@@ -30,6 +52,8 @@
               </tr>
               </thead>
               <tbody>
+
+              <!-- For loop that checks the equipList array and is used to print values from the database -->
               <tr v-for="equipment in EquipmentList" :key="equipment.id">
                 <td>{{ equipment.name }}</td>
                 <td>{{ equipment.owned }}</td>
@@ -44,10 +68,10 @@
               </tbody>
             </table>
           </div>
-
         </b-jumbotron>
       </div>
 
+      <!-- Used to add extra space at the bottom to get rid of white spaces -->
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
     </b-jumbotron>
@@ -55,13 +79,18 @@
 </template>
 
 <script>
-
+/**
+ * import components, views and dependencies
+ */
 import managerHeader from "@/components/managerHeader";
 import managerNavbar from "@/components/managerNavbar";
 import EquipmentForm from "@/components/EquipmentForm"
 import axios from "axios";
 import {mapGetters} from "vuex";
 
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "managerEquipment",
   components: {
@@ -69,14 +98,17 @@ export default {
     managerNavbar,
     EquipmentForm
   },
+
   methods: {
+
     /**
-     * Redirect - Redirects the page to the specified location ID
-     * @param id - The location path
+     * this method is to redirect based on the id parameter input
+     * @param id a String value that is a path
      */
     redirect(id) {
       this.$router.push(id)
     },
+
     /**
      * deleteEquipment - Sends a post request to the backend deleteEquipment Function
      * This will delete the equipment with the specified ID
@@ -98,26 +130,35 @@ export default {
       }
     }
   },
+
+  /**
+   * return data to declared and instantiated variables
+   */
   data() {
     return {
-
       EquipmentList: [], // Equipmentlist Array
       hidden: true // Hidden Boolean
     }
   },
   computed: {
+
     /**
      * maps if user is found
      */
     ...mapGetters(['user']),
-    loadEquipment() { // Retrieves all the current equipment stored in the database
+
+    /**
+     * Retrieves all the current equipment stored in the database
+     *
+     */
+    loadEquipment() {
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return (axios.post('getAllEquipment')).then(response => this.EquipmentList = response.data)
     }
   }
 }
-
 </script>
+
 <!-- CSS style script -->
 <style scoped>
 

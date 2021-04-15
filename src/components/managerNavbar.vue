@@ -1,11 +1,28 @@
-<!--  Component called whenever a manager is logged in.-->
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
+
+<!-- Component called whenever a manager is logged in. -->
 <template>
   <b-navbar toggleable="lg" class="navbar navbar-light" style="background-color: green;" sticky>
-<!--    Used for mobile friendliness-->
+    <!-- Used for mobile friendliness -->
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
-<!--      The redirection based on which button is pushed-->
+      <!-- The redirection based on which button is pushed -->
       <b-navbar-nav>
         <b-button variant="outline-light" v-on:click="redirect('/managerProjects')">Projects</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/managerService')">Services</b-button>
@@ -13,34 +30,46 @@
         <b-button variant="outline-light" v-on:click="redirect('/managerUserAccounts')">Manage User Accounts</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/managerEquipment')">Equipment</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/managerTestimonials')">Testimonials</b-button>
-
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
 </template>
 
 <script>
+
 /**
  * export components, views and methods from the imports
  */
 export default {
   name: "navbar",
+
+  /**
+   * return data to declared and instantiated variables
+   */
   data() {
-    return {}
+    return {
+
+    }
   },
+
   /**
    * this method is to redirect based on the id parameter input
    * @param id a String value that is a path
    */
   methods: {
+
+    /**
+     * this method is to redirect based on the id parameter input
+     * @param id a String value that is a path
+     */
     redirect(id) {
       this.$router.push(id)
     }
   }
 }
-
 </script>
 
+<!-- CSS Style Script -->
 <style scoped>
 .nav-item.nav-item.nav-item a {
   color: white;
@@ -54,7 +83,6 @@ body {
   text-align: center;
   box-sizing: border-box;
   font-family: "Lato", Sans-serif;
-  /*position:relative;*/
 }
 
 .btn:link,
@@ -65,7 +93,6 @@ body {
   top: 0;
   left: 0;
   color: green;
-  /*padding:20px 40px;*/
   border-radius: 100px;
   display: inline-block;
   transition: all .5s;
@@ -102,7 +129,6 @@ body {
   display: inline-block;
   z-index: -1;
   transition: all .5s;
-
 }
 
 .btn-white::after {
@@ -119,6 +145,7 @@ body {
     opacity: 0;
     transform: translateY(40px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);

@@ -1,3 +1,18 @@
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
 
 <template>
   <div>
@@ -78,46 +93,47 @@
       <contact-us/>
 
       <!-- Used to get rid of whitespace at the bottom of the page -->
-
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
     </b-jumbotron>
   </div>
 </template>
 
 <script>
-//All imports needed to work the web page
+/**
+ * import components, views and dependencies
+ */
 import navbar from "@/components/navbar"
 import cdl_header from "@/components/cdl_header"
 import {mapGetters} from 'vuex'
 import ContactUs from "@/components/contactUs";
 
 
-
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "Home",
-
-  //Components needed to be called later
   components: {
     ContactUs,
     cdl_header,
     navbar
   },
 
-  //data to be used later
+  /**
+   * return data to declared and instantiated variables
+   */
   data() {
     return {
       message: ''
     }
   },
 
-  /**
-   *
-   */
   methods: {
 
     /**
-     * Used to redirect to the webpage by using the according ID
-     * @param id
+     * this method is to redirect based on the id parameter input
+     * @param id a String value that is a path
      */
     redirect(id) {
       this.$router.push(id)
@@ -138,6 +154,9 @@ export default {
 
   //any computed values needed
   computed: {
+    /**
+     * maps if user is found
+     */
     ...mapGetters(['user']),
   }
 }

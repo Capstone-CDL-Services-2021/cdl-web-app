@@ -1,3 +1,19 @@
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
 <template>
   <div>
     <!-- Displays the Manager header and navigation bar by calling the components -->
@@ -40,9 +56,9 @@
                 <th>Payment Status</th>
                 <th>Send Invoice</th>
                 <th>Toggle Payment Status</th>
-
               </tr>
               </thead>
+
               <tbody>
               <!-- For loop that checks the projectList array and is used to print values from the database -->
               <tr v-for="project in ProjectList" :key="project.id">

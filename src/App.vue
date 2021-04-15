@@ -1,14 +1,32 @@
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
 <template>
-  <!--From main.js, this template gets mounted to the <div id="app"> in the
-      index.html and renders it to the main DOM-->
+  <!-- From main.js, this template gets mounted to the <div id="app"> in the
+      index.html and renders it to the main DOM -->
   <div id="app">
-    <!--Renders the proper component/view by matching the address bar with
-        the path to the component/view-->
+
+    <!-- Renders the proper component/view by matching the address bar with
+        the path to the component/view -->
     <router-view/>
   </div>
 </template>
 
 <script>
+
 /**
  * import components, views and dependencies
  */
@@ -19,6 +37,7 @@ import axios from "axios";
  */
 export default {
   name: 'App',
+
   /**
    * created - create a session of logged in user
    *           and store values into "user"
@@ -34,6 +53,7 @@ export default {
 }
 </script>
 
+<!-- CSS Style Script -->
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

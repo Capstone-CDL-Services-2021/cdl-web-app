@@ -1,20 +1,40 @@
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
 <template>
   <div>
 
+    <!-- Displays the Manager header and navigation bar by calling the components -->
     <manager-header/>
     <manager-navbar/>
 
+    <!-- Used to encase everything and give background color -->
     <b-jumbotron bg-variant="dark" border-variant="dark">
-      <div hidden>
-        <!--Invoke the compute method-->
-        {{ getAllUsers }}
-      </div>
+
+      <!-- calls the getAllUsers to load all users from the database -->
+      <div hidden> {{ getAllUsers }}</div>
+
       <div>
         <b-jumbotron>
           <h1 style="text-align: center">Registered Users</h1>
           <b-button size="sm" variant="danger" @click="resetPassword">Reset</b-button>
           <b-button size="sm" variant="secondary" @click="blockUnblock">Block/Unblock</b-button>
           <br><br>
+
+          <!-- Creates the table for the users to be held inside of -->
           <b-table
               bordered hover small
               :items="userInfo"
@@ -24,17 +44,19 @@
               selectable
               @row-selected="onRowSelected">
 
-            <!--templates for specific columns indicated by #cell-->
+            <!-- templates for specific columns indicated by #cell -->
             <template #cell(selected)="{ rowSelected }">
               <template v-if="rowSelected">
                 <span aria-hidden="true">&check;</span>
                 <span class="sr-only">Selected</span>
               </template>
+
               <template v-else>
                 <span aria-hidden="true">&nbsp;</span>
                 <span class="sr-only">Not selected</span>
               </template>
             </template>
+
             <template v-slot:cell(blocked)="block">
               <template v-if="block.value === 1">
                 Blocked
@@ -43,18 +65,20 @@
                 Not Blocked
               </template>
             </template>
+
           </b-table>
           <h4>{{ message }}</h4>
         </b-jumbotron>
       </div>
 
+      <!-- Used to add extra space at the bottom to get rid of white spaces -->
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-
     </b-jumbotron>
   </div>
 </template>
 
 <script>
+
 /**
  * import components, views and dependencies
  */
@@ -71,6 +95,7 @@ export default {
     managerHeader,
     managerNavbar
   },
+
   /**
    *  return data to declared and instantiated variables
    */
@@ -105,10 +130,12 @@ export default {
       ]
     }
   },
+
   /**
-   * Method for reactive dependencies
+   * export components, views and methods from the imports
    */
   computed: {
+
     /**
      * getAllUsers - grabs all the users from the Database
      *               except for the admin account and insert
@@ -122,10 +149,10 @@ export default {
       return axios.get('getAllUsers').then(response => this.userInfo = response.data)
     }
   },
-  /**
-   * Method for reactive dependencies
-   */
+
+
   methods: {
+
     /**
      * onRowSelected - method that checks which row is selected
      *                 in the table, grabs the values in items
@@ -138,6 +165,7 @@ export default {
     onRowSelected(items) {
       this.selectedRow = items
     },
+
     /**
      * redirect - Change address bar with id value
      *
@@ -147,6 +175,7 @@ export default {
     redirect(id) {
       this.$router.push(id)
     },
+
     /**
      * resetPassword - a method that builds a custom modal with methods stored
      *                 inside which triggers certain event depending on what
@@ -171,6 +200,7 @@ export default {
             }
           })
     },
+
     /**
      * resetPass - resets the password for selected user from the table.
      *             User receives email with a link to reset their password
@@ -192,6 +222,7 @@ export default {
         this.message = '';
       }
     },
+
     /**
      * blockUnblock -  a method that builds a custom modal with methods stored
      *                 inside which triggers certain event depending on what
@@ -218,6 +249,7 @@ export default {
             }
           })
     },
+
     /**
      * toggleBlocked - block or unblock the selected user from the tables using their
      *                 id. Changes the value in the database for blocked to 1 to block,
@@ -241,6 +273,6 @@ export default {
 }
 </script>
 
+<!-- CSS Style Script -->
 <style scoped>
-
 </style>

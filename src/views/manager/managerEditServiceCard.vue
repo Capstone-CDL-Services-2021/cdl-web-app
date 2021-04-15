@@ -1,23 +1,40 @@
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
 <!--View that allows the manager to edit service cards through a form-->
 <template>
   <div>
-    <!--    manager header-->
+
+    <!-- calls the manager header and navbar components to be displayed -->
     <manager-header/>
-    <!--    manager navbar-->
     <manager-navbar/>
-    <!--jumbotron containing content-->
+
+    <!-- Used to encase everything and give background color -->
     <b-jumbotron bg-variant="dark" text-variant="white" border-variant="dark">
       <div class="column">
         <div class="row">
           <div class="col">
             <h1 style="text-decoration: underline">Editing Service Card</h1>
-            <!--            Edit service name label-->
+            <!-- Edit service name label -->
             <b-form-group
                 id="input-group-1"
                 label="Service Name:"
                 label-for="input-group-1"
                 style="color:white">
-              <!--Edit service name textbox-->
+              <!-- Edit service name textbox -->
               <b-form-input
                   id="input-1"
                   v-model="service.title"
@@ -25,12 +42,14 @@
                   placeholder="Enter Service Name"
                   required/>
             </b-form-group>
-            <!--            Edit service description label-->
+
+            <!-- Edit service description label -->
             <b-form-group
                 id="input-group-2"
                 label="Service Description:"
                 label-for="input-2">
-              <!--              Edit service description textbox-->
+
+              <!-- Edit service description textbox -->
               <b-form-textarea
                   id="input-2"
                   v-model="service.desc"
@@ -38,30 +57,37 @@
                   placeholder="Enter Service Description"
                   required/>
             </b-form-group>
-            <!--            Edit service image label-->
+
+            <!-- Edit service image label -->
             <b-form-group
                 id="input-group-3"
                 label="Service Image:"
                 label-for="input-3">
-              <!--              Edit service image link-->
+
+              <!-- Edit service image link -->
               <b-form-input
                   id="input-3"
                   v-model="service.img"
                   placeholder="Enter Image Link"
                   required/>
             </b-form-group>
+
             <div class="layout">
-              <!--              button to complete update-->
+              <!-- button to complete update -->
               <b-button v-b-modal.edited variant="success" class="button" v-on:click="editService();">Update</b-button>
             </div>
+
           </div>
         </div>
       </div>
-      <!--      modal to display success message-->
+
+      <!-- modal to display success message -->
       <b-modal id="edited" size="sm" title="Service Response" ok-only @ok="redirect('/managerService')"
                hide-header-close>
         <p>Service Card has been Updated</p>
       </b-modal>
+
+      <!-- Used to add extra space at the bottom to get rid of white spaces -->
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </b-jumbotron>
   </div>
@@ -69,6 +95,7 @@
 
 
 <script>
+
 /**
  * import components, views, and dependencies
  */
@@ -85,7 +112,9 @@ export default {
     managerHeader,
     managerNavbar
   },
+
   computed: {
+
     /**
      * cardId() - returns the card ID of a service card
      * @returns {string}
@@ -94,6 +123,7 @@ export default {
       return this.$route.params.id
     }
   },
+
   /**
    * data() - returns the service
    * @returns {{service: {}}}
@@ -103,7 +133,9 @@ export default {
       service: {}
     }
   },
+
   methods: {
+
     /**
      * redirect() - redirects the user to the page specified by id
      * @param id
@@ -111,6 +143,7 @@ export default {
     redirect(id) {
       this.$router.push(id)
     },
+
     /**
      * editService() - function that edits the service and forwards the data to be updated into the mySQL database
      * @returns {Promise<void>}
@@ -133,6 +166,7 @@ export default {
 }
 </script>
 
+<!-- CSS Style Script -->
 <style scoped>
 .nav-item.nav-item.nav-item a {
   color: white;

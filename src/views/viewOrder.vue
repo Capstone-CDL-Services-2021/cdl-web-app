@@ -1,5 +1,22 @@
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
 <template>
   <div>
+
     <!-- Displays the header and the Navigation bar by calling the components -->
     <cdl_header/>
     <navbar/>
@@ -63,23 +80,27 @@
 </template>
 
 <script>
-//All imports needed for webpage to work
+/**
+ * import components, views and dependencies
+ */
 import cdl_header from "@/components/cdl_header";
 import navbar from "@/components/navbar";
 import axios from "axios";
 import {mapGetters} from "vuex";
 
-
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "managerProjects",
-
-  //components called to be used
   components: {
     cdl_header,
     navbar
   },
 
-  //Any data that is needed
+  /**
+   * return data to declared and instantiated variables
+   */
   data() {
     return {
       ProjectList: [],
@@ -90,9 +111,10 @@ export default {
   //Functions that are needed
   computed: {
 
-    // calls mapGetters to get all users in the database
-    ...
-        mapGetters(['user']),
+    /**
+     * maps if user is found
+     */
+    ... mapGetters(['user']),
 
     /**
      * Used to print the projects while sending the email of the currently logged in user

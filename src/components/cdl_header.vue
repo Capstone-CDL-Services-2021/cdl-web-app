@@ -1,37 +1,59 @@
-<!--  This component is called for creating columns for the header: left side has the home image, login/logout/register/forgot password, right side has contact information-->
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
+
+<!--  This component is called for creating columns for the header: left side has the home image, login/logout/register/forgot password, right side has contact information -->
 <template>
   <div class="column">
     <div class="row">
-<!--  This column is for the logo and picture. If clicking on the picture, it will redirect you to the home page-->
+
+      <!--  This column is for the logo and picture. If clicking on the picture, it will redirect you to the home page -->
       <div class="col-sm-200">
-        <img alt="CDL Services" width="150px" src="../assets/cdlservices.jpg" align="left" style="padding-left:20px" v-on:click="redirect('/')">
+        <img alt="CDL Services" width="150px" src="../assets/cdlservices.jpg" align="left" style="padding-left:20px"
+             v-on:click="redirect('/')">
       </div>
 
-<!--  This column is for the email/password/forgot password/register column is for-->
+      <!--  This column is for the email/password/forgot password/register column is for -->
       <div class="col-sm-20" style="padding:20px">
         <b-form v-if="!user" @submit.prevent="submitHandler">
           <error v-if="error" :error="error"></error>
           <b-input-group size="xs">
-          <b-form-input placeholder="Email" v-model="email"></b-form-input>
-        </b-input-group>
-        <b-input-group size="xs">
-          <b-form-input type="password" placeholder="Password" v-model="password"></b-form-input>
-          <b-button type="submit" variant="primary">Login</b-button>
-        </b-input-group>
+            <b-form-input placeholder="Email" v-model="email"></b-form-input>
+          </b-input-group>
+          <b-input-group size="xs">
+            <b-form-input type="password" placeholder="Password" v-model="password"></b-form-input>
+            <b-button type="submit" variant="primary">Login</b-button>
+          </b-input-group>
           <p class="forgot-password text-left">
             <router-link to="forgot">Forgot password?</router-link>
           </p>
           <a href="/register" v-on:click="redirect('/register')">Register</a>
         </b-form>
-<!--        checks if the user logging in is a manager or not-->
+        <!-- checks if the user logging in is a manager or not -->
         <div v-if="user">
-          <div v-if="user.email == 'manager@cdlservices.com'">{{ redirect('/managerHome')}}<manager-navbar/></div>
+          <div v-if="user.email == 'manager@cdlservices.com'">{{ redirect('/managerHome') }}
+            <manager-navbar/>
+          </div>
           <a href="javascript:void(0)" v-on:click="logoutHandler">Logout</a>
         </div>
       </div>
-<!--      column for contact information-->
+      <!-- column for contact information -->
       <div class="col-sm">
-        <p class="text-right" style="padding-right: 20px">T5H 2K3 Edmonton, Alberta, Canada <br> 780-695-5395 <br> Mon- Sat 9:00am - 5:00pm<br></p>
+        <p class="text-right" style="padding-right: 20px">T5H 2K3 Edmonton, Alberta, Canada <br> 780-695-5395 <br> Mon-
+          Sat 9:00am - 5:00pm<br></p>
       </div>
     </div>
   </div>
@@ -49,24 +71,24 @@ import {mapGetters} from 'vuex'
 /**
  * export components, views and methods from the imports
  */
-
 export default {
   name: "cdl_header",
-  components:{
+  components: {
     Error
   },
+
   /**
    * return data to declared and instantiated variables
    */
-
   data() {
     return {
-      email:'',
-      password:'',
-      error:''
+      email: '',
+      password: '',
+      error: ''
     }
   },
   methods: {
+
     /**
      * this method is to redirect based on the id parameter input
      * @param id a String value that is a path
@@ -74,33 +96,37 @@ export default {
     redirect(id) {
       this.$router.push(id)
     },
+
     /**
      * It removes the token associated to the user and then it makes the user = null.
      */
-    logoutHandler(){
+    logoutHandler() {
       localStorage.removeItem('token');
-      this.$store.dispatch('user',null);
+      this.$store.dispatch('user', null);
       this.$router.push('/');
     },
+
     /**
      * Whenever a user logs in, this method is called to submit to check in the database if the email/password matches any in the database.
      *
      */
-    async submitHandler(){
-      try{
-      const response = await axios.post('login', {
-        email : this.email,
-        password : this.password
-      });
-       console.log(response);
-       localStorage.setItem('token',response.data.token);
-       this.$store.dispatch('user', response.data.user);
-    }catch(e) {
-        this.error= "Invalid username/password";
-    }}
+    async submitHandler() {
+      try {
+        const response = await axios.post('login', {
+          email: this.email,
+          password: this.password
+        });
+        console.log(response);
+        localStorage.setItem('token', response.data.token);
+        this.$store.dispatch('user', response.data.user);
+      } catch (e) {
+        this.error = "Invalid username/password";
+      }
+    }
   },
 
   computed: {
+
     /**
      * maps if user is found
      */
@@ -110,6 +136,7 @@ export default {
 </script>
 
 
+<!-- CSS Style Script -->
 <style scoped>
 .nav-item.nav-item.nav-item a {
   color: white;

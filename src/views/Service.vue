@@ -1,38 +1,64 @@
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
 <template>
   <div>
-<!--    Hidden loadServiceCard method call to retrieve all service cards from database-->
+
+    <!-- Hidden loadServiceCard method call to retrieve all service cards from database -->
     <div hidden>{{ loadServiceCard }}</div>
+
+    <!-- Header and Navigation bar display by calling the components -->
     <cdl_header/>
     <navbar/>
+
     <h1 style="text-decoration: underline; background-color: #343a40; color: white; padding: 2rem">Services!</h1>
     <div class="services container-fluid text-center" style="background-color: #343a40">
       <div class="row" style="margin-top: -1rem">
-<!--        Loop through serviceCardInfo Array and print into their columns-->
+
+        <!-- Loop through serviceCardInfo Array and print into their columns -->
         <div v-for="card in serviceCardInfo" :key="card.id">
+
+          <!-- Holds the service cards in different columns -->
           <div class="col-sm" style="padding: 0px 10px 0px 10px">
             <div v-if="card.id % 3 === 0">
-                <service-card :card-img="card.imageUrl"
-                              :card-title="card.title"
-                              :card-desc="card.description"
-                              :card-id="card.id"/>
+              <service-card :card-img="card.imageUrl"
+                            :card-title="card.title"
+                            :card-desc="card.description"
+                            :card-id="card.id"/>
             </div>
           </div>
+
           <div class="col-sm" style="padding: 0px 10px 0px 10px">
             <div v-if="card.id % 3 === 1">
-                <service-card :card-img="card.imageUrl"
-                              :card-title="card.title"
-                              :card-desc="card.description"
-                              :card-id="card.id"/>
+              <service-card :card-img="card.imageUrl"
+                            :card-title="card.title"
+                            :card-desc="card.description"
+                            :card-id="card.id"/>
             </div>
           </div>
+
           <div class="col-sm" style="padding: 0px 10px 0px 10px">
             <div v-if="card.id % 3 === 2">
-                <service-card :card-img="card.imageUrl"
-                              :card-title="card.title"
-                              :card-desc="card.description"
-                              :card-id="card.id"/>
+              <service-card :card-img="card.imageUrl"
+                            :card-title="card.title"
+                            :card-desc="card.description"
+                            :card-id="card.id"/>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -40,14 +66,20 @@
   </div>
 </template>
 
+
 <script>
+/**
+ * import components, views and dependencies
+ */
 import cdl_header from "@/components/cdl_header";
 import serviceCard from "@/components/serviceCard";
 import ContactUs from "@/components/contactUs";
 import axios from "axios";
 import Navbar from "@/components/navbar";
 
-
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "Service",
   components: {
@@ -56,22 +88,35 @@ export default {
     cdl_header,
     serviceCard
   },
+
   computed: {
-    loadServiceCard() { // Get Method Call to the backend to retrieve all service cards from the database
+    /**
+     * When called it will load all of the service cards from the backend from the
+     * backend application
+     *
+     */
+    loadServiceCard() {
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return axios.get('getAllServiceCards')
           .then(response => this.serviceCardInfo = response.data)
     }
   },
+
+  /**
+   * return data to declared and instantiated variables
+   */
   data() {
     return {
       serviceCardInfo: [] // serviceCardInfo Array
     }
   },
+
+
   methods: {
+
     /**
-     * Redirect - Redirects the page to the specified location ID
-     * @param id - The location path
+     * this method is to redirect based on the id parameter input
+     * @param id a String value that is a path
      */
     redirect(id) {
       this.$router.push(id)
@@ -79,6 +124,8 @@ export default {
   }
 }
 </script>
+
+
 <!-- CSS style Script -->
 <style scoped>
 .nav-item.nav-item.nav-item a {

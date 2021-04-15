@@ -1,3 +1,19 @@
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
 <template>
 
   <!-- Used to encase everything and give background color -->
@@ -38,19 +54,24 @@
 </template>
 
 <script>
-//All imports needed
+/**
+ * import components, views and dependencies
+ */
 import Error from '@/components/Error'
 import axios from 'axios'
 
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "Forgot",
-
-  //Any components needed
   components: {
     Error
   },
 
-  //Data that is needed
+  /**
+   * return data to declared and instantiated variables
+   */
   data() {
     return {
       email: '',

@@ -1,3 +1,19 @@
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
 <template>
   <div>
     <!-- Header and Navigation bar display by calling the components -->
@@ -112,16 +128,19 @@
 </template>
 
 <script>
-//All imports needed to run webpage
+/**
+ * import components, views and dependencies
+ */
 import cdl_header from "@/components/cdl_header";
 import contactUs from "@/components/contactUs";
 import navbar from "@/components/navbar";
 import axios from "axios";
 
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "BookPage",
-
-  //components called to be used
   components: {
     navbar,
     cdl_header,
@@ -129,7 +148,9 @@ export default {
     contactUs
   },
 
-  //Data that needs to be used
+  /**
+   * return data to declared and instantiated variables
+   */
   data() {
     return {
       message: '',
@@ -175,15 +196,14 @@ export default {
     },
 
     /**
-     * Used to redirect to the webpage by using the according ID
-     * @param id
+     * this method is to redirect based on the id parameter input
+     * @param id a String value that is a path
      */
     redirect(id) {
       this.$router.push(id)
     }
   },
 
-  //Computes function
   computed: {
   },
 }

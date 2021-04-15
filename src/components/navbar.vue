@@ -1,27 +1,43 @@
-<!--  This component is called by default for a user that isn't a manager-->
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
+
+<!-- This component is called by default for a user that isn't a manager -->
 <template>
   <b-navbar toggleable="lg" class="navbar navbar-light" style="background-color: green;" sticky>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
-<!--      The redirections for buttons-->
+      <!-- The redirections for buttons -->
       <b-navbar-nav>
         <b-button variant="outline-light" v-on:click="redirect('/')">Home</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/services')">Services</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/testimonials')">Testimonials</b-button>
         <b-button v-if="user" variant="outline-light" v-on:click="redirect('/account')">Account</b-button>
       </b-navbar-nav>
-      <b-navbar-nav class = "ml-auto">
 
-          <b-button variant="outline-light" v-on:click="redirect('/book')" right>Request a Service</b-button>
-
+      <b-navbar-nav class="ml-auto">
+        <b-button variant="outline-light" v-on:click="redirect('/book')" right>Request a Service</b-button>
       </b-navbar-nav>
-
     </b-collapse>
   </b-navbar>
 </template>
 
 <script>
+
 /**
  * grabs mapGetters from vuex
  */
@@ -32,10 +48,17 @@ import {mapGetters} from 'vuex'
  */
 export default {
   name: "navbar",
+
+  /**
+   * return data to declared and instantiated variables
+   */
   data() {
-    return {}
+    return {
+
+    }
   },
   methods: {
+
     /**
      * this method is to redirect based on the id parameter input
      * @param id a String value that is a path
@@ -44,13 +67,18 @@ export default {
       this.$router.push(id)
     }
   },
+
   computed: {
+    /**
+     * maps if user is found
+     */
+
     ...mapGetters(['user'])
   }
 }
-
 </script>
 
+<!-- CSS Style Script -->
 <style scoped>
 .nav-item.nav-item.nav-item a {
   color: white;

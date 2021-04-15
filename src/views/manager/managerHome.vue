@@ -4,7 +4,7 @@
     <manager-header/>
     <manager-navbar/>
 
-    <!-- Used to encase everything and give the dark background color-->
+    <!-- Used to encase everything and give the dark background color -->
     <b-jumbotron bg-variant="dark" text-variant="white" border-variant="dark">
 
       <div class="row">

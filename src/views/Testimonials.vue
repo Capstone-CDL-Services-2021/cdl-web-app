@@ -1,10 +1,27 @@
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
 <template>
   <div>
-    <!-- Displays the header and the Navigation bar-->
+
+    <!-- Displays the header and the Navigation bar -->
     <cdl_header/>
     <navbar/>
 
-    <!-- Background encases everything inside it  -->
+    <!-- Background encases everything inside it -->
     <b-jumbotron bg-variant="dark" text-variant="white" border-variant="dark">
       <div>
         <h1 style="text-decoration: underline">Testimonials</h1>
@@ -83,7 +100,9 @@
 </template>
 
 <script>
-//All Imports needed for page to work
+/**
+ * import components, views and dependencies
+ */
 import cdl_header from "@/components/cdl_header";
 import navbar from "@/components/navbar";
 import {mapGetters} from "vuex";
@@ -92,11 +111,11 @@ import TestimonialForm from "@/components/TestimonialForm";
 import axios from "axios";
 import testimonialCard from "@/components/testimonialCard";
 
-
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "Testimonials",
-
-  //components called to be used
   components: {
     ContactUs,
     cdl_header,
@@ -107,16 +126,19 @@ export default {
 
   //Any methods needed
   methods: {
+
     /**
-     * Used to redirect to the webpage by using the according ID
-     * @param id
+     * this method is to redirect based on the id parameter input
+     * @param id a String value that is a path
      */
     redirect(id) {
       this.$router.push(id)
     }
   },
 
-  //Data that needs to be used
+  /**
+   * return data to declared and instantiated variables
+   */
   data() {
     return {
       testimonialsList: [],
@@ -126,7 +148,9 @@ export default {
 
   computed: {
 
-    // calls mapGetters to get all users in the database
+    /**
+     * maps if user is found
+     */
     ...mapGetters(['user']),
 
     /**

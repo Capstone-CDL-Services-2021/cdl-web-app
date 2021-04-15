@@ -1,3 +1,19 @@
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
 <template>
   <div>
 
@@ -19,15 +35,18 @@
 </template>
 
 <script>
-//All of the imports needed for the webpage
+/**
+ * import components, views and dependencies
+ */
 import navbar from "@/components/navbar";
 import cdl_header from "@/components/cdl_header";
 import RegisterForm from "@/components/RegisterForm";
 
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "Register",
-
-  //All components that are needed
   components: {
     navbar,
     cdl_header,

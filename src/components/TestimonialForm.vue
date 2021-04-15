@@ -1,21 +1,42 @@
-<!--Component that generates a form for the user to fill out for testimonials-->
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
+
+<!-- Component that generates a form for the user to fill out for testimonials -->
 <template>
-  <!--  container-->
+  <!-- container-->
   <div class="container-sm">
-    <!--    testimonial form-->
+
+    <!-- testimonial form -->
     <form @submit.prevent="testimonialHandler">
       <br/><br/><br/>
-      <!--      Service provided-->
+
+      <!-- Service provided -->
       <div class="form-group">
         <label>Service Provided:</label>
         <input type="text" class="form-control" v-model="title" placeholder="Ex. Snow Shovelling"/>
       </div>
-      <!--      testimonial review-->
+
+      <!-- testimonial review -->
       <div class="form-group">
         <label>Testimonial</label>
         <input type="text" class="form-control" v-model="testimonial" placeholder="Enter your review here!"/>
       </div>
-      <!--      star rating-->
+
+      <!-- star rating -->
       <div class="form-group container-sm">
         <label>Rating</label>
         <div class="txt-center">
@@ -36,17 +57,20 @@
           </form>
         </div>
       </div>
-      <!--      client name-->
+
+      <!-- client name -->
       <div class="form-group">
         <label>Name</label>
         <input type="text" class="form-control" v-model="name" placeholder="Ex. John Smith"/>
       </div>
+
       <button class="btn-primary btn-block">Submit</button>
     </form>
   </div>
 </template>
 
 <script>
+
 /**
  * import components, views, and dependencies
  */
@@ -57,6 +81,7 @@ import axios from 'axios'
  */
 export default {
   name: "TestimonialForm",
+
   /**
    * return data to declared and instantiated variables
    */
@@ -68,7 +93,9 @@ export default {
       name: ''
     }
   },
+
   methods: {
+
     /**
      * testimonialHandler() - handles the testimonial form and adds the entry to the testimonial database
      * @returns {Promise<void>}
@@ -94,6 +121,7 @@ export default {
 }
 </script>
 
+<!-- CSS Style Script -->
 <style scoped>
 .container-sm {
   max-width: 400px;

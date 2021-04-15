@@ -1,23 +1,45 @@
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
 <template>
   <div>
+
     <!-- Displays the Manager header and navigation bar by calling the components -->
     <manager-header/>
     <manager-navbar/>
-    <!-- Used to encase everything and give the dark background color-->
+
+    <!-- Used to encase everything and give the dark background color -->
     <b-jumbotron bg-variant="dark" border-variant="dark">
       <div>
-        <!-- Holds the ServiceCards table, giving the white background-->
+
+        <!-- Holds the Projects table, giving the white background -->
         <b-jumbotron>
           <h1 style="text-align: center">Projects</h1>
-<!--          Projects Button-->
+
+          <!-- Projects Button-->
           <b-button v-on:click='hidden=!hidden'>Add a New Project</b-button>
-<!--          Check for hidden boolean to be true-->
+
+          <!-- Check for hidden boolean to be true-->
           <ProjectForm v-if="!hidden"></ProjectForm>
-<!--          Hidden loadallprojects method call-->
+
+          <!-- Hidden loadallprojects method call-->
           <div hidden> {{ loadAllProjects }}</div>
           <br><br>
 
-<!--          projects table-->
+          <!-- projects table-->
           <div class="table-responsive-md">
             <table class="minimalistBlack">
               <thead>
@@ -33,7 +55,7 @@
               </tr>
               </thead>
               <tbody>
-<!--              Print each project into a table element -->
+              <!-- Print each project into a table element -->
               <tr v-for="project in ProjectList" :key="project.id">
                 <td>{{ project.Type_Of_Service }}</td>
                 <td>{{ project.Customer_Name }}</td>
@@ -41,11 +63,12 @@
                 <td> {{ project.Customer_Address }}</td>
                 <td> {{ project.Date_Requested }}</td>
                 <td>
+                  <!-- Checks for 0's and 1's to change them accordingly -->
                   <div v-if="project.Completed == 0"> No</div>
                   <div v-if="project.Completed == 1"> Yes</div>
                 </td>
                 <td>
-<!--                  Each project has their own buttons and the buttons are assigned with the project ID-->
+                  <!-- Each project has their own buttons and the buttons are assigned with the project ID -->
                   <div v-if="project.Completed == 0">
                     <b-button v-on:click="alterComplete(project.id)">Mark Complete</b-button>
                   </div>
@@ -57,28 +80,29 @@
               </tbody>
             </table>
           </div>
-
-
         </b-jumbotron>
       </div>
 
+      <!-- Used to get rid of whitespace at the bottom of the page -->
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-
     </b-jumbotron>
-
-
   </div>
 </template>
 
 <script>
 
+/**
+ * import components, views and dependencies
+ */
 import managerHeader from "@/components/managerHeader";
 import managerNavbar from "@/components/managerNavbar";
 import axios from "axios";
 import {mapGetters} from "vuex";
 import ProjectForm from "@/components/ProjectForm";
 
-
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "managerProjects",
   components: {
@@ -87,6 +111,7 @@ export default {
     ProjectForm
   },
   methods: {
+
     /**
      * alterComplete - Post Method call to the backend to change the status of the project
      * @param id - The id of the project
@@ -107,6 +132,7 @@ export default {
         this.error = 'Error occurred';
       }
     },
+
     /**
      * deleteProject - Post Method call to the backend to delete the specified project
      * @param id - Project ID being deleted
@@ -127,6 +153,10 @@ export default {
       }
     }
   },
+
+  /**
+   * return data to declared and instantiated variables
+   */
   data() {
     return {
       ProjectList: [], // ProjectList Array
@@ -134,11 +164,17 @@ export default {
     }
   },
   computed: {
+
     /**
      * maps if user is found
      */
     ...mapGetters(['user']),
-    loadAllProjects() { // Post Method call to the backend to retrieve all the projects in the database
+
+    /**
+     * Post Method call to the backend to retrieve all the projects in the database
+     *
+     */
+    loadAllProjects() {
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return (axios.post('getAllProjects')).then(response => this.ProjectList = response.data)
     }
@@ -147,8 +183,8 @@ export default {
 
 </script>
 
+<!-- CSS Style Script -->
 <style scoped>
-
 table.minimalistBlack {
   border: 0px solid #000000;
   width: 100%;

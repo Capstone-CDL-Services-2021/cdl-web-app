@@ -1,54 +1,77 @@
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
 <template>
   <div>
 
+    <!-- Displays the Manager header and navigation bar by calling the components -->
     <manager-header/>
     <manager-navbar/>
-<!--    Hidden loadServiceCard method call to retrieve the service cards in the database-->
+
+    <!-- Hidden loadServiceCard method call to retrieve the service cards in the database -->
     <div hidden>{{ loadServiceCard }}</div>
+
     <div class="services">
       <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark"
                    style="margin-bottom: -2rem; margin-top: -2rem">
-<!--        Add new Service Card Button-->
+
+        <!-- Add new Service Card Button -->
         <b-button v-on:click="redirect('managerAddService')">Add a New Service Card</b-button>
 
         <div class="container-fluid">
           <div class="row" style=" margin-top: 2rem;">
-<!--            Loop for displaying the service cards in 3 columns-->
+
+            <!-- Loop for displaying the service cards in 3 columns -->
             <div v-for="card in serviceCardInfo" :key="card.id">
               <div class="col-sm" style="padding: 0px 10px 0px 10px">
                 <div v-if="card.id % 3 === 0">
-                  <manager-service-card :card-img="card.imageUrl"
-                                        :card-title="card.title"
-                                        :card-desc="card.description"
-                                        :card-id="card.id"/>
+                  <manager-service-card
+                      :card-img="card.imageUrl"
+                      :card-title="card.title"
+                      :card-desc="card.description"
+                      :card-id="card.id"/>
                 </div>
-
               </div>
+
               <div class="col-sm" style="padding: 0px 10px 0px 10px">
                 <div v-if="card.id % 3 === 1">
-                  <manager-service-card :card-img="card.imageUrl"
-                                        :card-title="card.title"
-                                        :card-desc="card.description"
-                                        :card-id="card.id"/>
+                  <manager-service-card
+                      :card-img="card.imageUrl"
+                      :card-title="card.title"
+                      :card-desc="card.description"
+                      :card-id="card.id"/>
                 </div>
-
               </div>
+
               <div class="col-sm" style="padding: 0px 10px 0px 10px">
                 <div v-if="card.id % 3 === 2">
-                  <manager-service-card :card-img="card.imageUrl"
-                                        :card-title="card.title"
-                                        :card-desc="card.description"
-                                        :card-id="card.id"/>
+                  <manager-service-card
+                      :card-img="card.imageUrl"
+                      :card-title="card.title"
+                      :card-desc="card.description"
+                      :card-id="card.id"/>
                 </div>
-
               </div>
+
             </div>
           </div>
         </div>
 
-
+        <!-- Used to add extra space at the bottom to get rid of white spaces -->
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-
       </b-jumbotron>
     </div>
   </div>
@@ -56,12 +79,17 @@
 </template>
 
 <script>
+/**
+ * import components, views and dependencies
+ */
 import managerNavbar from "@/components/managerNavbar";
 import managerHeader from "@/components/managerHeader";
 import managerServiceCard from "@/components/managerServiceCard";
 import axios from "axios";
 
-
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "Service",
   components: {
@@ -69,22 +97,34 @@ export default {
     managerHeader,
     managerServiceCard
   },
+
+  /**
+   * return data to declared and instantiated variables
+   */
   data() {
     return {
-      serviceCardInfo: [] // ServiceCardInfo Array
+      serviceCardInfo: []
     }
   },
+
   computed: {
-    loadServiceCard() { // Get Method call to retrieve all the service cards from the database
+
+    /**
+     * When this method is called loads all of the service cards in the database.
+     *
+     */
+    loadServiceCard() {
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return axios.get('getAllServiceCards')
           .then(response => this.serviceCardInfo = response.data)
     }
   },
+
   methods: {
+
     /**
-     * Redirect - Redirects the page to the specified location ID
-     * @param id - The location path
+     * this method is to redirect based on the id parameter input
+     * @param id a String value that is a path
      */
     redirect(id) {
       this.$router.push(id)
@@ -93,6 +133,7 @@ export default {
 }
 </script>
 
+<!-- CSS Style Script -->
 <style scoped>
 .nav-item.nav-item.nav-item a {
   color: white;

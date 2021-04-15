@@ -1,9 +1,27 @@
+<!--
+*******************************************
+*                                         *
+* Application: Front-end of CDL_Services  *
+*                                         *
+* Author: Alejandro Pena Canelon          *
+*         Daniel Tran                     *
+*         David Do                        *
+*         Jimmy Lam                       *
+*         Jordan Banh                     *
+*         Justin Serrano                  *
+*                                         *
+* Date: April 16, 2021                    *
+*                                         *
+******************************************* -->
+
 <template>
   <div>
 
+    <!-- Header and Navigation bar display by calling the components -->
     <cdl_header/>
     <navbar/>
 
+    <!-- Used to encase everything and give background color -->
     <b-jumbotron bg-variant="dark" border-variant="dark">
       <h1 style="color: white">Account Settings</h1>
 
@@ -12,6 +30,7 @@
         <b-jumbotron style="text-align: left" title="User Information" text-variant="black" border-variant="dark"
                      class="paraStyle">
           <h3>User Information:</h3>
+
           <div class="mid">
             <p>Full Name: {{ user.first_name }} {{ user.last_name }}
 
@@ -22,6 +41,8 @@
 
             <!--Update User Information -->
             <b-button variant="primary" v-b-modal.modal-update>Update User Info</b-button>
+
+            <!-- Modal creation used for updating user information -->
             <b-modal
                 id="modal-update"
                 ref="modal"
@@ -45,6 +66,7 @@
                       required
                   ></b-form-input>
                 </b-form-group>
+
                 <b-form-group
                     label="Change Last Name:"
                     label-for="change_lastname"
@@ -59,6 +81,7 @@
                       required
                   ></b-form-input>
                 </b-form-group>
+
                 <b-form-group
                     label="Change Email:"
                     label-for="change_email"
@@ -73,6 +96,7 @@
                       required
                   ></b-form-input>
                 </b-form-group>
+
               </b-form>
             </b-modal>
           </div>
@@ -115,27 +139,30 @@
           </b-modal>
           <br><br>
 
-          <!-- Change password stuff  -->
+          <!-- Change password button sends you to the forgot page -->
           <b-button variant="warning" v-on:click="redirect('Forgot');">Change Password</b-button>
 
           <br><br>
 
-          <!-- View Order History  -->
+          <!-- View Order History button sends you to the viewOrders page  -->
           <b-button variant="primary" v-on:click="redirect('/viewOrder')">Order History</b-button>
           <p></p>
         </b-jumbotron>
       </div>
+
+      <!-- Displays any messages that are being sent back to the webpage -->
       <div style="justify-content: center;display: flex">
         <h3 style="color: white">{{ message }}</h3>
       </div>
 
+      <!-- Used to add extra space at the bottom to get rid of white spaces -->
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-
     </b-jumbotron>
   </div>
 </template>
 
 <script>
+
 /**
  * import components, views and dependencies
  */
@@ -154,6 +181,7 @@ export default {
     cdl_header,
     navbar
   },
+
   /**
    *  return data to declared and instantiated variables
    */
@@ -178,17 +206,17 @@ export default {
     }
   },
 
-  // methods for this view/component
+
   methods: {
+
     /**
-     * redirect - Change address bar with id value
-     *
-     * @param id
-     * id - the address path
+     * this method is to redirect based on the id parameter input
+     * @param id a String value that is a path
      */
     redirect(id) {
       this.$router.push(id)
     },
+
     // Update Form functionality
     /**
      * checkFormValidityUpdate - checks the form for modal-update
@@ -205,6 +233,7 @@ export default {
       this.newEmailState = valid
       return valid
     },
+
     /**
      * updateModal - re-instantiate the state and objects for the
      *               modal-update form inputs
@@ -217,6 +246,7 @@ export default {
       this.newLastnameState = null
       this.newEmailState = null
     },
+
     /**
      * handleOkUpdate - method handles the modal events for
      *                  modal-update form
@@ -230,6 +260,7 @@ export default {
       // Trigger submit handler
       this.handleSubmitUpdate()
     },
+
     /**
      * handleSubmitUpdate - this method takes the inputs and replaces
      *                      the old values in the database only for
@@ -261,6 +292,7 @@ export default {
           this.error = 'Error occurred';
         }
       }
+
       // Hide the modal manually
       this.$nextTick(() => {
         this.$bvModal.hide('modal-update')
@@ -281,6 +313,7 @@ export default {
       this.confirmDeleteState = valid
       return valid
     },
+
     /**
      * deleteModal - re-instantiate the state and objects for the
      *               modal-delete form inputs
@@ -289,6 +322,7 @@ export default {
       this.confirm_delete = ''
       this.confirmDeleteState = null
     },
+
     /**
      * handleOkDelete - method handles the modal events for
      *                  modal-delete form
@@ -302,6 +336,7 @@ export default {
       // Trigger submit handler
       this.handleSubmitDelete()
     },
+
     /**
      * handleSubmitDelete - this method takes the confirmation input and
      *                      deletes the row values of the users table in
@@ -341,13 +376,14 @@ export default {
       })
     }
   },
+
   /**
    * Method for reactive dependencies
    */
   computed: {
+
     /**
-     * Uses method from Vuex and stores session
-     * values into user
+     * maps if user is found
      */
     ...mapGetters(['user'])
   },
@@ -355,6 +391,7 @@ export default {
 }
 </script>
 
+<!-- CSS Style Script -->
 <style scoped>
 .paraStyle {
   text-align: center;
