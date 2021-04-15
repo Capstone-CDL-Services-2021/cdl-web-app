@@ -7,12 +7,15 @@
       <div>
         <b-jumbotron>
           <h1 style="text-align: center">Projects</h1>
-
+<!--          Projects Button-->
           <b-button v-on:click='hidden=!hidden'>Add a New Project</b-button>
+<!--          Check for hidden boolean to be true-->
           <ProjectForm v-if="!hidden"></ProjectForm>
+<!--          Hidden loadallprojects method call-->
           <div hidden> {{ loadAllProjects }}</div>
           <br><br>
 
+<!--          projects table-->
           <div class="table-responsive-md">
             <table class="minimalistBlack">
               <thead>
@@ -28,6 +31,7 @@
               </tr>
               </thead>
               <tbody>
+<!--              Print each project into a table element -->
               <tr v-for="project in ProjectList" :key="project.id">
                 <td>{{ project.Type_Of_Service }}</td>
                 <td>{{ project.Customer_Name }}</td>
@@ -39,6 +43,7 @@
                   <div v-if="project.Completed == 1"> Yes</div>
                 </td>
                 <td>
+<!--                  Each project has their own buttons and the buttons are assigned with the project ID-->
                   <div v-if="project.Completed == 0">
                     <b-button v-on:click="alterComplete(project.id)">Mark Complete</b-button>
                   </div>
@@ -80,6 +85,11 @@ export default {
     ProjectForm
   },
   methods: {
+    /**
+     * alterComplete - Post Method call to the backend to change the status of the project
+     * @param id - The id of the project
+     * @returns {Promise<void>} - Returns the response from the backend
+     */
     async alterComplete(id) {
       try {
         const response = await axios.post('alterComplete', {
@@ -95,6 +105,11 @@ export default {
         this.error = 'Error occurred';
       }
     },
+    /**
+     * deleteProject - Post Method call to the backend to delete the specified project
+     * @param id - Project ID being deleted
+     * @returns {Promise<void>} - Returns the response from the backend
+     */
     async deleteProject(id) {
       try {
         const response = await axios.post('deleteProject', {
@@ -112,14 +127,14 @@ export default {
   },
   data() {
     return {
-      ProjectList: [],
+      ProjectList: [], // ProjectList Array
       hidden: true
     }
   },
   computed: {
     ...
-        mapGetters(['user']),
-    loadAllProjects() {
+        mapGetters(['user']), // Returns all the users in the database
+    loadAllProjects() { // Post Method call to the backend to retrieve all the projects in the database
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return (axios.post('getAllProjects')).then(response => this.ProjectList = response.data)
     }

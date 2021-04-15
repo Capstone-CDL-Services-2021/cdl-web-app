@@ -8,12 +8,13 @@
         <div class="row">
           <div class="col">
             <h1 style="text-decoration: underline">Adding a New Service</h1>
+            <!--            The Add Service Forms-->
             <b-form-group
-              id="input-group-1"
-              label="Service Name:"
-              label-for="input-group-1"
-              style="color:white">
-
+                id="input-group-1"
+                label="Service Name:"
+                label-for="input-group-1"
+                style="color:white">
+              <!--          Service title input-->
               <b-form-input
                   id="input-1"
                   v-model="service.title"
@@ -27,6 +28,7 @@
                 id="input-group-2"
                 label="Service Description:"
                 label-for="input-2">
+              <!--              Description input-->
               <b-form-textarea
                   id="input-2"
                   v-model="service.desc"
@@ -39,6 +41,7 @@
                 id="input-group-3"
                 label="Service Image:"
                 label-for="input-3">
+              <!--              Image Input-->
               <b-form-input
                   id="input-3"
                   v-model="service.img"
@@ -76,9 +79,17 @@ export default {
     managerNavbar
   },
   methods: {
+    /**
+     * Redirect - Redirects the page to the specified location ID
+     * @param id - The location path
+     */
     redirect(id) {
       this.$router.push(id)
     },
+    /**
+     * onReset - Called upon when the form is reset
+     * @param event - The event of the form
+     */
     onReset(event) {
       event.preventDefault()
       this.service.title = ''
@@ -89,6 +100,10 @@ export default {
         this.show = true
       })
     },
+    /**
+     * addService - Calls to the backend addService function
+     * @returns {Promise<void>} - Returns the response
+     */
     async addService() {
       try {
         const response = await axios.post('addServiceCard', {
@@ -97,31 +112,33 @@ export default {
           imageUrl: this.service.img
         });
         console.log(response);
-      }catch(e){
-        this.error ='Error occurred';
+      } catch (e) {
+        this.error = 'Error occurred';
       }
     }
   },
-  data(){
-    return{
-      service: {}
+  data() {
+    return {
+      service: {} // The service Arraylist containing the input parameters of the service
     }
   }
 }
 </script>
-
+<!-- CSS style script -->
 <style scoped>
 
 #input-1 {
-width: 25%;
+  width: 25%;
   margin-left: auto;
   margin-right: auto;
 }
+
 #input-2 {
   width: 25%;
   margin-left: auto;
   margin-right: auto;
 }
+
 #input-3 {
   width: 25%;
   margin-left: auto;
