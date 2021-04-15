@@ -1,10 +1,12 @@
 <template>
   <div>
+    <!-- Displays the Manager header and navigation bar by calling the components -->
     <manager-header/>
     <manager-navbar/>
-
+    <!-- Used to encase everything and give the dark background color-->
     <b-jumbotron bg-variant="dark" border-variant="dark">
       <div>
+        <!-- Holds the ServiceCards table, giving the white background-->
         <b-jumbotron>
           <h1 style="text-align: center">Projects</h1>
 <!--          Projects Button-->
