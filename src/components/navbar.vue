@@ -1,8 +1,10 @@
 <template>
+<!--  This component is called by default for a user that isn't a manager-->
   <b-navbar toggleable="lg" class="navbar navbar-light" style="background-color: green;" sticky>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
+<!--      The redirections for buttons-->
       <b-navbar-nav>
         <b-button variant="outline-light" v-on:click="redirect('/')">Home</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/services')">Services</b-button>
@@ -20,6 +22,9 @@
 </template>
 
 <script>
+/**
+ * 
+ */
 import {mapGetters} from 'vuex'
 
 export default {
