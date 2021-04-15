@@ -1,3 +1,4 @@
+<!--  This component is called on every non manager page which aligns the Contact Us button on the bottom-->
 <template>
   <div class="align-bottom">
     Have questions?
@@ -7,9 +8,16 @@
 
 
 <script>
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "contactUs",
   methods: {
+    /**
+     * this method is to redirect based on the id parameter input
+     * @param id a String value that is a path
+     */
     redirect(id) {
       this.$router.push(id)
     }

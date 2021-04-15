@@ -1,8 +1,10 @@
+<!--  This component is called by default for a user that isn't a manager-->
 <template>
   <b-navbar toggleable="lg" class="navbar navbar-light" style="background-color: green;" sticky>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
+<!--      The redirections for buttons-->
       <b-navbar-nav>
         <b-button variant="outline-light" v-on:click="redirect('/')">Home</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/services')">Services</b-button>
@@ -20,14 +22,24 @@
 </template>
 
 <script>
+/**
+ * grabs mapGetters from vuex
+ */
 import {mapGetters} from 'vuex'
 
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "navbar",
   data() {
     return {}
   },
   methods: {
+    /**
+     * this method is to redirect based on the id parameter input
+     * @param id a String value that is a path
+     */
     redirect(id) {
       this.$router.push(id)
     }

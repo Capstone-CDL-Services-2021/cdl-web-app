@@ -3,14 +3,17 @@
 
     <manager-header/>
     <manager-navbar/>
+<!--    Hidden loadServiceCard method call to retrieve the service cards in the database-->
     <div hidden>{{ loadServiceCard }}</div>
     <div class="services">
       <b-jumbotron bg-variant="dark" text-variant="black" border-variant="dark"
                    style="margin-bottom: -2rem; margin-top: -2rem">
+<!--        Add new Service Card Button-->
         <b-button v-on:click="redirect('managerAddService')">Add a New Service Card</b-button>
 
         <div class="container-fluid">
           <div class="row" style=" margin-top: 2rem;">
+<!--            Loop for displaying the service cards in 3 columns-->
             <div v-for="card in serviceCardInfo" :key="card.id">
               <div class="col-sm" style="padding: 0px 10px 0px 10px">
                 <div v-if="card.id % 3 === 0">
@@ -68,17 +71,21 @@ export default {
   },
   data() {
     return {
-      serviceCardInfo: []
+      serviceCardInfo: [] // ServiceCardInfo Array
     }
   },
   computed: {
-    loadServiceCard() {
+    loadServiceCard() { // Get Method call to retrieve all the service cards from the database
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return axios.get('getAllServiceCards')
           .then(response => this.serviceCardInfo = response.data)
     }
   },
   methods: {
+    /**
+     * Redirect - Redirects the page to the specified location ID
+     * @param id - The location path
+     */
     redirect(id) {
       this.$router.push(id)
     }

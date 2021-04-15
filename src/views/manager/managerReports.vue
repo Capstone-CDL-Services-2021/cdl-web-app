@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- Displays the Manager header and navigation bar -->
+    <!-- Displays the Manager header and navigation bar by calling the components -->
     <manager-header/>
     <manager-navbar/>
 
@@ -113,9 +113,30 @@ export default {
 
   //Any methods that are needed
   methods: {
+
+    /**
+     * Used to redirect to the webpage by using the according ID
+     * @param id
+     */
     redirect(id) {
       this.$router.push(id)
     },
+
+    /**
+     * Method is called when the send invoice button is clicked this will take in the parameters inside of the table from the database
+     * and in combination with mail catcher will send these values with the message to the client's email if email
+     * was sent successfully message will display stating "Invoice sent"
+     *
+     * Along with displaying any error messages that occur.
+     *
+     * @param index
+     * @param email
+     * @param billto
+     * @param serviceoffered
+     * @param datecompleted
+     * @param cost
+     * @returns {Promise<void>}
+     */
     async sendInvoice(index, email, billto, serviceoffered, datecompleted, cost) {
       let date1 = new Date(datecompleted);
       date1.setDate(date1.getDate() + 5);
@@ -139,6 +160,15 @@ export default {
         this.message = '';
       }
     },
+
+    /**
+     * Method is called when the button "Change Invoice Status" is clicked
+     * which will change the status of the invoice from pending payment to
+     * payment received.
+     *
+     * @param id
+     * @returns {Promise<void>}
+     */
     async alterInvoiceStatus(id) {
       try {
         const response = await axios.post('alterInvoiceStatus', {
@@ -177,14 +207,16 @@ export default {
 
   //Computed functions
   computed: {
+    /**
+     * when this method is called it will load all of the projects from the backend
+     * to be used to fill in the table
+     *
+     * @returns {Promise<AxiosResponse<any>>}
+     */
     loadAllProjects() {
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return (axios.post('getAllProjects')).then(response => this.ProjectList = response.data)
     },
-    printProjects() {
-      // eslint-disable-next-line vue/no-async-in-computed-properties
-      return (axios.post('printProjects')).then(response => this.ProjectList = response.data)
-    }
   }
 }
 </script>

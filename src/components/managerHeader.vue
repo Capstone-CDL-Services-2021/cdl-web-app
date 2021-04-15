@@ -1,12 +1,16 @@
+<!--  This component is called for whenever a manager is logged in.-->
 <template>
   <div class="column">
     <div class="row">
+<!--      Column for the redirect to home page on image-->
       <div class="col-sm-200">
         <img alt="CDL Services" width="150px" src="../assets/cdlservices.jpg" align="left" style="padding-left:20px" v-on:click="redirect('/')">
       </div>
+<!--      This column is for the logout redirect-->
       <div class="col-sm-20" style="padding-top:20px">
         <a href="javascript:void(0)" v-on:click="logoutHandler">Logout</a>
       </div>
+<!--      This column is for the contact info-->
       <div class="col-sm">
         <p class="text-right" style="padding-right: 20px">T5H 2K3 Edmonton, Alberta, Canada <br> 780-695-5395 <br> Mon- Sat 9:00am - 5:00pm<br></p>
       </div>
@@ -15,15 +19,25 @@
 </template>
 
 <script>
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "cdl_header",
   data() {
     return {}
   },
   methods: {
+    /**
+     * this method is to redirect based on the id parameter input
+     * @param id a String value that is a path
+     */
     redirect(id) {
       this.$router.push(id)
     },
+    /**
+     * It removes the token associated to the user and then it makes the user = null.
+     */
     logoutHandler(){
       localStorage.removeItem('token');
       this.$store.dispatch('user',null);

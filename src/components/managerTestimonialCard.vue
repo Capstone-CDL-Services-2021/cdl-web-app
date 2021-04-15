@@ -1,8 +1,10 @@
+<!--  This component is called whenever a manager wants to view all testimonial cards. The manager can then choose whether testimonial cards can be visible to users or not-->
 <template>
   <div>
     <b-card no-body class="overflow-hidden" style="max-width: 570px">
       <b-row no-gutters>
         <b-col>
+<!--          card layout, has testimonial desc, ratings, client name, and a visibility icon with a toggle-->
           <b-card-body :title="cardTitleA">
             <b-card-text>
               {{cardTestimonial}}
@@ -34,8 +36,14 @@
 </template>
 
 <script>
+/**
+ * import components, views and dependencies
+ */
 import axios from "axios";
 
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "testimonialCard",
 
@@ -59,6 +67,7 @@ export default {
       type: Number
     }
   },
+
   computed: {
     cardTitleA() {
       return this.cardTitle;
@@ -69,7 +78,14 @@ export default {
 
     }
   },
+
   methods: {
+    /**
+     * This method is called whenever a manager clicks on the button that toggles visibility. After 500 ms it will reload the page.
+     * @param cardID the id of the specific testimonial card that the manager clicked
+     * @param toggle if it's toggled to be visible or not
+     *
+     */
     async toggleVisibility(cardID, toggle) {
       try {
           const response = await axios.post('toggleVisibility', {

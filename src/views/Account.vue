@@ -9,15 +9,16 @@
 
       <div style="justify-content: center;display: flex">
 
-        <b-jumbotron style="text-align: left" title="User Information" text-variant="black" border-variant="dark" class="paraStyle">
+        <b-jumbotron style="text-align: left" title="User Information" text-variant="black" border-variant="dark"
+                     class="paraStyle">
           <h3>User Information:</h3>
           <div class="mid">
             <p>Full Name: {{ user.first_name }} {{ user.last_name }}
 
-              {{ user.first}}
+              {{ user.first }}
             </p>
             <p>Email: {{ user.email }}</p>
-            <p>ID: {{user.id}}</p>
+            <p>ID: {{ user.id }}</p>
 
             <!--Update User Information -->
             <b-button variant="primary" v-b-modal.modal-update>Update User Info</b-button>
@@ -92,7 +93,8 @@
               @hidden="deleteModal"
               @ok="handleOkDelete"
           >
-            <p>If you would like to delete your account permanently please enter <strong>"Confirm Delete Account"</strong> in the text
+            <p>If you would like to delete your account permanently please enter <strong>"Confirm Delete
+              Account"</strong> in the text
               box below</p>
             <b-form ref="form" @submit.stop.prevent="handleSubmitDelete">
               <b-form-group
@@ -124,7 +126,7 @@
         </b-jumbotron>
       </div>
       <div style="justify-content: center;display: flex">
-        <h3 style="color: white">{{message}}</h3>
+        <h3 style="color: white">{{ message }}</h3>
       </div>
 
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -134,20 +136,27 @@
 </template>
 
 <script>
+/**
+ * import components, views and dependencies
+ */
 import cdl_header from "@/components/cdl_header";
 import Home from "@/views/Home";
 import {mapGetters} from 'vuex';
 import axios from "axios";
 import navbar from "@/components/navbar";
 
-
-
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "Account",
   components: {
     cdl_header,
     navbar
   },
+  /**
+   *  return data to declared and instantiated variables
+   */
   data() {
     return {
       message: '',
@@ -169,11 +178,26 @@ export default {
     }
   },
 
+  // methods for this view/component
   methods: {
+    /**
+     * redirect - Change address bar with id value
+     *
+     * @param id
+     * id - the address path
+     */
     redirect(id) {
       this.$router.push(id)
     },
     // Update Form functionality
+    /**
+     * checkFormValidityUpdate - checks the form for modal-update
+     *
+     * @returns {*}
+     * * - checks the state for the inputs for modal-update form
+     * returns <true> if the inputs are not empty or null
+     * otherwise <false> for everything
+     */
     checkFormValidityUpdate() {
       const valid = this.$refs.form.checkValidity()
       this.newFirstnameState = valid
@@ -181,6 +205,10 @@ export default {
       this.newEmailState = valid
       return valid
     },
+    /**
+     * updateModal - re-instantiate the state and objects for the
+     *               modal-update form inputs
+     */
     updateModal() {
       this.new_firstname = ''
       this.new_lastname = ''
@@ -189,12 +217,28 @@ export default {
       this.newLastnameState = null
       this.newEmailState = null
     },
+    /**
+     * handleOkUpdate - method handles the modal events for
+     *                  modal-update form
+     *
+     * @param bvModalEvt
+     * bvModalEvt - the specific modal triggered
+     */
     handleOkUpdate(bvModalEvt) {
       // Prevent modal from closing
       bvModalEvt.preventDefault()
       // Trigger submit handler
       this.handleSubmitUpdate()
     },
+    /**
+     * handleSubmitUpdate - this method takes the inputs and replaces
+     *                      the old values in the database only for
+     *                      the session user
+     *
+     * @returns {Promise<void>}
+     * returns nothing, returns to page and cancels
+     * whole modal event
+     */
     async handleSubmitUpdate() {
       // Exit when the form isn't valid
       if (!this.checkFormValidityUpdate()) {
@@ -224,21 +268,49 @@ export default {
     },
 
     // Delete Form functionality
+    /**
+     * checkFormValidityDelete - checks the form for modal-delete
+     *
+     * @returns {*}
+     * * - checks the state for the inputs for modal-delete form
+     * returns <true> if the inputs are not empty or null
+     * otherwise <false> for everything
+     */
     checkFormValidityDelete() {
       const valid = this.$refs.form.checkValidity()
       this.confirmDeleteState = valid
       return valid
     },
+    /**
+     * deleteModal - re-instantiate the state and objects for the
+     *               modal-delete form inputs
+     */
     deleteModal() {
       this.confirm_delete = ''
       this.confirmDeleteState = null
     },
+    /**
+     * handleOkDelete - method handles the modal events for
+     *                  modal-delete form
+     *
+     * @param bvModalEvt
+     * bvModalEvt - the specific modal triggered
+     */
     handleOkDelete(bvModalEvt) {
       // Prevent modal from closing
       bvModalEvt.preventDefault()
       // Trigger submit handler
       this.handleSubmitDelete()
     },
+    /**
+     * handleSubmitDelete - this method takes the confirmation input and
+     *                      deletes the row values of the users table in
+     *                      the database where id equals session user's id
+     *
+     * @returns {Promise<void>}
+     * returns nothing, returns to page and cancels
+     * whole modal event
+     */
     async handleSubmitDelete() {
       // Exit when the form isn't valid
       if (!this.checkFormValidityDelete()) {
@@ -269,8 +341,14 @@ export default {
       })
     }
   },
-
+  /**
+   * Method for reactive dependencies
+   */
   computed: {
+    /**
+     * Uses method from Vuex and stores session
+     * values into user
+     */
     ...mapGetters(['user'])
   },
 
