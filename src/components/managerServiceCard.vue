@@ -31,6 +31,9 @@
 </template>
 
 <script>
+/**
+ * import components, views and dependencies
+ */
 import axios from "axios";
 
 export default {
@@ -60,6 +63,9 @@ export default {
       return this.cardTitle;
     }
   },
+  /**
+   * return data to declared and instantiated variables
+   */
   data() {
     return {}
   },
@@ -99,6 +105,7 @@ export default {
 
 }
 </script>
+
 <!-- CSS style script -->
 <style scoped>
 

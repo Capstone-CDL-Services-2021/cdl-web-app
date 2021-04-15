@@ -134,8 +134,10 @@ export default {
     }
   },
   computed: {
-    ...
-        mapGetters(['user']), // Returns all the users in the database
+    /**
+     * maps if user is found
+     */
+    ...mapGetters(['user']),
     loadAllProjects() { // Post Method call to the backend to retrieve all the projects in the database
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return (axios.post('getAllProjects')).then(response => this.ProjectList = response.data)

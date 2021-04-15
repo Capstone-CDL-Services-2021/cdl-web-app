@@ -124,6 +124,7 @@ export default {
   }
 }
 </script>
+
 <!-- CSS style script -->
 <style scoped>
 

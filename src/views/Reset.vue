@@ -57,6 +57,7 @@ export default {
   }
 }
 </script>
+
 <!-- CSS style Script -->
 <style scoped>
 * {

@@ -207,7 +207,6 @@ export default {
 
   //Computed functions
   computed: {
-
     /**
      * when this method is called it will load all of the projects from the backend
      * to be used to fill in the table

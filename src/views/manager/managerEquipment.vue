@@ -106,7 +106,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['user']), // Retrieves all the users
+    /**
+     * maps if user is found
+     */
+    ...mapGetters(['user']),
     loadEquipment() { // Retrieves all the current equipment stored in the database
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return (axios.post('getAllEquipment')).then(response => this.EquipmentList = response.data)
