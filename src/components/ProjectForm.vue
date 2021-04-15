@@ -1,5 +1,7 @@
+<!--Component is called when a manager wants to add a project-->
 <template>
   <div class="container-sm">
+<!--    Calls ProjectHandler when submitting this form-->
     <form @submit.prevent="ProjectHandler">
 
       <br/>
@@ -55,11 +57,21 @@
 </template>
 
 <script>
+/**
+ * import components, views and dependencies
+ */
 import axios from 'axios'
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "ProjectForm",
   components:{
   },
+  /**
+   * return data to declared and instantiated variables
+   * @returns {{Customer_Name: string, total_cost: string, Date_Requested: string, Type_Of_Service: string, Completed: number, date_completed: string, invoice_paid: number, Customer_Email: string, Customer_Address: string}}
+   */
   data() {
     return {
       Type_Of_Service: '',
@@ -75,6 +87,11 @@ export default {
     }
   },
   methods: {
+    /**
+     * This is called whenever the manager submits the data for the project. It will add the project to the projects table.
+     *
+     * 
+     */
     async ProjectHandler(){
       try {
         const response = await axios.post('addProject', {

@@ -1,5 +1,5 @@
-<template>
 <!--  Component for the Equipment Form on the Manager page. This is populated whenever the manager wants to add a new equipment-->
+<template>
   <div class="container-sm">
     <form @submit.prevent="EquipmentHandler">
       <h1>Add an Equipment</h1>

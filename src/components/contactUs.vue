@@ -1,5 +1,5 @@
-<template>
 <!--  This component is called on every non manager page which aligns the Contact Us button on the bottom-->
+<template>
   <div class="align-bottom">
     Have questions?
     <b-button pill variant="info" v-on:click="redirect('/ContactPage')">Contact Us</b-button>

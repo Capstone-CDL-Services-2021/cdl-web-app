@@ -1,5 +1,5 @@
-<template>
 <!--  This component is called by default for a user that isn't a manager-->
+<template>
   <b-navbar toggleable="lg" class="navbar navbar-light" style="background-color: green;" sticky>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 

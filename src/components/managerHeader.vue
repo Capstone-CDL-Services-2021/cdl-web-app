@@ -1,5 +1,5 @@
-<template>
 <!--  This component is called for whenever a manager is logged in.-->
+<template>
   <div class="column">
     <div class="row">
 <!--      Column for the redirect to home page on image-->

@@ -1,5 +1,5 @@
-<template>
 <!--  This component is called for creating columns for the header: left side has the home image, login/logout/register/forgot password, right side has contact information-->
+<template>
   <div class="column">
     <div class="row">
 <!--  This column is for the logo and picture. If clicking on the picture, it will redirect you to the home page-->

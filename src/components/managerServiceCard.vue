@@ -1,3 +1,4 @@
+<!--  Component called whenever a manager visits the manager services page and can add/edit/delete service cards-->
 <template>
   <div>
     <b-card no-body class="overflow-hidden card">
