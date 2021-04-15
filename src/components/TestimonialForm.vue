@@ -1,3 +1,4 @@
+<!--Component that generates a form for the user to fill out for testimonials-->
 <template>
   <!--  container-->
   <div class="container-sm">

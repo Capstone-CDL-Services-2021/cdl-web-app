@@ -1,3 +1,4 @@
+<!--Component that creates a testimonial card object-->
 <template>
   <div>
     <!--card containing testimonial-->

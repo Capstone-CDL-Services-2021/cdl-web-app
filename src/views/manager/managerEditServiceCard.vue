@@ -1,3 +1,4 @@
+<!--View that allows the manager to edit service cards through a form-->
 <template>
   <div>
     <!--    manager header-->

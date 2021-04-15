@@ -1,3 +1,4 @@
+<!--View that displays the testimonials for the manager-->
 <template>
   <div>
     <!--    manager header-->
