@@ -8,7 +8,7 @@
     <b-jumbotron bg-variant="dark" text-variant="white" border-variant="dark">
 
       <div class="row">
-        <h1 style="text-decoration: underline">Upcoming Projects and Due Dates</h1>
+        <h1 style="text-decoration: underline">Uncompleted and upcoming projects</h1>
 
         <!-- Calls the loadUpcomingProjects function that calls from the backend -->
         <div hidden> {{ loadUpcomingProjects}} </div>
