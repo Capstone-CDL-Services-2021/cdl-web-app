@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- Displays the header and the Navigation bar-->
+    <!-- Displays the header and the Navigation bar by calling the components -->
     <cdl_header/>
     <navbar/>
 
@@ -89,12 +89,16 @@ export default {
 
   //Functions that are needed
   computed: {
+
+    // calls mapGetters to get all users in the database
     ...
         mapGetters(['user']),
-    loadAllProjects() {
-      // eslint-disable-next-line vue/no-async-in-computed-properties
-      return (axios.post('getAllProjects')).then(response => this.ProjectList = response.data)
-    },
+
+    /**
+     * Used to print the projects while sending the email of the currently logged in user
+     * to the backend for it to only print rows that contain that certain email
+     * @returns {Promise<AxiosResponse<any>>}
+     */
     printProjects() {
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return (axios.post('printProjects', {email: this.user.email})).then(response => this.ProjectList = response.data)

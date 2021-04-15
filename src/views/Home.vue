@@ -3,7 +3,6 @@
 
     <!-- Calls CDL_header component -->
     <cdl_header/>
-    <!-- calls the user check component, that checks if the user currently logged in is the manager or not -->
 
     <!-- This checks to see if current user is logged in, and if the user is NOT blocked from logging in-->
     <h3 v-if="user && user.blocked === 0">
@@ -51,16 +50,19 @@
                 img-src="http://diggerodell.com/wp-content/uploads/2017/08/AdobeStock_102051247-1080x675.jpeg"
             ></b-carousel-slide>
 
+            <!-- creates the carousel slides and assigns the image -->
             <b-carousel-slide
                 class="img-size"
                 img-src="https://inoutcarwash.com/wp-content/uploads/2018/07/car-detailing-1080x675.jpg"
             ></b-carousel-slide>
 
+            <!-- creates the carousel slides and assigns the image -->
             <b-carousel-slide
                 class="img-size"
                 img-src="https://landscapingcalgary.org/wp-content/uploads/2018/10/IMG_0722.jpg"
             ></b-carousel-slide>
 
+            <!-- creates the carousel slides and assigns the image -->
             <b-carousel-slide
                 class="img-size"
                 img-src="https://images.immediate.co.uk/production/volatile/sites/10/2018/02/875d867d-e22c-4041-92c0-fc6862263aee-956c556.jpg?quality=90&resize=768%2C574"
@@ -108,9 +110,20 @@ export default {
 
   //methods that can be called and used
   methods: {
+
+    /**
+     * Used to redirect to the webpage by using the according ID
+     * @param id
+     */
     redirect(id) {
       this.$router.push(id)
     },
+
+    /**
+     * this is called when the current account that is trying to
+     * login or access the website is blocked which then it will
+     * display a message.
+     */
     block() {
       localStorage.removeItem('token');
       this.$store.dispatch('user', null);

@@ -110,6 +110,13 @@ export default {
 
   //Methods needed
   methods: {
+
+    /**
+     * onSubmit is used when the form "submit" button is being clicked it will then call this method which will
+     * take in the values for name, email and the question to be used my mailcatcher to send the email
+     * after which will display alert indicating whether or not the email was sent successfully or not
+     * @returns {Promise<void>}
+     */
     async onSubmit() {
       try {
         await axios.post('contactUs', {
@@ -124,6 +131,11 @@ export default {
         this.message = '';
       }
     },
+
+    /**
+     * Used to redirect to the webpage by using the according ID
+     * @param id
+     */
     redirect(id) {
       this.$router.push(id)
     }

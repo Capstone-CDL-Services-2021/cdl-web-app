@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- Displays the Manager header and navigation bar -->
+    <!-- Displays the Manager header and navigation bar by calling the components -->
     <manager-header/>
     <manager-navbar/>
 
@@ -65,6 +65,13 @@ export default {
 
   //functions to be used
   computed: {
+
+    /**
+     * when called will then load all of the upcoming projects where the date requested is greater than
+     * the current date. Which will then be used to print to a table on the home page
+     *
+     * @returns {Promise<AxiosResponse<any>>}
+     */
     loadUpcomingProjects() {
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return (axios.post('getUpcomingProjects')).then(response => this.projectList = response.data)

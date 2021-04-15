@@ -1,10 +1,10 @@
 <template>
   <div>
-    <!-- Header and Navigation bar display-->
+    <!-- Header and Navigation bar display by calling the components -->
     <cdl_header/>
     <navbar/>
 
-    <!-- Used to encase everything and give background-->
+    <!-- Used to encase everything and give background color -->
     <b-jumbotron bg-variant="dark" border-variant="dark" class="colorChange">
       <h2>Book Service Page</h2>
 
@@ -21,13 +21,13 @@
 
                 <b-form @submit.prevent="serviceRequestHandler">
 
-                  <!-- Checks to see if form being sent was successful alert will show accordingly-->
+                  <!-- Checks to see if form being sent was successful alert will show accordingly -->
                   <div v-if="message" class="alert alert-success" role="alert">
                     {{ message }}
                   </div>
                   <error v-if="error" :error="error"></error>
 
-                  <!-- Form Groups and form inputs that create the form needed for customers to fill out-->
+                  <!-- Form Groups and form inputs that create the form needed for customers to fill out -->
                   <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
                     <b-form-input
                         id="input-2"
@@ -37,7 +37,7 @@
                     ></b-form-input>
                   </b-form-group>
 
-                  <!-- Form Groups and form inputs that create the form needed for customers to fill out-->
+                  <!-- Form Groups and form inputs that create the form needed for customers to fill out -->
                   <b-form-group
                       id="input-group-1"
                       label="Email address:"
@@ -53,7 +53,7 @@
                     ></b-form-input>
                   </b-form-group>
 
-                  <!-- Form Groups and form inputs that create the form needed for customers to fill out-->
+                  <!-- Form Groups and form inputs that create the form needed for customers to fill out -->
                   <b-form-group id="input-group-3" label="Type of Service: " label-for="input-3">
                     <b-form-select
                         id="input-3"
@@ -63,7 +63,7 @@
                     ></b-form-select>
                   </b-form-group>
 
-                  <!-- Form Groups and form inputs that create the form needed for customers to fill out-->
+                  <!-- Form Groups and form inputs that create the form needed for customers to fill out -->
                   <b-form-group
                       id="input-group-4"
                       label="Start date of service:"
@@ -91,6 +91,7 @@
                         required
                     ></b-form-input>
                   </b-form-group>
+
                   <!-- Submit Button -->
                   <b-button type="submit" variant="primary">Submit</b-button>
                 </b-form>
@@ -149,6 +150,13 @@ export default {
 
   //Any methods that are needed
   methods: {
+
+    /**
+     * serviceRequestHandler is used when the form "submit" button is being clicked it will then call this method which will
+     * take in the values for name, email, service, date and street address to be used my mailcatcher to send the email
+     * after which will display alert indicating whether or not the email was sent successfully or not
+     * @returns {Promise<void>}
+     */
     async serviceRequestHandler() {
       try {
         await axios.post('bookService', {
@@ -165,6 +173,11 @@ export default {
         this.message = '';
       }
     },
+
+    /**
+     * Used to redirect to the webpage by using the according ID
+     * @param id
+     */
     redirect(id) {
       this.$router.push(id)
     }
@@ -172,9 +185,6 @@ export default {
 
   //Computes function
   computed: {
-    readonly() {
-      return this.state === 'readonly'
-    }
   },
 }
 </script>

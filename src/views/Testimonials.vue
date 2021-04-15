@@ -107,6 +107,10 @@ export default {
 
   //Any methods needed
   methods: {
+    /**
+     * Used to redirect to the webpage by using the according ID
+     * @param id
+     */
     redirect(id) {
       this.$router.push(id)
     }
@@ -120,9 +124,15 @@ export default {
     }
   },
 
-  //Any Functions needed to be used
   computed: {
+
+    // calls mapGetters to get all users in the database
     ...mapGetters(['user']),
+
+    /**
+     * Used to get all testimonials from the backend
+     * @returns {Promise<AxiosResponse<any>>}
+     */
     loadTestimonials() {
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return (axios.post('getAllTestimonials')).then(response => this.testimonialsList = response.data)
