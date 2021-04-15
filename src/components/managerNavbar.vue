@@ -1,8 +1,11 @@
 <template>
+<!--  Component called whenever a manager is logged in.-->
   <b-navbar toggleable="lg" class="navbar navbar-light" style="background-color: green;" sticky>
+<!--    Used for mobile friendliness-->
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
+<!--      The redirection based on which button is pushed-->
       <b-navbar-nav>
         <b-button variant="outline-light" v-on:click="redirect('/managerProjects')">Projects</b-button>
         <b-button variant="outline-light" v-on:click="redirect('/managerService')">Services</b-button>
@@ -17,11 +20,18 @@
 </template>
 
 <script>
+/**
+ * export components, views and methods from the imports
+ */
 export default {
   name: "navbar",
   data() {
     return {}
   },
+  /**
+   * this method is to redirect based on the id parameter input
+   * @param id a String value that is a path
+   */
   methods: {
     redirect(id) {
       this.$router.push(id)

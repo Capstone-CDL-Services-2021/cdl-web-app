@@ -1,10 +1,13 @@
 <template>
+<!--  This component is called for creating columns for the header: left side has the home image, login/logout/register/forgot password, right side has contact information-->
   <div class="column">
     <div class="row">
+<!--  This column is for the logo and picture. If clicking on the picture, it will redirect you to the home page-->
       <div class="col-sm-200">
         <img alt="CDL Services" width="150px" src="../assets/cdlservices.jpg" align="left" style="padding-left:20px" v-on:click="redirect('/')">
       </div>
 
+<!--  This column is for the email/password/forgot password/register column is for-->
       <div class="col-sm-20" style="padding:20px">
         <b-form v-if="!user" @submit.prevent="submitHandler">
           <error v-if="error" :error="error"></error>
@@ -20,11 +23,13 @@
           </p>
           <a href="/register" v-on:click="redirect('/register')">Register</a>
         </b-form>
+<!--        checks if the user logging in is a manager or not-->
         <div v-if="user">
           <div v-if="user.email == 'manager@cdlservices.com'">{{ redirect('/managerHome')}}<manager-navbar/></div>
           <a href="javascript:void(0)" v-on:click="logoutHandler">Logout</a>
         </div>
       </div>
+<!--      column for contact information-->
       <div class="col-sm">
         <p class="text-right" style="padding-right: 20px">T5H 2K3 Edmonton, Alberta, Canada <br> 780-695-5395 <br> Mon- Sat 9:00am - 5:00pm<br></p>
       </div>
@@ -32,16 +37,28 @@
   </div>
 </template>
 
+
 <script>
+/**
+ * import components, views and dependencies
+ */
 import Error from '@/components/Error.vue'
 import axios from 'axios'
 import {mapGetters} from 'vuex'
+
+/**
+ * export components, views and methods from the imports
+ */
 
 export default {
   name: "cdl_header",
   components:{
     Error
   },
+  /**
+   * return data to declared and instantiated variables
+   */
+
   data() {
     return {
       email:'',
@@ -50,15 +67,25 @@ export default {
     }
   },
   methods: {
+    /**
+     * this method is to redirect based on the id parameter input
+     * @param id a String value that is a path
+     */
     redirect(id) {
       this.$router.push(id)
     },
+    /**
+     * It removes the token associated to the user and then it makes the user = null.
+     */
     logoutHandler(){
       localStorage.removeItem('token');
       this.$store.dispatch('user',null);
       this.$router.push('/');
     },
-
+    /**
+     * Whenever a user logs in, this method is called to submit to check in the database if the email/password matches any in the database.
+     *
+     */
     async submitHandler(){
       try{
       const response = await axios.post('login', {
@@ -72,11 +99,16 @@ export default {
         this.error= "Invalid username/password";
     }}
   },
+
   computed: {
+    /**
+     * Gets the method from vuex
+     */
     ...mapGetters(['user'])
   }
 }
 </script>
+
 
 <style scoped>
 .nav-item.nav-item.nav-item a {

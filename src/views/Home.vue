@@ -1,3 +1,4 @@
+
 <template>
   <div>
 
@@ -77,6 +78,7 @@
       <contact-us/>
 
       <!-- Used to get rid of whitespace at the bottom of the page -->
+
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </b-jumbotron>
   </div>
@@ -108,7 +110,9 @@ export default {
     }
   },
 
-  //methods that can be called and used
+  /**
+   *
+   */
   methods: {
 
     /**
