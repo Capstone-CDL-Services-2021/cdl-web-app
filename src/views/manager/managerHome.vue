@@ -68,7 +68,7 @@ export default {
 
     /**
      * when called will then load all of the upcoming projects where the date requested is greater than
-     * the current date. Which will then be used to print to a table on the home page
+     * the current date OR completed is equal to 0. Which will then be used to print to a table on the home page
      *
      * @returns {Promise<AxiosResponse<any>>}
      */
