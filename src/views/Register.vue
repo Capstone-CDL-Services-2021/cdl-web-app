@@ -9,7 +9,7 @@
     <b-jumbotron bg-variant="dark" border-variant="dark">
       <div class="auth-wrapper">
         <div class="auth-inner">
-          
+
           <!-- Calls the registerForm component to display the form to register a new account -->
           <RegisterForm/>
         </div>

@@ -3,25 +3,25 @@
   <!-- Used to encase everything and give background color -->
   <b-jumbotron bg-variant="dark" border-variant="dark">
 
-<!-- Div classes to make the container for the form to be inside -->
+    <!-- Div classes to make the container for the form to be inside -->
     <div class="container-sm">
       <div class="auth-wrapper">
         <div class="auth-inner">
 
-<!-- Creates the form for the user -->
+          <!-- Creates the form for the user -->
           <form @submit.prevent="forgotpassHandler">
 
-<!-- This div is used to display any alert messages dependent whether it was successful or there was an error-->
+            <!-- This div is used to display any alert messages dependent whether it was successful or there was an error-->
             <div v-if="message" class="alert alert-success" role="alert">
-              {{message}}
+              {{ message }}
             </div>
             <error v-if="error" :error="error"></error>
 
-<!-- Label and header for the form -->
+            <!-- Label and header for the form -->
             <h2>Change Password</h2>
             <div class="form-group">
               <label>Email</label>
-<!-- Input for the email address of the user whom forgot their password -->
+              <!-- Input for the email address of the user whom forgot their password -->
               <input type="email" v-model="email" class="form-control" placeholder="enter your email">
             </div>
 
@@ -46,15 +46,15 @@ export default {
   name: "Forgot",
 
   //Any components needed
-  components:{
+  components: {
     Error
   },
 
   //Data that is needed
-  data(){
-    return{
-      email:'',
-      message:'',
+  data() {
+    return {
+      email: '',
+      message: '',
       error: ''
     }
   },
@@ -69,17 +69,18 @@ export default {
      *
      * @returns {Promise<void>}
      */
-    async forgotpassHandler(){
-      try{
-      const response = await axios.post('forgot',{
-        email: this.email
-      });
-      this.message= 'The email was sent!';
-      this.error='';
-      console.log(response);
-    }catch(e){
-      this.error= 'Error occurred';
-      this.message ='';}
+    async forgotpassHandler() {
+      try {
+        const response = await axios.post('forgot', {
+          email: this.email
+        });
+        this.message = 'The email was sent!';
+        this.error = '';
+        console.log(response);
+      } catch (e) {
+        this.error = 'Error occurred';
+        this.message = '';
+      }
     }
   }
 }
@@ -91,7 +92,7 @@ export default {
   box-sizing: border-box;
 }
 
-.auth-wrapper{
+.auth-wrapper {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -99,7 +100,7 @@ export default {
   padding-top: 50px;
 }
 
-.auth-inner{
+.auth-inner {
   margin: auto;
   background: green;
   padding: 40px 55px 40px 55px;
