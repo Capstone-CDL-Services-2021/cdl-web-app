@@ -1,5 +1,5 @@
-<template>
 <!--  This component is called whenever there's an error-->
+<template>
   <div class="alert alert-danger" role="alert">
     {{error}}
   </div>

@@ -1,11 +1,13 @@
 <template>
   <div>
+<!--    Hidden loadServiceCard method call to retrieve all service cards from database-->
     <div hidden>{{ loadServiceCard }}</div>
     <cdl_header/>
     <navbar/>
     <h1 style="text-decoration: underline; background-color: #343a40; color: white; padding: 2rem">Services!</h1>
     <div class="services container-fluid text-center" style="background-color: #343a40">
       <div class="row" style="margin-top: -1rem">
+<!--        Loop through serviceCardInfo Array and print into their columns-->
         <div v-for="card in serviceCardInfo" :key="card.id">
           <div class="col-sm" style="padding: 0px 10px 0px 10px">
             <div v-if="card.id % 3 === 0">
@@ -55,7 +57,7 @@ export default {
     serviceCard
   },
   computed: {
-    loadServiceCard() {
+    loadServiceCard() { // Get Method Call to the backend to retrieve all service cards from the database
       // eslint-disable-next-line vue/no-async-in-computed-properties
       return axios.get('getAllServiceCards')
           .then(response => this.serviceCardInfo = response.data)
@@ -63,17 +65,21 @@ export default {
   },
   data() {
     return {
-      serviceCardInfo: []
+      serviceCardInfo: [] // serviceCardInfo Array
     }
   },
   methods: {
+    /**
+     * Redirect - Redirects the page to the specified location ID
+     * @param id - The location path
+     */
     redirect(id) {
       this.$router.push(id)
     }
   }
 }
 </script>
-
+<!-- CSS style Script -->
 <style scoped>
 .nav-item.nav-item.nav-item a {
   color: white;

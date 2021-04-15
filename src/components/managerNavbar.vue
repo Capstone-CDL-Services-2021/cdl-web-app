@@ -1,5 +1,5 @@
-<template>
 <!--  Component called whenever a manager is logged in.-->
+<template>
   <b-navbar toggleable="lg" class="navbar navbar-light" style="background-color: green;" sticky>
 <!--    Used for mobile friendliness-->
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
